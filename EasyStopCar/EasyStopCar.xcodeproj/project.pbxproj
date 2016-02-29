@@ -87,6 +87,7 @@
 		4D9AC4401C8423DA00E923CC /* UITempletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITempletViewController.m; sourceTree = "<group>"; };
 		4D9AC4431C84242E00E923CC /* SearchPartMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPartMapController.h; sourceTree = "<group>"; };
 		4D9AC4441C84242E00E923CC /* SearchPartMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPartMapController.m; sourceTree = "<group>"; };
+		4D9AC4471C84266A00E923CC /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +132,7 @@
 		4D9AC3BD1C83E20D00E923CC = {
 			isa = PBXGroup;
 			children = (
+				4D9AC3C81C83E20E00E923CC /* EasyStopCar */,
 				4D9AC43D1C8421D700E923CC /* mapapi.bundle */,
 				4D9AC43B1C84219500E923CC /* libstdc++.6.0.9.tbd */,
 				4D9AC4391C84218D00E923CC /* CoreTelephony.framework */,
@@ -146,7 +148,6 @@
 				4D9AC4231C841F5600E923CC /* BaiduMapAPI_Search.framework */,
 				4D9AC4241C841F5600E923CC /* BaiduMapAPI_Utils.framework */,
 				4D9AC4251C841F5600E923CC /* BaiduMapAPI_Base.framework */,
-				4D9AC3C81C83E20E00E923CC /* EasyStopCar */,
 				4D9AC3E21C83E20E00E923CC /* EasyStopCarTests */,
 				4D9AC3ED1C83E20E00E923CC /* EasyStopCarUITests */,
 				4D9AC3C71C83E20E00E923CC /* Products */,
@@ -166,6 +167,7 @@
 		4D9AC3C81C83E20E00E923CC /* EasyStopCar */ = {
 			isa = PBXGroup;
 			children = (
+				4D9AC4461C84265C00E923CC /* Common */,
 				4D9AC4421C8423FA00E923CC /* Search */,
 				4D9AC3CC1C83E20E00E923CC /* AppDelegate.h */,
 				4D9AC3CD1C83E20E00E923CC /* AppDelegate.m */,
@@ -215,6 +217,14 @@
 				4D9AC4441C84242E00E923CC /* SearchPartMapController.m */,
 			);
 			name = Search;
+			sourceTree = "<group>";
+		};
+		4D9AC4461C84265C00E923CC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4D9AC4471C84266A00E923CC /* Define.h */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
