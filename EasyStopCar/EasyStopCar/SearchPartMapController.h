@@ -18,6 +18,7 @@
 
 #import <BaiduMapAPI_Utils/BMKUtilsComponent.h>//引入计算工具所有的头文件
 
-@interface SearchPartMapController : UITempletViewController<BMKMapViewDelegate>
+
+@interface SearchPartMapController : UITempletViewController<BMKMapViewDelegate,BMKLocationServiceDelegate>
 
 @end
