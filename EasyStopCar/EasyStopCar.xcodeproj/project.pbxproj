@@ -15,6 +15,11 @@
 		4D9AC3D91C83E20E00E923CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D9AC3D71C83E20E00E923CC /* LaunchScreen.storyboard */; };
 		4D9AC3E41C83E20E00E923CC /* EasyStopCarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3E31C83E20E00E923CC /* EasyStopCarTests.m */; };
 		4D9AC3EF1C83E20E00E923CC /* EasyStopCarUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3EE1C83E20E00E923CC /* EasyStopCarUITests.m */; };
+		4D9AC4261C841F5600E923CC /* BaiduMapAPI_Location.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC4211C841F5600E923CC /* BaiduMapAPI_Location.framework */; };
+		4D9AC4271C841F5600E923CC /* BaiduMapAPI_Map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC4221C841F5600E923CC /* BaiduMapAPI_Map.framework */; };
+		4D9AC4281C841F5600E923CC /* BaiduMapAPI_Search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC4231C841F5600E923CC /* BaiduMapAPI_Search.framework */; };
+		4D9AC4291C841F5600E923CC /* BaiduMapAPI_Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC4241C841F5600E923CC /* BaiduMapAPI_Utils.framework */; };
+		4D9AC42A1C841F5600E923CC /* BaiduMapAPI_Base.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC4251C841F5600E923CC /* BaiduMapAPI_Base.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,11 @@
 		4D9AC3EA1C83E20E00E923CC /* EasyStopCarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyStopCarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9AC3EE1C83E20E00E923CC /* EasyStopCarUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EasyStopCarUITests.m; sourceTree = "<group>"; };
 		4D9AC3F01C83E20E00E923CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D9AC4211C841F5600E923CC /* BaiduMapAPI_Location.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI_Location.framework; path = EasyStopCar/framework/BaiduMap_IOSSDK_v2.10.0_Lib/BaiduMapAPI_Location.framework; sourceTree = "<group>"; };
+		4D9AC4221C841F5600E923CC /* BaiduMapAPI_Map.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI_Map.framework; path = EasyStopCar/framework/BaiduMap_IOSSDK_v2.10.0_Lib/BaiduMapAPI_Map.framework; sourceTree = "<group>"; };
+		4D9AC4231C841F5600E923CC /* BaiduMapAPI_Search.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI_Search.framework; path = EasyStopCar/framework/BaiduMap_IOSSDK_v2.10.0_Lib/BaiduMapAPI_Search.framework; sourceTree = "<group>"; };
+		4D9AC4241C841F5600E923CC /* BaiduMapAPI_Utils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI_Utils.framework; path = EasyStopCar/framework/BaiduMap_IOSSDK_v2.10.0_Lib/BaiduMapAPI_Utils.framework; sourceTree = "<group>"; };
+		4D9AC4251C841F5600E923CC /* BaiduMapAPI_Base.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI_Base.framework; path = EasyStopCar/framework/BaiduMap_IOSSDK_v2.10.0_Lib/BaiduMapAPI_Base.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +68,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D9AC4261C841F5600E923CC /* BaiduMapAPI_Location.framework in Frameworks */,
+				4D9AC4271C841F5600E923CC /* BaiduMapAPI_Map.framework in Frameworks */,
+				4D9AC4281C841F5600E923CC /* BaiduMapAPI_Search.framework in Frameworks */,
+				4D9AC4291C841F5600E923CC /* BaiduMapAPI_Utils.framework in Frameworks */,
+				4D9AC42A1C841F5600E923CC /* BaiduMapAPI_Base.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +96,11 @@
 		4D9AC3BD1C83E20D00E923CC = {
 			isa = PBXGroup;
 			children = (
+				4D9AC4211C841F5600E923CC /* BaiduMapAPI_Location.framework */,
+				4D9AC4221C841F5600E923CC /* BaiduMapAPI_Map.framework */,
+				4D9AC4231C841F5600E923CC /* BaiduMapAPI_Search.framework */,
+				4D9AC4241C841F5600E923CC /* BaiduMapAPI_Utils.framework */,
+				4D9AC4251C841F5600E923CC /* BaiduMapAPI_Base.framework */,
 				4D9AC3C81C83E20E00E923CC /* EasyStopCar */,
 				4D9AC3E21C83E20E00E923CC /* EasyStopCarTests */,
 				4D9AC3ED1C83E20E00E923CC /* EasyStopCarUITests */,
@@ -412,6 +432,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EasyStopCar/framework/BaiduMap_IOSSDK_v2.10.0_Lib",
+				);
 				INFOPLIST_FILE = EasyStopCar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -426,6 +450,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EasyStopCar/framework/BaiduMap_IOSSDK_v2.10.0_Lib",
+				);
 				INFOPLIST_FILE = EasyStopCar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
