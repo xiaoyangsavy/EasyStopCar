@@ -27,19 +27,63 @@
         self.navigationController.navigationBar.translucent = NO;
     }
     
+    //定位服务
      _locService = [[BMKLocationService alloc]init];
     _locService.delegate = self;
+    _locService.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;  //设置定位精确度，默认：kCLLocationAccuracyBest
+    _locService.distanceFilter = 100.0f; //指定最小距离更新(米)，默认：kCLDistanceFilterNone
     //启动LocationService
     [_locService startUserLocationService];
     
+    //百度地图
     _mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)];
     _mapView.showsUserLocation = NO;//先关闭显示的定位图层
     _mapView.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态
     _mapView.showsUserLocation = YES;//显示定位图层
+//    _mapView.zoomLevel = 14;
      self.view = _mapView;
+
+    
+    //测试数据：加入地图定位坐标
+    BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
+    CLLocationCoordinate2D coor;
+    coor.latitude = 39.90868;
+    coor.longitude = 116.204;
+    annotation.coordinate = coor;
+    annotation.title = @"西直门";
+    //                     annotation.subtitle = locationPoint[@"siteName"];
+    
+    [self.mapView addAnnotation:annotation];
     
     
 }
+
+
+#pragma mark 百度地图delegate
+
+- (void)mapView:(BMKMapView *)mapView annotationViewForBubble:(BMKAnnotationView *)view; {
+    NSLog(@"%@", view.annotation.title );
+//    NSLog(@"%@", @"siteName");
+    
+    
+//    NSDictionary *currentPoint;
+//    NSString *title = view.annotation.title;
+//    for (NSDictionary *dict in points) {
+//        
+//        if ([dict[@"siteName"] isEqualToString:title]) {
+//            
+//            currentPoint = dict;
+//        }
+//    }
+//    
+//    if (  currentPoint ) {
+//        SiteDetailViewController *mySite=[[SiteDetailViewController alloc] init];
+//        mySite.siteId = [NSString stringWithFormat:@"%d",  [currentPoint[@"siteId"] intValue]];
+//        [self.navigationController pushViewController:mySite animated:YES];
+//    }
+    
+}
+
 
 
 #pragma mark 定位服务delegate
