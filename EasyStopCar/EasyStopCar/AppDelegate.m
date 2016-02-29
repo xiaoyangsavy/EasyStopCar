@@ -8,15 +8,36 @@
 
 #import "AppDelegate.h"
 
+#import "ViewController.h"
+
 @interface AppDelegate ()
 
 @end
 
+BMKMapManager* _mapManager;
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    
+    // 要使用百度地图，请先启动BaiduMapManager
+    _mapManager = [[BMKMapManager alloc]init];
+    BOOL ret = [_mapManager start:@"VZZMIeQV14kl4BXQPNZAbQOk" generalDelegate:self];
+    if (!ret) {
+        NSLog(@"manager start failed!");
+    }
+
+    
+    UIViewController *myViewController = nil;
+    UINavigationController *myNavigationController =nil;
+
+    myViewController = [[ViewController alloc] init];
+    myNavigationController = [[UINavigationController alloc] initWithRootViewController:myViewController];
+    self.window.rootViewController = myNavigationController;
+    [self.window makeKeyAndVisible];
+
+    
     return YES;
 }
 
@@ -41,5 +62,37 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+#pragma mark -
+#pragma mark Memory management
+
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+    /*
+     Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
+     */
+}
+
+- (void)onGetNetworkState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"联网成功");
+    }
+    else{
+        NSLog(@"onGetNetworkState %d",iError);
+    }
+    
+}
+
+- (void)onGetPermissionState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"授权成功");
+    }
+    else {
+        NSLog(@"onGetPermissionState %d",iError);
+    }
+}
+
 
 @end

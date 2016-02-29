@@ -39,6 +39,8 @@
 	<array>
 		<string>baidumap</string>
 	</array>
+	<key>CFBundleDisplayName</key>
+	<string>易停车</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

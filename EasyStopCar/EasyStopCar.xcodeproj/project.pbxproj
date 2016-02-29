@@ -20,6 +20,16 @@
 		4D9AC4281C841F5600E923CC /* BaiduMapAPI_Search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC4231C841F5600E923CC /* BaiduMapAPI_Search.framework */; };
 		4D9AC4291C841F5600E923CC /* BaiduMapAPI_Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC4241C841F5600E923CC /* BaiduMapAPI_Utils.framework */; };
 		4D9AC42A1C841F5600E923CC /* BaiduMapAPI_Base.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC4251C841F5600E923CC /* BaiduMapAPI_Base.framework */; };
+		4D9AC42C1C84213B00E923CC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC42B1C84213B00E923CC /* CoreLocation.framework */; };
+		4D9AC42E1C84214300E923CC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC42D1C84214300E923CC /* QuartzCore.framework */; };
+		4D9AC4301C84214B00E923CC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC42F1C84214B00E923CC /* OpenGLES.framework */; };
+		4D9AC4321C84215100E923CC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC4311C84215100E923CC /* SystemConfiguration.framework */; };
+		4D9AC4341C84215A00E923CC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC4331C84215A00E923CC /* CoreGraphics.framework */; };
+		4D9AC4361C84216000E923CC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC4351C84216000E923CC /* Security.framework */; };
+		4D9AC4381C84218400E923CC /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC4371C84218400E923CC /* libsqlite3.0.tbd */; };
+		4D9AC43A1C84218D00E923CC /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC4391C84218D00E923CC /* CoreTelephony.framework */; };
+		4D9AC43C1C84219500E923CC /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC43B1C84219500E923CC /* libstdc++.6.0.9.tbd */; };
+		4D9AC43E1C8421D700E923CC /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D9AC43D1C8421D700E923CC /* mapapi.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +71,16 @@
 		4D9AC4231C841F5600E923CC /* BaiduMapAPI_Search.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI_Search.framework; path = EasyStopCar/framework/BaiduMap_IOSSDK_v2.10.0_Lib/BaiduMapAPI_Search.framework; sourceTree = "<group>"; };
 		4D9AC4241C841F5600E923CC /* BaiduMapAPI_Utils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI_Utils.framework; path = EasyStopCar/framework/BaiduMap_IOSSDK_v2.10.0_Lib/BaiduMapAPI_Utils.framework; sourceTree = "<group>"; };
 		4D9AC4251C841F5600E923CC /* BaiduMapAPI_Base.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI_Base.framework; path = EasyStopCar/framework/BaiduMap_IOSSDK_v2.10.0_Lib/BaiduMapAPI_Base.framework; sourceTree = "<group>"; };
+		4D9AC42B1C84213B00E923CC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4D9AC42D1C84214300E923CC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4D9AC42F1C84214B00E923CC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		4D9AC4311C84215100E923CC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4D9AC4331C84215A00E923CC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4D9AC4351C84216000E923CC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4D9AC4371C84218400E923CC /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		4D9AC4391C84218D00E923CC /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		4D9AC43B1C84219500E923CC /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		4D9AC43D1C8421D700E923CC /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = EasyStopCar/framework/BaiduMap_IOSSDK_v2.10.0_Lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +88,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D9AC43C1C84219500E923CC /* libstdc++.6.0.9.tbd in Frameworks */,
+				4D9AC43A1C84218D00E923CC /* CoreTelephony.framework in Frameworks */,
+				4D9AC4381C84218400E923CC /* libsqlite3.0.tbd in Frameworks */,
+				4D9AC4361C84216000E923CC /* Security.framework in Frameworks */,
+				4D9AC4341C84215A00E923CC /* CoreGraphics.framework in Frameworks */,
+				4D9AC4321C84215100E923CC /* SystemConfiguration.framework in Frameworks */,
+				4D9AC4301C84214B00E923CC /* OpenGLES.framework in Frameworks */,
+				4D9AC42E1C84214300E923CC /* QuartzCore.framework in Frameworks */,
+				4D9AC42C1C84213B00E923CC /* CoreLocation.framework in Frameworks */,
 				4D9AC4261C841F5600E923CC /* BaiduMapAPI_Location.framework in Frameworks */,
 				4D9AC4271C841F5600E923CC /* BaiduMapAPI_Map.framework in Frameworks */,
 				4D9AC4281C841F5600E923CC /* BaiduMapAPI_Search.framework in Frameworks */,
@@ -96,6 +125,16 @@
 		4D9AC3BD1C83E20D00E923CC = {
 			isa = PBXGroup;
 			children = (
+				4D9AC43D1C8421D700E923CC /* mapapi.bundle */,
+				4D9AC43B1C84219500E923CC /* libstdc++.6.0.9.tbd */,
+				4D9AC4391C84218D00E923CC /* CoreTelephony.framework */,
+				4D9AC4371C84218400E923CC /* libsqlite3.0.tbd */,
+				4D9AC4351C84216000E923CC /* Security.framework */,
+				4D9AC4331C84215A00E923CC /* CoreGraphics.framework */,
+				4D9AC4311C84215100E923CC /* SystemConfiguration.framework */,
+				4D9AC42F1C84214B00E923CC /* OpenGLES.framework */,
+				4D9AC42D1C84214300E923CC /* QuartzCore.framework */,
+				4D9AC42B1C84213B00E923CC /* CoreLocation.framework */,
 				4D9AC4211C841F5600E923CC /* BaiduMapAPI_Location.framework */,
 				4D9AC4221C841F5600E923CC /* BaiduMapAPI_Map.framework */,
 				4D9AC4231C841F5600E923CC /* BaiduMapAPI_Search.framework */,
@@ -264,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D9AC3D91C83E20E00E923CC /* LaunchScreen.storyboard in Resources */,
+				4D9AC43E1C8421D700E923CC /* mapapi.bundle in Resources */,
 				4D9AC3D61C83E20E00E923CC /* Assets.xcassets in Resources */,
 				4D9AC3D41C83E20E00E923CC /* Main.storyboard in Resources */,
 			);
@@ -439,6 +479,7 @@
 				INFOPLIST_FILE = EasyStopCar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sjsh8.easystopcart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8998fcca-b803-42e0-960d-3d18eadaf87c";
@@ -457,6 +498,7 @@
 				INFOPLIST_FILE = EasyStopCar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sjsh8.easystopcart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8998fcca-b803-42e0-960d-3d18eadaf87c";
