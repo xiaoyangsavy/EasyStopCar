@@ -6,9 +6,10 @@
 //  Copyright © 2016年 Savvy. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "UITempletViewController.h"
+#import "HomeCell.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UITempletViewController<UITableViewDataSource,UITableViewDelegate,HomeCellDelegate>
 
 
 @end

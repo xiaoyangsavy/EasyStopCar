@@ -13,22 +13,23 @@
 #define kSystemIsIOS7 [[[UIDevice currentDevice] systemVersion] floatValue] >= 7
 
 
-//定义项目红，绿 两种主基调颜色
-//#define kRedColor [UIColor colorWithRed:250.0f/255.0f green:99.0f/255.0f blue:56.0f/255.0f alpha:1.0f]
-#define kRedColor [UIColor colorWithRed:51/255. green:204/255. blue:204/255. alpha:1]
-#define hhRedColor [UIColor colorWithRed:250.0f/255.0f green:99.0f/255.0f blue:56.0f/255.0f alpha:1.0f]
-#define kGreenColor [UIColor colorWithRed:86.0f/255.0f green:193.0f/255.0f blue:61.0f/255.0f alpha:1.0f]
-#define kDarkGreenColor [UIColor colorWithRed:113.0f/255.0f green:138.0f/255.0f blue:130.0f/255.0f alpha:1.0f]
-#define kGrayColor  [UIColor colorWithRed:186.0f/255.0f green:189.0f/255.0f blue:196.0f/255.0f alpha:1]
-//背景色淡灰色
-#define dilutedGrayColor [UIColor colorWithRed:240.0/255.0 green:240.0/255.0 blue:240.0/255.0 alpha:1.0]
-//字体颜色
-#define fontGrayColor [UIColor colorWithRed:102.0/255.0 green:102.0/255.0 blue:102.0/255.0 alpha:1.0]
+//背景颜色
+#define backageColorYellow [UIColor colorWithRed:252/255.0 green:175/255.0 blue:23/255.0 alpha:1]
+#define backageColorRed [UIColor colorWithRed:242/255.0 green:109/255.0 blue:95/255.0 alpha:1]
+#define backageColorBlue [UIColor colorWithRed:59/255.0 green:153/255.0 blue:201/255.0 alpha:1]
+#define backageColorGreen [UIColor colorWithRed:86/255.0 green:185/255.0 blue:71/255.0 alpha:1]
+#define backageColorLightgray [UIColor colorWithRed:240.0/255.0 green:240.0/255.0 blue:240.0/255.0 alpha:1]
 
-//字体颜色,淡灰
-#define fontDilutedGrayColor [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0]
+//字体颜色
+#define fontColorBlack [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0]
+#define fontColorGray [UIColor colorWithRed:102.0/255.0 green:102.0/255.0 blue:102.0/255.0 alpha:1.0]
+#define fontColorLightgray [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0]
+
 //分割线颜色
-#define lineGrayColor [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0]
+#define lineColorGray [UIColor colorWithRed:181.0/255.0 green:181.0/255.0 blue:181.0/255.0 alpha:1.0]
+#define lineColorLightgray [UIColor colorWithRed:218.0/255.0 green:218.0/255.0 blue:218.0/255.0 alpha:1.0]
+
+#define marginSize 15.0f
 
 
 
@@ -44,8 +45,9 @@ alpha:0.8])
 #define TEST_COLOR ([UIColor clearColor])
 #endif
 
-//#define prefix_url     @"http://www.sjsh8.cn/"    //世纪生活
-#define prefix_url     @"http://sjsh.weplays.cn/"   //淮海生活
+
+//网址前缀
+#define prefix_url     @"http://www.sjsh8.cn/"    //世纪生活
 
 
 
