@@ -30,6 +30,8 @@
 		4D9AC43A1C84218D00E923CC /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC4391C84218D00E923CC /* CoreTelephony.framework */; };
 		4D9AC43C1C84219500E923CC /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC43B1C84219500E923CC /* libstdc++.6.0.9.tbd */; };
 		4D9AC43E1C8421D700E923CC /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D9AC43D1C8421D700E923CC /* mapapi.bundle */; };
+		4D9AC4411C8423DA00E923CC /* UITempletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC4401C8423DA00E923CC /* UITempletViewController.m */; };
+		4D9AC4451C84242E00E923CC /* SearchPartMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC4441C84242E00E923CC /* SearchPartMapController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,10 @@
 		4D9AC4391C84218D00E923CC /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		4D9AC43B1C84219500E923CC /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		4D9AC43D1C8421D700E923CC /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = EasyStopCar/framework/BaiduMap_IOSSDK_v2.10.0_Lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle; sourceTree = "<group>"; };
+		4D9AC43F1C8423DA00E923CC /* UITempletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITempletViewController.h; sourceTree = "<group>"; };
+		4D9AC4401C8423DA00E923CC /* UITempletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITempletViewController.m; sourceTree = "<group>"; };
+		4D9AC4431C84242E00E923CC /* SearchPartMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPartMapController.h; sourceTree = "<group>"; };
+		4D9AC4441C84242E00E923CC /* SearchPartMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPartMapController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,8 +166,11 @@
 		4D9AC3C81C83E20E00E923CC /* EasyStopCar */ = {
 			isa = PBXGroup;
 			children = (
+				4D9AC4421C8423FA00E923CC /* Search */,
 				4D9AC3CC1C83E20E00E923CC /* AppDelegate.h */,
 				4D9AC3CD1C83E20E00E923CC /* AppDelegate.m */,
+				4D9AC43F1C8423DA00E923CC /* UITempletViewController.h */,
+				4D9AC4401C8423DA00E923CC /* UITempletViewController.m */,
 				4D9AC3CF1C83E20E00E923CC /* ViewController.h */,
 				4D9AC3D01C83E20E00E923CC /* ViewController.m */,
 				4D9AC3D21C83E20E00E923CC /* Main.storyboard */,
@@ -197,6 +206,15 @@
 				4D9AC3F01C83E20E00E923CC /* Info.plist */,
 			);
 			path = EasyStopCarUITests;
+			sourceTree = "<group>";
+		};
+		4D9AC4421C8423FA00E923CC /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				4D9AC4431C84242E00E923CC /* SearchPartMapController.h */,
+				4D9AC4441C84242E00E923CC /* SearchPartMapController.m */,
+			);
+			name = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,6 +348,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D9AC4451C84242E00E923CC /* SearchPartMapController.m in Sources */,
+				4D9AC4411C8423DA00E923CC /* UITempletViewController.m in Sources */,
 				4D9AC3D11C83E20E00E923CC /* ViewController.m in Sources */,
 				4D9AC3CE1C83E20E00E923CC /* AppDelegate.m in Sources */,
 				4D9AC3CB1C83E20E00E923CC /* main.m in Sources */,
