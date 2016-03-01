@@ -23,6 +23,9 @@
 @property (nonatomic,retain) UIActivityIndicatorView *loadIndicator;//进度指示器
 @property(nonatomic,strong)NSMutableArray *myArray;//测试列表数据
 
+@property(nonatomic,strong)UIView *backageTopView;
+@property(nonatomic,strong)UIView *backageView;
+
 //NavBar设置
 - (void)initNavBarItems:(NSString *)titlename;
 
@@ -32,6 +35,12 @@
 - (void)addRightButton:(NSString *)image  lightedImage:(NSString *) aLightedImage selector:(SEL)pushPastView;
 
 - (void)addRightTitle:(NSString *)title   selector:(SEL)pushPastView;
+
+//显示弹出框背景层
+-(void)showAlertBackage:(UIView *)myAlertView;
+
+//隐藏弹出框背景层
+-(void)hideAlertBackage;
 
 -(void)toReturn;//返回上一页
 

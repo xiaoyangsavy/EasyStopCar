@@ -10,6 +10,8 @@
 
 @interface UITempletViewController ()
 
+@property(nonatomic,strong)UIView *myAlertView;
+
 @end
 
 @implementation UITempletViewController
@@ -38,7 +40,21 @@
     
     
    
+    //提交弹出层
+    float alphaValue = 0.8;
+    self.backageTopView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth,64)];
+    self.backageTopView.backgroundColor = [UIColor blackColor];
+    self.backageTopView.alpha = alphaValue;
+    self.backageTopView.hidden = YES;
+    UIWindow *myWindow  = [[UIApplication sharedApplication].delegate window];
+    [myWindow addSubview:self.backageTopView];
     
+    self.backageView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64)];
+    self.backageView.backgroundColor = [UIColor blackColor];
+    self.backageView.alpha = alphaValue;
+    self.backageView.hidden = YES;
+    [self.view addSubview:self.backageView];
+
     
 }
 
@@ -104,6 +120,25 @@
     rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 10, 0, -10);
     rightButton.tag = 10009;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+}
+
+
+//显示弹出框背景层
+-(void)showAlertBackage:(UIView *)myAlertView{
+    self.myAlertView = myAlertView;
+    self.myAlertView.hidden = NO;
+    self.backageView.hidden = NO;
+    self.backageTopView.hidden = NO;
+    [self.view bringSubviewToFront:self.backageView];
+    [self.view bringSubviewToFront:self.myAlertView];
+}
+
+//隐藏弹出框背景层
+-(void)hideAlertBackage{
+    self.backageView.hidden = YES;
+    self.backageTopView.hidden = YES;
+     self.myAlertView.hidden = YES;
+    [self.view sendSubviewToBack:self.myAlertView];
 }
 
 

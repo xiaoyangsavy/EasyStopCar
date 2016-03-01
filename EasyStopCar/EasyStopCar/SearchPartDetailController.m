@@ -43,6 +43,16 @@
 @property(nonatomic,strong)UILabel *priceNightPriceLabel;//价格
 @property(nonatomic,strong)UILabel *priceNightBusinessHoursLabel;//营业时间
 
+//弹出框
+@property(nonatomic,strong)UIView *submitAlertView;
+@property(nonatomic,strong)UIView *submitInfoView;
+@property(nonatomic,strong)UIView *submitButtonView;
+@property(nonatomic,strong)UILabel *submitInfoTitle;
+@property(nonatomic,strong)UILabel *submitInfoContent;
+@property(nonatomic,strong)UIImageView *submitInfoImageView;
+@property(nonatomic,strong)UIButton *submitButtonConcel;
+@property(nonatomic,strong)UIButton *submitButtonAffirm;
+
 @property (nonatomic, strong) NSString *searchedContent;//输入完成的搜索内容
 @end
 
@@ -89,6 +99,7 @@
     
     self.submitButoon = [[UIButton alloc]initWithFrame:CGRectMake(0, ScreenHeight-50-64, ScreenWidth, 50)];
     [self.submitButoon setTitle:@"我要停车" forState:UIControlStateNormal];
+    [self.submitButoon addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
     self.submitButoon.backgroundColor = backageColorRed;
     self.submitButoon.titleLabel.font = [UIFont systemFontOfSize:18];
     [self.view addSubview:self.submitButoon];
@@ -233,6 +244,77 @@
     self.priceNightBusinessHoursLabel.textColor = fontColorGray;
     self.priceNightBusinessHoursLabel.text = @"未知";
     [self.priceView addSubview:self.priceNightBusinessHoursLabel];
+    
+    
+    //弹出框***********************************************************************
+    self.submitAlertView = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight-64-206-50, ScreenWidth, 206+50)];
+    self.submitAlertView.hidden = YES;
+    [self.view addSubview:self.submitAlertView];
+    
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.submitAlertView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(10, 10)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = self.submitAlertView.bounds;
+    maskLayer.path = maskPath.CGPath;
+    self.submitAlertView.layer.mask = maskLayer;
+    
+    
+    self.submitInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 206)];
+    self.submitInfoView.backgroundColor = [UIColor whiteColor];
+    [self.submitAlertView addSubview:self.submitInfoView];
+    
+    self.submitButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 206, ScreenWidth, 50)];
+    self.submitButtonView.backgroundColor = backageColorRed;
+    [self.submitAlertView addSubview:self.submitButtonView];
+ 
+    //提交信息显示
+    self.submitInfoTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, ScreenWidth, 15)];
+    self.submitInfoTitle.text = @"确认停车？";
+    [self.submitInfoTitle setTextColor:fontColorBlack];
+    self.submitInfoTitle.textAlignment = NSTextAlignmentCenter;
+    self.submitInfoTitle.font = [UIFont systemFontOfSize:18];
+    [self.submitInfoView addSubview:self.submitInfoTitle];
+    
+    
+    self.submitInfoImageView = [[UIImageView alloc]initWithFrame:CGRectMake((ScreenWidth-80)/2, (self.submitInfoView.frame.size.height-80)/2-10, 80, 80)];
+    self.submitInfoImageView.image = [UIImage imageNamed:@"test_picture.jpg"];
+     [self.submitInfoView addSubview:self.submitInfoImageView];
+    
+     //提交信息内容显示
+    self.submitInfoContent = [[UILabel alloc] initWithFrame:CGRectMake(0, self.submitInfoView.frame.size.height-40-20, ScreenWidth, 40)];
+    self.submitInfoContent.text = @"下单后会为您冻结车位30分钟\n请尽快到达";
+    [self.submitInfoContent setTextColor:backageColorBlue];
+    self.submitInfoContent.lineBreakMode = NSLineBreakByWordWrapping;
+    self.submitInfoContent.numberOfLines = 0;//上面两行设置多行显示
+    self.submitInfoContent.font = [UIFont systemFontOfSize:15];
+    self.submitInfoContent.textAlignment = NSTextAlignmentCenter;
+    [self.submitInfoView addSubview:self.submitInfoContent];
+    
+    
+    
+    //提交按钮区域
+    self.submitButtonConcel = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.submitButtonConcel.frame = CGRectMake(0, 0, ScreenWidth*0.5, self.submitButtonView.frame.size.height);
+    self.submitButtonConcel.tag = 198851;
+    [self.submitButtonConcel setTitle:@"取消" forState:UIControlStateNormal];
+    self.submitButtonConcel.backgroundColor = [UIColor blackColor];
+        self.submitButtonConcel.titleLabel.font = [UIFont systemFontOfSize:18];
+    [self.submitButtonConcel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.submitButtonConcel addTarget:self action:@selector(submitAlert:)
+                      forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.submitButtonView addSubview:self.submitButtonConcel];
+    
+    self.submitButtonAffirm = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.submitButtonAffirm.frame = CGRectMake(ScreenWidth*0.5, 0, ScreenWidth*0.5, self.submitButtonView.frame.size.height);
+    self.submitButtonAffirm.tag = 198852;
+    self.submitButtonAffirm.backgroundColor = backageColorRed;
+    [self.submitButtonAffirm setTitle:@"确认" forState:UIControlStateNormal];
+    self.submitButtonConcel.titleLabel.font = [UIFont systemFontOfSize:18];
+    [self.submitButtonConcel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.submitButtonAffirm addTarget:self action:@selector(submitAlert:)
+                      forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.submitButtonView addSubview:self.submitButtonAffirm];
 
 }
 
@@ -240,7 +322,28 @@
 //预订说明
 -(void)showAppointInfo{
     NSLog(@"预订说明");
+   
+}
 
+//提交按钮点击事件
+-(void)submitClick{
+    [super showAlertBackage:self.submitAlertView];
+}
+
+
+
+/**
+ *  弹出框提交事件
+ *
+ *  @param myButton 确认和取消按钮
+ */
+- (void)submitAlert:(UIButton *)myButton{
+    if (myButton.tag ==198851 ) {//取消
+        [super hideAlertBackage];
+    }else  if (myButton.tag ==198852 ){//确认
+        [super hideAlertBackage];
+    }
+    
 }
 
 #pragma mark - textFile代理
