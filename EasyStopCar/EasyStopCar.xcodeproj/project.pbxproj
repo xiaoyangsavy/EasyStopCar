@@ -36,6 +36,9 @@
 		4DCCA5141C84426200965C21 /* test_picture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DCCA5131C84426200965C21 /* test_picture.jpg */; };
 		4DCCA5181C8455B600965C21 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCCA5171C8455B600965C21 /* HomeCell.m */; };
 		4DE57E931C8521A50087D79F /* SearchPartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E921C8521A50087D79F /* SearchPartController.m */; };
+		4DE57E961C852C3A0087D79F /* SearchPartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E951C852C3A0087D79F /* SearchPartCell.m */; };
+		4DE57E991C8539170087D79F /* CommonTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E981C8539170087D79F /* CommonTools.m */; };
+		4DE57E9C1C853D7C0087D79F /* SearchPartDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E9B1C853D7C0087D79F /* SearchPartDetailController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +102,12 @@
 		4DCCA5171C8455B600965C21 /* HomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
 		4DE57E911C8521A50087D79F /* SearchPartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPartController.h; sourceTree = "<group>"; };
 		4DE57E921C8521A50087D79F /* SearchPartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPartController.m; sourceTree = "<group>"; };
+		4DE57E941C852C3A0087D79F /* SearchPartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPartCell.h; sourceTree = "<group>"; };
+		4DE57E951C852C3A0087D79F /* SearchPartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPartCell.m; sourceTree = "<group>"; };
+		4DE57E971C8539170087D79F /* CommonTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTools.h; sourceTree = "<group>"; };
+		4DE57E981C8539170087D79F /* CommonTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTools.m; sourceTree = "<group>"; };
+		4DE57E9A1C853D7C0087D79F /* SearchPartDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPartDetailController.h; sourceTree = "<group>"; };
+		4DE57E9B1C853D7C0087D79F /* SearchPartDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPartDetailController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +239,8 @@
 				4D9AC4441C84242E00E923CC /* SearchPartMapController.m */,
 				4DE57E911C8521A50087D79F /* SearchPartController.h */,
 				4DE57E921C8521A50087D79F /* SearchPartController.m */,
+				4DE57E9A1C853D7C0087D79F /* SearchPartDetailController.h */,
+				4DE57E9B1C853D7C0087D79F /* SearchPartDetailController.m */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -240,6 +251,8 @@
 				4D9AC4471C84266A00E923CC /* Define.h */,
 				4DCCA50F1C8440CC00965C21 /* YHR_PageControl.h */,
 				4DCCA5101C8440CC00965C21 /* YHR_PageControl.m */,
+				4DE57E971C8539170087D79F /* CommonTools.h */,
+				4DE57E981C8539170087D79F /* CommonTools.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -257,6 +270,8 @@
 			children = (
 				4DCCA5161C8455B600965C21 /* HomeCell.h */,
 				4DCCA5171C8455B600965C21 /* HomeCell.m */,
+				4DE57E941C852C3A0087D79F /* SearchPartCell.h */,
+				4DE57E951C852C3A0087D79F /* SearchPartCell.m */,
 			);
 			name = CustomCell;
 			sourceTree = "<group>";
@@ -393,9 +408,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DE57E9C1C853D7C0087D79F /* SearchPartDetailController.m in Sources */,
 				4D9AC4451C84242E00E923CC /* SearchPartMapController.m in Sources */,
 				4D9AC4411C8423DA00E923CC /* UITempletViewController.m in Sources */,
+				4DE57E961C852C3A0087D79F /* SearchPartCell.m in Sources */,
 				4DE57E931C8521A50087D79F /* SearchPartController.m in Sources */,
+				4DE57E991C8539170087D79F /* CommonTools.m in Sources */,
 				4DCCA5111C8440CC00965C21 /* YHR_PageControl.m in Sources */,
 				4D9AC3D11C83E20E00E923CC /* ViewController.m in Sources */,
 				4D9AC3CE1C83E20E00E923CC /* AppDelegate.m in Sources */,

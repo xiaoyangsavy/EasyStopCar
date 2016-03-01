@@ -19,8 +19,11 @@
    
     self.view.backgroundColor = backageColorLightgray;
     
-    //初始化导航条UI
-    self.navigationController.navigationBar.translucent = NO;
+    //适配ios7
+    if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0))
+    {
+        self.navigationController.navigationBar.translucent = NO;
+    }
     
     [self.navigationController.navigationBar setBarTintColor:backageColorYellow];
     [self addLeftButton:@"ico_navigation_back" lightedImage:@"ico_navigation_back" selector:@selector(toReturn)];
@@ -97,7 +100,7 @@
     rightButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
     [rightButton setTitle:title forState:UIControlStateNormal];
     [rightButton addTarget:self action:pushPastView forControlEvents:UIControlEventTouchUpInside];
-    rightButton.frame = CGRectMake(20.0f, 0.0f, 40,44);
+    rightButton.frame = CGRectMake(20.0f, 0.0f, 60,44);
     rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 10, 0, -10);
     rightButton.tag = 10009;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];

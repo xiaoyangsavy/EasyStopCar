@@ -9,6 +9,6 @@
 #import "UITempletViewController.h"
 
 
-@interface SearchPartController : UITempletViewController<UITableViewDataSource,UITableViewDelegate>
+@interface SearchPartController : UITempletViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 
 @end
