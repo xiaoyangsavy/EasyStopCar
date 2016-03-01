@@ -10,6 +10,7 @@
 //#import "SearchPartMapController.h"
 #import "YHR_PageControl.h"
 #import "SearchPartController.h"
+#import "OrderDetailController.h"
 
 
 @interface ViewController ()
@@ -445,6 +446,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"点击了一个cell");
+    
+    OrderDetailController *orderDetailController = [[OrderDetailController alloc]init];
+    [self.navigationController pushViewController:orderDetailController animated:YES];
 }
 
 

@@ -276,7 +276,7 @@
     
     
     self.submitInfoImageView = [[UIImageView alloc]initWithFrame:CGRectMake((ScreenWidth-80)/2, (self.submitInfoView.frame.size.height-80)/2-10, 80, 80)];
-    self.submitInfoImageView.image = [UIImage imageNamed:@"test_picture.jpg"];
+    self.submitInfoImageView.image = [UIImage imageNamed:@"image_order_part_time"];
      [self.submitInfoView addSubview:self.submitInfoImageView];
     
      //提交信息内容显示

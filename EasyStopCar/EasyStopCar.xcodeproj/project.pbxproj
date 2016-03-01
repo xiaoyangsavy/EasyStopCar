@@ -39,6 +39,7 @@
 		4DE57E961C852C3A0087D79F /* SearchPartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E951C852C3A0087D79F /* SearchPartCell.m */; };
 		4DE57E991C8539170087D79F /* CommonTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E981C8539170087D79F /* CommonTools.m */; };
 		4DE57E9C1C853D7C0087D79F /* SearchPartDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E9B1C853D7C0087D79F /* SearchPartDetailController.m */; };
+		4DE57EA31C85A3EA0087D79F /* OrderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57EA21C85A3EA0087D79F /* OrderDetailController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,8 @@
 		4DE57E981C8539170087D79F /* CommonTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTools.m; sourceTree = "<group>"; };
 		4DE57E9A1C853D7C0087D79F /* SearchPartDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPartDetailController.h; sourceTree = "<group>"; };
 		4DE57E9B1C853D7C0087D79F /* SearchPartDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPartDetailController.m; sourceTree = "<group>"; };
+		4DE57EA11C85A3EA0087D79F /* OrderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailController.h; sourceTree = "<group>"; };
+		4DE57EA21C85A3EA0087D79F /* OrderDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +193,7 @@
 				4DCCA5151C84558C00965C21 /* CustomCell */,
 				4DCCA5121C84421E00965C21 /* Resource */,
 				4D9AC4461C84265C00E923CC /* Common */,
+				4DE57EA01C85A3D20087D79F /* Order */,
 				4D9AC4421C8423FA00E923CC /* Search */,
 				4D9AC3CC1C83E20E00E923CC /* AppDelegate.h */,
 				4D9AC3CD1C83E20E00E923CC /* AppDelegate.m */,
@@ -274,6 +278,15 @@
 				4DE57E951C852C3A0087D79F /* SearchPartCell.m */,
 			);
 			name = CustomCell;
+			sourceTree = "<group>";
+		};
+		4DE57EA01C85A3D20087D79F /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				4DE57EA11C85A3EA0087D79F /* OrderDetailController.h */,
+				4DE57EA21C85A3EA0087D79F /* OrderDetailController.m */,
+			);
+			name = Order;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,6 +426,7 @@
 				4D9AC4411C8423DA00E923CC /* UITempletViewController.m in Sources */,
 				4DE57E961C852C3A0087D79F /* SearchPartCell.m in Sources */,
 				4DE57E931C8521A50087D79F /* SearchPartController.m in Sources */,
+				4DE57EA31C85A3EA0087D79F /* OrderDetailController.m in Sources */,
 				4DE57E991C8539170087D79F /* CommonTools.m in Sources */,
 				4DCCA5111C8440CC00965C21 /* YHR_PageControl.m in Sources */,
 				4D9AC3D11C83E20E00E923CC /* ViewController.m in Sources */,
