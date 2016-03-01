@@ -78,7 +78,6 @@
 
         
         self.homeButton = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth-70-marginSize,  self.homeLocationFlag.frame.origin.y+self.homeLocationFlag.frame.size.height-15, 70, 25)];
-        self.homeButton.backgroundColor = TEST_COLOR;
         [self.contentView addSubview:self.homeButton];
         
     }
@@ -97,6 +96,14 @@
      self.homeLocationTitle.text = myDictionary[@"testText"];
      self.homeLocationContent.text = myDictionary[@"testText"];
     
+   
+    
+    if ([myDictionary[@"testFlag"] isEqualToString:@"0"]) {
+        [self.homeButton  setImage:[UIImage imageNamed:@"button_home_state_appoint"] forState:UIControlStateNormal];
+    }else{
+    [self.homeButton  setImage:[UIImage imageNamed:@"button_home_state_pay"] forState:UIControlStateNormal];
+    
+    }
     
 }
 

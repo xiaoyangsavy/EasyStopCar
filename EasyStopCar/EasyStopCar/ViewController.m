@@ -7,9 +7,9 @@
 //
 
 #import "ViewController.h"
-#import "SearchPartMapController.h"
+//#import "SearchPartMapController.h"
 #import "YHR_PageControl.h"
-
+#import "SearchPartController.h"
 
 
 @interface ViewController ()
@@ -19,10 +19,10 @@
 @property(nonatomic,strong)YHR_PageControl *myBannerPageControl;//指示器
 
 @property(nonatomic,strong)UIView *enterView;//入口区域
-@property(nonatomic,strong)UIView *aroundView;//周边
+@property(nonatomic,strong)UIButton *aroundView;//周边
 @property(nonatomic,strong)UIImageView *aroundImageView;
 @property(nonatomic,strong)UILabel *aroundLabel;
-@property(nonatomic,strong)UIView *appointView;//预约
+@property(nonatomic,strong)UIButton *appointView;//预约
 @property(nonatomic,strong)UIImageView *appointImageView;
 @property(nonatomic,strong)UILabel *appointLabel;
 
@@ -45,7 +45,7 @@
     [super viewDidLoad];
    
     
-   [self initTestArray];//加载测试数据
+   [super initTestArray];//加载测试数据
     
     
  [super initNavBarItems:@"易停车"];
@@ -93,9 +93,10 @@
         [headView addSubview:self.enterView];
         
         
-        self.aroundView = [[UIView alloc]init];
+        self.aroundView = [[UIButton alloc]init];
         [self.aroundView setTranslatesAutoresizingMaskIntoConstraints:NO];
-//         self.aroundView.backgroundColor = TEST_COLOR;
+        self.aroundView.tag = 198801;
+        [self.aroundView addTarget:self action:@selector(enterClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.enterView addSubview:self.aroundView];
         
         self.aroundImageView = [[UIImageView alloc]init];
@@ -113,9 +114,10 @@
         [self.aroundView addSubview:self.aroundLabel];
         
         
-        self.appointView = [[UIView alloc]init];
+        self.appointView = [[UIButton alloc]init];
         [self.appointView setTranslatesAutoresizingMaskIntoConstraints:NO];
-//         self.appointView.backgroundColor = TEST_COLOR;
+        self.appointView.tag = 198802;
+        [self.appointView addTarget:self action:@selector(enterClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.enterView addSubview:self.appointView];
         
         self.appointImageView = [[UIImageView alloc]init];
@@ -382,26 +384,25 @@
     
 }
 
-//测试数据
--(void) initTestArray{
-    //测试数据
-    self.myArray = [[NSMutableArray alloc] init];
-    
-    NSMutableDictionary *myDictionary = nil;
-    
-    myDictionary = [[NSMutableDictionary alloc] init];
-    [myDictionary setValue:@"未知" forKey:@"testText"];
-     [myDictionary setValue:@"0" forKey:@"testFlag"];
-    [self.myArray addObject:myDictionary];
-    
-    myDictionary = [[NSMutableDictionary alloc] init];
-    [myDictionary setValue:@"未知" forKey:@"testText"];
-      [myDictionary setValue:@"1" forKey:@"testFlag"];
-    [self.myArray addObject:myDictionary];
 
+
+
+//快捷入口点击事件
+-(void)enterClick:(UIButton *)myButton{
+
+    SearchPartController *searchPartController = [[SearchPartController alloc]init];
+    switch (myButton.tag) {
+        case 198801://搜索周边停车位
+            [self.navigationController pushViewController:searchPartController animated:YES];
+            break;
+        case 198802://提前预约
+            
+            break;
+        default:
+            break;
+    }
 
 }
-
 
 #pragma mark - TableViewDataSource
 

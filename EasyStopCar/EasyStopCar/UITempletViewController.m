@@ -118,6 +118,27 @@
     
 }
 
+
+//测试数据
+-(void) initTestArray{
+    //测试数据
+    self.myArray = [[NSMutableArray alloc] init];
+    
+    NSMutableDictionary *myDictionary = nil;
+    
+    myDictionary = [[NSMutableDictionary alloc] init];
+    [myDictionary setValue:@"未知" forKey:@"testText"];
+    [myDictionary setValue:@"0" forKey:@"testFlag"];
+    [self.myArray addObject:myDictionary];
+    
+    myDictionary = [[NSMutableDictionary alloc] init];
+    [myDictionary setValue:@"未知" forKey:@"testText"];
+    [myDictionary setValue:@"1" forKey:@"testFlag"];
+    [self.myArray addObject:myDictionary];
+    
+    
+}
+
 #pragma mark UIActionSheet delegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

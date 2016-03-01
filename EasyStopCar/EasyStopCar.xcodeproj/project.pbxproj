@@ -35,6 +35,7 @@
 		4DCCA5111C8440CC00965C21 /* YHR_PageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCCA5101C8440CC00965C21 /* YHR_PageControl.m */; };
 		4DCCA5141C84426200965C21 /* test_picture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DCCA5131C84426200965C21 /* test_picture.jpg */; };
 		4DCCA5181C8455B600965C21 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCCA5171C8455B600965C21 /* HomeCell.m */; };
+		4DE57E931C8521A50087D79F /* SearchPartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E921C8521A50087D79F /* SearchPartController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,8 @@
 		4DCCA5131C84426200965C21 /* test_picture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_picture.jpg; sourceTree = "<group>"; };
 		4DCCA5161C8455B600965C21 /* HomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
 		4DCCA5171C8455B600965C21 /* HomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
+		4DE57E911C8521A50087D79F /* SearchPartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPartController.h; sourceTree = "<group>"; };
+		4DE57E921C8521A50087D79F /* SearchPartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPartController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +228,8 @@
 			children = (
 				4D9AC4431C84242E00E923CC /* SearchPartMapController.h */,
 				4D9AC4441C84242E00E923CC /* SearchPartMapController.m */,
+				4DE57E911C8521A50087D79F /* SearchPartController.h */,
+				4DE57E921C8521A50087D79F /* SearchPartController.m */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -390,6 +395,7 @@
 			files = (
 				4D9AC4451C84242E00E923CC /* SearchPartMapController.m in Sources */,
 				4D9AC4411C8423DA00E923CC /* UITempletViewController.m in Sources */,
+				4DE57E931C8521A50087D79F /* SearchPartController.m in Sources */,
 				4DCCA5111C8440CC00965C21 /* YHR_PageControl.m in Sources */,
 				4D9AC3D11C83E20E00E923CC /* ViewController.m in Sources */,
 				4D9AC3CE1C83E20E00E923CC /* AppDelegate.m in Sources */,

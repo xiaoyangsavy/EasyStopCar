@@ -21,7 +21,7 @@
 //@property (nonatomic,retain) UIButton *rightButton;
 
 @property (nonatomic,retain) UIActivityIndicatorView *loadIndicator;//进度指示器
-
+@property(nonatomic,strong)NSMutableArray *myArray;//测试列表数据
 
 //NavBar设置
 - (void)initNavBarItems:(NSString *)titlename;
@@ -36,4 +36,7 @@
 -(void)toReturn;//返回上一页
 
 - (void)callPhone;//拨打电话
+
+-(void) initTestArray;//测试数据
+
 @end
