@@ -11,6 +11,7 @@
 #import "YHR_PageControl.h"
 #import "SearchPartController.h"
 #import "OrderDetailController.h"
+#import "OrderPayController.h"
 
 @interface ViewController ()
 
@@ -446,8 +447,16 @@
 {
     NSLog(@"点击了一个cell");
     
-    OrderDetailController *orderDetailController = [[OrderDetailController alloc]init];
-    [self.navigationController pushViewController:orderDetailController animated:YES];
+    
+    NSDictionary *myDictionary =  self.myArray[indexPath.row];
+    NSString *flag = myDictionary[@"testFlag"];
+    if ([flag isEqualToString:@"0"]) {
+        OrderDetailController *orderDetailController = [[OrderDetailController alloc]init];
+        [self.navigationController pushViewController:orderDetailController animated:YES];
+    }else{
+    OrderPayController *myController = [[OrderPayController alloc]init];
+    [self.navigationController pushViewController:myController animated:YES];
+    }
 }
 
 

@@ -36,6 +36,11 @@
 @property(nonatomic,strong)UILabel *infoTimeName;
 @property(nonatomic,strong)MRCircularProgressView *circularProgressView;
 @property(nonatomic,strong)UILabel *infoTimeRemain;
+
+//价格视图
+@property(nonatomic,strong)UILabel *priceSumLabel;
+@property(nonatomic,strong)UILabel *priceDetailLabel;
+@property(nonatomic,strong)UIImageView *priceFlag;
 @end
 
 @implementation OrderDetailController
@@ -64,7 +69,7 @@
     infoBottomBorder.backgroundColor=lineColorGray.CGColor;
     [self.infoView.layer addSublayer:infoBottomBorder ];
     
-    self.priceView = [[UIView alloc]initWithFrame:CGRectMake(0, self.infoView.frame.origin.y+self.infoView.frame.size.height, ScreenWidth, 40)];
+    self.priceView = [[UIView alloc]initWithFrame:CGRectMake(0, self.infoView.frame.origin.y+self.infoView.frame.size.height, ScreenWidth, 44)];
     self.priceView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.priceView];
     
@@ -156,9 +161,27 @@
     self.infoTimeRemain.text = @"已停0小时0分";
     [self.infoTimeView addSubview:self.infoTimeRemain];
     
+    
+    //费用视图布局
+    self.priceSumLabel = [[UILabel alloc]initWithFrame:CGRectMake(marginSize, 0, 200, self.priceView.frame.size.height)];
+    self.priceSumLabel.font = [UIFont systemFontOfSize:14];
+    self.priceSumLabel.textColor = fontColorGray;
+    self.priceSumLabel.text = @"费用共计：";
+    [self.priceView addSubview:self.priceSumLabel];
+    
+    self.priceFlag = [[UIImageView alloc]initWithFrame:CGRectMake(ScreenWidth-marginSize-10, 0, 10, self.priceView.frame.size.height)];
+    self.priceFlag.image = [UIImage imageNamed:@"ico_home_select_arrow"];
+    self.priceFlag.contentMode = UIViewContentModeScaleAspectFit;
+    [self.priceView addSubview:self.self.priceFlag];
+    
+    self.priceDetailLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.priceFlag.frame.origin.x-80, 0, 70, self.priceView.frame.size.height)];
+    self.priceDetailLabel.font = [UIFont systemFontOfSize:14];
+    self.priceDetailLabel.textColor = backageColorGreen;
+    self.priceDetailLabel.text = @"费用明细";
+    self.priceDetailLabel.textAlignment = NSTextAlignmentRight;
+    [self.priceView addSubview:self.priceDetailLabel];
+    
 }
-
-
 
 
 //调转到百度地图客户端导航
