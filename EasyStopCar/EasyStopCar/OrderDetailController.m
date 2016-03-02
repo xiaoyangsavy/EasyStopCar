@@ -8,6 +8,9 @@
 
 #import "OrderDetailController.h"
 
+#import "MRProgress.h"
+#import "MRCircularProgressView.h"
+
 @interface OrderDetailController ()
 
 @property(nonatomic,strong)UIButton *submitButoon;      //提交按钮
@@ -31,6 +34,7 @@
 
 //信息时间视图
 @property(nonatomic,strong)UILabel *infoTimeName;
+@property(nonatomic,strong)MRCircularProgressView *circularProgressView;
 @property(nonatomic,strong)UILabel *infoTimeRemain;
 @end
 
@@ -44,7 +48,7 @@
     
     self.submitButoon = [[UIButton alloc]initWithFrame:CGRectMake(0, ScreenHeight-50-64, ScreenWidth, 50)];
     [self.submitButoon setTitle:@"导航" forState:UIControlStateNormal];
-    [self.submitButoon addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.submitButoon addTarget:self action:@selector(openNativeNavi) forControlEvents:UIControlEventTouchUpInside];
     self.submitButoon.backgroundColor = backageColorRed;
     self.submitButoon.titleLabel.font = [UIFont systemFontOfSize:18];
     [self.view addSubview:self.submitButoon];
@@ -138,6 +142,14 @@
     self.infoTimeName.text = @"车位使用中";
     [self.infoTimeView addSubview:self.infoTimeName];
     
+    
+    self.circularProgressView = [[MRCircularProgressView alloc]initWithFrame:CGRectMake(0, self.infoTimeName.frame.origin.y+self.infoTimeName.frame.size.height+5, 80, 80)];
+    self.circularProgressView.progress = 0;
+    [self.infoTimeView addSubview:self.circularProgressView];
+    [self.circularProgressView setProgress:0.14];
+    
+    
+    
     self.infoTimeRemain = [[UILabel alloc]initWithFrame:CGRectMake(0, self.infoTimeView.frame.size.height-15-15, ScreenWidth*0.5, 15)];
     self.infoTimeRemain.font = [UIFont systemFontOfSize:14];
     self.infoTimeRemain.textColor = backageColorGreen;
@@ -147,11 +159,42 @@
 }
 
 
-//提交按钮点击事件
--(void)submitClick{
-    
-}
 
+
+//调转到百度地图客户端导航
+- (void)openNativeNavi {
+    //初始化调启导航时的参数管理类
+    BMKNaviPara* para = [[BMKNaviPara alloc]init];
+    //初始化起点节点
+    BMKPlanNode* start = [[BMKPlanNode alloc]init];
+    //指定起点经纬度
+    CLLocationCoordinate2D coor1;
+    coor1.latitude = 39.90868;
+    coor1.longitude = 116.204;
+    start.pt = coor1;
+    //指定起点名称
+    start.name = @"我的位置";
+    //指定起点
+    para.startPoint = start;
+    
+    //初始化终点节点
+    BMKPlanNode* end = [[BMKPlanNode alloc]init];
+    //指定终点经纬度
+    CLLocationCoordinate2D coor2;
+    coor2.latitude = 39.90868;
+    coor2.longitude = 116.3956;
+    end.pt = coor2;
+    //指定终点名称
+    end.name = @"天安门";
+    //指定终点
+    para.endPoint = end;
+    
+    //指定返回自定义scheme
+    para.appScheme = @"baidumapsdk://mapsdk.baidu.com";
+    
+    //调启百度地图客户端导航
+    [BMKNavigation openBaiduMapNavigation:para];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

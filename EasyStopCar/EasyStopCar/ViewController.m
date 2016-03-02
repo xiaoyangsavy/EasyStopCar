@@ -12,7 +12,6 @@
 #import "SearchPartController.h"
 #import "OrderDetailController.h"
 
-
 @interface ViewController ()
 
 //@property(nonatomic,strong)UIScrollView *homeScroll;
@@ -381,8 +380,8 @@
                                     constant:0]];
   
 
-
-    
+ 
+   
 }
 
 
