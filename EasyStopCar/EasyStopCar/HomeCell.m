@@ -77,7 +77,7 @@
         [self.contentView addSubview:self.homeLocationFlag];
 
         
-        self.homeButton = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth-70-marginSize,  self.homeLocationFlag.frame.origin.y+self.homeLocationFlag.frame.size.height-15, 70, 25)];
+        self.homeButton = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth-70-marginSize,  self.homeLocationFlag.frame.origin.y+self.homeLocationFlag.frame.size.height-15, 70, 25)];
         [self.contentView addSubview:self.homeButton];
         
     }
@@ -99,9 +99,11 @@
    
     
     if ([myDictionary[@"testFlag"] isEqualToString:@"0"]) {
-        [self.homeButton  setImage:[UIImage imageNamed:@"button_home_state_appoint"] forState:UIControlStateNormal];
+        self.homeButton.image = [UIImage imageNamed:@"button_home_state_appoint"];
+//        [self.homeButton  setImage:[UIImage imageNamed:@"button_home_state_appoint"] forState:UIControlStateNormal];
     }else{
-    [self.homeButton  setImage:[UIImage imageNamed:@"button_home_state_pay"] forState:UIControlStateNormal];
+         self.homeButton.image = [UIImage imageNamed:@"button_home_state_pay"];
+//    [self.homeButton  setImage:[UIImage imageNamed:@"button_home_state_pay"] forState:UIControlStateNormal];
     
     }
     

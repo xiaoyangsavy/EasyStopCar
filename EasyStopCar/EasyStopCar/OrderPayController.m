@@ -7,6 +7,8 @@
 //
 
 #import "OrderPayController.h"
+#import "OrderPayCompleteController.h"
+
 
 @interface OrderPayController ()
 
@@ -130,7 +132,7 @@
     
   //信息视图
     self.infoDetailView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.infoView.frame.size.width, 275)];
-    self.infoCouponView.backgroundColor = [UIColor whiteColor];
+    self.infoDetailView.backgroundColor = [UIColor whiteColor];
     [self.infoView addSubview:self.infoDetailView];
     
     self.inTimeTitle = [[UILabel alloc]initWithFrame:CGRectMake(marginSize, 20, 100, 15)];
@@ -384,6 +386,15 @@
     
     
 }
+
+
+//支付订单
+-(void)payOrder{
+    OrderPayCompleteController *myController = [[OrderPayCompleteController alloc]init];
+    [self.navigationController pushViewController:myController animated:YES];
+
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
