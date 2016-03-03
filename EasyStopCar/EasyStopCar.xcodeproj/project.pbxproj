@@ -40,6 +40,11 @@
 		4DB94A3A1C8822200003AC08 /* InputItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A391C8822200003AC08 /* InputItemModel.m */; };
 		4DB94A3D1C882CA80003AC08 /* UserCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A3C1C882CA80003AC08 /* UserCenterController.m */; };
 		4DB94A401C882EB30003AC08 /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A3F1C882EB30003AC08 /* ProfileCell.m */; };
+		4DB94A431C8836370003AC08 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A421C8836370003AC08 /* UserInfoCell.m */; };
+		4DB94A461C8836850003AC08 /* UserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A451C8836850003AC08 /* UserInfoController.m */; };
+		4DB94A491C884D0D0003AC08 /* EditTextController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A481C884D0D0003AC08 /* EditTextController.m */; };
+		4DB94A4C1C8851DF0003AC08 /* EditSeleceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A4B1C8851DF0003AC08 /* EditSeleceController.m */; };
+		4DB94A4F1C8852BD0003AC08 /* EditSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A4E1C8852BD0003AC08 /* EditSelectCell.m */; };
 		4DB95FB61C86917B006B92F9 /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB95F9A1C86917B006B92F9 /* MRBlurView.m */; };
 		4DB95FB71C86917B006B92F9 /* UIImage+MRImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB95F9C1C86917B006B92F9 /* UIImage+MRImageEffects.m */; };
 		4DB95FB81C86917B006B92F9 /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB95F9F1C86917B006B92F9 /* MRActivityIndicatorView.m */; };
@@ -136,6 +141,16 @@
 		4DB94A3C1C882CA80003AC08 /* UserCenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterController.m; sourceTree = "<group>"; };
 		4DB94A3E1C882EB30003AC08 /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
 		4DB94A3F1C882EB30003AC08 /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
+		4DB94A411C8836370003AC08 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
+		4DB94A421C8836370003AC08 /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoCell.m; sourceTree = "<group>"; };
+		4DB94A441C8836850003AC08 /* UserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoController.h; sourceTree = "<group>"; };
+		4DB94A451C8836850003AC08 /* UserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoController.m; sourceTree = "<group>"; };
+		4DB94A471C884D0D0003AC08 /* EditTextController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTextController.h; sourceTree = "<group>"; };
+		4DB94A481C884D0D0003AC08 /* EditTextController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTextController.m; sourceTree = "<group>"; };
+		4DB94A4A1C8851DF0003AC08 /* EditSeleceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSeleceController.h; sourceTree = "<group>"; };
+		4DB94A4B1C8851DF0003AC08 /* EditSeleceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditSeleceController.m; sourceTree = "<group>"; };
+		4DB94A4D1C8852BD0003AC08 /* EditSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSelectCell.h; sourceTree = "<group>"; };
+		4DB94A4E1C8852BD0003AC08 /* EditSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditSelectCell.m; sourceTree = "<group>"; };
 		4DB95F991C86917B006B92F9 /* MRBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRBlurView.h; sourceTree = "<group>"; };
 		4DB95F9A1C86917B006B92F9 /* MRBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRBlurView.m; sourceTree = "<group>"; };
 		4DB95F9B1C86917B006B92F9 /* UIImage+MRImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MRImageEffects.h"; sourceTree = "<group>"; };
@@ -365,6 +380,12 @@
 				4DB94A361C8820110003AC08 /* LoginController.m */,
 				4DB94A3B1C882CA80003AC08 /* UserCenterController.h */,
 				4DB94A3C1C882CA80003AC08 /* UserCenterController.m */,
+				4DB94A441C8836850003AC08 /* UserInfoController.h */,
+				4DB94A451C8836850003AC08 /* UserInfoController.m */,
+				4DB94A471C884D0D0003AC08 /* EditTextController.h */,
+				4DB94A481C884D0D0003AC08 /* EditTextController.m */,
+				4DB94A4A1C8851DF0003AC08 /* EditSeleceController.h */,
+				4DB94A4B1C8851DF0003AC08 /* EditSeleceController.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -447,6 +468,10 @@
 				4DE57E951C852C3A0087D79F /* SearchPartCell.m */,
 				4DB94A311C88182D0003AC08 /* SearchAppointCell.h */,
 				4DB94A321C88182D0003AC08 /* SearchAppointCell.m */,
+				4DB94A411C8836370003AC08 /* UserInfoCell.h */,
+				4DB94A421C8836370003AC08 /* UserInfoCell.m */,
+				4DB94A4D1C8852BD0003AC08 /* EditSelectCell.h */,
+				4DB94A4E1C8852BD0003AC08 /* EditSelectCell.m */,
 			);
 			name = CustomCell;
 			sourceTree = "<group>";
@@ -671,14 +696,18 @@
 				4DB95FC71C86E757006B92F9 /* OrderPayCompleteController.m in Sources */,
 				4DB94A2D1C87D5FC0003AC08 /* WXApiManager.m in Sources */,
 				4DB94A371C8820110003AC08 /* LoginController.m in Sources */,
+				4DB94A461C8836850003AC08 /* UserInfoController.m in Sources */,
 				4DE57E9C1C853D7C0087D79F /* SearchPartDetailController.mm in Sources */,
 				4DB95FBD1C86917B006B92F9 /* MRProgressView.m in Sources */,
 				4D9AC4451C84242E00E923CC /* SearchPartMapController.m in Sources */,
 				4D9AC4411C8423DA00E923CC /* UITempletViewController.m in Sources */,
 				4DB94A401C882EB30003AC08 /* ProfileCell.m in Sources */,
 				4DB95FC01C86917B006B92F9 /* MRMethodCopier.m in Sources */,
+				4DB94A4F1C8852BD0003AC08 /* EditSelectCell.m in Sources */,
 				4DB94A3A1C8822200003AC08 /* InputItemModel.m in Sources */,
+				4DB94A491C884D0D0003AC08 /* EditTextController.m in Sources */,
 				4DE57E961C852C3A0087D79F /* SearchPartCell.m in Sources */,
+				4DB94A4C1C8851DF0003AC08 /* EditSeleceController.m in Sources */,
 				4DB95FC41C86C011006B92F9 /* OrderPayController.m in Sources */,
 				4DE57E931C8521A50087D79F /* SearchPartController.m in Sources */,
 				4DE57EA31C85A3EA0087D79F /* OrderDetailController.m in Sources */,
@@ -693,6 +722,7 @@
 				4DB95FBA1C86917B006B92F9 /* MRIconView.m in Sources */,
 				4DB95FC11C86917B006B92F9 /* MRWeakProxy.m in Sources */,
 				4DCCA5111C8440CC00965C21 /* YHR_PageControl.m in Sources */,
+				4DB94A431C8836370003AC08 /* UserInfoCell.m in Sources */,
 				4D9AC3D11C83E20E00E923CC /* ViewController.m in Sources */,
 				4D9AC3CE1C83E20E00E923CC /* AppDelegate.m in Sources */,
 				4DB95FB71C86917B006B92F9 /* UIImage+MRImageEffects.m in Sources */,

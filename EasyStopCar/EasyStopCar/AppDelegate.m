@@ -32,7 +32,7 @@ BMKMapManager* _mapManager;
 
     //注册微信
     //向微信注册
-    [WXApi registerApp:@"wx216cfcef6efa096e" withDescription:@"demo 2.0"];
+    [WXApi registerApp:@"wx4eef83935fefb026" withDescription:@"demo 2.0"];
     
     
     

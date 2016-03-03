@@ -8,6 +8,7 @@
 
 #import "UserCenterController.h"
 #import "ProfileCell.h"
+#import "UserInfoController.h"
 
 @interface UserCenterController ()
 
@@ -124,11 +125,8 @@
 
 - (void)headClick:(UITapGestureRecognizer *)gesture
 {
-//    if (self.userInfo) {
-//        MyInfoViewController *infoVC = [[MyInfoViewController alloc] init];
-//        infoVC.personalDic = [NSMutableDictionary dictionaryWithDictionary:self.userInfo];
-//        [self.navigationController pushViewController:infoVC animated:YES];
-//    }
+    UserInfoController *myController = [[UserInfoController alloc]init];
+    [self.navigationController pushViewController:myController animated:YES];
 }
 
 
@@ -166,8 +164,8 @@
 {
     //    NSLog(@"点击了一个cell");
     
-//    SearchPartDetailController *searchPartDetailController = [[SearchPartDetailController alloc]init];
-//    [self.navigationController pushViewController:searchPartDetailController animated:YES];
+//    UserInfoController *myController = [[UserInfoController alloc]init];
+//    [self.navigationController pushViewController:myController animated:YES];
 }
 
 
