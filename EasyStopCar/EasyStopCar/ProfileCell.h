@@ -17,6 +17,9 @@
 @property(nonatomic,retain) UIImageView  *userImageView;
 @property(nonatomic,retain) UILabel  *userNameLabel;
 @property(nonatomic,retain) UILabel  *userContentLabel;
+@property(nonatomic,retain) UIButton  *userPayButton;
 
+
+- (void)setCellInfo:(NSDictionary *)dic;//设置接口数据
 
 @end

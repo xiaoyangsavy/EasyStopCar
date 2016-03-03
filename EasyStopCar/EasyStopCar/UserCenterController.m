@@ -100,7 +100,7 @@
     self.userDataArray = [[NSMutableArray alloc]init];
     NSMutableDictionary *userDictionary = [[NSMutableDictionary alloc]init];
     userDictionary[@"name"] = @"我的钱包";
-    NSString *memberRemainderTitle =  [NSString stringWithFormat:@"余额  ￥%@元",self.memberRemainder];
+    NSString *memberRemainderTitle =  [NSString stringWithFormat:@"￥%@元",self.memberRemainder];
     userDictionary[@"content"] = memberRemainderTitle ;
     userDictionary[@"image"] = [UIImage imageNamed:@"test_picture.jpg"];
     [self.userDataArray addObject:userDictionary];
@@ -149,14 +149,17 @@
     ProfileCell *cell = (ProfileCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(!cell){
         cell = [[ProfileCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        if (indexPath.row == 0) {
+             cell.accessoryType = UITableViewCellAccessoryNone;
+        }else{
+         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+       
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         //        cell.backgroundColor = COLOR(255, 255, 255);
         cell.backgroundColor = [UIColor clearColor];
     }
-    [cell.userImageView setImage:self.userDataArray[indexPath.row][@"image"]];
-    [cell.userNameLabel setText:self.userDataArray[indexPath.row][@"name"]];
-    [cell.userContentLabel setText:self.userDataArray[indexPath.row][@"content"]];
+    [cell setCellInfo:self.userDataArray[indexPath.row]];
     return cell;
 }
 

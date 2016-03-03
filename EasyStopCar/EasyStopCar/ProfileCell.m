@@ -29,22 +29,42 @@
 //        self.userNameLabel.backgroundColor = [UIColor redColor];
         [self addSubview:self.userNameLabel];
        
-        self.userContentLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth-185, 0, 150.0f, 50)];
+        self.userContentLabel = [[UILabel alloc] initWithFrame:CGRectMake( self.userNameLabel.frame.origin.x+60, 0, 150.0f, 50)];
         self.userContentLabel.font = [UIFont systemFontOfSize:14];
-        self.userContentLabel.textAlignment = NSTextAlignmentRight;
+//        self.userContentLabel.textAlignment = NSTextAlignmentRight;
         //        titleLabel.textColor = [UIColor colorWithRed:0x64/255.0f green:0x64/255.0f blue:0x64/255.0f alpha:1.0f];
         self.userContentLabel.textColor = backageColorRed;
         self.userContentLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:self.userContentLabel];
+        
+ 
+        self.userPayButton = [[UIButton alloc] initWithFrame:CGRectMake( ScreenWidth-marginSize-60, 10, 60, 30)];
+        [self.userPayButton setTitle:@"充值" forState:UIControlStateNormal];
+        self.userPayButton.backgroundColor = backageColorYellow;
+        self.userPayButton.layer.cornerRadius = 5;
+        self.userPayButton.layer.masksToBounds = YES;
+        self.userPayButton.hidden = YES;
+        [self addSubview:self.userPayButton];
+        
     }
     return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+- (void)setCellInfo:(NSDictionary *)myDictionary
 {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    
+    NSLog(@"cell数据为%@!!!!!!!",myDictionary);
+    
+    [self.userImageView setImage:myDictionary[@"image"]];
+    [self.userNameLabel setText:myDictionary[@"name"]];
+    [self.userContentLabel setText:myDictionary[@"content"]];
+    
+    if ([myDictionary[@"name"] isEqualToString:@"我的钱包"]) {
+        self.userPayButton.hidden = NO;
+    }
+    
+    
+    
+    
 }
-
 @end

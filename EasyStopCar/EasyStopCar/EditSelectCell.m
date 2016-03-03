@@ -26,7 +26,8 @@
         [self.contentView addSubview:self.nameLabel];
         
         self.selectFlag = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth-marginSize-20, 0, 20, 50)];
-        self.selectFlag.backgroundColor = [UIColor greenColor];
+        self.selectFlag.image = [UIImage imageNamed:@"ico_edit_unselect"];
+        self.selectFlag.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview:self.selectFlag];
         
     }
@@ -41,9 +42,9 @@
     self.nameLabel.text = myDictionary[@"title"];
     
     if ([myDictionary[@"type"] isEqualToString:@"0"]) {
-          self.selectFlag.backgroundColor = [UIColor greenColor];
+        self.selectFlag.image = [UIImage imageNamed:@"ico_edit_unselect"];
     }else{
-     self.selectFlag.backgroundColor = [UIColor redColor];
+     self.selectFlag.image = [UIImage imageNamed:@"ico_edit_select"];
     }
  
     
