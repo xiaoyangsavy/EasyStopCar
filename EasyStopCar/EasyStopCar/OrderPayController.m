@@ -71,6 +71,19 @@
 @property(nonatomic,strong)UILabel *couponCount;
 @property(nonatomic,strong)UIImageView *couponFlag;
 
+
+//选择付款方式
+@property(nonatomic,strong)UIView *payWayView;
+@property(nonatomic,strong)UIView *payWayTitleView;
+@property(nonatomic,strong)UIView *payWayContentView;
+
+@property(nonatomic,strong)UILabel *payWayTitleLabel;
+@property(nonatomic,strong)UIButton *payWayCancelButton;
+
+@property(nonatomic,strong)UILabel *payWayMoneyLabel;
+@property(nonatomic,strong)UIButton *payWayAlipayButton;
+@property(nonatomic,strong)UIButton *payWayWechatButton;
+
 @end
 
 @implementation OrderPayController
@@ -356,9 +369,7 @@
     self.infoCouponView = [[UIView alloc]initWithFrame:CGRectMake(0, 275, self.infoView.frame.size.width, 50)];
     self.infoCouponView.backgroundColor = backageColorYellow;
     [self.infoView addSubview:self.infoCouponView];
-    
  
-    
     self.couponIco = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 0, 38, self.infoCouponView.frame.size.height)];
     self.couponIco.image = [UIImage imageNamed:@"ico_order_coupon"];
     self.couponIco.contentMode = UIViewContentModeScaleAspectFit;
@@ -385,16 +396,104 @@
 
     
     
+    //支付弹出框
+ 
+    //支付视图
+    self.payWayView = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight-212-64, ScreenWidth, 212)];
+    self.payWayView.backgroundColor = [UIColor whiteColor];
+    self.payWayView.hidden = YES;
+    [self.view addSubview:self.payWayView];
+    
+    //支付视图标题
+    self.payWayTitleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
+    self.payWayTitleView.backgroundColor = backageColorLightgray;
+    [self.payWayView addSubview:self.payWayTitleView];
+    
+    CALayer *bottomBorder=[[CALayer alloc]init];
+    bottomBorder.frame=CGRectMake(0, self.payWayTitleView.frame.size.height-0.5, self.payWayTitleView.frame.size.width, 0.5);
+    bottomBorder.backgroundColor=lineColorGray.CGColor;
+    [self.payWayTitleView.layer addSublayer:bottomBorder];
+    
+    
+    self.payWayTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, self.payWayTitleView.frame.size.height)];
+    self.payWayTitleLabel.text = @"请选择付款方式";
+    self.payWayTitleLabel.font = [UIFont systemFontOfSize:18];
+    self.payWayTitleLabel.textColor = fontColorBlack;
+    self.payWayTitleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.payWayTitleView addSubview:self.payWayTitleLabel];
+    
+    self.payWayCancelButton = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth-23-marginSize*2, 0, 23+marginSize*2, self.payWayTitleView.frame.size.height)];
+//    self.payWayCancelButton.backgroundColor = TEST_COLOR;
+    [self.payWayCancelButton setImage:[UIImage imageNamed:@"test_picture.jpg"] forState:UIControlStateNormal];
+      self.payWayCancelButton.imageEdgeInsets = UIEdgeInsetsMake((50-23)/2, marginSize,(50-23)/2, marginSize);
+    self.payWayCancelButton.tag = 198850;
+    [self.payWayCancelButton addTarget:self action:@selector(submitAlert:) forControlEvents:UIControlEventTouchUpInside];
+    [self.payWayView addSubview:self.payWayCancelButton];
+    
+    
+    //支付视图方式选择
+    self.payWayContentView = [[UIView alloc]initWithFrame:CGRectMake(0, 50, ScreenWidth, 162)];
+    self.payWayContentView.backgroundColor = [UIColor whiteColor];
+    [self.payWayView addSubview:self.payWayContentView];
+    
+ 
+    
+    self.payWayTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 53)];
+    self.payWayTitleLabel.text = @"支付总额 ￥0元";
+    self.payWayTitleLabel.font = [UIFont systemFontOfSize:14];
+    self.payWayTitleLabel.textColor = backageColorRed;
+    self.payWayTitleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.payWayContentView addSubview:self.payWayTitleLabel];
+    
+    self.payWayAlipayButton = [[UIButton alloc]initWithFrame:CGRectMake(marginSize, self.payWayTitleLabel.frame.origin.y+self.payWayTitleLabel.frame.size.height, ScreenWidth-marginSize*2, 40)];
+    self.payWayAlipayButton.backgroundColor = backageColorBlue;
+    [self.payWayAlipayButton setTitle:@"支付宝支付" forState:UIControlStateNormal];
+    self.payWayAlipayButton.layer.cornerRadius = 5;
+    self.payWayAlipayButton.layer.masksToBounds = YES;
+    self.payWayAlipayButton.tag = 198851;
+    [self.payWayAlipayButton addTarget:self action:@selector(submitAlert:) forControlEvents:UIControlEventTouchUpInside];
+    [self.payWayContentView addSubview:self.payWayAlipayButton];
+    
+    
+    self.payWayWechatButton = [[UIButton alloc]initWithFrame:CGRectMake(marginSize, self.payWayAlipayButton.frame.origin.y+self.payWayAlipayButton.frame.size.height+15, ScreenWidth-marginSize*2, 40)];
+    self.payWayWechatButton.backgroundColor = backageColorGreen;
+    [self.payWayWechatButton setTitle:@"微信支付" forState:UIControlStateNormal];
+    self.payWayWechatButton.layer.cornerRadius = 5;
+    self.payWayWechatButton.layer.masksToBounds = YES;
+    self.payWayWechatButton.tag = 198852;
+    [self.payWayWechatButton addTarget:self action:@selector(submitAlert:) forControlEvents:UIControlEventTouchUpInside];
+    [self.payWayContentView addSubview:self.payWayWechatButton];
+    
 }
 
 
-//支付订单
+//提交按钮点击事件
 -(void)payOrder{
-    OrderPayCompleteController *myController = [[OrderPayCompleteController alloc]init];
-    [self.navigationController pushViewController:myController animated:YES];
-
+    [super showAlertBackage:self.payWayView];
 }
 
+
+
+/**
+ *  弹出框提交事件
+ *
+ *  @param myButton 确认和取消按钮
+ */
+- (void)submitAlert:(UIButton *)myButton{
+     [super hideAlertBackage];
+    if (myButton.tag ==198850 ) {//取消
+        
+    }else if (myButton.tag ==198851 ) {//支付宝
+        OrderPayCompleteController *myController = [[OrderPayCompleteController alloc]init];
+        [self.navigationController pushViewController:myController animated:YES];
+
+    }else  if (myButton.tag ==198852 ){//微信
+       
+        OrderPayCompleteController *myController = [[OrderPayCompleteController alloc]init];
+        [self.navigationController pushViewController:myController animated:YES];
+
+    }
+  }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

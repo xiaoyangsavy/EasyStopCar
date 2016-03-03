@@ -33,6 +33,7 @@
 
 //信息价钱视图
 @property(nonatomic,strong)UIImageView *orderCompleteFlag;//订单完成标识
+@property(nonatomic,strong)UILabel *orderCompleteLabel;
 @property(nonatomic,strong)UILabel *outTimeTitle;
 @property(nonatomic,strong)UILabel *outTimeLabel;
 @property(nonatomic,strong)UILabel *useTimeTitle;
@@ -101,7 +102,7 @@
     self.infoAddressDetailLabel.textColor = fontColorBlack;
     [self.infoParkView addSubview:self.infoAddressDetailLabel];
  
-    self.infoElectricityFlag = [[UIImageView alloc]initWithFrame:CGRectMake(self.infoView.frame.size.width-marginSize-10, self.infoAddressDetailLabel.frame.origin.y, 10, 10)];
+    self.infoElectricityFlag = [[UIImageView alloc]initWithFrame:CGRectMake(self.infoView.frame.size.width-marginSize-15, self.infoAddressDetailLabel.frame.origin.y, 15, 15)];
     self.infoElectricityFlag.image = [UIImage imageNamed:@"ico_home_cell_flag"];
     self.infoElectricityFlag.contentMode = UIViewContentModeScaleAspectFit;
     [self.infoParkView addSubview:self.infoElectricityFlag];
@@ -134,6 +135,15 @@
     self.orderCompleteFlag.image = [UIImage imageNamed:@"image_order_complete"];
         self.orderCompleteFlag.contentMode = UIViewContentModeScaleAspectFit;
     [self.infoPriceView addSubview:self.orderCompleteFlag];
+    
+    
+    
+    self.orderCompleteLabel = [[UILabel alloc]initWithFrame:CGRectMake(marginSize, self.orderCompleteFlag.frame.origin.y+self.orderCompleteFlag.frame.size.height+5, 80, 15)];
+    self.orderCompleteLabel.text = @"订单已完成";
+    self.orderCompleteLabel.font = [UIFont boldSystemFontOfSize:14];
+    self.orderCompleteLabel.textColor = fontColorBlack;
+    [self.infoPriceView addSubview:self.orderCompleteLabel];
+    
     
     self.outTimeTitle = [[UILabel alloc]initWithFrame:CGRectMake(self.orderCompleteFlag.frame.origin.x+self.orderCompleteFlag.frame.size.width+30, self.orderCompleteFlag.frame.origin.y, 80, 15)];
     self.outTimeTitle.text = @"取车出库时间";
@@ -195,27 +205,31 @@
 
  
 
-    self.shareImageView = [[UIImageView alloc]initWithFrame:CGRectMake((self.infoCouponView.frame.size.width-35)/2, 15, 35, 50)];
+    self.shareImageView = [[UIImageView alloc]initWithFrame:CGRectMake((self.infoCouponView.frame.size.width-35)/2, 20, 35, 50)];
     self.shareImageView.image = [UIImage imageNamed:@"image_order_red_envelope"];
     self.shareImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.infoCouponView addSubview:self.shareImageView];
     
-    self.shareLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.shareImageView.frame.origin.y+self.shareImageView.frame.size.height+10, self.infoCouponView.frame.size.width, 15)];
+    self.shareLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.shareImageView.frame.origin.y+self.shareImageView.frame.size.height+15, self.infoCouponView.frame.size.width, 15)];
     self.shareLabel.text = @"-—— 分享停车费红包给小伙伴 ——-";
     self.shareLabel.font = [UIFont systemFontOfSize:14];
     self.shareLabel.textColor = [UIColor whiteColor];
+    self.shareLabel.textAlignment = NSTextAlignmentCenter;
     [self.infoCouponView addSubview:self.shareLabel];
     
     
-    self.wechatButton = [[UIButton alloc]initWithFrame:CGRectMake(50, self.shareLabel.frame.origin.y+self.shareLabel.frame.size.height+10, 50, 50)];
+    self.wechatButton = [[UIButton alloc]initWithFrame:CGRectMake(50, self.shareLabel.frame.origin.y+self.shareLabel.frame.size.height+15, 50, 50)];
     [self.wechatButton setImage:[UIImage imageNamed:@"ico_order_wechat"] forState:UIControlStateNormal];
-    [self.infoCouponView addSubview:self.shareImageView];
+    [self.infoCouponView addSubview:self.wechatButton];
 
-    self.wechatCircleButton = [[UIButton alloc]initWithFrame:CGRectMake(self.infoCouponView.frame.size.width-50-50, self.shareLabel.frame.origin.y+self.shareLabel.frame.size.height+10, 50, 50)];
+    self.wechatCircleButton = [[UIButton alloc]initWithFrame:CGRectMake(self.infoCouponView.frame.size.width-50-50, self.wechatButton.frame.origin.y, 50, 50)];
     [self.wechatCircleButton setImage:[UIImage imageNamed:@"ico_order_wechat_circle"] forState:UIControlStateNormal];
     [self.infoCouponView addSubview:self.wechatCircleButton];
 
 }
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
