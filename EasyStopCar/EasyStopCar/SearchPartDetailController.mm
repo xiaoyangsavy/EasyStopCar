@@ -9,6 +9,23 @@
 #import "SearchPartDetailController.h"
 #import "CommonTools.h"
 
+
+@interface RouteAnnotation : BMKPointAnnotation
+{
+    int _type; ///<0:起点 1：终点 2：公交 3：地铁 4:驾乘 5:途经点
+    int _degree;
+}
+
+@property (nonatomic) int type;
+@property (nonatomic) int degree;
+@end
+
+@implementation RouteAnnotation
+
+@synthesize type = _type;
+@synthesize degree = _degree;
+@end
+
 @interface SearchPartDetailController ()
 {
     UITextField *currentTextField;
@@ -21,6 +38,7 @@
 @property(nonatomic,strong)UIView *priceView;           //价格视图
 @property(nonatomic,strong) BMKMapView* mapView;                //百度地图
 @property(nonatomic,strong) BMKLocationService* locService;     //定位服务
+@property(nonatomic,strong) BMKRouteSearch* routesearch;       //路线搜索
 
 
 @property(nonatomic,strong)UIImageView *headImageView;  //头像
@@ -54,6 +72,10 @@
 @property(nonatomic,strong)UIButton *submitButtonAffirm;
 
 @property (nonatomic, strong) NSString *searchedContent;//输入完成的搜索内容
+
+
+@property (nonatomic, assign) CLLocationCoordinate2D userLocationCoordinate2D;
+@property (nonatomic, assign) BOOL isFirest;
 @end
 
 @implementation SearchPartDetailController
@@ -61,6 +83,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+    //定位服务
+    _locService = [[BMKLocationService alloc]init];
+    _locService.delegate = self;
+    _locService.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;  //设置定位精确度，默认：kCLLocationAccuracyBest
+    _locService.distanceFilter = 100.0f; //指定最小距离更新(米)，默认：kCLDistanceFilterNone
+    //启动LocationService
+    [_locService startUserLocationService];
+    
+    //搜索服务
+   self.routesearch = [[BMKRouteSearch alloc]init];
+    
+    
     [super addRightTitle:@"预订说明" selector:@selector(showAppointInfo)];
     
     self.view.backgroundColor = [UIColor whiteColor];
@@ -88,13 +122,7 @@
     serachTextField.textColor = [UIColor whiteColor];
     [searchView addSubview:serachTextField];
     
-    //定位服务
-    _locService = [[BMKLocationService alloc]init];
-    _locService.delegate = self;
-    _locService.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;  //设置定位精确度，默认：kCLLocationAccuracyBest
-    _locService.distanceFilter = 100.0f; //指定最小距离更新(米)，默认：kCLDistanceFilterNone
-    //启动LocationService
-    [_locService startUserLocationService];
+  
     
     
     self.submitButoon = [[UIButton alloc]initWithFrame:CGRectMake(0, ScreenHeight-50-64, ScreenWidth, 50)];
@@ -315,6 +343,8 @@
                       forControlEvents:UIControlEventTouchUpInside];
     
     [self.submitButtonView addSubview:self.submitButtonAffirm];
+    
+   
 
 }
 
@@ -346,6 +376,35 @@
     
 }
 
+
+//检索行车路线
+-(void)onClickDriveSearch
+{
+    BMKPlanNode *startNode = [[BMKPlanNode alloc]init];
+//    startNode.name = @"龙泽";
+//    startNode.cityName = @"北京市";
+    CLLocationCoordinate2D startCoordinate;
+    startCoordinate.latitude = self.userLocationCoordinate2D.latitude;
+    startCoordinate.longitude = self.userLocationCoordinate2D.longitude;
+    startNode.pt = startCoordinate;
+    BMKPlanNode *endNode = [[BMKPlanNode alloc]init];
+//    endNode.name = @"西单";
+//    endNode.cityName = @"北京市";
+     CLLocationCoordinate2D endCoordnate;
+    endCoordnate.latitude =39.90868;
+    endCoordnate.longitude =116.204;
+    endNode.pt = endCoordnate;
+    BMKDrivingRoutePlanOption * drivingRoutePlanOption = [[BMKDrivingRoutePlanOption alloc]init];
+    drivingRoutePlanOption.from = startNode;
+    drivingRoutePlanOption.to = endNode;
+    if ([self.routesearch drivingSearch:drivingRoutePlanOption]) {
+        NSLog(@"路线查找成功");
+    }else{
+    NSLog(@"路线查找失败");
+    }
+}
+
+
 #pragma mark - textFile代理
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     currentTextField = textField;
@@ -372,43 +431,147 @@
     
     //     NSLog(@"捕获地图动画");
     
-    if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
-        NSLog(@"重写大头针样式");
-        
-        UIView *viewForImage=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 50, 100)];
-        UIImageView *imageview=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, viewForImage.frame.size.width, viewForImage.frame.size.height)];
-        [imageview setImage:[UIImage imageNamed:@"button_map_loacation_default"]];
-        [viewForImage addSubview:imageview];
-        
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, viewForImage.frame.size.width, viewForImage.frame.size.height)];
-        label.text=@"99";
-        label.backgroundColor=[UIColor clearColor];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.font = [UIFont boldSystemFontOfSize:15];
-        label.textColor = fontColorBlack;
-        [viewForImage addSubview:label];
-        
-        
-        
-        CommonTools *commonTools = [[CommonTools alloc]init];//工具类
-        
-        
-        
-        BMKPinAnnotationView *newAnnotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
-        
-        newAnnotationView.pinColor = BMKPinAnnotationColorPurple;
-        
-        newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
-        
-        newAnnotationView.annotation=annotation;
-        
-        newAnnotationView.image=[commonTools getImageFromView:viewForImage];   //把大头针换成别的图片
-        
-        return newAnnotationView;
-        
-    }
+//    if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
+//        NSLog(@"重写大头针样式");
+//        
+//        UIView *viewForImage=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 50, 100)];
+//        UIImageView *imageview=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, viewForImage.frame.size.width, viewForImage.frame.size.height)];
+//        [imageview setImage:[UIImage imageNamed:@"button_map_loacation_default"]];
+//        [viewForImage addSubview:imageview];
+//        
+//        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, viewForImage.frame.size.width, viewForImage.frame.size.height)];
+//        label.text=@"99";
+//        label.backgroundColor=[UIColor clearColor];
+//        label.textAlignment = NSTextAlignmentCenter;
+//        label.font = [UIFont boldSystemFontOfSize:15];
+//        label.textColor = fontColorBlack;
+//        [viewForImage addSubview:label];
+//        
+//        
+//        
+//        CommonTools *commonTools = [[CommonTools alloc]init];//工具类
+//        
+//        
+//        
+//        BMKPinAnnotationView *newAnnotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
+//        
+//        newAnnotationView.pinColor = BMKPinAnnotationColorPurple;
+//        
+//        newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
+//        
+//        newAnnotationView.annotation=annotation;
+//        
+//        newAnnotationView.image=[commonTools getImageFromView:viewForImage];   //把大头针换成别的图片
+//        
+//        return newAnnotationView;
+//        
+//    }
     return nil;
     
+}
+
+
+#pragma mark 路线搜索delegate
+- (void)onGetDrivingRouteResult:(BMKRouteSearch*)searcher result:(BMKDrivingRouteResult*)result errorCode:(BMKSearchErrorCode)error
+{
+    NSArray* array = [NSArray arrayWithArray:_mapView.annotations];
+    [_mapView removeAnnotations:array];
+    array = [NSArray arrayWithArray:_mapView.overlays];
+    [_mapView removeOverlays:array];
+    if (error == BMK_SEARCH_NO_ERROR) {
+        BMKDrivingRouteLine* plan = (BMKDrivingRouteLine*)[result.routes objectAtIndex:0];
+        // 计算路线方案中的路段数目
+        NSInteger size = [plan.steps count];
+        int planPointCounts = 0;
+        for (int i = 0; i < size; i++) {
+            BMKDrivingStep* transitStep = [plan.steps objectAtIndex:i];
+            if(i==0){
+                RouteAnnotation* item = [[RouteAnnotation alloc]init];
+                item.coordinate = plan.starting.location;
+                item.title = @"起点";
+                item.type = 0;
+                [_mapView addAnnotation:item]; // 添加起点标注
+                
+            }else if(i==size-1){
+                RouteAnnotation* item = [[RouteAnnotation alloc]init];
+                item.coordinate = plan.terminal.location;
+                item.title = @"终点";
+                item.type = 1;
+                [_mapView addAnnotation:item]; // 添加起点标注
+            }
+            //添加annotation节点
+            RouteAnnotation* item = [[RouteAnnotation alloc]init];
+            item.coordinate = transitStep.entrace.location;
+            item.title = transitStep.entraceInstruction;
+            item.degree = transitStep.direction * 30;
+            item.type = 4;
+            [_mapView addAnnotation:item];
+            
+            //轨迹点总数累计
+            planPointCounts += transitStep.pointsCount;
+        }
+        // 添加途经点
+        if (plan.wayPoints) {
+            for (BMKPlanNode* tempNode in plan.wayPoints) {
+                RouteAnnotation* item = [[RouteAnnotation alloc]init];
+                item = [[RouteAnnotation alloc]init];
+                item.coordinate = tempNode.pt;
+                item.type = 5;
+                item.title = tempNode.name;
+                [_mapView addAnnotation:item];
+            }
+        }
+        //轨迹点
+        BMKMapPoint * temppoints = new BMKMapPoint[planPointCounts];
+        int i = 0;
+        for (int j = 0; j < size; j++) {
+            BMKDrivingStep* transitStep = [plan.steps objectAtIndex:j];
+            int k=0;
+            for(k=0;k<transitStep.pointsCount;k++) {
+                temppoints[i].x = transitStep.points[k].x;
+                temppoints[i].y = transitStep.points[k].y;
+                i++;
+            }
+            
+        }
+        // 通过points构建BMKPolyline
+        BMKPolyline* polyLine = [BMKPolyline polylineWithPoints:temppoints count:planPointCounts];
+        [_mapView addOverlay:polyLine]; // 添加路线overlay
+        delete []temppoints;
+        [self mapViewFitPolyLine:polyLine];
+    }
+}
+
+
+//根据polyline设置地图范围
+- (void)mapViewFitPolyLine:(BMKPolyline *) polyLine {
+    CGFloat ltX, ltY, rbX, rbY;
+    if (polyLine.pointCount < 1) {
+        return;
+    }
+    BMKMapPoint pt = polyLine.points[0];
+    ltX = pt.x, ltY = pt.y;
+    rbX = pt.x, rbY = pt.y;
+    for (int i = 1; i < polyLine.pointCount; i++) {
+        BMKMapPoint pt = polyLine.points[i];
+        if (pt.x < ltX) {
+            ltX = pt.x;
+        }
+        if (pt.x > rbX) {
+            rbX = pt.x;
+        }
+        if (pt.y > ltY) {
+            ltY = pt.y;
+        }
+        if (pt.y < rbY) {
+            rbY = pt.y;
+        }
+    }
+    BMKMapRect rect;
+    rect.origin = BMKMapPointMake(ltX , ltY);
+    rect.size = BMKMapSizeMake(rbX - ltX, rbY - ltY);
+    [_mapView setVisibleMapRect:rect];
+    _mapView.zoomLevel = _mapView.zoomLevel - 0.3;
 }
 
 
@@ -429,7 +592,7 @@
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
 {
     [_mapView updateLocationData:userLocation];
-    NSLog(@"heading is %@",userLocation.heading);
+//    NSLog(@"heading is %@",userLocation.heading);
 }
 
 /**
@@ -438,7 +601,15 @@
  */
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
 {
-    //    NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+      NSLog(@"定位经纬度： lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+    
+    self.userLocationCoordinate2D = userLocation.location.coordinate;
+    if (!self.isFirest) {//首次定位
+        self.isFirest = YES;
+         [self onClickDriveSearch];//检索路线
+    }
+    
+    
     [_mapView updateLocationData:userLocation];
 }
 
@@ -473,12 +644,14 @@
     [_mapView viewWillAppear];
     _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     _locService.delegate = self;
+     _routesearch.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
     [_mapView viewWillDisappear];
     _mapView.delegate = nil; // 不用时，置nil
     _locService.delegate = nil;
+    _routesearch.delegate = nil;
 }
 
 - (void) viewDidAppear:(BOOL)animated {

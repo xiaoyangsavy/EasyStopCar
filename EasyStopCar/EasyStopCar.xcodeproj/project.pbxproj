@@ -54,7 +54,7 @@
 		4DE57E931C8521A50087D79F /* SearchPartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E921C8521A50087D79F /* SearchPartController.m */; };
 		4DE57E961C852C3A0087D79F /* SearchPartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E951C852C3A0087D79F /* SearchPartCell.m */; };
 		4DE57E991C8539170087D79F /* CommonTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E981C8539170087D79F /* CommonTools.m */; };
-		4DE57E9C1C853D7C0087D79F /* SearchPartDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E9B1C853D7C0087D79F /* SearchPartDetailController.m */; };
+		4DE57E9C1C853D7C0087D79F /* SearchPartDetailController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E9B1C853D7C0087D79F /* SearchPartDetailController.mm */; };
 		4DE57EA31C85A3EA0087D79F /* OrderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57EA21C85A3EA0087D79F /* OrderDetailController.m */; };
 		EC26043A7EA5936A06555FFE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BE385F8525FBDF9100DEF3 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -161,7 +161,7 @@
 		4DE57E971C8539170087D79F /* CommonTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTools.h; sourceTree = "<group>"; };
 		4DE57E981C8539170087D79F /* CommonTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTools.m; sourceTree = "<group>"; };
 		4DE57E9A1C853D7C0087D79F /* SearchPartDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPartDetailController.h; sourceTree = "<group>"; };
-		4DE57E9B1C853D7C0087D79F /* SearchPartDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPartDetailController.m; sourceTree = "<group>"; };
+		4DE57E9B1C853D7C0087D79F /* SearchPartDetailController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SearchPartDetailController.mm; sourceTree = "<group>"; };
 		4DE57EA11C85A3EA0087D79F /* OrderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailController.h; sourceTree = "<group>"; };
 		4DE57EA21C85A3EA0087D79F /* OrderDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailController.m; sourceTree = "<group>"; };
 		AF30E22EBCA7C9B547958742 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -304,7 +304,7 @@
 				4DE57E911C8521A50087D79F /* SearchPartController.h */,
 				4DE57E921C8521A50087D79F /* SearchPartController.m */,
 				4DE57E9A1C853D7C0087D79F /* SearchPartDetailController.h */,
-				4DE57E9B1C853D7C0087D79F /* SearchPartDetailController.m */,
+				4DE57E9B1C853D7C0087D79F /* SearchPartDetailController.mm */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -631,7 +631,7 @@
 				4DB95FB81C86917B006B92F9 /* MRActivityIndicatorView.m in Sources */,
 				4DB95FC71C86E757006B92F9 /* OrderPayCompleteController.m in Sources */,
 				4DB94A2D1C87D5FC0003AC08 /* WXApiManager.m in Sources */,
-				4DE57E9C1C853D7C0087D79F /* SearchPartDetailController.m in Sources */,
+				4DE57E9C1C853D7C0087D79F /* SearchPartDetailController.mm in Sources */,
 				4DB95FBD1C86917B006B92F9 /* MRProgressView.m in Sources */,
 				4D9AC4451C84242E00E923CC /* SearchPartMapController.m in Sources */,
 				4D9AC4411C8423DA00E923CC /* UITempletViewController.m in Sources */,
@@ -808,9 +808,9 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.sjsh8.m;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sjsh8.easystopcart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d6d052cf-aecf-4460-bf30-871b121a9697";
+				PROVISIONING_PROFILE = "8998fcca-b803-42e0-960d-3d18eadaf87c";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -834,9 +834,9 @@
 					"$(PROJECT_DIR)/EasyStopCar/Common/WeChat",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.sjsh8.m;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sjsh8.easystopcart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d6d052cf-aecf-4460-bf30-871b121a9697";
+				PROVISIONING_PROFILE = "8998fcca-b803-42e0-960d-3d18eadaf87c";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
