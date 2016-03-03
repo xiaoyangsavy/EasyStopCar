@@ -68,10 +68,33 @@
 //    _mapView.zoomLevel = 14;
      self.view = _mapView;
 
-    
+   
     
 }
 
+//初始化测试数据
+-(void)initTestData{
+
+    //测试数据：加入地图定位坐标
+    BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
+    CLLocationCoordinate2D coor;
+    coor.latitude = 39.90868;
+    coor.longitude = 116.204;
+    annotation.coordinate = coor;
+    annotation.title = @"西直门";
+    annotation.subtitle = @"99";
+    [self.mapView addAnnotation:annotation];
+    
+    annotation = [[BMKPointAnnotation alloc]init];
+    coor.latitude = 39.9660160357;
+    coor.longitude = 116.2890118361;
+    annotation.coordinate = coor;
+    annotation.title = @"火器营";
+    annotation.subtitle = @"1";
+    [self.mapView addAnnotation:annotation];
+
+
+}
 
 //刷新页面
 -(void)refreshMap{
@@ -114,7 +137,7 @@
         [viewForImage addSubview:imageview];
         
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, viewForImage.frame.size.width, viewForImage.frame.size.height)];
-        label.text=@"99";
+        label.text=annotation.subtitle;
         label.backgroundColor=[UIColor clearColor];
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [UIFont boldSystemFontOfSize:15];
@@ -145,15 +168,19 @@
     
 }
 
-
-- (void)mapView:(BMKMapView *)mapView annotationViewForBubble:(BMKAnnotationView *)view; {
-    NSLog(@"siteName:%@", view.annotation.title );
-
-    
+- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view{
     SearchPartDetailController *searchPartDetailController = [[SearchPartDetailController alloc]init];
     [self.navigationController pushViewController:searchPartDetailController animated:YES];
-    
+
 }
+//- (void)mapView:(BMKMapView *)mapView annotationViewForBubble:(BMKAnnotationView *)view{
+//    NSLog(@"siteName:%@", view.annotation.title );
+//
+//    
+//    SearchPartDetailController *searchPartDetailController = [[SearchPartDetailController alloc]init];
+//    [self.navigationController pushViewController:searchPartDetailController animated:YES];
+//    
+//}
 
 
 
@@ -174,7 +201,7 @@
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
 {
     [_mapView updateLocationData:userLocation];
-    NSLog(@"heading is %@",userLocation.heading);
+//    NSLog(@"heading is %@",userLocation.heading);
 }
 
 /**
@@ -229,17 +256,7 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    //测试数据：加入地图定位坐标
-    BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
-    CLLocationCoordinate2D coor;
-    coor.latitude = 39.90868;
-    coor.longitude = 116.204;
-    annotation.coordinate = coor;
-    annotation.title = @"西直门";
-    //                     annotation.subtitle = locationPoint[@"siteName"];
-    
-    [self.mapView addAnnotation:annotation];
-
+     [self initTestData];//初始化测试数据
 }
 
 @end
