@@ -54,6 +54,8 @@
     self.backageView.alpha = alphaValue;
     self.backageView.hidden = YES;
     [self.view addSubview:self.backageView];
+    
+    [self initTestArray];//测试数据
 
     
 }

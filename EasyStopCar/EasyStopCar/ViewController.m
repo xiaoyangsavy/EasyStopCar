@@ -12,6 +12,8 @@
 #import "SearchPartController.h"
 #import "OrderDetailController.h"
 #import "OrderPayController.h"
+#import "SearchAppointController.h"
+#import "UserCenterController.h"
 
 @interface ViewController ()
 
@@ -50,7 +52,7 @@
     
     
  [super initNavBarItems:@"易停车"];
-  [self addLeftButton:@"ico_navigation_user" lightedImage:@"ico_navigation_user" selector:@selector(toReturn)];
+  [self addLeftButton:@"ico_navigation_user" lightedImage:@"ico_navigation_user" selector:@selector(goUserCenter)];
     [self addRightButton:@"ico_navigation_phone" lightedImage:@"ico_navigation_phone" selector:@selector(callPhone)];
     
     self.view.backgroundColor = backageColorLightgray;
@@ -392,17 +394,25 @@
 -(void)enterClick:(UIButton *)myButton{
 
     SearchPartController *searchPartController = [[SearchPartController alloc]init];
+    SearchAppointController *searchAppointController = [[SearchAppointController alloc]init];
     switch (myButton.tag) {
         case 198801://搜索周边停车位
             [self.navigationController pushViewController:searchPartController animated:YES];
             break;
         case 198802://提前预约
-            
+             [self.navigationController pushViewController:searchAppointController animated:YES];
             break;
         default:
             break;
     }
 
+}
+
+//跳转到个人中心
+-(void)goUserCenter{
+
+    UserCenterController *myController = [[UserCenterController alloc]init];
+    [self.navigationController pushViewController:myController animated:YES];
 }
 
 #pragma mark - TableViewDataSource

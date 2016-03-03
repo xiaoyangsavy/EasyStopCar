@@ -34,6 +34,12 @@
 		4D9AC4451C84242E00E923CC /* SearchPartMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC4441C84242E00E923CC /* SearchPartMapController.m */; };
 		4DB94A2A1C87D2AD0003AC08 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB94A271C87D2AD0003AC08 /* libWeChatSDK.a */; };
 		4DB94A2D1C87D5FC0003AC08 /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A2C1C87D5FC0003AC08 /* WXApiManager.m */; };
+		4DB94A301C8813880003AC08 /* SearchAppointController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A2F1C8813880003AC08 /* SearchAppointController.m */; };
+		4DB94A331C88182D0003AC08 /* SearchAppointCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A321C88182D0003AC08 /* SearchAppointCell.m */; };
+		4DB94A371C8820110003AC08 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A361C8820110003AC08 /* LoginController.m */; };
+		4DB94A3A1C8822200003AC08 /* InputItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A391C8822200003AC08 /* InputItemModel.m */; };
+		4DB94A3D1C882CA80003AC08 /* UserCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A3C1C882CA80003AC08 /* UserCenterController.m */; };
+		4DB94A401C882EB30003AC08 /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A3F1C882EB30003AC08 /* ProfileCell.m */; };
 		4DB95FB61C86917B006B92F9 /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB95F9A1C86917B006B92F9 /* MRBlurView.m */; };
 		4DB95FB71C86917B006B92F9 /* UIImage+MRImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB95F9C1C86917B006B92F9 /* UIImage+MRImageEffects.m */; };
 		4DB95FB81C86917B006B92F9 /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB95F9F1C86917B006B92F9 /* MRActivityIndicatorView.m */; };
@@ -118,6 +124,18 @@
 		4DB94A291C87D2AD0003AC08 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = Common/WeChat/WXApiObject.h; sourceTree = "<group>"; };
 		4DB94A2B1C87D5FC0003AC08 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
 		4DB94A2C1C87D5FC0003AC08 /* WXApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiManager.m; sourceTree = "<group>"; };
+		4DB94A2E1C8813880003AC08 /* SearchAppointController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchAppointController.h; sourceTree = "<group>"; };
+		4DB94A2F1C8813880003AC08 /* SearchAppointController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchAppointController.m; sourceTree = "<group>"; };
+		4DB94A311C88182D0003AC08 /* SearchAppointCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchAppointCell.h; sourceTree = "<group>"; };
+		4DB94A321C88182D0003AC08 /* SearchAppointCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchAppointCell.m; sourceTree = "<group>"; };
+		4DB94A351C8820110003AC08 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		4DB94A361C8820110003AC08 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		4DB94A381C8822200003AC08 /* InputItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputItemModel.h; path = Common/InputItemModel.h; sourceTree = "<group>"; };
+		4DB94A391C8822200003AC08 /* InputItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputItemModel.m; path = Common/InputItemModel.m; sourceTree = "<group>"; };
+		4DB94A3B1C882CA80003AC08 /* UserCenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterController.h; sourceTree = "<group>"; };
+		4DB94A3C1C882CA80003AC08 /* UserCenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterController.m; sourceTree = "<group>"; };
+		4DB94A3E1C882EB30003AC08 /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
+		4DB94A3F1C882EB30003AC08 /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
 		4DB95F991C86917B006B92F9 /* MRBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRBlurView.h; sourceTree = "<group>"; };
 		4DB95F9A1C86917B006B92F9 /* MRBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRBlurView.m; sourceTree = "<group>"; };
 		4DB95F9B1C86917B006B92F9 /* UIImage+MRImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MRImageEffects.h"; sourceTree = "<group>"; };
@@ -250,6 +268,7 @@
 		4D9AC3C81C83E20E00E923CC /* EasyStopCar */ = {
 			isa = PBXGroup;
 			children = (
+				4DB94A341C881FF00003AC08 /* User */,
 				4DCCA5151C84558C00965C21 /* CustomCell */,
 				4DCCA5121C84421E00965C21 /* Resource */,
 				4D9AC4461C84265C00E923CC /* Common */,
@@ -305,6 +324,8 @@
 				4DE57E921C8521A50087D79F /* SearchPartController.m */,
 				4DE57E9A1C853D7C0087D79F /* SearchPartDetailController.h */,
 				4DE57E9B1C853D7C0087D79F /* SearchPartDetailController.mm */,
+				4DB94A2E1C8813880003AC08 /* SearchAppointController.h */,
+				4DB94A2F1C8813880003AC08 /* SearchAppointController.m */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -319,6 +340,8 @@
 				4DCCA5101C8440CC00965C21 /* YHR_PageControl.m */,
 				4DE57E971C8539170087D79F /* CommonTools.h */,
 				4DE57E981C8539170087D79F /* CommonTools.m */,
+				4DB94A381C8822200003AC08 /* InputItemModel.h */,
+				4DB94A391C8822200003AC08 /* InputItemModel.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -333,6 +356,17 @@
 				4DB94A291C87D2AD0003AC08 /* WXApiObject.h */,
 			);
 			name = WeChat;
+			sourceTree = "<group>";
+		};
+		4DB94A341C881FF00003AC08 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				4DB94A351C8820110003AC08 /* LoginController.h */,
+				4DB94A361C8820110003AC08 /* LoginController.m */,
+				4DB94A3B1C882CA80003AC08 /* UserCenterController.h */,
+				4DB94A3C1C882CA80003AC08 /* UserCenterController.m */,
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 		4DB95F971C86917B006B92F9 /* MRProgress */ = {
@@ -405,10 +439,14 @@
 		4DCCA5151C84558C00965C21 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
+				4DB94A3E1C882EB30003AC08 /* ProfileCell.h */,
+				4DB94A3F1C882EB30003AC08 /* ProfileCell.m */,
 				4DCCA5161C8455B600965C21 /* HomeCell.h */,
 				4DCCA5171C8455B600965C21 /* HomeCell.m */,
 				4DE57E941C852C3A0087D79F /* SearchPartCell.h */,
 				4DE57E951C852C3A0087D79F /* SearchPartCell.m */,
+				4DB94A311C88182D0003AC08 /* SearchAppointCell.h */,
+				4DB94A321C88182D0003AC08 /* SearchAppointCell.m */,
 			);
 			name = CustomCell;
 			sourceTree = "<group>";
@@ -628,14 +666,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DB95FBF1C86917B006B92F9 /* MRMessageInterceptor.m in Sources */,
+				4DB94A331C88182D0003AC08 /* SearchAppointCell.m in Sources */,
 				4DB95FB81C86917B006B92F9 /* MRActivityIndicatorView.m in Sources */,
 				4DB95FC71C86E757006B92F9 /* OrderPayCompleteController.m in Sources */,
 				4DB94A2D1C87D5FC0003AC08 /* WXApiManager.m in Sources */,
+				4DB94A371C8820110003AC08 /* LoginController.m in Sources */,
 				4DE57E9C1C853D7C0087D79F /* SearchPartDetailController.mm in Sources */,
 				4DB95FBD1C86917B006B92F9 /* MRProgressView.m in Sources */,
 				4D9AC4451C84242E00E923CC /* SearchPartMapController.m in Sources */,
 				4D9AC4411C8423DA00E923CC /* UITempletViewController.m in Sources */,
+				4DB94A401C882EB30003AC08 /* ProfileCell.m in Sources */,
 				4DB95FC01C86917B006B92F9 /* MRMethodCopier.m in Sources */,
+				4DB94A3A1C8822200003AC08 /* InputItemModel.m in Sources */,
 				4DE57E961C852C3A0087D79F /* SearchPartCell.m in Sources */,
 				4DB95FC41C86C011006B92F9 /* OrderPayController.m in Sources */,
 				4DE57E931C8521A50087D79F /* SearchPartController.m in Sources */,
@@ -644,6 +686,8 @@
 				4DB95FBE1C86917B006B92F9 /* MRStopButton.m in Sources */,
 				4DB95FB61C86917B006B92F9 /* MRBlurView.m in Sources */,
 				4DE57E991C8539170087D79F /* CommonTools.m in Sources */,
+				4DB94A301C8813880003AC08 /* SearchAppointController.m in Sources */,
+				4DB94A3D1C882CA80003AC08 /* UserCenterController.m in Sources */,
 				4DB95FBB1C86917B006B92F9 /* MRNavigationBarProgressView.m in Sources */,
 				4DB95FBC1C86917B006B92F9 /* MRProgressOverlayView.m in Sources */,
 				4DB95FBA1C86917B006B92F9 /* MRIconView.m in Sources */,

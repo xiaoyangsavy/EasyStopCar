@@ -21,7 +21,7 @@
     {
         
         self.contentView.backgroundColor = [UIColor whiteColor];
-        self.cutLine = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 0.5)];
+//        self.cutLine = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 0.5)];
  
   
         self.searchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];

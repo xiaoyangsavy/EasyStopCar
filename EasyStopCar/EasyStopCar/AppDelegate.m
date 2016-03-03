@@ -10,6 +10,7 @@
 
 #import "WXApiManager.h"
 #import "ViewController.h"
+#import "LoginController.h"
 
 @interface AppDelegate ()
 
@@ -38,7 +39,8 @@ BMKMapManager* _mapManager;
     UIViewController *myViewController = nil;
     UINavigationController *myNavigationController =nil;
 
-    myViewController = [[ViewController alloc] init];
+//    myViewController = [[ViewController alloc] init];
+    myViewController = [[LoginController alloc] init];
     myNavigationController = [[UINavigationController alloc] initWithRootViewController:myViewController];
     self.window.rootViewController = myNavigationController;
     [self.window makeKeyAndVisible];
