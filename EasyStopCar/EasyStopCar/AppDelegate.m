@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 
+#import "WXApiManager.h"
 #import "ViewController.h"
 
 @interface AppDelegate ()
@@ -28,6 +29,11 @@ BMKMapManager* _mapManager;
         NSLog(@"manager start failed!");
     }
 
+    //注册微信
+    //向微信注册
+    [WXApi registerApp:@"wx216cfcef6efa096e" withDescription:@"demo 2.0"];
+    
+    
     
     UIViewController *myViewController = nil;
     UINavigationController *myNavigationController =nil;
@@ -40,6 +46,16 @@ BMKMapManager* _mapManager;
     
     return YES;
 }
+
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return  [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

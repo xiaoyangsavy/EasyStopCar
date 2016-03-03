@@ -7,6 +7,8 @@
 //
 
 #import "OrderPayCompleteController.h"
+ 
+
 
 @interface OrderPayCompleteController ()
 
@@ -57,6 +59,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+     [WXApiManager sharedManager].delegate = self;
+    
+    
     [super initNavBarItems:@"停车订单详情"];
     
     self.infoView = [[UIView alloc]initWithFrame:CGRectMake(marginSize, 15, ScreenWidth-marginSize*2, 465)];
@@ -220,12 +225,32 @@
     
     self.wechatButton = [[UIButton alloc]initWithFrame:CGRectMake(50, self.shareLabel.frame.origin.y+self.shareLabel.frame.size.height+15, 50, 50)];
     [self.wechatButton setImage:[UIImage imageNamed:@"ico_order_wechat"] forState:UIControlStateNormal];
+    self.wechatButton.tag = 198801;
+    [self.wechatButton addTarget:self action:@selector(shareWeChat:) forControlEvents:UIControlEventTouchUpInside];
     [self.infoCouponView addSubview:self.wechatButton];
 
     self.wechatCircleButton = [[UIButton alloc]initWithFrame:CGRectMake(self.infoCouponView.frame.size.width-50-50, self.wechatButton.frame.origin.y, 50, 50)];
     [self.wechatCircleButton setImage:[UIImage imageNamed:@"ico_order_wechat_circle"] forState:UIControlStateNormal];
+    self.wechatCircleButton.tag = 198802;
+    [self.wechatCircleButton addTarget:self action:@selector(shareWeChat:) forControlEvents:UIControlEventTouchUpInside];
     [self.infoCouponView addSubview:self.wechatCircleButton];
 
+}
+
+
+//微信分享
+-(void)shareWeChat:(UIButton *)myButton{
+    
+    SendMessageToWXReq *req = [[SendMessageToWXReq alloc]init];
+    req.text = @"分享红包";
+    req.bText = YES;
+    if (myButton.tag == 198801) {
+          req.scene = WXSceneSession;
+    }else{
+        req.scene = WXSceneTimeline;
+    }
+    [WXApi sendReq:req];
+ 
 }
 
 

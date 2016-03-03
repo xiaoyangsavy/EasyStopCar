@@ -7,7 +7,8 @@
 //
 
 #import "UITempletViewController.h"
+#import "WXApiManager.h"
 
-@interface OrderPayCompleteController : UITempletViewController
+@interface OrderPayCompleteController : UITempletViewController<WXApiManagerDelegate>
 
 @end

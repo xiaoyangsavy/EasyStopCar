@@ -32,6 +32,8 @@
 		4D9AC43E1C8421D700E923CC /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D9AC43D1C8421D700E923CC /* mapapi.bundle */; };
 		4D9AC4411C8423DA00E923CC /* UITempletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC4401C8423DA00E923CC /* UITempletViewController.m */; };
 		4D9AC4451C84242E00E923CC /* SearchPartMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC4441C84242E00E923CC /* SearchPartMapController.m */; };
+		4DB94A2A1C87D2AD0003AC08 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB94A271C87D2AD0003AC08 /* libWeChatSDK.a */; };
+		4DB94A2D1C87D5FC0003AC08 /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A2C1C87D5FC0003AC08 /* WXApiManager.m */; };
 		4DB95FB61C86917B006B92F9 /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB95F9A1C86917B006B92F9 /* MRBlurView.m */; };
 		4DB95FB71C86917B006B92F9 /* UIImage+MRImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB95F9C1C86917B006B92F9 /* UIImage+MRImageEffects.m */; };
 		4DB95FB81C86917B006B92F9 /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB95F9F1C86917B006B92F9 /* MRActivityIndicatorView.m */; };
@@ -111,6 +113,11 @@
 		4D9AC4431C84242E00E923CC /* SearchPartMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPartMapController.h; sourceTree = "<group>"; };
 		4D9AC4441C84242E00E923CC /* SearchPartMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPartMapController.m; sourceTree = "<group>"; };
 		4D9AC4471C84266A00E923CC /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
+		4DB94A271C87D2AD0003AC08 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = Common/WeChat/libWeChatSDK.a; sourceTree = "<group>"; };
+		4DB94A281C87D2AD0003AC08 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = Common/WeChat/WXApi.h; sourceTree = "<group>"; };
+		4DB94A291C87D2AD0003AC08 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = Common/WeChat/WXApiObject.h; sourceTree = "<group>"; };
+		4DB94A2B1C87D5FC0003AC08 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
+		4DB94A2C1C87D5FC0003AC08 /* WXApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiManager.m; sourceTree = "<group>"; };
 		4DB95F991C86917B006B92F9 /* MRBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRBlurView.h; sourceTree = "<group>"; };
 		4DB95F9A1C86917B006B92F9 /* MRBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRBlurView.m; sourceTree = "<group>"; };
 		4DB95F9B1C86917B006B92F9 /* UIImage+MRImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MRImageEffects.h"; sourceTree = "<group>"; };
@@ -169,6 +176,7 @@
 			files = (
 				4D9AC43C1C84219500E923CC /* libstdc++.6.0.9.tbd in Frameworks */,
 				4D9AC43A1C84218D00E923CC /* CoreTelephony.framework in Frameworks */,
+				4DB94A2A1C87D2AD0003AC08 /* libWeChatSDK.a in Frameworks */,
 				4D9AC4381C84218400E923CC /* libsqlite3.0.tbd in Frameworks */,
 				4D9AC4361C84216000E923CC /* Security.framework in Frameworks */,
 				4D9AC4341C84215A00E923CC /* CoreGraphics.framework in Frameworks */,
@@ -304,6 +312,7 @@
 		4D9AC4461C84265C00E923CC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4DB94A261C87D2A10003AC08 /* WeChat */,
 				4DB95F971C86917B006B92F9 /* MRProgress */,
 				4D9AC4471C84266A00E923CC /* Define.h */,
 				4DCCA50F1C8440CC00965C21 /* YHR_PageControl.h */,
@@ -312,6 +321,18 @@
 				4DE57E981C8539170087D79F /* CommonTools.m */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		4DB94A261C87D2A10003AC08 /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				4DB94A2B1C87D5FC0003AC08 /* WXApiManager.h */,
+				4DB94A2C1C87D5FC0003AC08 /* WXApiManager.m */,
+				4DB94A271C87D2AD0003AC08 /* libWeChatSDK.a */,
+				4DB94A281C87D2AD0003AC08 /* WXApi.h */,
+				4DB94A291C87D2AD0003AC08 /* WXApiObject.h */,
+			);
+			name = WeChat;
 			sourceTree = "<group>";
 		};
 		4DB95F971C86917B006B92F9 /* MRProgress */ = {
@@ -492,6 +513,7 @@
 				TargetAttributes = {
 					4D9AC3C51C83E20E00E923CC = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = Z8GK8U8PZ2;
 					};
 					4D9AC3DE1C83E20E00E923CC = {
 						CreatedOnToolsVersion = 7.2;
@@ -608,6 +630,7 @@
 				4DB95FBF1C86917B006B92F9 /* MRMessageInterceptor.m in Sources */,
 				4DB95FB81C86917B006B92F9 /* MRActivityIndicatorView.m in Sources */,
 				4DB95FC71C86E757006B92F9 /* OrderPayCompleteController.m in Sources */,
+				4DB94A2D1C87D5FC0003AC08 /* WXApiManager.m in Sources */,
 				4DE57E9C1C853D7C0087D79F /* SearchPartDetailController.m in Sources */,
 				4DB95FBD1C86917B006B92F9 /* MRProgressView.m in Sources */,
 				4D9AC4451C84242E00E923CC /* SearchPartMapController.m in Sources */,
@@ -770,6 +793,7 @@
 			baseConfigurationReference = D16F12F38E497BA16ED5BCCD /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -778,11 +802,15 @@
 				INFOPLIST_FILE = EasyStopCar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EasyStopCar/Common/WeChat",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sjsh8.easystopcart;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.sjsh8.m;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8998fcca-b803-42e0-960d-3d18eadaf87c";
+				PROVISIONING_PROFILE = "d6d052cf-aecf-4460-bf30-871b121a9697";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -792,6 +820,7 @@
 			baseConfigurationReference = AF30E22EBCA7C9B547958742 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -800,10 +829,14 @@
 				INFOPLIST_FILE = EasyStopCar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EasyStopCar/Common/WeChat",
+				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sjsh8.easystopcart;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.sjsh8.m;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8998fcca-b803-42e0-960d-3d18eadaf87c";
+				PROVISIONING_PROFILE = "d6d052cf-aecf-4460-bf30-871b121a9697";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
