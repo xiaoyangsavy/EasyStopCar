@@ -10,13 +10,14 @@
 
 #import "MRProgress.h"
 #import "MRCircularProgressView.h"
+#import "OrderPayDetailController.h"
 
 @interface OrderDetailController ()
 
 @property(nonatomic,strong)UIButton *submitButoon;      //提交按钮
 
 @property(nonatomic,strong)UIView *infoView;            //信息视图
-@property(nonatomic,strong)UIView *priceView;           //价格视图
+@property(nonatomic,strong)UIButton *priceView;           //价格视图
 @property(nonatomic,strong)UIImageView *twoDimensionalImageView;  //二维码视图
 
 @property(nonatomic,strong)UIView *infoDetailView;      //信息详细视图
@@ -69,8 +70,9 @@
     infoBottomBorder.backgroundColor=lineColorGray.CGColor;
     [self.infoView.layer addSublayer:infoBottomBorder ];
     
-    self.priceView = [[UIView alloc]initWithFrame:CGRectMake(0, self.infoView.frame.origin.y+self.infoView.frame.size.height, ScreenWidth, 44)];
+    self.priceView = [[UIButton alloc]initWithFrame:CGRectMake(0, self.infoView.frame.origin.y+self.infoView.frame.size.height, ScreenWidth, 44)];
     self.priceView.backgroundColor = [UIColor whiteColor];
+    [self.priceView addTarget:self action:@selector(payDetailClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.priceView];
     
     CALayer *priceBottomBorder=[[CALayer alloc]init];
@@ -181,6 +183,13 @@
     self.priceDetailLabel.textAlignment = NSTextAlignmentRight;
     [self.priceView addSubview:self.priceDetailLabel];
     
+}
+
+//支付详细点击时间
+-(void)payDetailClick{
+    OrderPayDetailController *myController = [[OrderPayDetailController alloc]init];
+    [self.navigationController pushViewController:myController animated:YES];
+
 }
 
 

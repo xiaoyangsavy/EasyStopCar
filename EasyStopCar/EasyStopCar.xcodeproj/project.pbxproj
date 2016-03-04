@@ -63,6 +63,8 @@
 		4DB95FC11C86917B006B92F9 /* MRWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB95FB51C86917B006B92F9 /* MRWeakProxy.m */; };
 		4DB95FC41C86C011006B92F9 /* OrderPayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB95FC31C86C011006B92F9 /* OrderPayController.m */; };
 		4DB95FC71C86E757006B92F9 /* OrderPayCompleteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB95FC61C86E757006B92F9 /* OrderPayCompleteController.m */; };
+		4DC690A91C8982E7006B4DDF /* OrderPayDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC690A81C8982E7006B4DDF /* OrderPayDetailController.m */; };
+		4DC690AC1C8988A3006B4DDF /* PayDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC690AB1C8988A3006B4DDF /* PayDetailCell.m */; };
 		4DCCA5111C8440CC00965C21 /* YHR_PageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCCA5101C8440CC00965C21 /* YHR_PageControl.m */; };
 		4DCCA5141C84426200965C21 /* test_picture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DCCA5131C84426200965C21 /* test_picture.jpg */; };
 		4DCCA5181C8455B600965C21 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCCA5171C8455B600965C21 /* HomeCell.m */; };
@@ -192,6 +194,10 @@
 		4DB95FC31C86C011006B92F9 /* OrderPayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPayController.m; sourceTree = "<group>"; };
 		4DB95FC51C86E757006B92F9 /* OrderPayCompleteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderPayCompleteController.h; sourceTree = "<group>"; };
 		4DB95FC61C86E757006B92F9 /* OrderPayCompleteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPayCompleteController.m; sourceTree = "<group>"; };
+		4DC690A71C8982E7006B4DDF /* OrderPayDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderPayDetailController.h; sourceTree = "<group>"; };
+		4DC690A81C8982E7006B4DDF /* OrderPayDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPayDetailController.m; sourceTree = "<group>"; };
+		4DC690AA1C8988A3006B4DDF /* PayDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayDetailCell.h; sourceTree = "<group>"; };
+		4DC690AB1C8988A3006B4DDF /* PayDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayDetailCell.m; sourceTree = "<group>"; };
 		4DCCA50F1C8440CC00965C21 /* YHR_PageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHR_PageControl.h; sourceTree = "<group>"; };
 		4DCCA5101C8440CC00965C21 /* YHR_PageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHR_PageControl.m; sourceTree = "<group>"; };
 		4DCCA5131C84426200965C21 /* test_picture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_picture.jpg; sourceTree = "<group>"; };
@@ -295,10 +301,9 @@
 		4D9AC3C81C83E20E00E923CC /* EasyStopCar */ = {
 			isa = PBXGroup;
 			children = (
+				4D9AC4461C84265C00E923CC /* Common */,
 				4DB94A341C881FF00003AC08 /* User */,
 				4DCCA5151C84558C00965C21 /* CustomCell */,
-				4DCCA5121C84421E00965C21 /* Resource */,
-				4D9AC4461C84265C00E923CC /* Common */,
 				4DE57EA01C85A3D20087D79F /* Order */,
 				4D9AC4421C8423FA00E923CC /* Search */,
 				4D9AC3CC1C83E20E00E923CC /* AppDelegate.h */,
@@ -311,6 +316,7 @@
 				4D9AC3D51C83E20E00E923CC /* Assets.xcassets */,
 				4D9AC3D71C83E20E00E923CC /* LaunchScreen.storyboard */,
 				4D9AC3DA1C83E20E00E923CC /* Info.plist */,
+				4DCCA5121C84421E00965C21 /* Resource */,
 				4D9AC3C91C83E20E00E923CC /* Supporting Files */,
 			);
 			path = EasyStopCar;
@@ -488,6 +494,8 @@
 				4DB94A421C8836370003AC08 /* UserInfoCell.m */,
 				4DB94A4D1C8852BD0003AC08 /* EditSelectCell.h */,
 				4DB94A4E1C8852BD0003AC08 /* EditSelectCell.m */,
+				4DC690AA1C8988A3006B4DDF /* PayDetailCell.h */,
+				4DC690AB1C8988A3006B4DDF /* PayDetailCell.m */,
 			);
 			name = CustomCell;
 			sourceTree = "<group>";
@@ -501,6 +509,8 @@
 				4DB95FC31C86C011006B92F9 /* OrderPayController.m */,
 				4DB95FC51C86E757006B92F9 /* OrderPayCompleteController.h */,
 				4DB95FC61C86E757006B92F9 /* OrderPayCompleteController.m */,
+				4DC690A71C8982E7006B4DDF /* OrderPayDetailController.h */,
+				4DC690A81C8982E7006B4DDF /* OrderPayDetailController.m */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -725,6 +735,7 @@
 				4DB94A3A1C8822200003AC08 /* InputItemModel.m in Sources */,
 				4D9C5E771C89643500543681 /* SearchAppointSelectController.m in Sources */,
 				4DB94A491C884D0D0003AC08 /* EditTextController.m in Sources */,
+				4DC690AC1C8988A3006B4DDF /* PayDetailCell.m in Sources */,
 				4D9C5E701C89590D00543681 /* Connetion.m in Sources */,
 				4DE57E961C852C3A0087D79F /* SearchPartCell.m in Sources */,
 				4DB94A4C1C8851DF0003AC08 /* EditSeleceController.m in Sources */,
@@ -741,6 +752,7 @@
 				4DB95FBC1C86917B006B92F9 /* MRProgressOverlayView.m in Sources */,
 				4DB95FBA1C86917B006B92F9 /* MRIconView.m in Sources */,
 				4DB95FC11C86917B006B92F9 /* MRWeakProxy.m in Sources */,
+				4DC690A91C8982E7006B4DDF /* OrderPayDetailController.m in Sources */,
 				4DCCA5111C8440CC00965C21 /* YHR_PageControl.m in Sources */,
 				4DB94A431C8836370003AC08 /* UserInfoCell.m in Sources */,
 				4D9AC3D11C83E20E00E923CC /* ViewController.m in Sources */,
