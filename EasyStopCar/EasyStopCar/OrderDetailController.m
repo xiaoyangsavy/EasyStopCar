@@ -42,6 +42,9 @@
 @property(nonatomic,strong)UILabel *priceSumLabel;
 @property(nonatomic,strong)UILabel *priceDetailLabel;
 @property(nonatomic,strong)UIImageView *priceFlag;
+
+
+@property(nonatomic,assign)int availableTimeValue;
 @end
 
 @implementation OrderDetailController
@@ -51,6 +54,8 @@
    
     [super initNavBarItems:@"停车订单详情"];
     
+    
+    self.availableTimeValue = 30*60;//1800
     
     self.submitButoon = [[UIButton alloc]initWithFrame:CGRectMake(0, ScreenHeight-50-64, ScreenWidth, 50)];
     [self.submitButoon setTitle:@"导航" forState:UIControlStateNormal];
@@ -152,8 +157,8 @@
     
     self.circularProgressView = [[MRCircularProgressView alloc]initWithFrame:CGRectMake(0, self.infoTimeName.frame.origin.y+self.infoTimeName.frame.size.height+5, 80, 80)];
     self.circularProgressView.progress = 0;
+     self.circularProgressView.valueLabel.text = @"30:00";
     [self.infoTimeView addSubview:self.circularProgressView];
-    [self.circularProgressView setProgress:0.14];
     
     
     
@@ -183,6 +188,10 @@
     self.priceDetailLabel.textAlignment = NSTextAlignmentRight;
     [self.priceView addSubview:self.priceDetailLabel];
     
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerAdvanced:) userInfo:nil repeats:YES];
+    
+    
 }
 
 //支付详细点击时间
@@ -191,6 +200,26 @@
     [self.navigationController pushViewController:myController animated:YES];
 
 }
+
+//计时器调用方法
+- (void)timerAdvanced:(NSTimer *)timer//这个函数将会执行一个循环的逻辑
+{
+   
+    
+    float progress = (1 - self.availableTimeValue/1800.0);
+     NSLog(@"开始倒计时%f",progress);
+   self.circularProgressView.progress = progress;
+    
+    self.circularProgressView.valueLabel.text = [NSString stringWithFormat:@"%d:%02d",self.availableTimeValue/60,self.availableTimeValue%60];
+    
+    
+    self.availableTimeValue--;
+    if (self.availableTimeValue == 0) {
+        [timer invalidate];
+    }
+
+}
+
 
 
 //调转到百度地图客户端导航
