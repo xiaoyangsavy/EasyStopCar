@@ -32,6 +32,9 @@
 		4D9AC43E1C8421D700E923CC /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D9AC43D1C8421D700E923CC /* mapapi.bundle */; };
 		4D9AC4411C8423DA00E923CC /* UITempletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC4401C8423DA00E923CC /* UITempletViewController.m */; };
 		4D9AC4451C84242E00E923CC /* SearchPartMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC4441C84242E00E923CC /* SearchPartMapController.m */; };
+		4D9C5E701C89590D00543681 /* Connetion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9C5E6E1C89590D00543681 /* Connetion.m */; };
+		4D9C5E731C895BF800543681 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9C5E711C895BF800543681 /* libAFNetworking.a */; };
+		4D9C5E741C895BF800543681 /* libSVProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9C5E721C895BF800543681 /* libSVProgressHUD.a */; };
 		4DB94A2A1C87D2AD0003AC08 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB94A271C87D2AD0003AC08 /* libWeChatSDK.a */; };
 		4DB94A2D1C87D5FC0003AC08 /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A2C1C87D5FC0003AC08 /* WXApiManager.m */; };
 		4DB94A301C8813880003AC08 /* SearchAppointController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A2F1C8813880003AC08 /* SearchAppointController.m */; };
@@ -124,6 +127,10 @@
 		4D9AC4431C84242E00E923CC /* SearchPartMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPartMapController.h; sourceTree = "<group>"; };
 		4D9AC4441C84242E00E923CC /* SearchPartMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPartMapController.m; sourceTree = "<group>"; };
 		4D9AC4471C84266A00E923CC /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
+		4D9C5E6E1C89590D00543681 /* Connetion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Connetion.m; path = Common/Connetion.m; sourceTree = "<group>"; };
+		4D9C5E6F1C89590D00543681 /* Connetion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connetion.h; path = Common/Connetion.h; sourceTree = "<group>"; };
+		4D9C5E711C895BF800543681 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
+		4D9C5E721C895BF800543681 /* libSVProgressHUD.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSVProgressHUD.a; path = "Pods/../build/Debug-iphoneos/libSVProgressHUD.a"; sourceTree = "<group>"; };
 		4DB94A271C87D2AD0003AC08 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = Common/WeChat/libWeChatSDK.a; sourceTree = "<group>"; };
 		4DB94A281C87D2AD0003AC08 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = Common/WeChat/WXApi.h; sourceTree = "<group>"; };
 		4DB94A291C87D2AD0003AC08 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = Common/WeChat/WXApiObject.h; sourceTree = "<group>"; };
@@ -207,6 +214,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D9C5E731C895BF800543681 /* libAFNetworking.a in Frameworks */,
+				4D9C5E741C895BF800543681 /* libSVProgressHUD.a in Frameworks */,
 				4D9AC43C1C84219500E923CC /* libstdc++.6.0.9.tbd in Frameworks */,
 				4D9AC43A1C84218D00E923CC /* CoreTelephony.framework in Frameworks */,
 				4DB94A2A1C87D2AD0003AC08 /* libWeChatSDK.a in Frameworks */,
@@ -351,6 +360,8 @@
 				4DB94A261C87D2A10003AC08 /* WeChat */,
 				4DB95F971C86917B006B92F9 /* MRProgress */,
 				4D9AC4471C84266A00E923CC /* Define.h */,
+				4D9C5E6F1C89590D00543681 /* Connetion.h */,
+				4D9C5E6E1C89590D00543681 /* Connetion.m */,
 				4DCCA50F1C8440CC00965C21 /* YHR_PageControl.h */,
 				4DCCA5101C8440CC00965C21 /* YHR_PageControl.m */,
 				4DE57E971C8539170087D79F /* CommonTools.h */,
@@ -492,6 +503,8 @@
 		D5F428B09E27D5D3BE28DB26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D9C5E711C895BF800543681 /* libAFNetworking.a */,
+				4D9C5E721C895BF800543681 /* libSVProgressHUD.a */,
 				E8BE385F8525FBDF9100DEF3 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -706,6 +719,7 @@
 				4DB94A4F1C8852BD0003AC08 /* EditSelectCell.m in Sources */,
 				4DB94A3A1C8822200003AC08 /* InputItemModel.m in Sources */,
 				4DB94A491C884D0D0003AC08 /* EditTextController.m in Sources */,
+				4D9C5E701C89590D00543681 /* Connetion.m in Sources */,
 				4DE57E961C852C3A0087D79F /* SearchPartCell.m in Sources */,
 				4DB94A4C1C8851DF0003AC08 /* EditSeleceController.m in Sources */,
 				4DB95FC41C86C011006B92F9 /* OrderPayController.m in Sources */,
@@ -879,6 +893,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/EasyStopCar/Common/WeChat",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -906,6 +921,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/EasyStopCar/Common/WeChat",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sjsh8.easystopcart;

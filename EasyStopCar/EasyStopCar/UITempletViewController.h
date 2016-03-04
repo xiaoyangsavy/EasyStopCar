@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Define.h"
+#import "Connetion.h"
 
 @interface UITempletViewController : UIViewController<UIActionSheetDelegate>{
 
