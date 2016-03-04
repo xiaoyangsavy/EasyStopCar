@@ -30,11 +30,18 @@
 @property(nonatomic,strong)UIButton *categoryFourLabel;
 @property(nonatomic,strong)UIView *categoryFourBackage;
 
+//预约条件视图
+@property(nonatomic,strong)UIView *appointConditionView;
+@property(nonatomic,strong)UILabel *appointLocationLabel;//预约地点
+@property(nonatomic,strong)UIImageView *appointElectricityFlag;//预约有电标识
+@property(nonatomic,strong)UILabel *appointDataLabel;//预约时间
+@property(nonatomic,strong)UIButton *appointEditButton;//预约修改按钮
 
 @property(nonatomic,strong)NSMutableArray *categoryViewArray;
 @property(nonatomic,strong)NSMutableArray *categoryBackageArray;
 
 @property (nonatomic, strong) NSString *searchedContent;//输入完成的搜索内容
+
 @end
 
 @implementation SearchPartController
@@ -156,9 +163,63 @@
         myTableHeadView;
     });
         
-        
+    
+    if (self.styleType == 1) {
+        [self initAppointStyle];
+    }
         
 }
+
+//初始化预约样式
+-(void)initAppointStyle{
+ 
+    //设置表头部个人信息
+    self.serachTableView.tableHeaderView = ({
+        
+        UIView *myTableHeadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBounds.size.width, 40.0f)];
+        myTableHeadView.backgroundColor = [UIColor whiteColor];
+        
+        //列表区域
+        self.appointConditionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
+        self.appointConditionView.backgroundColor = backageColorLightgray;
+        [myTableHeadView addSubview:self.appointConditionView];
+        
+        CALayer *bottomBorder=[[CALayer alloc]init];
+        bottomBorder.frame=CGRectMake(0, self.appointConditionView.frame.size.height-0.5, self.appointConditionView.frame.size.width, 0.5);
+        bottomBorder.backgroundColor=lineColorGray.CGColor;
+        [self.appointConditionView.layer addSublayer:bottomBorder ];
+        
+    
+        self.appointLocationLabel = [[UILabel alloc]initWithFrame:CGRectMake(marginSize, 0, 100, self.appointConditionView.frame.size.height)];
+        self.appointLocationLabel.text = self.searchedLocation;
+        self.appointLocationLabel.font = [UIFont systemFontOfSize:14];
+        self.appointLocationLabel.textColor = fontColorGray;
+        [self.appointConditionView addSubview:self.appointLocationLabel];
+        
+        self.appointElectricityFlag = [[UIImageView alloc]initWithFrame:CGRectMake(self.appointLocationLabel.frame.origin.x+self.appointLocationLabel.frame.size.width, 0, 20, self.appointConditionView.frame.size.height)];
+        self.appointElectricityFlag.image = [UIImage imageNamed:@"ico_home_cell_flag"];self.appointElectricityFlag.contentMode = UIViewContentModeScaleAspectFit;
+        [self.appointConditionView addSubview:self.appointElectricityFlag];
+        
+        self.appointDataLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.appointElectricityFlag.frame.origin.x+self.appointElectricityFlag.frame.size.width, 0, 100, self.appointConditionView.frame.size.height)];
+        self.appointDataLabel.text = self.searchedData;
+        self.appointDataLabel.font = [UIFont systemFontOfSize:14];
+        self.appointDataLabel.textColor = fontColorGray;
+        [self.appointConditionView addSubview:self.appointDataLabel];
+        
+        self.appointEditButton = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth-30, 0, 30, self.appointConditionView.frame.size.height)];
+        self.appointEditButton.backgroundColor = TEST_COLOR;
+        [self.appointEditButton addTarget:self action:@selector(toReturn) forControlEvents:UIControlEventTouchUpInside];
+        [self.appointConditionView addSubview:self.appointEditButton];
+        
+        
+        myTableHeadView;
+    });
+    
+    [super initNavBarItems:@"停车场列表"];
+
+}
+
+
 
 
 //类别点击事件
@@ -191,6 +252,9 @@
 //跳转到搜索地图页面
 -(void)goSearchMap{
     SearchPartMapController *searchPartMapController = [[SearchPartMapController alloc]init];
+    searchPartMapController.styleType = self.styleType;
+    searchPartMapController.searchedLocation = self.searchedLocation;
+    searchPartMapController.searchedData = self.searchedData;
     [self.navigationController pushViewController:searchPartMapController animated:YES];
 
 }
@@ -239,6 +303,9 @@
 //    NSLog(@"点击了一个cell");
     
     SearchPartDetailController *searchPartDetailController = [[SearchPartDetailController alloc]init];
+    searchPartDetailController.styleType = self.styleType;
+    searchPartDetailController.searchedLocation = self.searchedLocation;
+    searchPartDetailController.searchedData = self.searchedData;
     [self.navigationController pushViewController:searchPartDetailController animated:YES];
 }
 

@@ -11,4 +11,7 @@
 
 @interface SearchPartController : UITempletViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 
+@property (nonatomic, assign)NSInteger styleType;     //显示类型
+@property (nonatomic, strong)NSString *searchedLocation;
+@property (nonatomic, strong)NSString *searchedData;
 @end

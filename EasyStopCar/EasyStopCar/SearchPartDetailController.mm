@@ -94,33 +94,29 @@
     //搜索服务
    self.routesearch = [[BMKRouteSearch alloc]init];
     
-    
+      [super initNavBarItems:@"停车位详情"];
     [super addRightTitle:@"预订说明" selector:@selector(showAppointInfo)];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
     
     //搜索框
-    UIView *searchView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 40)];
-    [self.navigationItem setTitleView:searchView];
-    
-    //    UIImageView *serachBackageView = [[UIImageView alloc]initWithFrame:CGRectMake(-20, searchView.frame.size.height-15, searchView.frame.size.width+40, 5)];
-    //    serachBackageView.image = [UIImage imageNamed:@"hh_backage_serach"];
-    //    serachBackageView.contentMode = UIViewContentModeScaleAspectFit;
-    //    [searchView addSubview:serachBackageView];
-    
-    UIImageView *serachIcoView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 12, 40)];
-    serachIcoView.image = [UIImage imageNamed:@"ico_navigation_search"];
-    serachIcoView.contentMode = UIViewContentModeScaleAspectFit;
-    [searchView addSubview:serachIcoView];
-    
-    UITextField *serachTextField = [[UITextField alloc]initWithFrame:CGRectMake(serachIcoView.frame.origin.x+serachIcoView.frame.size.width+2, 0, searchView.frame.size.width-10, 40)];
-    //    [serachTextField setPlaceholder:@"请搜索商品"];
-    serachTextField.font = [UIFont systemFontOfSize:13];
-    serachTextField.delegate = self;
-    serachTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"搜索停车场" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:1 green:1 blue:1 alpha:0.7]}];
-    serachTextField.textColor = [UIColor whiteColor];
-    [searchView addSubview:serachTextField];
+//    UIView *searchView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 40)];
+//    [self.navigationItem setTitleView:searchView];
+// 
+//    
+//    UIImageView *serachIcoView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 12, 40)];
+//    serachIcoView.image = [UIImage imageNamed:@"ico_navigation_search"];
+//    serachIcoView.contentMode = UIViewContentModeScaleAspectFit;
+//    [searchView addSubview:serachIcoView];
+//    
+//    UITextField *serachTextField = [[UITextField alloc]initWithFrame:CGRectMake(serachIcoView.frame.origin.x+serachIcoView.frame.size.width+2, 0, searchView.frame.size.width-10, 40)];
+//    //    [serachTextField setPlaceholder:@"请搜索商品"];
+//    serachTextField.font = [UIFont systemFontOfSize:13];
+//    serachTextField.delegate = self;
+//    serachTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"搜索停车场" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:1 green:1 blue:1 alpha:0.7]}];
+//    serachTextField.textColor = [UIColor whiteColor];
+//    [searchView addSubview:serachTextField];
     
   
     

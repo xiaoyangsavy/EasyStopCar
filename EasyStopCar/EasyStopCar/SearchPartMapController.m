@@ -19,6 +19,15 @@
 
 @property (nonatomic, strong) NSString *searchedContent;//输入完成的搜索内容
 
+
+
+//预约条件视图
+@property(nonatomic,strong)UIView *appointConditionView;
+@property(nonatomic,strong)UILabel *appointLocationLabel;//预约地点
+@property(nonatomic,strong)UIImageView *appointElectricityFlag;//预约有电标识
+@property(nonatomic,strong)UILabel *appointDataLabel;//预约时间
+@property(nonatomic,strong)UIButton *appointEditButton;//预约修改按钮
+
 @end
 
 @implementation SearchPartMapController
@@ -61,16 +70,63 @@
     [_locService startUserLocationService];
     
     //百度地图
-    _mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)];
+    _mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64)];
     _mapView.showsUserLocation = NO;//先关闭显示的定位图层
     _mapView.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态
     _mapView.showsUserLocation = YES;//显示定位图层
 //    _mapView.zoomLevel = 14;
      self.view = _mapView;
 
-   
+    if (self.styleType == 1) {
+        [self initAppointStyle];
+    }
     
 }
+
+//初始化预约样式
+-(void)initAppointStyle{
+    
+  
+    _mapView.frame = CGRectMake(0, 40, ScreenWidth, ScreenHeight-64-40);
+    
+    
+    //列表区域
+    self.appointConditionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
+    self.appointConditionView.backgroundColor = backageColorLightgray;
+    [self.view addSubview:self.appointConditionView];
+    
+    CALayer *bottomBorder=[[CALayer alloc]init];
+    bottomBorder.frame=CGRectMake(0, self.appointConditionView.frame.size.height-0.5, self.appointConditionView.frame.size.width, 0.5);
+    bottomBorder.backgroundColor=lineColorGray.CGColor;
+    [self.appointConditionView.layer addSublayer:bottomBorder ];
+    
+    
+    self.appointLocationLabel = [[UILabel alloc]initWithFrame:CGRectMake(marginSize, 0, 100, self.appointConditionView.frame.size.height)];
+    self.appointLocationLabel.text = self.searchedLocation;
+    self.appointLocationLabel.font = [UIFont systemFontOfSize:14];
+    self.appointLocationLabel.textColor = fontColorGray;
+    [self.appointConditionView addSubview:self.appointLocationLabel];
+    
+    self.appointElectricityFlag = [[UIImageView alloc]initWithFrame:CGRectMake(self.appointLocationLabel.frame.origin.x+self.appointLocationLabel.frame.size.width, 0, 20, self.appointConditionView.frame.size.height)];
+    self.appointElectricityFlag.image = [UIImage imageNamed:@"ico_home_cell_flag"];self.appointElectricityFlag.contentMode = UIViewContentModeScaleAspectFit;
+    [self.appointConditionView addSubview:self.appointElectricityFlag];
+    
+    self.appointDataLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.appointElectricityFlag.frame.origin.x+self.appointElectricityFlag.frame.size.width, 0, 100, self.appointConditionView.frame.size.height)];
+    self.appointDataLabel.text = self.searchedData;
+    self.appointDataLabel.font = [UIFont systemFontOfSize:14];
+    self.appointDataLabel.textColor = fontColorGray;
+    [self.appointConditionView addSubview:self.appointDataLabel];
+    
+    self.appointEditButton = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth-30, 0, 30, self.appointConditionView.frame.size.height)];
+    self.appointEditButton.backgroundColor = TEST_COLOR;
+    [self.appointEditButton addTarget:self action:@selector(toReturn) forControlEvents:UIControlEventTouchUpInside];
+    [self.appointConditionView addSubview:self.appointEditButton];
+    
+    
+     [super initNavBarItems:@"停车场分布图"];
+}
+
+
 
 //初始化测试数据
 -(void)initTestData{
@@ -95,6 +151,7 @@
 
 
 }
+
 
 //刷新页面
 -(void)refreshMap{
@@ -170,6 +227,9 @@
 
 - (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view{
     SearchPartDetailController *searchPartDetailController = [[SearchPartDetailController alloc]init];
+    searchPartDetailController.styleType = self.styleType;
+    searchPartDetailController.searchedLocation = self.searchedLocation;
+    searchPartDetailController.searchedData = self.searchedData;
     [self.navigationController pushViewController:searchPartDetailController animated:YES];
 
 }

@@ -9,7 +9,7 @@
 #import "SearchAppointController.h"
 #import "SearchAppointCell.h"
 #import "SearchAppointSelectController.h"
-
+#import "SearchPartController.h"
 @interface SearchAppointController ()
 
 @property(nonatomic,strong)UIButton *submitButoon;      //提交按钮
@@ -238,6 +238,12 @@
 
 //提交按钮点击事件
 -(void)submitClick{
+    
+    SearchPartController *myController = [[SearchPartController alloc]init];
+    myController.searchedLocation = @"北京";
+    myController.searchedData = @"0月0日 00:00";
+    myController.styleType = 1;
+    [self.navigationController pushViewController:myController animated:YES];
     
 }
 

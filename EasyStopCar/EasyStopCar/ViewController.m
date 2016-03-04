@@ -397,6 +397,7 @@
     SearchAppointController *searchAppointController = [[SearchAppointController alloc]init];
     switch (myButton.tag) {
         case 198801://搜索周边停车位
+            searchPartController.styleType = 0;
             [self.navigationController pushViewController:searchPartController animated:YES];
             break;
         case 198802://提前预约
