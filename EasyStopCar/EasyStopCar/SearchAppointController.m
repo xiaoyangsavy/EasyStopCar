@@ -8,6 +8,7 @@
 
 #import "SearchAppointController.h"
 #import "SearchAppointCell.h"
+#import "SearchAppointSelectController.h"
 
 @interface SearchAppointController ()
 
@@ -23,6 +24,15 @@
 @property(nonatomic, strong) UIImageView *searchImageView;
 @property(nonatomic, strong) UILabel *searchName;
 @property(nonatomic, strong) UISwitch *searchSwitch;
+
+@property(nonatomic,strong)UIView *seleceView;      //时间和日期选择视图
+@property (nonatomic, strong) UIButton *pickCancel;
+@property (nonatomic, strong) UIButton *pickSubmit;
+@property (nonatomic, strong) UIPickerView *myPickView;
+@property (nonatomic, strong)NSMutableArray *dataArray;
+@property (nonatomic, strong)NSMutableArray *hourArray;
+@property (nonatomic, strong)NSMutableArray *minuteArray;
+
 @end
 
 @implementation SearchAppointController
@@ -34,6 +44,9 @@
     [super addRightTitle:@"预订说明" selector:@selector(showAppointInfo)];
 //    self.view.backgroundColor = [UIColor whiteColor];
 
+    [self initPickerData];//初始化时间日期选择器数据
+    
+    
     self.submitButoon = [[UIButton alloc]initWithFrame:CGRectMake(0, ScreenHeight-50-64, ScreenWidth, 50)];
     [self.submitButoon setTitle:@"确定" forState:UIControlStateNormal];
     [self.submitButoon addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
@@ -56,7 +69,7 @@
     self.topImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.topView addSubview:self.topImageView];
     
-    self.topTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.topImageView.frame.origin.x+self.topImageView.frame.size.width+5, self.topImageView.frame.origin.y, 150, 15)];
+    self.topTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.topImageView.frame.origin.x+self.topImageView.frame.size.width+10, self.topImageView.frame.origin.y, 150, 15)];
     self.topTitleLabel.font = [UIFont systemFontOfSize:15];
     self.topTitleLabel.textColor = fontColorBlack;
     self.topTitleLabel.text = @"提前预约车位无忧";
@@ -114,8 +127,114 @@
      [self.searchSwitch setOn:YES animated:YES];
     [self.searchSwitchView addSubview:self.searchSwitch];
     
+    
+    //时间日期选择视图
+    self.seleceView = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight-255-64, ScreenWidth, 255)];
+    self.seleceView.backgroundColor = [UIColor whiteColor];
+    self.seleceView.hidden = YES;
+    [self.view addSubview:self.seleceView];
+    
+    CALayer *seleceViewTopBorder=[[CALayer alloc]init];
+    seleceViewTopBorder.frame=CGRectMake(0, 0, self.seleceView.frame.size.width, 0.5);
+    seleceViewTopBorder.backgroundColor=lineColorGray.CGColor;
+    [self.seleceView.layer addSublayer:seleceViewTopBorder ];
+    
+ 
+    
+    self.pickCancel = [[UIButton alloc]initWithFrame:CGRectMake(0,0, 80, 40)];
+    [self.pickCancel setTitle:@"取消" forState:UIControlStateNormal];
+    self.pickCancel.titleLabel.font = [UIFont systemFontOfSize:15];
+    [self.pickCancel setTitleColor:fontColorBlack forState:UIControlStateNormal];
+    [self.pickCancel addTarget:self action:@selector(selectPick:) forControlEvents:UIControlEventTouchUpInside];
+    self.pickCancel.tag = 198801;
+    [self.seleceView addSubview:self.pickCancel];
+    
+    self.pickSubmit = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth-80,0, 80, 40)];
+    [self.pickSubmit setTitle:@"确定" forState:UIControlStateNormal];
+    self.pickSubmit.titleLabel.font = [UIFont systemFontOfSize:15];
+      [self.pickSubmit setTitleColor:fontColorBlack forState:UIControlStateNormal];
+    [self.pickSubmit addTarget:self action:@selector(selectPick:) forControlEvents:UIControlEventTouchUpInside];
+    self.pickSubmit.tag = 198802;
+    [self.seleceView addSubview:self.pickSubmit];
+
+    //日期和时间选择器
+    self.myPickView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 40 ,ScreenWidth, 215)];
+    self.myPickView.backgroundColor = [UIColor whiteColor];
+    self.myPickView.delegate = self;
+    self.myPickView.dataSource = self;
+    [self.seleceView addSubview:self.myPickView];
+    
+    CALayer *myPickViewTopBorder=[[CALayer alloc]init];
+    myPickViewTopBorder.frame=CGRectMake(0, 0,  self.myPickView.frame.size.width, 0.5);
+    myPickViewTopBorder.backgroundColor=lineColorGray.CGColor;
+    [ self.myPickView.layer addSublayer:myPickViewTopBorder ];
+    
  }
 
+
+//测试数据
+-(void) initInfoArray{
+    //测试数据
+    self.myArray = [[NSMutableArray alloc] init];
+    
+    NSMutableDictionary *myDictionary = nil;
+    
+    myDictionary = [[NSMutableDictionary alloc] init];
+    [myDictionary setValue:@"选择目的地" forKey:@"title"];
+    [myDictionary setValue:[UIImage imageNamed:@"test_picture.jpg"] forKey:@"image"];
+    [self.myArray addObject:myDictionary];
+    
+    myDictionary = [[NSMutableDictionary alloc] init];
+    [myDictionary setValue:@"停车时间" forKey:@"title"];
+    [myDictionary setValue:[UIImage imageNamed:@"test_picture.jpg"] forKey:@"image"];
+    [self.myArray addObject:myDictionary];
+    
+    
+}
+
+//初始化时间日期选择器数据
+-(void)initPickerData{
+ 
+    self.dataArray = [[NSMutableArray alloc]init];
+    NSString *myString = nil;
+    myString = @"今天";
+    [self.dataArray addObject:myString];
+    myString = @"明天";
+    [self.dataArray addObject:myString];
+    myString = @"后天";
+    [self.dataArray addObject:myString];
+    
+    self.hourArray = [[NSMutableArray alloc]init];
+    for (int i=0; i<24; i++) {
+        myString = [NSString stringWithFormat:@"%02d",i];
+        [self.hourArray addObject:myString];
+    }
+    
+    self.minuteArray = [[NSMutableArray alloc]init];
+    for (int i=0; i<60; i++) {
+        myString = [NSString stringWithFormat:@"%02d",i];
+        [self.minuteArray addObject:myString];
+    }
+    
+}
+
+
+-(void)selectPick:(UIButton *)myButton{
+    if (myButton.tag == 198801) {
+        self.seleceView.hidden = YES;
+    }else{
+        self.seleceView.hidden = YES;
+        NSInteger selectedOneIndex = [self.myPickView selectedRowInComponent:0];
+        NSInteger selectedTwoIndex = [self.myPickView selectedRowInComponent:1];
+          NSInteger selectedThreeIndex = [self.myPickView selectedRowInComponent:2];
+        
+        NSLog(@"选择的时间为%@；%@；%@!!!!",self.dataArray[selectedOneIndex],self.hourArray[selectedTwoIndex],self.minuteArray[selectedThreeIndex]);
+        
+        
+        
+    }
+
+}
 
 //提交按钮点击事件
 -(void)submitClick{
@@ -159,7 +278,7 @@
         cell = [[SearchAppointCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reusableIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    
+      cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     [cell setCellInfo:self.myArray[indexPath.row]];
     
     return cell;
@@ -168,8 +287,44 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
- 
     
+    if (indexPath.row == 0) {
+        SearchAppointSelectController *myController = [[SearchAppointSelectController alloc]init];
+        [self.navigationController pushViewController:myController animated:YES];
+    }else{
+        self.seleceView.hidden = NO;
+    }
+}
+
+#pragma mark 时间和日期选择代理
+//确定picker的每个轮子的item数
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    if (component == 0) {//第一个轮子内item数量
+        return [self.dataArray count];
+    } else if (component == 0) {//第二个轮子内item数量
+        return [self.hourArray count];
+    }else{//第三个轮子内item数量
+        return [self.minuteArray count];
+    }
+}
+
+//确定picker的轮子个数
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 3;
+}
+
+//确定每个轮子的每一项显示什么内容
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    if(component == 0) {
+        return [self.dataArray objectAtIndex:row];
+    }else if(component == 1) {
+        return [self.hourArray objectAtIndex:row];
+    }else{
+        return [self.minuteArray objectAtIndex:row];
+    }
 }
 
 

@@ -14,7 +14,7 @@
 @property(nonatomic, strong) UIView  *cutLine;//分割线
 @property(nonatomic, strong) UIImageView *searchImageView;
 @property(nonatomic, strong) UILabel *searchName;
-@property(nonatomic, strong) UIImageView *searchFlag;
+//@property(nonatomic, strong) UIImageView *searchFlag;
 
 
 - (void)setCellInfo:(NSDictionary *)dic;//设置接口数据

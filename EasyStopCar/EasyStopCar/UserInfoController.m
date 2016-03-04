@@ -40,7 +40,7 @@
 
 
 //测试数据
--(void) initTestArray{
+-(void) initInfoArray{
     //测试数据
     self.myArray = [[NSMutableArray alloc] init];
     

@@ -47,6 +47,6 @@
 
 - (void)callPhone;//拨打电话
 
--(void) initTestArray;//测试数据
+-(void) initInfoArray;//测试数据
 
 @end

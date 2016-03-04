@@ -55,7 +55,7 @@
     self.backageView.hidden = YES;
     [self.view addSubview:self.backageView];
     
-    [self initTestArray];//测试数据
+    [self initInfoArray];//测试数据
 
     
 }
@@ -160,7 +160,7 @@
 
 
 //测试数据
--(void) initTestArray{
+-(void) initInfoArray{
     //测试数据
     self.myArray = [[NSMutableArray alloc] init];
     

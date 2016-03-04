@@ -34,10 +34,10 @@
         self.searchName.textColor = fontColorBlack;
         [self.contentView addSubview:self.searchName];
         
-        self.searchFlag = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth-marginSize-7, 0, 7, 50)];
-        self.searchFlag.contentMode = UIViewContentModeScaleAspectFit;
-        [self.searchFlag setImage:[UIImage imageNamed:@"ico_home_select_arrow"]];
-        [self.contentView addSubview:self.searchFlag];
+//        self.searchFlag = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth-marginSize-7, 0, 7, 50)];
+//        self.searchFlag.contentMode = UIViewContentModeScaleAspectFit;
+//        [self.searchFlag setImage:[UIImage imageNamed:@"ico_home_select_arrow"]];
+//        [self.contentView addSubview:self.searchFlag];
         
         
         self.cutLine = [[UIView alloc]initWithFrame:CGRectMake(0, 50-0.5, ScreenWidth, 0.5)];
@@ -55,8 +55,8 @@
     NSLog(@"cell数据为%@!!!!!!!",myDictionary);
     
     
-    self.searchName.text = myDictionary[@"testText"];
-   
+    self.searchName.text = myDictionary[@"title"];
+   self.searchImageView.image = myDictionary[@"image"];
   
     
     

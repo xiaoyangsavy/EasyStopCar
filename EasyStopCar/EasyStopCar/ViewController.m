@@ -48,7 +48,7 @@
     [super viewDidLoad];
    
     
-   [super initTestArray];//加载测试数据
+   [super initInfoArray];//加载测试数据
     
     
  [super initNavBarItems:@"易停车"];

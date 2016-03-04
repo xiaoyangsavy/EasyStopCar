@@ -18,6 +18,7 @@
 
 @property(nonatomic,strong) UITableView *serachTableView;//列表
 
+@property(nonatomic,strong)UIButton *searchButton;//搜索按钮
 
 @property(nonatomic,strong)UIView *categoryView;//类别区域
 @property(nonatomic,strong)UIButton *categoryOneLabel;
@@ -42,7 +43,7 @@
     [super viewDidLoad];
    
   
-     [super initTestArray];//加载测试数据
+     [super initInfoArray];//加载测试数据
     self.categoryViewArray = [[NSMutableArray alloc]init];
     self.categoryBackageArray = [[NSMutableArray alloc]init];
     
@@ -70,9 +71,6 @@
     serachTextField.textColor = [UIColor whiteColor];
     [searchView addSubview:serachTextField];
 
-    
-    
-    
     
     
     self.serachTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64)];

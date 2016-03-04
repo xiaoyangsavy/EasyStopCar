@@ -8,6 +8,6 @@
 
 #import "UITempletViewController.h"
 
-@interface SearchAppointController : UITempletViewController<UITableViewDataSource,UITableViewDelegate>
+@interface SearchAppointController : UITempletViewController<UITableViewDataSource,UITableViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 
 @end

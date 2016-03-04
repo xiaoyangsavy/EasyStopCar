@@ -72,17 +72,17 @@
     
     
     
-    [[Connetion shared]customReservationQueue:nil   finish:^(NSDictionary *resultData, NSError *error)
-     {
-         
-         if (!error)
-         {
-             NSLog(@"接口返回数据为%@",resultData);
-         }else{
-         NSLog(@"接口返回错误为%@",error);
-         }
-         
-     }];
+//    [[Connetion shared]customReservationQueue:nil   finish:^(NSDictionary *resultData, NSError *error)
+//     {
+//         
+//         if (!error)
+//         {
+//             NSLog(@"接口返回数据为%@",resultData);
+//         }else{
+//         NSLog(@"接口返回错误为%@",error);
+//         }
+//         
+//     }];
 
 }
 
