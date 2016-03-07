@@ -188,7 +188,7 @@
     
     self.priceFlag = [[UIImageView alloc]initWithFrame:CGRectMake(self.infoPriceView.frame.size.width-7-marginSize, self.priceLabel.frame.origin.y+self.priceLabel.frame.size.height-14, 7, 14)];
     self.priceFlag.image = [UIImage imageNamed:@"ico_home_select_arrow"];
-    self.priceFlag.contentMode = UIViewContentModeScaleAspectFit;
+    self.priceFlag.contentMode = UIViewContentModeScaleToFill;
     [self.infoPriceView addSubview:self.priceFlag];
     
     
@@ -200,8 +200,8 @@
     
     //分割线
     self.lineImageView = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, self.infoView.frame.origin.y+278, self.infoView.frame.size.width, 10)];
-    self.lineImageView.image = [UIImage imageNamed:@"image_order_line"];
-    self.lineImageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.lineImageView.image = [UIImage imageNamed:@"image_order_detail_line"];
+    self.lineImageView.contentMode = UIViewContentModeScaleToFill;
     [self.view addSubview:self.lineImageView];
     
     self.infoCouponView = [[UIView alloc]initWithFrame:CGRectMake(0, 278, self.infoView.frame.size.width, 186)];

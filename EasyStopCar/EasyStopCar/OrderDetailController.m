@@ -43,6 +43,8 @@
 @property(nonatomic,strong)UILabel *priceDetailLabel;
 @property(nonatomic,strong)UIImageView *priceFlag;
 
+@property(nonatomic,strong)NSTimer *myTimer;
+
 
 @property(nonatomic,assign)int availableTimeValue;
 @end
@@ -51,7 +53,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    
     [super initNavBarItems:@"停车订单详情"];
     
     
@@ -91,7 +93,7 @@
     [self.view addSubview:self.twoDimensionalImageView];
     
     
- //信息详细视图
+    //信息详细视图
     self.infoDetailView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth*0.5, self.infoView.frame.size.height)];
     [self.infoView addSubview:self.infoDetailView];
     
@@ -101,7 +103,7 @@
     
     self.infoName = [[UILabel alloc]initWithFrame:CGRectMake(self.infoLocationFlag.frame.origin.x+self.infoLocationFlag.frame.size.width+5, 15, 100, 15)];
     self.infoName.text = @"您的车位";
-     self.infoName.textColor = fontColorGray;
+    self.infoName.textColor = fontColorGray;
     self.infoName.font = [UIFont systemFontOfSize:14];
     [self.infoView addSubview:self.infoName];
     
@@ -141,12 +143,12 @@
     
     
     
- //信息时间视图
+    //信息时间视图
     self.infoTimeView = [[UIView alloc]initWithFrame:CGRectMake(ScreenWidth*0.5, 0, ScreenWidth*0.5, self.infoView.frame.size.height)];
     [self.infoView addSubview:self.infoTimeView];
     
     
- 
+    
     
     self.infoTimeName = [[UILabel alloc]initWithFrame:CGRectMake(0, 15, ScreenWidth*0.5, 15)];
     self.infoTimeName.font = [UIFont systemFontOfSize:14];
@@ -157,7 +159,7 @@
     
     self.circularProgressView = [[MRCircularProgressView alloc]initWithFrame:CGRectMake(0, self.infoTimeName.frame.origin.y+self.infoTimeName.frame.size.height+5, 80, 80)];
     self.circularProgressView.progress = 0;
-     self.circularProgressView.valueLabel.text = @"30:00";
+    self.circularProgressView.valueLabel.text = @"30:00";
     [self.infoTimeView addSubview:self.circularProgressView];
     
     
@@ -189,7 +191,7 @@
     [self.priceView addSubview:self.priceDetailLabel];
     
     
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerAdvanced:) userInfo:nil repeats:YES];
+    self.myTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerAdvanced:) userInfo:nil repeats:YES];
     
     
 }
@@ -198,7 +200,7 @@
 -(void)payDetailClick{
     OrderPayDetailController *myController = [[OrderPayDetailController alloc]init];
     [self.navigationController pushViewController:myController animated:YES];
-
+    
 }
 
 //计时器调用方法
@@ -206,15 +208,15 @@
 {
     
     float progress = (1 - self.availableTimeValue/1800.0);
-     NSLog(@"开始倒计时%f",progress);
-   self.circularProgressView.progress = progress;
+    NSLog(@"开始倒计时%f",progress);
+    self.circularProgressView.progress = progress;
     
     self.circularProgressView.valueLabel.text = [NSString stringWithFormat:@"%d:%02d",self.availableTimeValue/60,self.availableTimeValue%60];
     
     if (self.availableTimeValue == 0) {
-        [timer invalidate];
+        [self.myTimer invalidate];
     }else{
-    self.availableTimeValue--;
+        self.availableTimeValue--;
     }
 }
 
@@ -260,6 +262,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+//视图即将消失
+-(void)viewDidDisappear:(BOOL)animated{
+    NSLog(@"消失！！！！！");
+    [self.myTimer invalidate];
+}
 
 @end

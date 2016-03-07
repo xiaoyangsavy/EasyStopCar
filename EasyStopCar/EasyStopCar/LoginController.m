@@ -35,11 +35,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     
-    self.userView = [[InputItemModel alloc] initWithFrame:CGRectMake(marginSize,20, ScreenWidth-marginSize*2, 45) iconImage:@"test_picture.jpg" text:@"" placeHolderText:@"手机号"];
+    self.userView = [[InputItemModel alloc] initWithFrame:CGRectMake(marginSize,20, ScreenWidth-marginSize*2, 45) iconImage:@"ico_login_user" text:@"" placeHolderText:@"手机号"];
     self.userView.delegate = self;
     [self.view addSubview:self.userView];
     
-    self.passwordView = [[InputItemModel alloc]initWithFrame:CGRectMake(marginSize, self.userView.frame.origin.y+self.userView.frame.size.height+10, ScreenWidth-marginSize*2, 45) iconImage:@"test_picture.jpg" text:@"" placeHolderText:@"登陆密码"];
+    self.passwordView = [[InputItemModel alloc]initWithFrame:CGRectMake(marginSize, self.userView.frame.origin.y+self.userView.frame.size.height+10, ScreenWidth-marginSize*2, 45) iconImage:@"ico_login_password" text:@"" placeHolderText:@"登陆密码"];
      self.passwordView.delegate = self;
     [self.view addSubview:self.passwordView];
     

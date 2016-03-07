@@ -118,7 +118,7 @@
     //分割线
     self.lineImageView = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, self.infoView.frame.origin.y+275, self.infoView.frame.size.width, 10)];
     self.lineImageView.image = [UIImage imageNamed:@"image_order_line"];
-        self.lineImageView.contentMode = UIViewContentModeScaleAspectFit;
+        self.lineImageView.contentMode = UIViewContentModeScaleToFill;
     [self.view addSubview:self.lineImageView];
  
     

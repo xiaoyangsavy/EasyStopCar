@@ -52,7 +52,7 @@
         self.headImageView.layer.cornerRadius = self.headImageView.frame.size.height / 2.0;
         self.headImageView.layer.masksToBounds = YES;
         self.headImageView.userInteractionEnabled = YES;
-        self.headImageView.image = [UIImage imageNamed:@"test_picture.jpg"];
+        self.headImageView.image = [UIImage imageNamed:@"image_user_head"];
         [view addSubview:self.headImageView];
         
  
@@ -102,22 +102,22 @@
     userDictionary[@"name"] = @"我的钱包";
     NSString *memberRemainderTitle =  [NSString stringWithFormat:@"￥%@元",self.memberRemainder];
     userDictionary[@"content"] = memberRemainderTitle ;
-    userDictionary[@"image"] = [UIImage imageNamed:@"test_picture.jpg"];
+    userDictionary[@"image"] = [UIImage imageNamed:@"ico_user_wallet"];
     [self.userDataArray addObject:userDictionary];
     userDictionary = [[NSMutableDictionary alloc]init];
     userDictionary[@"name"] = @"我的订单";
     userDictionary[@"content"] = @"";
-    userDictionary[@"image"] = [UIImage imageNamed:@"test_picture.jpg"];
+    userDictionary[@"image"] = [UIImage imageNamed:@"ico_user_order"];
     [self.userDataArray addObject:userDictionary];
     userDictionary = [[NSMutableDictionary alloc]init];
     userDictionary[@"name"] = @"我的优惠劵";
     userDictionary[@"content"] = @"";
-    userDictionary[@"image"] = [UIImage imageNamed:@"test_picture.jpg"];
+    userDictionary[@"image"] = [UIImage imageNamed:@"ico_user_coupon"];
     [self.userDataArray addObject:userDictionary];
     userDictionary = [[NSMutableDictionary alloc]init];
     userDictionary[@"name"] = @"设置";
     userDictionary[@"content"] = @"";
-    userDictionary[@"image"] = [UIImage imageNamed:@"test_picture.jpg"];
+    userDictionary[@"image"] = [UIImage imageNamed:@"ico_user_setting"];
     [self.userDataArray addObject:userDictionary];
     
     [self.userTableView reloadData];

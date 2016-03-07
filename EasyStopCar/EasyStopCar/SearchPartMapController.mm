@@ -558,8 +558,6 @@
         
         CommonTools *commonTools = [[CommonTools alloc]init];//工具类
         
-        
-        
         BMKPinAnnotationView *newAnnotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
         
         newAnnotationView.pinColor = BMKPinAnnotationColorPurple;

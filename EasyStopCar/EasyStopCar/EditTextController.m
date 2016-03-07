@@ -15,7 +15,7 @@
 
 @property(nonatomic, strong) UIView *editView;
 @property(nonatomic, strong) UITextField *editTextField;//文本编辑
-
+@property(nonatomic, strong) UIImageView *editFlag;//编辑标识
 @end
 
 @implementation EditTextController
@@ -61,6 +61,10 @@
     [self.editView addSubview:self.editTextField];
     
     
+    self.editFlag = [[UIImageView alloc]initWithFrame:CGRectMake(ScreenWidth-16-marginSize, 0, 16, self.editView.frame.size.height)];
+    self.editFlag.image = [UIImage imageNamed:@"ico_user_edit"];
+    self.editFlag.contentMode = UIViewContentModeScaleAspectFit;
+    [self.editView addSubview:self.editFlag];
 }
 
 //保存信息
