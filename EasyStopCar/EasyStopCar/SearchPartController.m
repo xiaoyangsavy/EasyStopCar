@@ -9,7 +9,7 @@
 #import "SearchPartController.h"
 #import "SearchPartMapController.h"
 #import "SearchPartCell.h"
-#import "SearchPartDetailController.h"
+
 
 @interface SearchPartController ()
 {
@@ -302,7 +302,7 @@
 {
 //    NSLog(@"点击了一个cell");
     
-    SearchPartDetailController *searchPartDetailController = [[SearchPartDetailController alloc]init];
+    SearchPartMapController *searchPartDetailController = [[SearchPartMapController alloc]init];
     searchPartDetailController.styleType = self.styleType;
     searchPartDetailController.searchedLocation = self.searchedLocation;
     searchPartDetailController.searchedData = self.searchedData;

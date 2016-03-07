@@ -31,7 +31,7 @@
 		4D9AC43C1C84219500E923CC /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC43B1C84219500E923CC /* libstdc++.6.0.9.tbd */; };
 		4D9AC43E1C8421D700E923CC /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D9AC43D1C8421D700E923CC /* mapapi.bundle */; };
 		4D9AC4411C8423DA00E923CC /* UITempletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC4401C8423DA00E923CC /* UITempletViewController.m */; };
-		4D9AC4451C84242E00E923CC /* SearchPartMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC4441C84242E00E923CC /* SearchPartMapController.m */; };
+		4D9AC4451C84242E00E923CC /* SearchPartMapController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC4441C84242E00E923CC /* SearchPartMapController.mm */; };
 		4D9C5E701C89590D00543681 /* Connetion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9C5E6E1C89590D00543681 /* Connetion.m */; };
 		4D9C5E731C895BF800543681 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9C5E711C895BF800543681 /* libAFNetworking.a */; };
 		4D9C5E741C895BF800543681 /* libSVProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9C5E721C895BF800543681 /* libSVProgressHUD.a */; };
@@ -71,7 +71,6 @@
 		4DE57E931C8521A50087D79F /* SearchPartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E921C8521A50087D79F /* SearchPartController.m */; };
 		4DE57E961C852C3A0087D79F /* SearchPartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E951C852C3A0087D79F /* SearchPartCell.m */; };
 		4DE57E991C8539170087D79F /* CommonTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E981C8539170087D79F /* CommonTools.m */; };
-		4DE57E9C1C853D7C0087D79F /* SearchPartDetailController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E9B1C853D7C0087D79F /* SearchPartDetailController.mm */; };
 		4DE57EA31C85A3EA0087D79F /* OrderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57EA21C85A3EA0087D79F /* OrderDetailController.m */; };
 		EC26043A7EA5936A06555FFE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BE385F8525FBDF9100DEF3 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -128,7 +127,7 @@
 		4D9AC43F1C8423DA00E923CC /* UITempletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITempletViewController.h; sourceTree = "<group>"; };
 		4D9AC4401C8423DA00E923CC /* UITempletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITempletViewController.m; sourceTree = "<group>"; };
 		4D9AC4431C84242E00E923CC /* SearchPartMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPartMapController.h; sourceTree = "<group>"; };
-		4D9AC4441C84242E00E923CC /* SearchPartMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPartMapController.m; sourceTree = "<group>"; };
+		4D9AC4441C84242E00E923CC /* SearchPartMapController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SearchPartMapController.mm; sourceTree = "<group>"; };
 		4D9AC4471C84266A00E923CC /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
 		4D9C5E6E1C89590D00543681 /* Connetion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Connetion.m; path = Common/Connetion.m; sourceTree = "<group>"; };
 		4D9C5E6F1C89590D00543681 /* Connetion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connetion.h; path = Common/Connetion.h; sourceTree = "<group>"; };
@@ -209,8 +208,6 @@
 		4DE57E951C852C3A0087D79F /* SearchPartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPartCell.m; sourceTree = "<group>"; };
 		4DE57E971C8539170087D79F /* CommonTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTools.h; sourceTree = "<group>"; };
 		4DE57E981C8539170087D79F /* CommonTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTools.m; sourceTree = "<group>"; };
-		4DE57E9A1C853D7C0087D79F /* SearchPartDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPartDetailController.h; sourceTree = "<group>"; };
-		4DE57E9B1C853D7C0087D79F /* SearchPartDetailController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SearchPartDetailController.mm; sourceTree = "<group>"; };
 		4DE57EA11C85A3EA0087D79F /* OrderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailController.h; sourceTree = "<group>"; };
 		4DE57EA21C85A3EA0087D79F /* OrderDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailController.m; sourceTree = "<group>"; };
 		AF30E22EBCA7C9B547958742 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -352,11 +349,9 @@
 			isa = PBXGroup;
 			children = (
 				4D9AC4431C84242E00E923CC /* SearchPartMapController.h */,
-				4D9AC4441C84242E00E923CC /* SearchPartMapController.m */,
+				4D9AC4441C84242E00E923CC /* SearchPartMapController.mm */,
 				4DE57E911C8521A50087D79F /* SearchPartController.h */,
 				4DE57E921C8521A50087D79F /* SearchPartController.m */,
-				4DE57E9A1C853D7C0087D79F /* SearchPartDetailController.h */,
-				4DE57E9B1C853D7C0087D79F /* SearchPartDetailController.mm */,
 				4DB94A2E1C8813880003AC08 /* SearchAppointController.h */,
 				4DB94A2F1C8813880003AC08 /* SearchAppointController.m */,
 				4D9C5E751C89643500543681 /* SearchAppointSelectController.h */,
@@ -725,9 +720,8 @@
 				4DB94A2D1C87D5FC0003AC08 /* WXApiManager.m in Sources */,
 				4DB94A371C8820110003AC08 /* LoginController.m in Sources */,
 				4DB94A461C8836850003AC08 /* UserInfoController.m in Sources */,
-				4DE57E9C1C853D7C0087D79F /* SearchPartDetailController.mm in Sources */,
 				4DB95FBD1C86917B006B92F9 /* MRProgressView.m in Sources */,
-				4D9AC4451C84242E00E923CC /* SearchPartMapController.m in Sources */,
+				4D9AC4451C84242E00E923CC /* SearchPartMapController.mm in Sources */,
 				4D9AC4411C8423DA00E923CC /* UITempletViewController.m in Sources */,
 				4DB94A401C882EB30003AC08 /* ProfileCell.m in Sources */,
 				4DB95FC01C86917B006B92F9 /* MRMethodCopier.m in Sources */,

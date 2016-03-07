@@ -1,12 +1,12 @@
 //
-//  SearchPartDetailController.m
+//  SearchPartMapController.m
 //  EasyStopCar
 //
-//  Created by savvy on 16/3/1.
+//  Created by savvy on 16/2/29.
 //  Copyright © 2016年 Savvy. All rights reserved.
 //
 
-#import "SearchPartDetailController.h"
+#import "SearchPartMapController.h"
 #import "CommonTools.h"
 
 
@@ -26,19 +26,32 @@
 @synthesize degree = _degree;
 @end
 
-@interface SearchPartDetailController ()
+@interface SearchPartMapController ()
 {
     UITextField *currentTextField;
 }
-
-@property(nonatomic,strong)UIButton *submitButoon;      //提交按钮
-@property(nonatomic,strong)UIScrollView *homeScroll;
-@property(nonatomic,strong)UIView *infoView;            //信息视图
-@property(nonatomic,strong)UIView *electricityView;     //电价视图
-@property(nonatomic,strong)UIView *priceView;           //价格视图
 @property(nonatomic,strong) BMKMapView* mapView;                //百度地图
 @property(nonatomic,strong) BMKLocationService* locService;     //定位服务
 @property(nonatomic,strong) BMKRouteSearch* routesearch;       //路线搜索
+
+@property (nonatomic, strong) NSString *searchedContent;//输入完成的搜索内容
+
+//预约条件视图
+@property(nonatomic,strong)UIView *appointConditionView;
+@property(nonatomic,strong)UILabel *appointLocationLabel;//预约地点
+@property(nonatomic,strong)UIImageView *appointElectricityFlag;//预约有电标识
+@property(nonatomic,strong)UILabel *appointDataLabel;//预约时间
+@property(nonatomic,strong)UIButton *appointEditButton;//预约修改按钮
+
+
+
+
+@property(nonatomic,strong)UIButton *submitButoon;      //提交按钮
+@property(nonatomic,strong)UIView *infoBackageView;
+@property(nonatomic,strong)UIView *infoView;            //信息视图
+@property(nonatomic,strong)UIView *electricityView;     //电价视图
+@property(nonatomic,strong)UIView *priceView;           //价格视图
+
 
 
 @property(nonatomic,strong)UIImageView *headImageView;  //头像
@@ -71,74 +84,82 @@
 @property(nonatomic,strong)UIButton *submitButtonConcel;
 @property(nonatomic,strong)UIButton *submitButtonAffirm;
 
-@property (nonatomic, strong) NSString *searchedContent;//输入完成的搜索内容
-
-
 @property (nonatomic, assign) CLLocationCoordinate2D userLocationCoordinate2D;
 @property (nonatomic, assign) BOOL isFirest;
+
 @end
 
-@implementation SearchPartDetailController
+@implementation SearchPartMapController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+ 
+     [super addRightButton:@"button_map_refresh" lightedImage:@"button_map_refresh" selector:@selector(refreshMap)];
+    
+    
+    //搜索框
+    UIView *searchView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 40)];
+    [self.navigationItem setTitleView:searchView];
+    
+    //    UIImageView *serachBackageView = [[UIImageView alloc]initWithFrame:CGRectMake(-20, searchView.frame.size.height-15, searchView.frame.size.width+40, 5)];
+    //    serachBackageView.image = [UIImage imageNamed:@"hh_backage_serach"];
+    //    serachBackageView.contentMode = UIViewContentModeScaleAspectFit;
+    //    [searchView addSubview:serachBackageView];
+    
+    UIImageView *serachIcoView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 12, 40)];
+    serachIcoView.image = [UIImage imageNamed:@"ico_navigation_search"];
+    serachIcoView.contentMode = UIViewContentModeScaleAspectFit;
+    [searchView addSubview:serachIcoView];
+    
+    UITextField *serachTextField = [[UITextField alloc]initWithFrame:CGRectMake(serachIcoView.frame.origin.x+serachIcoView.frame.size.width+2, 0, searchView.frame.size.width-10, 40)];
+    //    [serachTextField setPlaceholder:@"请搜索商品"];
+    serachTextField.font = [UIFont systemFontOfSize:13];
+    serachTextField.delegate = self;
+    serachTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"搜索停车场" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:1 green:1 blue:1 alpha:0.7]}];
+    serachTextField.textColor = [UIColor whiteColor];
+    [searchView addSubview:serachTextField];
+    
     //定位服务
-    _locService = [[BMKLocationService alloc]init];
+     _locService = [[BMKLocationService alloc]init];
     _locService.delegate = self;
     _locService.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;  //设置定位精确度，默认：kCLLocationAccuracyBest
     _locService.distanceFilter = 100.0f; //指定最小距离更新(米)，默认：kCLDistanceFilterNone
     //启动LocationService
     [_locService startUserLocationService];
-    
     //搜索服务
-   self.routesearch = [[BMKRouteSearch alloc]init];
+    self.routesearch = [[BMKRouteSearch alloc]init];
+    //百度地图
+    _mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64)];
+    _mapView.showsUserLocation = NO;//先关闭显示的定位图层
+    _mapView.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态
+    _mapView.showsUserLocation = YES;//显示定位图层
     
-      [super initNavBarItems:@"停车位详情"];
-    [super addRightTitle:@"预订说明" selector:@selector(showAppointInfo)];
+//    _mapView.zoomLevel = 14;
+     [self.view addSubview:_mapView];
+
+    if (self.styleType == 1) {
+        [self initAppointStyle];
+    }
     
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    
-    //搜索框
-//    UIView *searchView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 40)];
-//    [self.navigationItem setTitleView:searchView];
-// 
-//    
-//    UIImageView *serachIcoView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 12, 40)];
-//    serachIcoView.image = [UIImage imageNamed:@"ico_navigation_search"];
-//    serachIcoView.contentMode = UIViewContentModeScaleAspectFit;
-//    [searchView addSubview:serachIcoView];
-//    
-//    UITextField *serachTextField = [[UITextField alloc]initWithFrame:CGRectMake(serachIcoView.frame.origin.x+serachIcoView.frame.size.width+2, 0, searchView.frame.size.width-10, 40)];
-//    //    [serachTextField setPlaceholder:@"请搜索商品"];
-//    serachTextField.font = [UIFont systemFontOfSize:13];
-//    serachTextField.delegate = self;
-//    serachTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"搜索停车场" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:1 green:1 blue:1 alpha:0.7]}];
-//    serachTextField.textColor = [UIColor whiteColor];
-//    [searchView addSubview:serachTextField];
-    
-  
-    
-    
+    //路线弹出视图------------------------------------------------------------------------
+    //点击地图大头针后弹出
     self.submitButoon = [[UIButton alloc]initWithFrame:CGRectMake(0, ScreenHeight-50-64, ScreenWidth, 50)];
     [self.submitButoon setTitle:@"我要停车" forState:UIControlStateNormal];
     [self.submitButoon addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
     self.submitButoon.backgroundColor = backageColorRed;
     self.submitButoon.titleLabel.font = [UIFont systemFontOfSize:18];
+    self.submitButoon.hidden = YES;
     [self.view addSubview:self.submitButoon];
     
-    //页面布局*******************************
-    self.homeScroll=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-self.submitButoon.frame.size.height-64)];
-    self.homeScroll.contentSize=CGSizeMake(ScreenWidth, 100+40+40+300);
-    self.homeScroll.showsHorizontalScrollIndicator=NO;
-    self.homeScroll.showsVerticalScrollIndicator=NO;
-    [self.view addSubview:self.homeScroll];
-
- 
+    
+    self.infoBackageView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 100+40+40)];
+    self.infoBackageView.backgroundColor = [UIColor whiteColor];
+    self.infoBackageView.hidden = YES;
+    [self.view addSubview:self.infoBackageView];
     
     self.infoView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
-    [self.homeScroll addSubview:self.infoView];
+    [self.infoBackageView addSubview:self.infoView];
     
     CALayer *infoBottomBorder=[[CALayer alloc]init];
     infoBottomBorder.frame=CGRectMake(0, self.infoView.frame.size.height-0.5, self.infoView.frame.size.width, 0.5);
@@ -147,7 +168,7 @@
     
     
     self.electricityView = [[UIView alloc]initWithFrame:CGRectMake(0, self.infoView.frame.origin.y+self.infoView.frame.size.height, ScreenWidth, 40)];
-    [self.homeScroll addSubview:self.electricityView];
+    [self.infoBackageView addSubview:self.electricityView];
     
     CALayer *electricityBottomBorder=[[CALayer alloc]init];
     electricityBottomBorder.frame=CGRectMake(0, self.electricityView.frame.size.height-0.5, self.electricityView.frame.size.width, 0.5);
@@ -155,7 +176,7 @@
     [self.electricityView.layer addSublayer:electricityBottomBorder];
     
     self.priceView = [[UIView alloc]initWithFrame:CGRectMake(0, self.electricityView.frame.origin.y+self.electricityView.frame.size.height, ScreenWidth, 40)];
-    [self.homeScroll addSubview:self.priceView];
+    [self.infoBackageView addSubview:self.priceView];
     
     CALayer *priceBottomBorder=[[CALayer alloc]init];
     priceBottomBorder.frame=CGRectMake(0, self.priceView.frame.size.height-0.5, self.priceView.frame.size.width, 0.5);
@@ -163,12 +184,8 @@
     [self.priceView.layer addSublayer:priceBottomBorder];
     
     
-    self.mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, self.priceView.frame.origin.y+self.priceView.frame.size.height, ScreenWidth, 300)];
-    self.mapView.showsUserLocation = NO;//先关闭显示的定位图层
-    self.mapView.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态
-    self.mapView.showsUserLocation = YES;//显示定位图层
-    [self.homeScroll addSubview:self.mapView];
-   
+    
+    
     
     //信息视图
     self.headImageView = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 15, 75, 75)];
@@ -180,7 +197,7 @@
     self.positionFlag = [[UIImageView alloc]initWithFrame:CGRectMake(self.headImageView.frame.origin.x+self.headImageView.frame.size.width, 20, 11.5, 15)];
     self.positionFlag.image = [UIImage imageNamed:@"ico_home_cell_location"];
     [self.infoView addSubview:self.positionFlag];
-
+    
     self.nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.positionFlag.frame.origin.x+self.positionFlag.frame.size.width+5, self.positionFlag.frame.origin.y, 150, 15)];
     self.nameLabel.font = [UIFont systemFontOfSize:15];
     self.nameLabel.textColor = fontColorBlack;
@@ -191,28 +208,27 @@
     self.distanceLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth-marginSize-80, self.positionFlag.frame.origin.y, 80, 15)];
     self.distanceLabel.font = [UIFont systemFontOfSize:14];
     self.distanceLabel.textColor = fontColorLightgray;
-     self.distanceLabel.text = @"未知";
+    self.distanceLabel.text = @"未知";
     [self.infoView addSubview:self.distanceLabel];
     
     self.infoLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.nameLabel.frame.origin.x, self.nameLabel.frame.origin.y+self.nameLabel.frame.size.height+5, 200, 15)];
     self.infoLabel.font = [UIFont systemFontOfSize:15];
     self.infoLabel.textColor = fontColorGray;
-     self.infoLabel.text = @"未知";
+    self.infoLabel.text = @"未知";
     [self.infoView addSubview:self.infoLabel];
     
     self.remainderLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.nameLabel.frame.origin.x, self.headImageView.frame.origin.y+self.headImageView.frame.size.height-15, 200, 15)];
     self.remainderLabel.font = [UIFont systemFontOfSize:15];
     self.remainderLabel.textColor = fontColorGray;
-     self.remainderLabel.text = @"未知";
+    self.remainderLabel.text = @"未知";
     [self.infoView addSubview:self.remainderLabel];
     
     
     //电价视图
-    
     self.electricityFlag = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, (self.electricityView.frame.size.height-15)/2, 15, 15)];
     self.electricityFlag.image = [UIImage imageNamed:@"ico_home_cell_flag"];
     [self.electricityView addSubview:self.electricityFlag];
-
+    
     self.electricityPriceLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.electricityFlag.frame.origin.x+self.electricityFlag.frame.size.width+5, 0, 100, self.electricityView.frame.size.height)];
     self.electricityPriceLabel.font = [UIFont systemFontOfSize:14];
     self.electricityPriceLabel.textColor = backageColorGreen;
@@ -226,7 +242,7 @@
     [self.electricityView addSubview:self.electricityInfoLabel];
     
     self.electricitySwitch = [[ UISwitch alloc]initWithFrame:CGRectMake(ScreenWidth-60,5,0,0)];
-      [self.electricityView addSubview:self.electricitySwitch];
+    [self.electricityView addSubview:self.electricitySwitch];
     [self.electricitySwitch setOn:YES animated:YES];
     
     //价格视图
@@ -246,13 +262,13 @@
     self.priceDayBusinessHoursLabel.textColor = fontColorGray;
     self.priceDayBusinessHoursLabel.text = @"未知";
     [self.priceView addSubview:self.priceDayBusinessHoursLabel];
- 
+    
     
     self.priceCutLine = [[UIView alloc]initWithFrame:CGRectMake(ScreenWidth*0.5, 5, 0.5, self.priceView.frame.size.height-10)];
     self.priceCutLine.backgroundColor = lineColorGray;
     [self.priceView addSubview:self.priceCutLine];
     
-
+    
     self.priceNightFlag = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize+ScreenWidth*0.5, (self.priceView.frame.size.height-15)/2, 15, 15)];
     self.priceNightFlag.image = [UIImage imageNamed:@"ico_search_night"];
     [self.priceView addSubview:self.priceNightFlag];
@@ -289,7 +305,7 @@
     self.submitButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 206, ScreenWidth, 50)];
     self.submitButtonView.backgroundColor = backageColorRed;
     [self.submitAlertView addSubview:self.submitButtonView];
- 
+    
     //提交信息显示
     self.submitInfoTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, ScreenWidth, 15)];
     self.submitInfoTitle.text = @"确认停车？";
@@ -301,9 +317,9 @@
     
     self.submitInfoImageView = [[UIImageView alloc]initWithFrame:CGRectMake((ScreenWidth-80)/2, (self.submitInfoView.frame.size.height-80)/2-10, 80, 80)];
     self.submitInfoImageView.image = [UIImage imageNamed:@"image_order_part_time"];
-     [self.submitInfoView addSubview:self.submitInfoImageView];
+    [self.submitInfoView addSubview:self.submitInfoImageView];
     
-     //提交信息内容显示
+    //提交信息内容显示
     self.submitInfoContent = [[UILabel alloc] initWithFrame:CGRectMake(0, self.submitInfoView.frame.size.height-40-20, ScreenWidth, 40)];
     self.submitInfoContent.text = @"下单后会为您冻结车位30分钟\n请尽快到达";
     [self.submitInfoContent setTextColor:backageColorBlue];
@@ -321,7 +337,7 @@
     self.submitButtonConcel.tag = 198851;
     [self.submitButtonConcel setTitle:@"取消" forState:UIControlStateNormal];
     self.submitButtonConcel.backgroundColor = [UIColor blackColor];
-        self.submitButtonConcel.titleLabel.font = [UIFont systemFontOfSize:18];
+    self.submitButtonConcel.titleLabel.font = [UIFont systemFontOfSize:18];
     [self.submitButtonConcel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.submitButtonConcel addTarget:self action:@selector(submitAlert:)
                       forControlEvents:UIControlEventTouchUpInside];
@@ -340,15 +356,106 @@
     
     [self.submitButtonView addSubview:self.submitButtonAffirm];
     
-   
+}
+
+//初始化预约样式
+-(void)initAppointStyle{
+    
+  
+    _mapView.frame = CGRectMake(0, 40, ScreenWidth, ScreenHeight-64-40);
+    
+    
+    //列表区域
+    self.appointConditionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
+    self.appointConditionView.backgroundColor = backageColorLightgray;
+    [self.view addSubview:self.appointConditionView];
+    
+    CALayer *bottomBorder=[[CALayer alloc]init];
+    bottomBorder.frame=CGRectMake(0, self.appointConditionView.frame.size.height-0.5, self.appointConditionView.frame.size.width, 0.5);
+    bottomBorder.backgroundColor=lineColorGray.CGColor;
+    [self.appointConditionView.layer addSublayer:bottomBorder ];
+    
+    
+    self.appointLocationLabel = [[UILabel alloc]initWithFrame:CGRectMake(marginSize, 0, 100, self.appointConditionView.frame.size.height)];
+    self.appointLocationLabel.text = self.searchedLocation;
+    self.appointLocationLabel.font = [UIFont systemFontOfSize:14];
+    self.appointLocationLabel.textColor = fontColorGray;
+    [self.appointConditionView addSubview:self.appointLocationLabel];
+    
+    self.appointElectricityFlag = [[UIImageView alloc]initWithFrame:CGRectMake(self.appointLocationLabel.frame.origin.x+self.appointLocationLabel.frame.size.width, 0, 20, self.appointConditionView.frame.size.height)];
+    self.appointElectricityFlag.image = [UIImage imageNamed:@"ico_home_cell_flag"];self.appointElectricityFlag.contentMode = UIViewContentModeScaleAspectFit;
+    [self.appointConditionView addSubview:self.appointElectricityFlag];
+    
+    self.appointDataLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.appointElectricityFlag.frame.origin.x+self.appointElectricityFlag.frame.size.width, 0, 100, self.appointConditionView.frame.size.height)];
+    self.appointDataLabel.text = self.searchedData;
+    self.appointDataLabel.font = [UIFont systemFontOfSize:14];
+    self.appointDataLabel.textColor = fontColorGray;
+    [self.appointConditionView addSubview:self.appointDataLabel];
+    
+    self.appointEditButton = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth-30, 0, 30, self.appointConditionView.frame.size.height)];
+    self.appointEditButton.backgroundColor = TEST_COLOR;
+    [self.appointEditButton addTarget:self action:@selector(toReturn) forControlEvents:UIControlEventTouchUpInside];
+    [self.appointConditionView addSubview:self.appointEditButton];
+    
+    
+     [super initNavBarItems:@"停车场"];
+    
+    
+ 
+}
+
+
+//初始化预约样式
+-(void)hideRouteStyle:(BOOL)flag{
+    self.submitButoon.hidden = flag;
+    self.infoBackageView.hidden = flag;
+    if (!flag) {//显示弹出框
+    self.mapView.frame = CGRectMake(0, self.infoBackageView.frame.origin.y+self.infoBackageView.frame.size.height, ScreenWidth, ScreenHeight-self.infoBackageView.frame.origin.y-self.infoBackageView.frame.size.height-self.submitButoon.frame.size.height);
+    }else{//隐藏弹出框
+        _mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64)];
+        _mapView.showsUserLocation = NO;//先关闭显示的定位图层
+        _mapView.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态
+        _mapView.showsUserLocation = YES;//显示定位图层
+         _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
+        //    _mapView.zoomLevel = 14;
+        [self.view addSubview:_mapView];
+        [self initTestData];
+    }
+}
+
+
+
+//初始化测试数据
+-(void)initTestData{
+
+    //测试数据：加入地图定位坐标
+    BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
+    CLLocationCoordinate2D coor;
+    coor.latitude = 39.90868;
+    coor.longitude = 116.204;
+    annotation.coordinate = coor;
+    annotation.title = @"西直门";
+    annotation.subtitle = @"99";
+    [self.mapView addAnnotation:annotation];
+    
+    annotation = [[BMKPointAnnotation alloc]init];
+    coor.latitude = 39.9660160357;
+    coor.longitude = 116.2890118361;
+    annotation.coordinate = coor;
+    annotation.title = @"火器营";
+    annotation.subtitle = @"1";
+    [self.mapView addAnnotation:annotation];
+
 
 }
 
 
-//预订说明
--(void)showAppointInfo{
-    NSLog(@"预订说明");
-   
+//刷新页面
+-(void)refreshMap{
+    NSLog(@"刷新页面");
+    
+    [self hideRouteStyle:YES];
+
 }
 
 //提交按钮点击事件
@@ -377,16 +484,16 @@
 -(void)onClickDriveSearch
 {
     BMKPlanNode *startNode = [[BMKPlanNode alloc]init];
-//    startNode.name = @"龙泽";
-//    startNode.cityName = @"北京市";
+    //    startNode.name = @"龙泽";
+    //    startNode.cityName = @"北京市";
     CLLocationCoordinate2D startCoordinate;
     startCoordinate.latitude = self.userLocationCoordinate2D.latitude;
     startCoordinate.longitude = self.userLocationCoordinate2D.longitude;
     startNode.pt = startCoordinate;
     BMKPlanNode *endNode = [[BMKPlanNode alloc]init];
-//    endNode.name = @"西单";
-//    endNode.cityName = @"北京市";
-     CLLocationCoordinate2D endCoordnate;
+    //    endNode.name = @"西单";
+    //    endNode.cityName = @"北京市";
+    CLLocationCoordinate2D endCoordnate;
     endCoordnate.latitude =39.90868;
     endCoordnate.longitude =116.204;
     endNode.pt = endCoordnate;
@@ -396,9 +503,10 @@
     if ([self.routesearch drivingSearch:drivingRoutePlanOption]) {
         NSLog(@"路线查找成功");
     }else{
-    NSLog(@"路线查找失败");
+        NSLog(@"路线查找失败");
     }
 }
+
 
 
 #pragma mark - textFile代理
@@ -426,46 +534,68 @@
 {
     
     //     NSLog(@"捕获地图动画");
-    
-//    if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
-//        NSLog(@"重写大头针样式");
-//        
-//        UIView *viewForImage=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 50, 100)];
-//        UIImageView *imageview=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, viewForImage.frame.size.width, viewForImage.frame.size.height)];
-//        [imageview setImage:[UIImage imageNamed:@"button_map_loacation_default"]];
-//        [viewForImage addSubview:imageview];
-//        
-//        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, viewForImage.frame.size.width, viewForImage.frame.size.height)];
-//        label.text=@"99";
-//        label.backgroundColor=[UIColor clearColor];
-//        label.textAlignment = NSTextAlignmentCenter;
-//        label.font = [UIFont boldSystemFontOfSize:15];
-//        label.textColor = fontColorBlack;
-//        [viewForImage addSubview:label];
-//        
-//        
-//        
-//        CommonTools *commonTools = [[CommonTools alloc]init];//工具类
-//        
-//        
-//        
-//        BMKPinAnnotationView *newAnnotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
-//        
-//        newAnnotationView.pinColor = BMKPinAnnotationColorPurple;
-//        
-//        newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
-//        
-//        newAnnotationView.annotation=annotation;
-//        
-//        newAnnotationView.image=[commonTools getImageFromView:viewForImage];   //把大头针换成别的图片
-//        
-//        return newAnnotationView;
-//        
-//    }
+    if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
+        NSLog(@"重写大头针样式");
+        
+        UIView *viewForImage=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 50, 100)];
+        UIImageView *imageview=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, viewForImage.frame.size.width, viewForImage.frame.size.height)];
+        [imageview setImage:[UIImage imageNamed:@"button_map_loacation_default"]];
+        [viewForImage addSubview:imageview];
+        
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, viewForImage.frame.size.width, viewForImage.frame.size.height)];
+        label.text=annotation.subtitle;
+        label.backgroundColor=[UIColor clearColor];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.font = [UIFont boldSystemFontOfSize:15];
+        label.textColor = fontColorBlack;
+        [viewForImage addSubview:label];
+
+        
+        
+        
+        CommonTools *commonTools = [[CommonTools alloc]init];//工具类
+        
+        
+        
+        BMKPinAnnotationView *newAnnotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
+        
+        newAnnotationView.pinColor = BMKPinAnnotationColorPurple;
+        
+        newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
+        
+        newAnnotationView.annotation=annotation;
+        
+        newAnnotationView.image=[commonTools getImageFromView:viewForImage];   //把大头针换成别的图片
+        
+        return newAnnotationView;
+        
+    }
     return nil;
     
 }
 
+//点击大头针监听
+- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view{
+//    SearchPartDetailController *searchPartDetailController = [[SearchPartDetailController alloc]init];
+//    searchPartDetailController.styleType = self.styleType;
+//    searchPartDetailController.searchedLocation = self.searchedLocation;
+//    searchPartDetailController.searchedData = self.searchedData;
+//    [self.navigationController pushViewController:searchPartDetailController animated:YES];
+    NSLog(@"点击大头针");
+    view.paopaoView.hidden = YES;//隐藏弹出泡泡
+    
+    [self hideRouteStyle:NO];
+     [self onClickDriveSearch];//检索路线
+
+}
+
+
+
+//点击泡泡监听
+//- (void)mapView:(BMKMapView *)mapView annotationViewForBubble:(BMKAnnotationView *)view{
+//    NSLog(@"点击弹出泡泡");
+// 
+//}
 
 #pragma mark 路线搜索delegate
 - (void)onGetDrivingRouteResult:(BMKRouteSearch*)searcher result:(BMKDrivingRouteResult*)result errorCode:(BMKSearchErrorCode)error
@@ -495,13 +625,13 @@
                 item.type = 1;
                 [_mapView addAnnotation:item]; // 添加起点标注
             }
-            //添加annotation节点
-            RouteAnnotation* item = [[RouteAnnotation alloc]init];
-            item.coordinate = transitStep.entrace.location;
-            item.title = transitStep.entraceInstruction;
-            item.degree = transitStep.direction * 30;
-            item.type = 4;
-            [_mapView addAnnotation:item];
+            //添加annotation节点  （途径节点）
+//            RouteAnnotation* item = [[RouteAnnotation alloc]init];
+//            item.coordinate = transitStep.entrace.location;
+//            item.title = transitStep.entraceInstruction;
+//            item.degree = transitStep.direction * 30;
+//            item.type = 4;
+//            [_mapView addAnnotation:item];
             
             //轨迹点总数累计
             planPointCounts += transitStep.pointsCount;
@@ -570,6 +700,17 @@
     _mapView.zoomLevel = _mapView.zoomLevel - 0.3;
 }
 
+- (BMKOverlayView*)mapView:(BMKMapView *)map viewForOverlay:(id<BMKOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[BMKPolyline class]]) {
+        BMKPolylineView* polylineView = [[BMKPolylineView alloc] initWithOverlay:overlay];
+        polylineView.fillColor = [[UIColor alloc] initWithRed:0 green:1 blue:1 alpha:1];
+        polylineView.strokeColor = [[UIColor alloc] initWithRed:0 green:0 blue:1 alpha:0.7];
+        polylineView.lineWidth = 3.0;
+        return polylineView;
+    }
+    return nil;
+}
 
 #pragma mark 定位服务delegate
 /**
@@ -597,15 +738,8 @@
  */
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
 {
-      NSLog(@"定位经纬度： lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
-    
-    self.userLocationCoordinate2D = userLocation.location.coordinate;
-    if (!self.isFirest) {//首次定位
-        self.isFirest = YES;
-         [self onClickDriveSearch];//检索路线
-    }
-    
-    
+    //    NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+     self.userLocationCoordinate2D = userLocation.location.coordinate;
     [_mapView updateLocationData:userLocation];
 }
 
@@ -640,32 +774,20 @@
     [_mapView viewWillAppear];
     _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     _locService.delegate = self;
-     _routesearch.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
+    _routesearch.delegate = self;
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
     [_mapView viewWillDisappear];
     _mapView.delegate = nil; // 不用时，置nil
-    _locService.delegate = nil;
-    _routesearch.delegate = nil;
+     _locService.delegate = nil;
+     _routesearch.delegate = nil;
 }
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    //测试数据：加入地图定位坐标
-    BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
-    CLLocationCoordinate2D coor;
-    coor.latitude = 39.90868;
-    coor.longitude = 116.204;
-    annotation.coordinate = coor;
-    annotation.title = @"西直门";
-    //                     annotation.subtitle = locationPoint[@"siteName"];
-    
-    [self.mapView addAnnotation:annotation];
-    
+     [self initTestData];//初始化测试数据
 }
-
- 
 
 @end
