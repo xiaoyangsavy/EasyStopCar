@@ -10,6 +10,7 @@
 #import "SearchAppointCell.h"
 #import "SearchAppointSelectController.h"
 #import "SearchPartController.h"
+#import "CommonTools.h"
 @interface SearchAppointController ()
 
 @property(nonatomic,strong)UIButton *submitButoon;      //提交按钮
@@ -65,7 +66,7 @@
     
     //顶部视图
     self.topImageView = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 30, 50, 50)];
-    self.topImageView.image = [UIImage imageNamed:@"test_picture.jpg"];
+    self.topImageView.image = [UIImage imageNamed:@"ico_appoint_complete"];
     self.topImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.topView addSubview:self.topImageView];
     
@@ -181,7 +182,7 @@
     
     myDictionary = [[NSMutableDictionary alloc] init];
     [myDictionary setValue:@"选择目的地" forKey:@"title"];
-    [myDictionary setValue:[UIImage imageNamed:@"test_picture.jpg"] forKey:@"image"];
+    [myDictionary setValue:[UIImage imageNamed:@"ico_home_cell_location"] forKey:@"image"];
     [self.myArray addObject:myDictionary];
     
     myDictionary = [[NSMutableDictionary alloc] init];
@@ -195,15 +196,44 @@
 //初始化时间日期选择器数据
 -(void)initPickerData{
  
-    self.dataArray = [[NSMutableArray alloc]init];
-    NSString *myString = nil;
-    myString = @"今天";
-    [self.dataArray addObject:myString];
-    myString = @"明天";
-    [self.dataArray addObject:myString];
-    myString = @"后天";
-    [self.dataArray addObject:myString];
     
+     self.dataArray = [[NSMutableArray alloc]init];
+     NSString *myString = nil;
+    
+    CommonTools *commonTools = [[CommonTools alloc]init];
+    NSInteger month = [commonTools getDataAndTime:2];
+    NSInteger day = [commonTools getDataAndTime:3];
+    
+    
+    for(int i=1;i<7;i++){
+        NSInteger nextMonth = month;
+        NSInteger nextDay = day+i;
+        
+           NSInteger limitDay = 0;
+            //修改天数
+            if (month==2) {
+                limitDay=28;
+            }else if(month==1||month==3||month==5||month==7||month==8||month==10||month==12){
+             limitDay=31;
+            }else{
+            limitDay=30;
+            }
+            
+        if (day+i > limitDay) {
+            if (month == 12) {
+                nextMonth = 1;
+            }else{
+                nextMonth++;
+            }
+            nextDay = 1;
+        }
+        
+        myString = [NSString stringWithFormat:@"%ld月%ld日",(long)nextMonth,(long)nextDay];
+        [self.dataArray addObject:myString];
+    }
+    
+ 
+ 
     self.hourArray = [[NSMutableArray alloc]init];
     for (int i=0; i<24; i++) {
         myString = [NSString stringWithFormat:@"%02d",i];
@@ -308,7 +338,7 @@
 {
     if (component == 0) {//第一个轮子内item数量
         return [self.dataArray count];
-    } else if (component == 0) {//第二个轮子内item数量
+    } else if (component == 1) {//第二个轮子内item数量
         return [self.hourArray count];
     }else{//第三个轮子内item数量
         return [self.minuteArray count];

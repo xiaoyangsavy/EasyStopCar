@@ -19,9 +19,12 @@
 @property(nonatomic,strong)UIView *infoView;            //信息视图
 @property(nonatomic,strong)UIButton *priceView;           //价格视图
 @property(nonatomic,strong)UIImageView *twoDimensionalImageView;  //二维码视图
+@property(nonatomic,strong)UILabel *twoDimensionalLabel;
+
 
 @property(nonatomic,strong)UIView *infoDetailView;      //信息详细视图
 @property(nonatomic,strong)UIView *infoTimeView;      //信息时间视图
+@property(nonatomic,strong)UIView *infoLine;            //分割线
 
 //信息详细视图
 @property(nonatomic,strong)UIImageView *infoLocationFlag;
@@ -62,7 +65,7 @@
     self.submitButoon = [[UIButton alloc]initWithFrame:CGRectMake(0, ScreenHeight-50-64, ScreenWidth, 50)];
     [self.submitButoon setTitle:@"导航" forState:UIControlStateNormal];
     [self.submitButoon addTarget:self action:@selector(openNativeNavi) forControlEvents:UIControlEventTouchUpInside];
-    self.submitButoon.backgroundColor = backageColorRed;
+    self.submitButoon.backgroundColor = backageColorBlue;
     self.submitButoon.titleLabel.font = [UIFont systemFontOfSize:18];
     [self.view addSubview:self.submitButoon];
     
@@ -80,6 +83,7 @@
     self.priceView = [[UIButton alloc]initWithFrame:CGRectMake(0, self.infoView.frame.origin.y+self.infoView.frame.size.height, ScreenWidth, 44)];
     self.priceView.backgroundColor = [UIColor whiteColor];
     [self.priceView addTarget:self action:@selector(payDetailClick) forControlEvents:UIControlEventTouchUpInside];
+    self.priceView.hidden = YES;
     [self.view addSubview:self.priceView];
     
     CALayer *priceBottomBorder=[[CALayer alloc]init];
@@ -87,23 +91,35 @@
     priceBottomBorder.backgroundColor=lineColorGray.CGColor;
     [self.priceView.layer addSublayer:priceBottomBorder ];
     
-    self.twoDimensionalImageView = [[UIImageView alloc]initWithFrame:CGRectMake((ScreenWidth-200)/2, self.infoView.frame.origin.y+self.infoView.frame.size.height+20, 200, 200)];
-    self.twoDimensionalImageView.frame = CGRectMake((ScreenWidth-200)/2, self.priceView.frame.origin.y+self.priceView.frame.size.height+15, 200, 200);
-    self.twoDimensionalImageView.image = [UIImage imageNamed:@"test_picture.jpg"];
+    self.twoDimensionalImageView = [[UIImageView alloc]initWithFrame:CGRectMake((ScreenWidth-200)/2, self.infoView.frame.origin.y+self.infoView.frame.size.height+15, 200, 200)];
+    self.twoDimensionalImageView.image = [UIImage imageNamed:@"ico_order_two"];
+    self.twoDimensionalImageView.userInteractionEnabled = YES;
     [self.view addSubview:self.twoDimensionalImageView];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(twoDimensionalClick:)];
+    [self.twoDimensionalImageView addGestureRecognizer:tapGesture];
+    
+    
+    self.twoDimensionalLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.twoDimensionalImageView.frame.origin.y+self.twoDimensionalImageView.frame.size.height+10, ScreenWidth, 15)];
+     self.twoDimensionalLabel.text = @"扫码取车";
+    self.twoDimensionalLabel.textAlignment = NSTextAlignmentCenter;
+    self.twoDimensionalLabel.font = [UIFont boldSystemFontOfSize:18];
+    self.twoDimensionalLabel.textColor = fontColorBlack;
+    [self.view addSubview:self.twoDimensionalLabel];
     
     
     //信息详细视图
     self.infoDetailView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth*0.5, self.infoView.frame.size.height)];
     [self.infoView addSubview:self.infoDetailView];
     
-    self.infoLocationFlag = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 15, 15, 15)];
+    self.infoLocationFlag = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 15, 11, 15)];
     self.infoLocationFlag.image = [UIImage imageNamed:@"ico_home_cell_location"];
+    self.infoLocationFlag.contentMode = UIViewContentModeScaleAspectFit;
     [self.infoView addSubview:self.infoLocationFlag];
     
     self.infoName = [[UILabel alloc]initWithFrame:CGRectMake(self.infoLocationFlag.frame.origin.x+self.infoLocationFlag.frame.size.width+5, 15, 100, 15)];
     self.infoName.text = @"您的车位";
-    self.infoName.textColor = fontColorGray;
+    self.infoName.textColor = fontColorBlack;
     self.infoName.font = [UIFont systemFontOfSize:14];
     [self.infoView addSubview:self.infoName];
     
@@ -115,29 +131,29 @@
     
     self.infoAddressDetail = [[UILabel alloc]initWithFrame:CGRectMake(self.infoName.frame.origin.x, self.infoAddress.frame.origin.y+self.infoAddress.frame.size.height+5, 100, 30)];
     self.infoAddressDetail.text = @"未知";
-    self.infoAddressDetail.textColor = fontColorGray;
-    self.infoAddressDetail.font = [UIFont systemFontOfSize:14];
+    self.infoAddressDetail.textColor = fontColorBlack;
+    self.infoAddressDetail.font = [UIFont boldSystemFontOfSize:14];
     [self.infoView addSubview:self.infoAddressDetail];
     
     
-    self.infoDayFlag = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, self.infoAddressDetail.frame.origin.y+self.infoAddressDetail.frame.size.height+15, 15, 15)];
+    self.infoDayFlag = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, self.infoAddressDetail.frame.origin.y+self.infoAddressDetail.frame.size.height+10, 15, 15)];
     self.infoDayFlag.image = [UIImage imageNamed:@"ico_search_day"];
     [self.infoView addSubview:self.infoDayFlag];
     
     self.infoDayPrice = [[UILabel alloc]initWithFrame:CGRectMake(self.infoDayFlag.frame.origin.x+self.infoDayFlag.frame.size.width+5, self.infoDayFlag.frame.origin.y, 100, 15)];
     self.infoDayPrice.text = @"￥0/小时";
-    self.infoDayPrice.textColor = fontColorGray;
+    self.infoDayPrice.textColor = backageColorRed;
     self.infoDayPrice.font = [UIFont systemFontOfSize:14];
     [self.infoView addSubview:self.infoDayPrice];
     
     
-    self.infoNightFlag = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, self.infoDayFlag.frame.origin.y+self.infoDayFlag.frame.size.height+15, 15, 15)];
+    self.infoNightFlag = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, self.infoDayFlag.frame.origin.y+self.infoDayFlag.frame.size.height+10, 15, 15)];
     self.infoNightFlag.image = [UIImage imageNamed:@"ico_search_night"];
     [self.infoView addSubview:self.infoNightFlag];
     
     self.infoNightPrice = [[UILabel alloc]initWithFrame:CGRectMake(self.infoNightFlag.frame.origin.x+self.infoNightFlag.frame.size.width+5, self.infoNightFlag.frame.origin.y, 100, 15)];
     self.infoNightPrice.text = @"￥0/小时";
-    self.infoNightPrice.textColor = fontColorGray;
+    self.infoNightPrice.textColor = backageColorBlue;
     self.infoNightPrice.font = [UIFont systemFontOfSize:14];
     [self.infoView addSubview:self.infoNightPrice];
     
@@ -150,42 +166,51 @@
     
     
     
-    self.infoTimeName = [[UILabel alloc]initWithFrame:CGRectMake(0, 15, ScreenWidth*0.5, 15)];
+    self.infoTimeName = [[UILabel alloc]initWithFrame:CGRectMake(0, 20, self.infoTimeView.frame.size.width, 15)];
     self.infoTimeName.font = [UIFont systemFontOfSize:14];
-    self.infoTimeName.textColor = backageColorGreen;
-    self.infoTimeName.text = @"车位使用中";
+    self.infoTimeName.textColor = backageColorBlue;
+    self.infoTimeName.text = @"车位待停中";
+    self.infoTimeName.textAlignment = NSTextAlignmentCenter;
     [self.infoTimeView addSubview:self.infoTimeName];
     
     
-    self.circularProgressView = [[MRCircularProgressView alloc]initWithFrame:CGRectMake(0, self.infoTimeName.frame.origin.y+self.infoTimeName.frame.size.height+5, 80, 80)];
+    self.circularProgressView = [[MRCircularProgressView alloc]initWithFrame:CGRectMake((self.infoTimeView.frame.size.width-80)/2, self.infoTimeName.frame.origin.y+self.infoTimeName.frame.size.height+10, 80, 80)];
+    self.circularProgressView.borderWidth = 3;
+     self.circularProgressView.lineWidth = 3;
     self.circularProgressView.progress = 0;
+    self.circularProgressView.myColor = backageColorBlue;
     self.circularProgressView.valueLabel.text = @"30:00";
     [self.infoTimeView addSubview:self.circularProgressView];
     
     
     
-    self.infoTimeRemain = [[UILabel alloc]initWithFrame:CGRectMake(0, self.infoTimeView.frame.size.height-15-15, ScreenWidth*0.5, 15)];
-    self.infoTimeRemain.font = [UIFont systemFontOfSize:14];
-    self.infoTimeRemain.textColor = backageColorGreen;
-    self.infoTimeRemain.text = @"已停0小时0分";
+    self.infoTimeRemain = [[UILabel alloc]initWithFrame:CGRectMake(0, self.infoTimeView.frame.size.height-15-20, self.infoTimeView.frame.size.width, 15)];
+    self.infoTimeRemain.font = [UIFont systemFontOfSize:12];
+    self.infoTimeRemain.textColor = backageColorBlue;
+    self.infoTimeRemain.text = @"请在时间内到达";
+    self.infoTimeRemain.textAlignment = NSTextAlignmentCenter;
     [self.infoTimeView addSubview:self.infoTimeRemain];
+    
+     self.infoLine = [[UIView alloc]initWithFrame:CGRectMake(self.infoView.frame.size.width*0.5, marginSize, 0.5, self.infoTimeView.frame.size.height-marginSize*2)];
+    self.infoLine.backgroundColor = lineColorGray;
+    [self.infoView addSubview:self.infoLine];
     
     
     //费用视图布局
     self.priceSumLabel = [[UILabel alloc]initWithFrame:CGRectMake(marginSize, 0, 200, self.priceView.frame.size.height)];
     self.priceSumLabel.font = [UIFont systemFontOfSize:14];
     self.priceSumLabel.textColor = fontColorGray;
-    self.priceSumLabel.text = @"费用共计：";
+    self.priceSumLabel.text = @"费用共计：￥0元";
     [self.priceView addSubview:self.priceSumLabel];
     
-    self.priceFlag = [[UIImageView alloc]initWithFrame:CGRectMake(ScreenWidth-marginSize-10, 0, 10, self.priceView.frame.size.height)];
+    self.priceFlag = [[UIImageView alloc]initWithFrame:CGRectMake(ScreenWidth-marginSize-10, 0, 7, self.priceView.frame.size.height)];
     self.priceFlag.image = [UIImage imageNamed:@"ico_home_select_arrow"];
     self.priceFlag.contentMode = UIViewContentModeScaleAspectFit;
     [self.priceView addSubview:self.self.priceFlag];
     
     self.priceDetailLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.priceFlag.frame.origin.x-80, 0, 70, self.priceView.frame.size.height)];
     self.priceDetailLabel.font = [UIFont systemFontOfSize:14];
-    self.priceDetailLabel.textColor = backageColorGreen;
+    self.priceDetailLabel.textColor = fontColorGray;
     self.priceDetailLabel.text = @"费用明细";
     self.priceDetailLabel.textAlignment = NSTextAlignmentRight;
     [self.priceView addSubview:self.priceDetailLabel];
@@ -195,6 +220,27 @@
     
     
 }
+
+
+//二维码点击事件
+-(void)twoDimensionalClick: (UITapGestureRecognizer*)recognizer{
+    //获取所点击视图recognizer.view
+    self.infoTimeName.text = @"车位使用中";
+    self.infoTimeName.textColor = backageColorGreen;
+    self.infoTimeRemain.text = @"已停时间";
+    self.infoTimeRemain.textColor = backageColorGreen;
+    self.priceView.hidden = NO;
+    self.submitButoon.hidden = YES;
+    self.circularProgressView.myColor = backageColorGreen;
+    
+    
+     self.twoDimensionalImageView.frame = CGRectMake((ScreenWidth-200)/2, self.infoView.frame.origin.y+self.infoView.frame.size.height+65, 200, 200);
+    
+    self.twoDimensionalLabel.frame = CGRectMake(0, self.twoDimensionalImageView.frame.origin.y+self.twoDimensionalImageView.frame.size.height+10, ScreenWidth, 15);
+}
+
+
+
 
 //支付详细点击时间
 -(void)payDetailClick{

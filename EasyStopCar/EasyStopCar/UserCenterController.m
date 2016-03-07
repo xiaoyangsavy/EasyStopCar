@@ -21,6 +21,9 @@
 
 @property(nonatomic, strong) NSMutableArray *userDataArray;//列表数据
 @property(nonatomic, strong) NSString *memberRemainder;//会员余额
+
+@property(nonatomic, strong) UIImageView *backageBottom;//底部背景
+@property(nonatomic, strong) UILabel *serviceLabel;//客服电话
 @end
 
 @implementation UserCenterController
@@ -30,12 +33,28 @@
     
      [super initNavBarItems:@"个人中心"];
     
-    self.userTableView = [[UITableView alloc] initWithFrame:CGRectMake(kScreenBounds.origin.x, 0, kScreenBounds.size.width, kScreenBounds.size.height -140) style:UITableViewStylePlain];
+    
+    
+    self.backageBottom = [[UIImageView alloc]initWithFrame:CGRectMake((ScreenWidth-50)/2, ScreenHeight-64-78-52, 50, 52)];
+    self.backageBottom.image = [UIImage imageNamed:@"image_user_bottom"];
+    self.backageBottom.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:self.backageBottom];
+    
+    self.serviceLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, ScreenHeight-64-25-15, ScreenWidth, 15)];
+    self.serviceLabel.text = @"客服电话：暂无";
+    self.serviceLabel.textAlignment = NSTextAlignmentCenter;
+    self.serviceLabel.font = [UIFont systemFontOfSize:14];
+    self.serviceLabel.textColor = fontColorGray;
+    [self.view addSubview:self.serviceLabel];
+    
+    self.userTableView = [[UITableView alloc] initWithFrame:CGRectMake(kScreenBounds.origin.x, 0, kScreenBounds.size.width, 50*4+113) style:UITableViewStylePlain];
     self.userTableView.delegate = self;
     self.userTableView.dataSource = self;
     self.userTableView.backgroundColor = [UIColor whiteColor];
     [self.userTableView setTableFooterView:[[UIView alloc]init]];
     [self.view addSubview:self.userTableView];
+    
+   
  
     
     
@@ -45,6 +64,11 @@
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headClick:)];
         tapGesture.numberOfTapsRequired = 1;
         [view addGestureRecognizer:tapGesture];
+        
+        CALayer *bottomBorder=[[CALayer alloc]init];
+        bottomBorder.frame=CGRectMake(0, view.frame.size.height-0.5, view.frame.size.width, 0.5);
+        bottomBorder.backgroundColor=lineColorGray.CGColor;
+        [view.layer addSublayer:bottomBorder ];
   
         // 头像
         self.headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(25.0f, 19.0f, 74.0f, 74.0f)];
@@ -87,8 +111,6 @@
         view;
     });
 
-    
-    
     
     
     [self initTableViewData];//设置列表数据

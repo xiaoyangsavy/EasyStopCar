@@ -9,7 +9,7 @@
 #import "UITempletViewController.h"
 #import "HomeCell.h"
 
-@interface ViewController : UITempletViewController<UITableViewDataSource,UITableViewDelegate,HomeCellDelegate>
+@interface ViewController : UITempletViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UIScrollViewDelegate,HomeCellDelegate>
 
 
 @end

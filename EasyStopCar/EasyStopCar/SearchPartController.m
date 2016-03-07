@@ -50,7 +50,7 @@
     [super viewDidLoad];
    
   
-     [super initInfoArray];//加载测试数据
+     [self initInfoArray];//加载测试数据
     self.categoryViewArray = [[NSMutableArray alloc]init];
     self.categoryBackageArray = [[NSMutableArray alloc]init];
     
@@ -116,7 +116,7 @@
         [self.categoryOneLabel addTarget:self action:@selector(clickWithCategory:) forControlEvents:UIControlEventTouchUpInside];
         [self.categoryView addSubview:self.categoryOneLabel];
         
-        self.categoryOneBackage = [[UIView alloc]initWithFrame:CGRectMake((ScreenWidth/categoryCount-50)/2, self.categoryView.frame.size.height-2, 50, 2)];
+        self.categoryOneBackage = [[UIView alloc]initWithFrame:CGRectMake((ScreenWidth/categoryCount-70)/2, self.categoryView.frame.size.height-2, 70, 2)];
         self.categoryOneBackage.backgroundColor = [UIColor blackColor];
         [self.categoryOneLabel addSubview:self.categoryOneBackage];
         
@@ -133,7 +133,7 @@
         
         [self.categoryView addSubview:self.categoryTwoLabel];
         
-        self.categoryTwoBackage = [[UIView alloc]initWithFrame:CGRectMake((ScreenWidth/categoryCount-50)/2, self.categoryView.frame.size.height-2, 50, 2)];
+        self.categoryTwoBackage = [[UIView alloc]initWithFrame:CGRectMake((ScreenWidth/categoryCount-70)/2, self.categoryView.frame.size.height-2, 70, 2)];
         self.categoryTwoBackage.backgroundColor = [UIColor blackColor];
         self.categoryTwoBackage.hidden = YES;
         [self.categoryTwoLabel addSubview:self.categoryTwoBackage];
@@ -151,7 +151,7 @@
         
         [self.categoryView addSubview:self.categoryThreeLabel];
         
-        self.categoryThreeBackage = [[UIView alloc]initWithFrame:CGRectMake((ScreenWidth/categoryCount-50)/2, self.categoryView.frame.size.height-2, 50, 2)];
+        self.categoryThreeBackage = [[UIView alloc]initWithFrame:CGRectMake((ScreenWidth/categoryCount-70)/2, self.categoryView.frame.size.height-2, 70, 2)];
         self.categoryThreeBackage.backgroundColor = [UIColor blackColor];
         self.categoryThreeBackage.hidden = YES;
         [self.categoryThreeLabel addSubview:self.categoryThreeBackage];
@@ -169,6 +169,7 @@
     }
         
 }
+
 
 //初始化预约样式
 -(void)initAppointStyle{
@@ -207,7 +208,7 @@
         [self.appointConditionView addSubview:self.appointDataLabel];
         
         self.appointEditButton = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth-30, 0, 30, self.appointConditionView.frame.size.height)];
-        self.appointEditButton.backgroundColor = TEST_COLOR;
+        [self.appointEditButton setImage:[UIImage imageNamed:@"ico_park_edit"] forState:UIControlStateNormal];
         [self.appointEditButton addTarget:self action:@selector(toReturn) forControlEvents:UIControlEventTouchUpInside];
         [self.appointConditionView addSubview:self.appointEditButton];
         
@@ -220,7 +221,39 @@
 }
 
 
-
+//测试数据
+-(void) initInfoArray{
+    //测试数据
+    self.myArray = [[NSMutableArray alloc] init];
+    
+    NSMutableDictionary *myDictionary = nil;
+    
+    myDictionary = [[NSMutableDictionary alloc] init];
+    [myDictionary setValue:@"暂无" forKey:@"name"];
+    [myDictionary setValue:@"0" forKey:@"parkCount"];
+    [myDictionary setValue:@"0" forKey:@"price"];
+    [myDictionary setValue:@"0" forKey:@"distance"];
+    [myDictionary setValue:@"0:00-24:00" forKey:@"time"];
+    [self.myArray addObject:myDictionary];
+    
+    myDictionary = [[NSMutableDictionary alloc] init];
+     [myDictionary setValue:@"暂无" forKey:@"name"];
+    [myDictionary setValue:@"99" forKey:@"parkCount"];
+    [myDictionary setValue:@"99" forKey:@"price"];
+    [myDictionary setValue:@"99" forKey:@"distance"];
+    [myDictionary setValue:@"0:00-24:00" forKey:@"time"];
+    [self.myArray addObject:myDictionary];
+    
+    myDictionary = [[NSMutableDictionary alloc] init];
+     [myDictionary setValue:@"暂无" forKey:@"name"];
+    [myDictionary setValue:@"0" forKey:@"parkCount"];
+    [myDictionary setValue:@"0" forKey:@"price"];
+    [myDictionary setValue:@"0" forKey:@"distance"];
+    [myDictionary setValue:@"0:00-24:00" forKey:@"time"];
+    [self.myArray addObject:myDictionary];
+    
+    
+}
 
 //类别点击事件
 - (void)clickWithCategory:(UIButton *)myButton

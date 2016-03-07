@@ -113,6 +113,17 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
 }
 
 
+//- (UIColor *)myColor {
+//    return self.myColor;
+//}
+
+- (void)setMyColor:(UIColor*)myColor {
+    self.shapeLayer.strokeColor = myColor.CGColor;
+    self.layer.borderColor = myColor.CGColor;
+    self.valueLabel.textColor = myColor;
+    self.stopButton.tintColor = myColor;
+}
+
 #pragma mark - Layout
 
 - (void)layoutSubviews {
@@ -151,6 +162,7 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
 - (void)tintColorDidChange {
     [super tintColorDidChange];
     UIColor *tintColor = self.tintColor;
+    
     self.shapeLayer.strokeColor = tintColor.CGColor;
     self.layer.borderColor = tintColor.CGColor;
     self.valueLabel.textColor = tintColor;

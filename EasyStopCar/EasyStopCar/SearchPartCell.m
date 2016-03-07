@@ -45,8 +45,8 @@
         [self.contentView addSubview:self.searchPartCount];
         
         
-        self.searchDistance = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth-100, (100-15)/2, 85, 15)];
-        self.searchDistance.font = [UIFont systemFontOfSize:15];
+        self.searchDistance = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth-100, (100-20)/2, 85, 20)];
+        self.searchDistance.font = [UIFont systemFontOfSize:9];
         self.searchDistance.textColor = fontColorGray;
         self.searchDistance.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:self.searchDistance];
@@ -73,16 +73,32 @@
     NSLog(@"cell数据为%@!!!!!!!",myDictionary);
     
     
-    self.searchName.text = myDictionary[@"testText"];
-    self.searchPartCount.text = myDictionary[@"testText"];
-    self.searchDistance.text = myDictionary[@"testText"];
-    self.searchPrice.text = myDictionary[@"testText"];
-    self.searchBusinessHours.text = myDictionary[@"testText"];
+    self.searchName.text = myDictionary[@"name"];
+//    self.searchPartCount.text = myDictionary[@"parkCount"];
+    NSString *parkCountString = [NSString stringWithFormat:@"%@个车位",myDictionary[@"parkCount"]];
+     NSString *parkCount =  myDictionary[@"parkCount"];
+ 
+    NSMutableAttributedString *orderStateAttributedString = [[NSMutableAttributedString alloc] initWithString:parkCountString];
+    [orderStateAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0,parkCount.length)];
+    [orderStateAttributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0,parkCount.length)];
+    self.searchPartCount.attributedText = orderStateAttributedString;
     
     
+//    self.searchDistance.text = myDictionary[@"distance"];
     
-   
+    NSString *distanceString = [NSString stringWithFormat:@"%@km",myDictionary[@"distance"]];
+    NSString *distance =  myDictionary[@"distance"];
     
+    NSMutableAttributedString *distanceAttributedString = [[NSMutableAttributedString alloc] initWithString:distanceString];
+    [distanceAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0,distance.length)];
+    [distanceAttributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:22] range:NSMakeRange(0,distance.length)];
+    self.searchDistance.attributedText = distanceAttributedString;
+    
+ 
+    self.searchPrice.text = [NSString stringWithFormat:@"￥%@/小时",myDictionary[@"price"]];
+    self.searchBusinessHours.text = myDictionary[@"time"];
+    
+  
 }
 
 @end

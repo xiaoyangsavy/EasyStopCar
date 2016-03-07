@@ -14,4 +14,6 @@
 
 //UIView转UIImage
 -(UIImage *)getImageFromView:(UIView *)view;
+
+-(NSInteger)getDataAndTime:(int)type;
 @end

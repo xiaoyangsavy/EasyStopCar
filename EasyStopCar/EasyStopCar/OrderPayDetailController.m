@@ -14,6 +14,7 @@
 @property(nonatomic,strong)UILabel *orderNumberLabel;
 @property(nonatomic,strong)UILabel *parkNameLabel;
 
+@property(nonatomic,strong)UIImageView *orderDetailBakcage;//顶部背景图片
 @property(nonatomic,strong)UIView *orderDetailView;
 
 @property(nonatomic,strong)UIView *userTimeView;//使用时间
@@ -44,7 +45,13 @@
     self.parkNameLabel.textColor = fontColorBlack;
     [self.view addSubview:self.parkNameLabel];
     
-    self.orderDetailView = [[UIView alloc]initWithFrame:CGRectMake(25, 74, ScreenWidth-25*2, 383)];
+    
+    self.orderDetailBakcage = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 74, ScreenWidth-marginSize*2, 18)];
+    self.orderDetailBakcage.image = [UIImage imageNamed:@"backage_order_top"];
+//    self.orderDetailBakcage.contentMode = UIViewContentModeScaleAspectFit;
+     [self.view addSubview:self.orderDetailBakcage];
+    
+    self.orderDetailView = [[UIView alloc]initWithFrame:CGRectMake(25, 74+9, ScreenWidth-25*2, 383)];
     self.orderDetailView.backgroundColor = [UIColor whiteColor];
     self.orderDetailView.layer.borderWidth = 0.5;
     self.orderDetailView.layer.borderColor =[[UIColor grayColor] CGColor];

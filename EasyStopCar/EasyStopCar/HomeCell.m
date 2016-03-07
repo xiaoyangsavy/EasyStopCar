@@ -40,7 +40,7 @@
         
         //详细内容视图
         self.homeDataLabel = [[UILabel alloc] initWithFrame:CGRectMake(39, 40, 200, 15)];
-        self.homeDataLabel.font = [UIFont systemFontOfSize:14];
+        self.homeDataLabel.font = [UIFont systemFontOfSize:12];
         self.homeDataLabel.textColor = fontColorLightgray;
         [self.contentView addSubview:self.homeDataLabel];
         
@@ -66,12 +66,12 @@
         self.homeLocationTitle.textColor = fontColorLightgray;
         [self.contentView addSubview:self.homeLocationTitle];
         
-        self.homeLocationContent = [[UILabel alloc] initWithFrame:CGRectMake(self.homeLocationTitle.frame.origin.x, self.homeLocationTitle.frame.origin.y+self.homeLocationTitle.frame.size.height, 200, 15)];
+        self.homeLocationContent = [[UILabel alloc] initWithFrame:CGRectMake(self.homeLocationTitle.frame.origin.x, self.homeLocationTitle.frame.origin.y+self.homeLocationTitle.frame.size.height+5, 200, 15)];
         self.homeLocationContent.font = [UIFont boldSystemFontOfSize:14];
         self.homeLocationContent.textColor = fontColorBlack;
         [self.contentView addSubview:self.homeLocationContent];
         
-        self.homeLocationFlag = [[UIImageView alloc] initWithFrame:CGRectMake(150, self.homeLocationContent.frame.origin.y, 15, 15)];
+        self.homeLocationFlag = [[UIImageView alloc] initWithFrame:CGRectMake(150, self.homeLocationContent.frame.origin.y-5, 15, 15)];
         self.homeLocationFlag.contentMode = UIViewContentModeScaleAspectFit;
         [self.homeLocationFlag setImage:[UIImage imageNamed:@"ico_home_cell_flag"]];
         [self.contentView addSubview:self.homeLocationFlag];
@@ -91,7 +91,7 @@
     NSLog(@"cell数据为%@!!!!!!!",myDictionary);
     
 
-    self.homeDataLabel.text = myDictionary[@"testText"];
+    self.homeDataLabel.text = [NSString stringWithFormat:@"预约时间：%@",myDictionary[@"testText"]];
      self.homeTitle.text = myDictionary[@"testText"];
      self.homeLocationTitle.text = myDictionary[@"testText"];
      self.homeLocationContent.text = myDictionary[@"testText"];

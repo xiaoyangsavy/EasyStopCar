@@ -44,6 +44,7 @@
 -(void)hideAlertBackage;
 
 -(void)toReturn;//返回上一页
+-(void)toReturn:(int)count;//返回前几页
 
 - (void)callPhone;//拨打电话
 

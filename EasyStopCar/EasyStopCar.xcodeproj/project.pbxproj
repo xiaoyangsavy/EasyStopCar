@@ -68,6 +68,7 @@
 		4DCCA5111C8440CC00965C21 /* YHR_PageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCCA5101C8440CC00965C21 /* YHR_PageControl.m */; };
 		4DCCA5141C84426200965C21 /* test_picture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DCCA5131C84426200965C21 /* test_picture.jpg */; };
 		4DCCA5181C8455B600965C21 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCCA5171C8455B600965C21 /* HomeCell.m */; };
+		4DCF9F711C8D6C9900FBBA24 /* test_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DCF9F701C8D6C9900FBBA24 /* test_banner.png */; };
 		4DE57E931C8521A50087D79F /* SearchPartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E921C8521A50087D79F /* SearchPartController.m */; };
 		4DE57E961C852C3A0087D79F /* SearchPartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E951C852C3A0087D79F /* SearchPartCell.m */; };
 		4DE57E991C8539170087D79F /* CommonTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE57E981C8539170087D79F /* CommonTools.m */; };
@@ -202,6 +203,7 @@
 		4DCCA5131C84426200965C21 /* test_picture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_picture.jpg; sourceTree = "<group>"; };
 		4DCCA5161C8455B600965C21 /* HomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
 		4DCCA5171C8455B600965C21 /* HomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
+		4DCF9F701C8D6C9900FBBA24 /* test_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_banner.png; sourceTree = "<group>"; };
 		4DE57E911C8521A50087D79F /* SearchPartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPartController.h; sourceTree = "<group>"; };
 		4DE57E921C8521A50087D79F /* SearchPartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPartController.m; sourceTree = "<group>"; };
 		4DE57E941C852C3A0087D79F /* SearchPartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPartCell.h; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 		4DCCA5121C84421E00965C21 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				4DCF9F701C8D6C9900FBBA24 /* test_banner.png */,
 				4DCCA5131C84426200965C21 /* test_picture.jpg */,
 			);
 			name = Resource;
@@ -641,6 +644,7 @@
 				4D9AC3D61C83E20E00E923CC /* Assets.xcassets in Resources */,
 				4D9AC3D41C83E20E00E923CC /* Main.storyboard in Resources */,
 				4DCCA5141C84426200965C21 /* test_picture.jpg in Resources */,
+				4DCF9F711C8D6C9900FBBA24 /* test_banner.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

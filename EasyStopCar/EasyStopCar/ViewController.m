@@ -19,7 +19,7 @@
 
 //@property(nonatomic,strong)UIScrollView *homeScroll;
 @property(nonatomic,strong)UIScrollView *bannerScroll;          //广告横幅
-@property(nonatomic,strong)YHR_PageControl *myBannerPageControl;//指示器
+@property(nonatomic,strong)UIPageControl *myBannerPageControl;//指示器
 
 @property(nonatomic,strong)UIView *enterView;//入口区域
 @property(nonatomic,strong)UIButton *aroundView;//周边
@@ -61,31 +61,29 @@
     self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64) style:UITableViewStylePlain];
     self.listTableView.delegate = self;
     self.listTableView.dataSource = self;
-    self.listTableView.backgroundColor = TEST_COLOR;
     self.listTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.listTableView];
     
     //设置表头部个人信息
     self.listTableView.tableHeaderView = ({
         UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBounds.size.width, ScreenWidth*420/640+166+39)];
-        headView.backgroundColor = TEST_COLOR;
 
         //banner*******************************
         self.bannerScroll=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth*420/640)];
         self.bannerScroll.tag = 198811;
-        //    self.bannerScroll.delegate=self;
+            self.bannerScroll.delegate=self;
         self.bannerScroll.pagingEnabled=YES;        //整页滚动
         self.bannerScroll.bounces=NO;
         self.bannerScroll.alwaysBounceVertical=NO;
         self.bannerScroll.alwaysBounceHorizontal=YES;
         self.bannerScroll.showsHorizontalScrollIndicator=NO;
         self.bannerScroll.showsVerticalScrollIndicator=NO;
-            self.bannerScroll.backgroundColor=TEST_COLOR;
+//            self.bannerScroll.backgroundColor=TEST_COLOR;
         [headView addSubview:self.bannerScroll];
         
-        self.myBannerPageControl = [[YHR_PageControl alloc] initWithFrame:CGRectMake(0, ScreenWidth*0.464-20, ScreenWidth, 20)];
+        self.myBannerPageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, ScreenWidth*420/640-20, ScreenWidth, 20)];
         self.myBannerPageControl.tag=198812;
-        self.myBannerPageControl.numberOfPages = 6-2;//设置pageConteol 的page 和 _scrollView 上的图片一样多
+        self.myBannerPageControl.numberOfPages = 2;//设置pageConteol 的page 和 _scrollView 上的图片一样多
         self.myBannerPageControl.currentPage = 0;
         [headView addSubview:self.myBannerPageControl];
         
@@ -155,7 +153,7 @@
         
         
         
-        self.selectImageView = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 0, 20, self.selectView.frame.size.height)];
+        self.selectImageView = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 0, 15, self.selectView.frame.size.height)];
         [self.selectImageView setImage:[UIImage imageNamed:@"ico_home_menu"]];
         self.selectImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.selectView addSubview:self.selectImageView];
@@ -163,7 +161,7 @@
         self.selectTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.selectImageView.frame.origin.x+self.selectImageView.frame.size.width+10, 0, 200, self.selectView.frame.size.height)];
         self.selectTitleLabel.font = [UIFont systemFontOfSize:14];
         self.selectTitleLabel.textColor = fontColorGray;
-        self.selectTitleLabel.text = @"暂无";
+        self.selectTitleLabel.text = @"最近订单";
         [self.selectView addSubview:self.selectTitleLabel];
         
         self.selectArrow = [[UIImageView alloc]initWithFrame:CGRectMake(ScreenWidth-marginSize-20, 0, 10, self.selectView.frame.size.height)];
@@ -384,10 +382,35 @@
   
 
  
-   
+    [self initBannerData];
 }
 
+//初始化首页图片
+-(void)initBannerData{
+    
+    self.bannerScroll.contentSize=CGSizeMake(self.bannerScroll.bounds.size.width*(2), 1);
+    [self.myBannerPageControl setNumberOfPages:2];
+    [self.myBannerPageControl setCurrentPage:0];
+    //加载页面显示数据
+    for(int i=0;i<2;i++){
+//        NSDictionary *myDictionary = self.preferentialArray[i];
+        
+        UIImageView  *imageview=[[UIImageView alloc]initWithFrame:CGRectMake(i*self.bannerScroll.frame.size.width, 0, self.bannerScroll.frame.size.width, self.bannerScroll.frame.size.height)];
+        //         NSLog(@"getMiddleBanner图片地址为：%@！！！！",myDictionary[@"image"]);
+//        [imageview setImageWithURL:[NSURL URLWithString:myDictionary[@"image"]]];
+         imageview.image = [UIImage imageNamed:@"test_banner"];
+        imageview.contentMode = UIViewContentModeScaleToFill;
+        imageview.tag = i;
+        //        imageview.contentMode = UIViewContentModeScaleAspectFill;
+//        imageview.userInteractionEnabled = YES;
+//        UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickPreferentialImageView:)];
+//        [imageview addGestureRecognizer:singleTap1];
+        
+        [self.bannerScroll addSubview:imageview];
+    }
 
+ 
+}
 
 
 //快捷入口点击事件
@@ -470,6 +493,29 @@
     }
 }
 
+
+#pragma mark UIScrollViewDelegate
+//只要滚动了就会触发
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
+{
+    //    NSLog(@" scrollViewDidScroll");
+    //    NSLog(@"ContentOffset  x is  %f,yis %f",scrollView.contentOffset.x,scrollView.contentOffset.y);
+}
+
+//滚动结束触发
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    
+    
+        // 记录scrollView 的当前位置，因为已经设置了分页效果，所以：位置/屏幕大小 = 第几页
+        int current = scrollView.contentOffset.x/scrollView.bounds.size.width;
+        
+        NSLog(@"scrollView  当前页数为 %d",current);
+        
+        UIPageControl *page = (UIPageControl *)[self.view viewWithTag:198812];
+        page.currentPage = current;
+        
+     
+}
 
 #pragma mark cell代理方法
 //修改商品信息

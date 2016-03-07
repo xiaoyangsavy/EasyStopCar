@@ -42,9 +42,9 @@
     for (NSUInteger subviewIndex = 0; subviewIndex < countOfPages; subviewIndex++) {
         UIImageView* subview = [self.subviews objectAtIndex:subviewIndex];
         if (subviewIndex == page) {
-            subview.image = [UIImage imageNamed:@"page_index_red"];
+            subview.image = [UIImage imageNamed:@"page_index_current"];
         }else{
-            subview.image = [UIImage imageNamed:@"page_index_white"];
+            subview.image = [UIImage imageNamed:@"page_index_default"];
         }
     }
 }

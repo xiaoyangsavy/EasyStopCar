@@ -149,6 +149,15 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+//返回前几页
+-(void)toReturn:(int)count{
+    NSMutableArray *navigationArray = [[NSMutableArray alloc] initWithArray: self.navigationController.viewControllers];
+    for(int i=0;i<count;i++){
+    [navigationArray removeObjectAtIndex: navigationArray.count-1];// You can pass your index here
+    }
+    self.navigationController.viewControllers = navigationArray;
+}
+
 //拨打客服电话
 - (void)callPhone
 {

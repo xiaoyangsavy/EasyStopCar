@@ -8,6 +8,7 @@
 
 #import "SearchPartMapController.h"
 #import "CommonTools.h"
+#import "SearchAppointController.h"
 
 
 @interface RouteAnnotation : BMKPointAnnotation
@@ -396,8 +397,8 @@
     [self.appointConditionView addSubview:self.appointDataLabel];
     
     self.appointEditButton = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth-30, 0, 30, self.appointConditionView.frame.size.height)];
-    self.appointEditButton.backgroundColor = TEST_COLOR;
-    [self.appointEditButton addTarget:self action:@selector(toReturn) forControlEvents:UIControlEventTouchUpInside];
+    [self.appointEditButton setImage:[UIImage imageNamed:@"ico_park_edit"] forState:UIControlStateNormal];
+    [self.appointEditButton addTarget:self action:@selector(toEditPage) forControlEvents:UIControlEventTouchUpInside];
     [self.appointConditionView addSubview:self.appointEditButton];
     
     
@@ -405,6 +406,14 @@
     
     
  
+}
+
+
+//跳转到编辑页面
+-(void)toEditPage{
+    [super toReturn:2];
+    SearchAppointController  *myViewController = [[SearchAppointController alloc]init];
+    [self.navigationController pushViewController:myViewController animated:YES];
 }
 
 

@@ -30,6 +30,9 @@
  */
 @property (nonatomic, assign) float progress;
 
+//设置颜色
+@property (nonatomic, strong) UIColor *myColor;
+
 /**
  Duration of an animated progress change.
  
