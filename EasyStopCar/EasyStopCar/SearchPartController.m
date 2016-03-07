@@ -302,11 +302,12 @@
 {
 //    NSLog(@"点击了一个cell");
     
-    SearchPartMapController *searchPartDetailController = [[SearchPartMapController alloc]init];
-    searchPartDetailController.styleType = self.styleType;
-    searchPartDetailController.searchedLocation = self.searchedLocation;
-    searchPartDetailController.searchedData = self.searchedData;
-    [self.navigationController pushViewController:searchPartDetailController animated:YES];
+    SearchPartMapController *myController = [[SearchPartMapController alloc]init];
+    myController.styleType = self.styleType;
+    myController.searchedLocation = self.searchedLocation;
+    myController.searchedData = self.searchedData;
+    myController.isDetail = YES;
+    [self.navigationController pushViewController:myController animated:YES];
 }
 
 

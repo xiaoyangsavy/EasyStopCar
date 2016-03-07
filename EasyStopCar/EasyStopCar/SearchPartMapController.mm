@@ -138,9 +138,7 @@
 //    _mapView.zoomLevel = 14;
      [self.view addSubview:_mapView];
 
-    if (self.styleType == 1) {
-        [self initAppointStyle];
-    }
+   
     
     //路线弹出视图------------------------------------------------------------------------
     //点击地图大头针后弹出
@@ -356,6 +354,11 @@
     
     [self.submitButtonView addSubview:self.submitButtonAffirm];
     
+    
+    if (self.styleType == 1) {
+        [self initAppointStyle];
+    }
+   
 }
 
 //初始化预约样式
@@ -486,10 +489,10 @@
     BMKPlanNode *startNode = [[BMKPlanNode alloc]init];
     //    startNode.name = @"龙泽";
     //    startNode.cityName = @"北京市";
-    CLLocationCoordinate2D startCoordinate;
-    startCoordinate.latitude = self.userLocationCoordinate2D.latitude;
-    startCoordinate.longitude = self.userLocationCoordinate2D.longitude;
-    startNode.pt = startCoordinate;
+//    CLLocationCoordinate2D startCoordinate;
+//    startCoordinate.latitude = self.userLocationCoordinate2D.latitude;
+//    startCoordinate.longitude = self.userLocationCoordinate2D.longitude;
+    startNode.pt = _locService.userLocation.location.coordinate;
     BMKPlanNode *endNode = [[BMKPlanNode alloc]init];
     //    endNode.name = @"西单";
     //    endNode.cityName = @"北京市";
@@ -739,7 +742,7 @@
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
 {
     //    NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
-     self.userLocationCoordinate2D = userLocation.location.coordinate;
+//     self.userLocationCoordinate2D = userLocation.location.coordinate;
     [_mapView updateLocationData:userLocation];
 }
 
@@ -788,6 +791,12 @@
     [super viewDidAppear:animated];
     
      [self initTestData];//初始化测试数据
+    
+    if (self.isDetail) {
+        [self hideRouteStyle:NO];
+        [self onClickDriveSearch];//开启路线规划
+    }
+    
 }
 
 @end
