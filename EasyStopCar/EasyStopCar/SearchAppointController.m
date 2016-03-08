@@ -65,18 +65,18 @@
     [self.topView.layer addSublayer:topViewBottomBorder ];
     
     //顶部视图
-    self.topImageView = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 30, 50, 50)];
+    self.topImageView = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 20, 65, 50)];
     self.topImageView.image = [UIImage imageNamed:@"ico_appoint_complete"];
     self.topImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.topView addSubview:self.topImageView];
     
-    self.topTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.topImageView.frame.origin.x+self.topImageView.frame.size.width+10, self.topImageView.frame.origin.y, 150, 15)];
+    self.topTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.topImageView.frame.origin.x+self.topImageView.frame.size.width+10, self.topImageView.frame.origin.y+10, 150, 15)];
     self.topTitleLabel.font = [UIFont systemFontOfSize:15];
     self.topTitleLabel.textColor = fontColorBlack;
     self.topTitleLabel.text = @"提前预约车位无忧";
     [self.topView addSubview:self.topTitleLabel];
     
-    self.topContentLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.topTitleLabel.frame.origin.x, self.topTitleLabel.frame.origin.y+self.topTitleLabel.frame.size.height+5, 150, 15)];
+    self.topContentLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.topTitleLabel.frame.origin.x, self.topTitleLabel.frame.origin.y+self.topTitleLabel.frame.size.height+5, 200, 15)];
     self.topContentLabel.font = [UIFont systemFontOfSize:12];
     self.topContentLabel.textColor = fontColorGray;
     self.topContentLabel.text = @"出行前一天预约，尊享保留车位";
@@ -112,7 +112,7 @@
     [self.searchSwitchView.layer addSublayer:searchSwitchBottomBorder ];
     
     
-    self.searchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(marginSize, 0, 20, 50)];
+    self.searchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(marginSize, 0, 15, 50)];
     self.searchImageView.image = [UIImage imageNamed:@"ico_home_cell_flag"];
     self.searchImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.searchSwitchView addSubview:self.searchImageView];
@@ -124,7 +124,7 @@
     self.searchName.text = @"是否可以充电";
     [self.searchSwitchView addSubview:self.searchName];
     
-    self.searchSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(ScreenWidth-60,5,0,0)];
+    self.searchSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(ScreenWidth-60,10,0,0)];
      [self.searchSwitch setOn:YES animated:YES];
     [self.searchSwitchView addSubview:self.searchSwitch];
     
@@ -187,7 +187,7 @@
     
     myDictionary = [[NSMutableDictionary alloc] init];
     [myDictionary setValue:@"停车时间" forKey:@"title"];
-    [myDictionary setValue:[UIImage imageNamed:@"test_picture.jpg"] forKey:@"image"];
+    [myDictionary setValue:[UIImage imageNamed:@"ico_time"] forKey:@"image"];
     [self.myArray addObject:myDictionary];
     
     

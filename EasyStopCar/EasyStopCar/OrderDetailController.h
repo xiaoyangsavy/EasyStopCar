@@ -13,4 +13,6 @@
 
 @interface OrderDetailController : UITempletViewController
 
+@property(nonatomic,assign)int orderType;//0:待停车；1：已停车；3：预约
+
 @end

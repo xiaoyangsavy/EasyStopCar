@@ -23,7 +23,7 @@
         self.contentView.backgroundColor = [UIColor whiteColor];
        
         
-        self.searchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(marginSize, 0, 20, 50)];
+        self.searchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(marginSize, 0, 12, 50)];
         self.searchImageView.image = [UIImage imageNamed:@"test_picture.jpg"];
         self.searchImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview:self.searchImageView];

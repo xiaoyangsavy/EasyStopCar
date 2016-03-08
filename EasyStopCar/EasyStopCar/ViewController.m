@@ -30,7 +30,7 @@
 @property(nonatomic,strong)UILabel *appointLabel;
 
 
-@property(nonatomic,strong)UIView *selectView;//选择
+@property(nonatomic,strong)UIButton *selectView;//选择
 @property(nonatomic,strong)UIImageView *selectImageView;
 @property(nonatomic,strong)UILabel *selectTitleLabel;
 @property(nonatomic,strong)UIImageView *selectArrow;
@@ -137,8 +137,10 @@
         
         
         //选择区域
-        self.selectView = [[UIView alloc]initWithFrame:CGRectMake(0, self.enterView.frame.origin.y+self.enterView.frame.size.height, ScreenWidth, 39.0)];
+        self.selectView = [[UIButton alloc]initWithFrame:CGRectMake(0, self.enterView.frame.origin.y+self.enterView.frame.size.height, ScreenWidth, 39.0)];
         self.selectView.backgroundColor = [UIColor whiteColor];
+        self.selectView.tag = 198801;
+        [self.selectView addTarget:self action:@selector(updateTabeleViewState:) forControlEvents:UIControlEventTouchUpInside];
         [headView addSubview:self.selectView];
         
         CALayer *topBorder=[[CALayer alloc]init];
@@ -165,7 +167,7 @@
         [self.selectView addSubview:self.selectTitleLabel];
         
         self.selectArrow = [[UIImageView alloc]initWithFrame:CGRectMake(ScreenWidth-marginSize-20, 0, 10, self.selectView.frame.size.height)];
-        [self.selectArrow setImage:[UIImage imageNamed:@"ico_home_select_arrow"]];
+        [self.selectArrow setImage:[UIImage imageNamed:@"ico_arrow_down"]];
         self.selectArrow.contentMode = UIViewContentModeScaleAspectFit;
         [self.selectView addSubview:self.selectArrow];
         
@@ -432,6 +434,25 @@
 
 }
 
+-(void)updateTabeleViewState:(UIButton *)myButton{
+    switch (myButton.tag) {
+        case 198801:
+            myButton.tag = 198802;
+            
+            break;
+        case 198802:
+           myButton.tag = 198801;
+            
+            break;
+        default:
+            break;
+}
+    
+}
+
+
+
+
 //跳转到个人中心
 -(void)goUserCenter{
 
@@ -486,6 +507,7 @@
     NSString *flag = myDictionary[@"testFlag"];
     if ([flag isEqualToString:@"0"]) {
         OrderDetailController *orderDetailController = [[OrderDetailController alloc]init];
+        orderDetailController.orderType = 1;//预约订单
         [self.navigationController pushViewController:orderDetailController animated:YES];
     }else{
     OrderPayController *myController = [[OrderPayController alloc]init];

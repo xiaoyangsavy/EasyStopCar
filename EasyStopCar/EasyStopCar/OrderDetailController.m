@@ -41,6 +41,12 @@
 @property(nonatomic,strong)MRCircularProgressView *circularProgressView;
 @property(nonatomic,strong)UILabel *infoTimeRemain;
 
+@property(nonatomic,strong)UIView *appointTimeView;//预约时间视图
+@property(nonatomic,strong)UILabel *appointDateLabel;
+@property(nonatomic,strong)UILabel *appointTimeLabel;
+
+
+
 //价格视图
 @property(nonatomic,strong)UILabel *priceSumLabel;
 @property(nonatomic,strong)UILabel *priceDetailLabel;
@@ -63,8 +69,9 @@
     self.availableTimeValue = 30*60;//1800
     
     self.submitButoon = [[UIButton alloc]initWithFrame:CGRectMake(0, ScreenHeight-50-64, ScreenWidth, 50)];
+    self.submitButoon.tag = 198801;
     [self.submitButoon setTitle:@"导航" forState:UIControlStateNormal];
-    [self.submitButoon addTarget:self action:@selector(openNativeNavi) forControlEvents:UIControlEventTouchUpInside];
+    [self.submitButoon addTarget:self action:@selector(submitInfo:) forControlEvents:UIControlEventTouchUpInside];
     self.submitButoon.backgroundColor = backageColorBlue;
     self.submitButoon.titleLabel.font = [UIFont systemFontOfSize:18];
     [self.view addSubview:self.submitButoon];
@@ -100,7 +107,7 @@
     [self.twoDimensionalImageView addGestureRecognizer:tapGesture];
     
     
-    self.twoDimensionalLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.twoDimensionalImageView.frame.origin.y+self.twoDimensionalImageView.frame.size.height+10, ScreenWidth, 15)];
+    self.twoDimensionalLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.twoDimensionalImageView.frame.origin.y+self.twoDimensionalImageView.frame.size.height+15, ScreenWidth, 15)];
      self.twoDimensionalLabel.text = @"扫码取车";
     self.twoDimensionalLabel.textAlignment = NSTextAlignmentCenter;
     self.twoDimensionalLabel.font = [UIFont boldSystemFontOfSize:18];
@@ -174,6 +181,7 @@
     [self.infoTimeView addSubview:self.infoTimeName];
     
     
+    //倒计时
     self.circularProgressView = [[MRCircularProgressView alloc]initWithFrame:CGRectMake((self.infoTimeView.frame.size.width-80)/2, self.infoTimeName.frame.origin.y+self.infoTimeName.frame.size.height+10, 80, 80)];
     self.circularProgressView.borderWidth = 3;
      self.circularProgressView.lineWidth = 3;
@@ -181,6 +189,36 @@
     self.circularProgressView.myColor = backageColorBlue;
     self.circularProgressView.valueLabel.text = @"30:00";
     [self.infoTimeView addSubview:self.circularProgressView];
+    
+ 
+    
+    //预约时间
+    self.appointTimeView = [[UIView alloc]initWithFrame:CGRectMake((self.infoTimeView.frame.size.width-80)/2, self.infoTimeName.frame.origin.y+self.infoTimeName.frame.size.height+10, 80, 80)];
+    self.appointTimeView.hidden = YES;
+    //设置圆角边框
+    self.appointTimeView.layer.cornerRadius = 8;
+    self.appointTimeView.layer.masksToBounds = YES;
+    //设置边框及边框颜色
+    self.appointTimeView.layer.borderWidth = 1.0;
+    self.appointTimeView.layer.borderColor =[ backageColorBlue CGColor];
+    [self.infoTimeView addSubview:self.appointTimeView];
+    
+    self.appointDateLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.appointTimeView.frame.size.width, 30)];
+    self.appointDateLabel.font = [UIFont systemFontOfSize:18];
+    self.appointDateLabel.backgroundColor = backageColorBlue;
+    self.appointDateLabel.textColor = [UIColor whiteColor];
+    self.appointDateLabel.text = @"0月0日";
+    self.appointDateLabel.textAlignment = NSTextAlignmentCenter;
+    [self.appointTimeView addSubview:self.appointDateLabel];
+    
+    
+    self.appointTimeLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.appointDateLabel.frame.size.height, self.appointTimeView.frame.size.width, self.appointTimeView.frame.size.height-self.appointDateLabel.frame.size.height)];
+    self.appointTimeLabel.font = [UIFont systemFontOfSize:22];
+    self.appointTimeLabel.textColor = backageColorBlue;
+    self.appointTimeLabel.text = @"0:00";
+    self.appointTimeLabel.textAlignment = NSTextAlignmentCenter;
+    [self.appointTimeView addSubview:self.appointTimeLabel];
+    
     
     
     
@@ -197,7 +235,7 @@
     
     
     //费用视图布局
-    self.priceSumLabel = [[UILabel alloc]initWithFrame:CGRectMake(marginSize, 0, 200, self.priceView.frame.size.height)];
+    self.priceSumLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.infoName.frame.origin.x, 0, 200, self.priceView.frame.size.height)];
     self.priceSumLabel.font = [UIFont systemFontOfSize:14];
     self.priceSumLabel.textColor = fontColorGray;
     self.priceSumLabel.text = @"费用共计：￥0元";
@@ -218,25 +256,49 @@
     
     self.myTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerAdvanced:) userInfo:nil repeats:YES];
     
-    
+    [self initControllerByType];
 }
+
+
+//根据类型，初始化控制器
+-(void)initControllerByType{
+    
+    if(self.orderType==2){//已停
+    
+        self.infoTimeName.text = @"车位使用中";
+        self.infoTimeName.textColor = backageColorGreen;
+        self.infoTimeRemain.text = @"已停时间";
+        self.infoTimeRemain.textColor = backageColorGreen;
+        self.priceView.hidden = NO;
+        self.submitButoon.hidden = YES;
+        self.circularProgressView.myColor = backageColorGreen;
+
+        self.twoDimensionalImageView.frame = CGRectMake((ScreenWidth-200)/2, self.infoView.frame.origin.y+self.infoView.frame.size.height+65, 200, 200);
+        
+        self.twoDimensionalLabel.frame = CGRectMake(0, self.twoDimensionalImageView.frame.origin.y+self.twoDimensionalImageView.frame.size.height+10, ScreenWidth, 15);
+        
+    }else if(self.orderType==3){//预约
+         [self.myTimer invalidate];
+        self.circularProgressView.hidden = YES;
+         self.appointTimeView.hidden = NO;
+        
+    [self.submitButoon setTitle:@"取消预约" forState:UIControlStateNormal];
+        self.submitButoon.backgroundColor = backageColorRed;
+        self.submitButoon.tag = 198802;
+    }
+    
+
+}
+
 
 
 //二维码点击事件
 -(void)twoDimensionalClick: (UITapGestureRecognizer*)recognizer{
     //获取所点击视图recognizer.view
-    self.infoTimeName.text = @"车位使用中";
-    self.infoTimeName.textColor = backageColorGreen;
-    self.infoTimeRemain.text = @"已停时间";
-    self.infoTimeRemain.textColor = backageColorGreen;
-    self.priceView.hidden = NO;
-    self.submitButoon.hidden = YES;
-    self.circularProgressView.myColor = backageColorGreen;
+  
+    self.orderType = 2;
+    [self initControllerByType];
     
-    
-     self.twoDimensionalImageView.frame = CGRectMake((ScreenWidth-200)/2, self.infoView.frame.origin.y+self.infoView.frame.size.height+65, 200, 200);
-    
-    self.twoDimensionalLabel.frame = CGRectMake(0, self.twoDimensionalImageView.frame.origin.y+self.twoDimensionalImageView.frame.size.height+10, ScreenWidth, 15);
 }
 
 
@@ -252,7 +314,8 @@
 //计时器调用方法
 - (void)timerAdvanced:(NSTimer *)timer//这个函数将会执行一个循环的逻辑
 {
-    
+    if (self.orderType == 1) {//待停
+ 
     float progress = (1 - self.availableTimeValue/1800.0);
     NSLog(@"开始倒计时%f",progress);
     self.circularProgressView.progress = progress;
@@ -264,12 +327,21 @@
     }else{
         self.availableTimeValue--;
     }
+        
+    }else{//已停
+        self.availableTimeValue++;
+        self.circularProgressView.valueLabel.text = [NSString stringWithFormat:@"%d:%02d",self.availableTimeValue/3600,self.availableTimeValue%3600/60];
+        
+    }
 }
 
 
 
 //调转到百度地图客户端导航
-- (void)openNativeNavi {
+- (void)submitInfo:(UIButton *)myButton {
+    
+    if (myButton.tag == 198801) {
+ 
     //初始化调启导航时的参数管理类
     BMKNaviPara* para = [[BMKNaviPara alloc]init];
     //初始化起点节点
@@ -301,6 +373,11 @@
     
     //调启百度地图客户端导航
     [BMKNavigation openBaiduMapNavigation:para];
+        
+    }else{
+        [self toReturn];
+    
+    }
 }
 
 - (void)didReceiveMemoryWarning {

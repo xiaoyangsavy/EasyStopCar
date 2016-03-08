@@ -204,22 +204,23 @@
     [self.infoView addSubview:self.nameLabel];
     
     
-    self.distanceLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth-marginSize-80, self.positionFlag.frame.origin.y, 80, 15)];
+    self.distanceLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth-marginSize-70, self.positionFlag.frame.origin.y, 70, 15)];
     self.distanceLabel.font = [UIFont systemFontOfSize:14];
     self.distanceLabel.textColor = fontColorLightgray;
-    self.distanceLabel.text = @"未知";
+    self.distanceLabel.text = @"0m";
+    self.distanceLabel.textAlignment = NSTextAlignmentRight;
     [self.infoView addSubview:self.distanceLabel];
     
     self.infoLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.nameLabel.frame.origin.x, self.nameLabel.frame.origin.y+self.nameLabel.frame.size.height+5, 200, 15)];
-    self.infoLabel.font = [UIFont systemFontOfSize:15];
+    self.infoLabel.font = [UIFont systemFontOfSize:12];
     self.infoLabel.textColor = fontColorGray;
-    self.infoLabel.text = @"未知";
+    self.infoLabel.text = @"停车0次，部分车位限小型车";
     [self.infoView addSubview:self.infoLabel];
     
-    self.remainderLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.nameLabel.frame.origin.x, self.headImageView.frame.origin.y+self.headImageView.frame.size.height-15, 200, 15)];
-    self.remainderLabel.font = [UIFont systemFontOfSize:15];
+    self.remainderLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.nameLabel.frame.origin.x, self.headImageView.frame.origin.y+self.headImageView.frame.size.height-20, 200, 15)];
+    self.remainderLabel.font = [UIFont systemFontOfSize:14];
     self.remainderLabel.textColor = fontColorGray;
-    self.remainderLabel.text = @"未知";
+    self.remainderLabel.text = @"0个空闲车位";
     [self.infoView addSubview:self.remainderLabel];
     
     
@@ -228,16 +229,16 @@
     self.electricityFlag.image = [UIImage imageNamed:@"ico_home_cell_flag"];
     [self.electricityView addSubview:self.electricityFlag];
     
-    self.electricityPriceLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.electricityFlag.frame.origin.x+self.electricityFlag.frame.size.width+5, 0, 100, self.electricityView.frame.size.height)];
+    self.electricityPriceLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.electricityFlag.frame.origin.x+self.electricityFlag.frame.size.width+5, 0, 70, self.electricityView.frame.size.height)];
     self.electricityPriceLabel.font = [UIFont systemFontOfSize:14];
     self.electricityPriceLabel.textColor = backageColorGreen;
-    self.electricityPriceLabel.text = @"未知";
+    self.electricityPriceLabel.text = @"￥0/小时";
     [self.electricityView addSubview:self.electricityPriceLabel];
     
     self.electricityInfoLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.electricityPriceLabel.frame.origin.x+self.electricityPriceLabel.frame.size.width, 0, 150, self.electricityView.frame.size.height)];
     self.electricityInfoLabel.font = [UIFont systemFontOfSize:9];
     self.electricityInfoLabel.textColor = fontColorGray;
-    self.electricityInfoLabel.text = @"未知";
+    self.electricityInfoLabel.text = @"（电费￥0/度+服务费￥0/度）";
     [self.electricityView addSubview:self.electricityInfoLabel];
     
     self.electricitySwitch = [[ UISwitch alloc]initWithFrame:CGRectMake(ScreenWidth-60,5,0,0)];
@@ -250,16 +251,17 @@
     self.priceDayFlag.image = [UIImage imageNamed:@"ico_search_day"];
     [self.priceView addSubview:self.priceDayFlag];
     
-    self.priceDayPriceLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.priceDayFlag.frame.origin.x+self.priceDayFlag.frame.size.width+5, 0, 80, self.priceView.frame.size.height)];
+    self.priceDayPriceLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.priceDayFlag.frame.origin.x+self.priceDayFlag.frame.size.width+3, 0, 65, self.priceView.frame.size.height)];
     self.priceDayPriceLabel.font = [UIFont systemFontOfSize:14];
     self.priceDayPriceLabel.textColor = backageColorRed;
-    self.priceDayPriceLabel.text = @"未知";
+    self.priceDayPriceLabel.text = @"￥0/小时";
     [self.priceView addSubview:self.priceDayPriceLabel];
     
-    self.priceDayBusinessHoursLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth*0.5-80, 5, 60, self.priceView.frame.size.height-self.priceDayBusinessHoursLabel.frame.origin.y)];
+    self.priceDayBusinessHoursLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.priceDayPriceLabel.frame.origin.x+self.priceDayPriceLabel.frame.size.width, 5, 70, self.priceView.frame.size.height-self.priceDayBusinessHoursLabel.frame.origin.y)];
     self.priceDayBusinessHoursLabel.font = [UIFont systemFontOfSize:9];
     self.priceDayBusinessHoursLabel.textColor = fontColorGray;
-    self.priceDayBusinessHoursLabel.text = @"未知";
+    self.priceDayBusinessHoursLabel.text = @"0:00-24:00";
+//    self.priceDayBusinessHoursLabel.textAlignment = NSTextAlignmentRight;
     [self.priceView addSubview:self.priceDayBusinessHoursLabel];
     
     
@@ -272,16 +274,17 @@
     self.priceNightFlag.image = [UIImage imageNamed:@"ico_search_night"];
     [self.priceView addSubview:self.priceNightFlag];
     
-    self.priceNightPriceLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.priceNightFlag.frame.origin.x+self.priceDayFlag.frame.size.width+5, 0, 80, self.priceView.frame.size.height)];
+    self.priceNightPriceLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.priceNightFlag.frame.origin.x+self.priceDayFlag.frame.size.width+3, 0, 65, self.priceView.frame.size.height)];
     self.priceNightPriceLabel.font = [UIFont systemFontOfSize:14];
     self.priceNightPriceLabel.textColor = backageColorBlue;
-    self.priceNightPriceLabel.text = @"未知";
+    self.priceNightPriceLabel.text = @"￥0/小时";
     [self.priceView addSubview:self.priceNightPriceLabel];
     
-    self.priceNightBusinessHoursLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth-80, 5, 60, self.priceView.frame.size.height-self.priceDayBusinessHoursLabel.frame.origin.y)];
+    self.priceNightBusinessHoursLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.priceNightPriceLabel.frame.origin.x+self.priceNightPriceLabel.frame.size.width, 5, 70, self.priceView.frame.size.height-self.priceDayBusinessHoursLabel.frame.origin.y)];
     self.priceNightBusinessHoursLabel.font = [UIFont systemFontOfSize:9];
     self.priceNightBusinessHoursLabel.textColor = fontColorGray;
-    self.priceNightBusinessHoursLabel.text = @"未知";
+    self.priceNightBusinessHoursLabel.text = @"0:00-24:00";
+//    self.priceNightBusinessHoursLabel.textAlignment = NSTextAlignmentRight;
     [self.priceView addSubview:self.priceNightBusinessHoursLabel];
     
     

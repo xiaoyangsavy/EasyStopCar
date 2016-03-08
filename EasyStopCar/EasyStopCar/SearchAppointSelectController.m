@@ -63,8 +63,8 @@
         self.cityLabel.font = [UIFont systemFontOfSize:14];
         [self.searchView addSubview:self.cityLabel];
         
-        self.cityFlag = [[UIImageView alloc]initWithFrame:CGRectMake(self.cityLabel.frame.origin.x+self.cityLabel.frame.size.width+2, 0, 10, self.searchView.frame.size.height)];
-        self.cityFlag.image = [UIImage imageNamed:@"ico_home_select_arrow"];
+        self.cityFlag = [[UIImageView alloc]initWithFrame:CGRectMake(self.cityLabel.frame.origin.x+self.cityLabel.frame.size.width+3, 0,10, self.searchView.frame.size.height)];
+        self.cityFlag.image = [UIImage imageNamed:@"ico_arrow_down"];
         self.cityFlag.contentMode = UIViewContentModeScaleAspectFit;
         [self.searchView addSubview:self.cityFlag];
         
