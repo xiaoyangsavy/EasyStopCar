@@ -14,4 +14,5 @@
 @property (nonatomic, assign)NSInteger styleType;     //显示类型
 @property (nonatomic, strong)NSString *searchedLocation;
 @property (nonatomic, strong)NSString *searchedData;
+@property (nonatomic, assign)BOOL isElectricity;//是否有电
 @end

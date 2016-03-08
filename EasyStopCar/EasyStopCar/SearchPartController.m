@@ -201,16 +201,19 @@
         self.appointElectricityFlag.image = [UIImage imageNamed:@"ico_home_cell_flag"];self.appointElectricityFlag.contentMode = UIViewContentModeScaleAspectFit;
         [self.appointConditionView addSubview:self.appointElectricityFlag];
         
-        self.appointDataLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.appointElectricityFlag.frame.origin.x+self.appointElectricityFlag.frame.size.width, 0, 100, self.appointConditionView.frame.size.height)];
+        self.appointDataLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.appointElectricityFlag.frame.origin.x+self.appointElectricityFlag.frame.size.width+5, 0, 100, self.appointConditionView.frame.size.height)];
         self.appointDataLabel.text = self.searchedData;
         self.appointDataLabel.font = [UIFont systemFontOfSize:14];
         self.appointDataLabel.textColor = fontColorGray;
         [self.appointConditionView addSubview:self.appointDataLabel];
         
-        self.appointEditButton = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth-30, 0, 30, self.appointConditionView.frame.size.height)];
+        self.appointEditButton = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth-40, 0, 30, self.appointConditionView.frame.size.height)];
         [self.appointEditButton setImage:[UIImage imageNamed:@"ico_park_edit"] forState:UIControlStateNormal];
         [self.appointEditButton addTarget:self action:@selector(toReturn) forControlEvents:UIControlEventTouchUpInside];
         [self.appointConditionView addSubview:self.appointEditButton];
+        
+       
+        self.appointElectricityFlag.hidden = !self.isElectricity;//有电符号是否显示
         
         
         myTableHeadView;
@@ -339,6 +342,7 @@
     myController.styleType = self.styleType;
     myController.searchedLocation = self.searchedLocation;
     myController.searchedData = self.searchedData;
+    myController.isElectricity = self.isElectricity;
     myController.isDetail = YES;
     [self.navigationController pushViewController:myController animated:YES];
 }

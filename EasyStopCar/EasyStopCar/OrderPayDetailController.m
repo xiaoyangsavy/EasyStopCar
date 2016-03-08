@@ -32,15 +32,15 @@
      [super initNavBarItems:@"支付明细"];
     
     self.orderNumberLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 20, ScreenWidth, 15)];
-    self.orderNumberLabel.text = @"订单韩 000000000000000";
-    self.orderNumberLabel.font = [UIFont boldSystemFontOfSize:12];
+    self.orderNumberLabel.text = @"订单号 000000000000000";
+    self.orderNumberLabel.font = [UIFont systemFontOfSize:12];
     self.orderNumberLabel.textAlignment = NSTextAlignmentCenter;
     self.orderNumberLabel.textColor = fontColorGray;
     [self.view addSubview:self.orderNumberLabel];
     
     self.parkNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.orderNumberLabel.frame.origin.y+self.orderNumberLabel.frame.size.height+10, ScreenWidth, 15)];
     self.parkNameLabel.text = @"暂无";
-    self.parkNameLabel.font = [UIFont boldSystemFontOfSize:17];
+    self.parkNameLabel.font = [UIFont systemFontOfSize:17];
     self.parkNameLabel.textAlignment = NSTextAlignmentCenter;
     self.parkNameLabel.textColor = fontColorBlack;
     [self.view addSubview:self.parkNameLabel];
@@ -51,14 +51,14 @@
 //    self.orderDetailBakcage.contentMode = UIViewContentModeScaleAspectFit;
      [self.view addSubview:self.orderDetailBakcage];
     
-    self.orderDetailView = [[UIView alloc]initWithFrame:CGRectMake(25, 74+9, ScreenWidth-25*2, 383)];
+    self.orderDetailView = [[UIView alloc]initWithFrame:CGRectMake(25, 74+9, ScreenWidth-25*2, 10+70+60*4+60)];
     self.orderDetailView.backgroundColor = [UIColor whiteColor];
     self.orderDetailView.layer.borderWidth = 0.5;
     self.orderDetailView.layer.borderColor =[[UIColor grayColor] CGColor];
     [self.view addSubview:self.orderDetailView];
+ 
     
-    
-    self.datailTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.orderDetailView.frame.size.width, 303)];
+    self.datailTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 10, self.orderDetailView.frame.size.width, 70+60*4)];
     self.datailTableView.delegate = self;
     self.datailTableView.dataSource = self;
     self.datailTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -66,13 +66,27 @@
     [self.datailTableView setTableFooterView:[[UIView alloc]init]];
     [self.orderDetailView addSubview:self.datailTableView];
     
+    UIImageView *shadowView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.orderDetailView.frame.size.width, 15)];
+    shadowView.image = [UIImage imageNamed:@"backage_order_shadow"];
+    [self.orderDetailView addSubview:shadowView];
     
-    self.paySumLabel =  [[UILabel alloc] initWithFrame:CGRectMake(0, self.datailTableView.frame.origin.y+self.datailTableView.frame.size.height, self.orderDetailView.frame.size.width-marginSize, 80)];
+    
+    self.paySumLabel =  [[UILabel alloc] initWithFrame:CGRectMake(0, self.datailTableView.frame.origin.y+self.datailTableView.frame.size.height, self.orderDetailView.frame.size.width-marginSize, 60)];
     self.paySumLabel.textColor = backageColorRed;
     self.paySumLabel.font = [UIFont boldSystemFontOfSize:17];
     self.paySumLabel.text = @"需支付总金额 ￥0元";
     self.paySumLabel.textAlignment = NSTextAlignmentRight;
     [self.orderDetailView addSubview:self.paySumLabel];
+ 
+    NSMutableAttributedString *orderStateAttributedString = [[NSMutableAttributedString alloc] initWithString:@"需支付总金额 ￥0元"];
+    [orderStateAttributedString addAttribute:NSForegroundColorAttributeName value:fontColorBlack range:NSMakeRange(0,6)];
+    [orderStateAttributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:17] range:NSMakeRange(0, 6)];
+    self.paySumLabel.attributedText = orderStateAttributedString;
+    
+    CALayer *bottomBorder=[[CALayer alloc]init];
+    bottomBorder.frame=CGRectMake(0, 0, self.orderDetailView.frame.size.width, 0.5);
+    bottomBorder.backgroundColor=lineColorGray.CGColor;
+    [self.paySumLabel.layer addSublayer:bottomBorder ];
 }
 
 
@@ -83,7 +97,7 @@
     NSMutableDictionary *myDictionary = nil;
     
     myDictionary = [[NSMutableDictionary alloc] init];
-    [myDictionary setValue:@"test_picture.jpg" forKey:@"image"];
+    [myDictionary setValue:@"ico_time" forKey:@"image"];
     [myDictionary setValue:@"使用时间" forKey:@"title"];
     [myDictionary setValue:@"" forKey:@"time"];
     [myDictionary setValue:@"0时0分" forKey:@"value"];
@@ -140,6 +154,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     float rowHeight = 60;
+    if (indexPath.row==0) {
+        rowHeight = 70;
+    }
     return rowHeight;
     
 }

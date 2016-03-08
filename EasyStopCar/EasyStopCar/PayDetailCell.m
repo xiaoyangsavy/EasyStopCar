@@ -22,7 +22,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        self.payDetailIco = [[UIImageView alloc] initWithFrame:CGRectMake(marginSize, 10, 20, 20)];
+        self.payDetailIco = [[UIImageView alloc] initWithFrame:CGRectMake(marginSize, 10, 15, 20)];
         self.payDetailIco.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview:self.payDetailIco];
         
@@ -45,7 +45,7 @@
         [self.contentView addSubview:self.payDetailValue];
         
         
-        self.payDetailContent = [[UILabel alloc] initWithFrame:CGRectMake(self.payDetailTitle.frame.origin.x, self.payDetailTitle.frame.origin.y+self.payDetailTitle.frame.size.height+2,self.contentView.frame.size.width-80, 30)];
+        self.payDetailContent = [[UILabel alloc] initWithFrame:CGRectMake(self.payDetailTitle.frame.origin.x, self.payDetailTitle.frame.origin.y+self.payDetailTitle.frame.size.height+5,self.contentView.frame.size.width-80, 30)];
         self.payDetailContent.font = [UIFont systemFontOfSize:12];
         self.payDetailContent.textColor = fontColorLightgray;
         self.payDetailContent.lineBreakMode = NSLineBreakByWordWrapping;

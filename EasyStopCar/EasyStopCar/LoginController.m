@@ -30,7 +30,7 @@
     [super viewDidLoad];
    
     [super initNavBarItems:@"手机快捷登陆"];
-    
+     self.navigationItem.leftBarButtonItem=nil;
     
     self.view.backgroundColor = [UIColor whiteColor];
     

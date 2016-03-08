@@ -170,7 +170,25 @@
     myPickViewTopBorder.backgroundColor=lineColorGray.CGColor;
     [ self.myPickView.layer addSublayer:myPickViewTopBorder ];
     
+    
+    //接受地址信息
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reloadLocationInfo:)
+                                                 name:@"reloadLocationInfo"
+                                               object:nil];
+    
  }
+
+//修改地址信息
+- (void) reloadLocationInfo:(NSNotification*) notification
+{
+    id obj = [notification object];//获取到传递的对象
+    NSLog(@"接受的信息为：%@",obj);
+    
+    self.myArray[0][@"title"] = obj;
+    [self.serachTableView reloadData];
+    
+}
 
 
 //测试数据
@@ -260,7 +278,8 @@
         
         NSLog(@"选择的时间为%@；%@；%@!!!!",self.dataArray[selectedOneIndex],self.hourArray[selectedTwoIndex],self.minuteArray[selectedThreeIndex]);
         
-        
+        self.myArray[1][@"title"] = [NSString stringWithFormat:@"%@ %@:%@",self.dataArray[selectedOneIndex],self.hourArray[selectedTwoIndex],self.minuteArray[selectedThreeIndex]];
+        [self.serachTableView reloadData];
         
     }
 
@@ -270,8 +289,9 @@
 -(void)submitClick{
     
     SearchPartController *myController = [[SearchPartController alloc]init];
-    myController.searchedLocation = @"北京";
-    myController.searchedData = @"0月0日 00:00";
+    myController.searchedLocation = self.myArray[0][@"title"];
+    myController.searchedData = self.myArray[1][@"title"];
+    myController.isElectricity = self.searchSwitch.on;
     myController.styleType = 1;
     [self.navigationController pushViewController:myController animated:YES];
     

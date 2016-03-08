@@ -393,7 +393,7 @@
     self.appointElectricityFlag.image = [UIImage imageNamed:@"ico_home_cell_flag"];self.appointElectricityFlag.contentMode = UIViewContentModeScaleAspectFit;
     [self.appointConditionView addSubview:self.appointElectricityFlag];
     
-    self.appointDataLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.appointElectricityFlag.frame.origin.x+self.appointElectricityFlag.frame.size.width, 0, 100, self.appointConditionView.frame.size.height)];
+    self.appointDataLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.appointElectricityFlag.frame.origin.x+self.appointElectricityFlag.frame.size.width+5, 0, 100, self.appointConditionView.frame.size.height)];
     self.appointDataLabel.text = self.searchedData;
     self.appointDataLabel.font = [UIFont systemFontOfSize:14];
     self.appointDataLabel.textColor = fontColorGray;
@@ -403,6 +403,8 @@
     [self.appointEditButton setImage:[UIImage imageNamed:@"ico_park_edit"] forState:UIControlStateNormal];
     [self.appointEditButton addTarget:self action:@selector(toEditPage) forControlEvents:UIControlEventTouchUpInside];
     [self.appointConditionView addSubview:self.appointEditButton];
+    
+     self.appointElectricityFlag.hidden = !self.isElectricity;//有电符号是否显示
     
     
      [super initNavBarItems:@"停车场"];

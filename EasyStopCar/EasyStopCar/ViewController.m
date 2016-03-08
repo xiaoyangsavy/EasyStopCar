@@ -66,7 +66,7 @@
     
     //设置表头部个人信息
     self.listTableView.tableHeaderView = ({
-        UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBounds.size.width, ScreenWidth*420/640+166+39)];
+        UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBounds.size.width, ScreenWidth*420/640+166+39-10)];
 
         //banner*******************************
         self.bannerScroll=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth*420/640)];
@@ -166,7 +166,7 @@
         self.selectTitleLabel.text = @"最近订单";
         [self.selectView addSubview:self.selectTitleLabel];
         
-        self.selectArrow = [[UIImageView alloc]initWithFrame:CGRectMake(ScreenWidth-marginSize-20, 0, 10, self.selectView.frame.size.height)];
+        self.selectArrow = [[UIImageView alloc]initWithFrame:CGRectMake(ScreenWidth-marginSize-20, 0, 12, self.selectView.frame.size.height)];
         [self.selectArrow setImage:[UIImage imageNamed:@"ico_arrow_down"]];
         self.selectArrow.contentMode = UIViewContentModeScaleAspectFit;
         [self.selectView addSubview:self.selectArrow];
@@ -468,7 +468,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    float rowHeight = 108.5+20.0;
+    float rowHeight = 108.5+10.0;
     return rowHeight;
     
 }

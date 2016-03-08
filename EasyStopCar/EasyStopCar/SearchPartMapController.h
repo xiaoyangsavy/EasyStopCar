@@ -19,6 +19,7 @@
 @property (nonatomic, assign)NSInteger styleType;     //显示类型（0：不显示，地图列表；1：显示，地图列表）
 @property (nonatomic, strong)NSString *searchedLocation;
 @property (nonatomic, strong)NSString *searchedData;
+@property (nonatomic, assign)BOOL isElectricity;//是否有电
 
 @property (nonatomic, assign)BOOL isDetail;//是详情
 

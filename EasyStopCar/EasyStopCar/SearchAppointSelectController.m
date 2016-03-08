@@ -114,6 +114,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //    NSLog(@"点击了一个cell");
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"reloadLocationInfo"
+     object:self.myArray[indexPath.row][@"testText"]];
     
     [self toReturn];
 }
