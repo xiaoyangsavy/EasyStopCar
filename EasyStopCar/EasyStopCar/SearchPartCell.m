@@ -51,14 +51,14 @@
         self.searchDistance.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:self.searchDistance];
         
-        self.searchPrice = [[UILabel alloc] initWithFrame:CGRectMake(self.searchName.frame.origin.x, 100-15-15, 70, 15)];
+        self.searchPrice = [[UILabel alloc] initWithFrame:CGRectMake(self.searchName.frame.origin.x-2, 100-15-15, 70, 15)];
         self.searchPrice.font = [UIFont systemFontOfSize:14];
         self.searchPrice.textColor = backageColorRed;
         [self.contentView addSubview:self.searchPrice];
         
-        self.searchBusinessHours = [[UILabel alloc] initWithFrame:CGRectMake(self.searchPrice.frame.origin.x+self.searchPrice.frame.size.width+5, 100-10-15, 100, 10)];
+        self.searchBusinessHours = [[UILabel alloc] initWithFrame:CGRectMake(self.searchPrice.frame.origin.x+self.searchPrice.frame.size.width, 100-10-15, 100, 10)];
         self.searchBusinessHours.font = [UIFont systemFontOfSize:9];
-        self.searchBusinessHours.textColor = fontColorBlack;
+        self.searchBusinessHours.textColor = fontColorLightgray;
         [self.contentView addSubview:self.searchBusinessHours];
         
         
@@ -79,8 +79,8 @@
      NSString *parkCount =  myDictionary[@"parkCount"];
  
     NSMutableAttributedString *orderStateAttributedString = [[NSMutableAttributedString alloc] initWithString:parkCountString];
-    [orderStateAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0,parkCount.length)];
-    [orderStateAttributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0,parkCount.length)];
+    [orderStateAttributedString addAttribute:NSForegroundColorAttributeName value:fontColorGray range:NSMakeRange(0,parkCount.length)];
+    [orderStateAttributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:                 12] range:NSMakeRange(0,parkCount.length)];
     self.searchPartCount.attributedText = orderStateAttributedString;
     
     
@@ -90,8 +90,8 @@
     NSString *distance =  myDictionary[@"distance"];
     
     NSMutableAttributedString *distanceAttributedString = [[NSMutableAttributedString alloc] initWithString:distanceString];
-    [distanceAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0,distance.length)];
-    [distanceAttributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:22] range:NSMakeRange(0,distance.length)];
+    [distanceAttributedString addAttribute:NSForegroundColorAttributeName value:fontColorGray                range:NSMakeRange(0,distance.length)];
+    [distanceAttributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(0,distance.length)];
     self.searchDistance.attributedText = distanceAttributedString;
     
  

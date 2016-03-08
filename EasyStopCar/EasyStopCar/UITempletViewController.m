@@ -92,7 +92,7 @@
     [leftButton setImage:[UIImage imageNamed:aLightedImage] forState:UIControlStateHighlighted];
     [leftButton addTarget:self action:buttonClicked forControlEvents:UIControlEventTouchUpInside];
     
-    leftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 20);
+    leftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -25, 0, 25);
     leftButton.frame = CGRectMake(0, 0, 60, 44);
     leftButton.tag = NAME_MAX;
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:leftButton];
@@ -106,7 +106,7 @@
     [rightButton setImage:[UIImage imageNamed:aLightedImage] forState:UIControlStateHighlighted];
     [rightButton addTarget:self action:pushPastView forControlEvents:UIControlEventTouchUpInside];
     rightButton.frame = CGRectMake(0.0f, 0.0f, 60,44);
-    rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 10, 0, -10);
+    rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 25, 0, -25);
     rightButton.tag = 10009;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
 

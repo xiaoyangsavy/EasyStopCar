@@ -66,7 +66,7 @@
     
     //设置表头部个人信息
     self.listTableView.tableHeaderView = ({
-        UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBounds.size.width, ScreenWidth*420/640+166+39-10)];
+        UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBounds.size.width, ScreenWidth*420/640+166+39)];
 
         //banner*******************************
         self.bannerScroll=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth*420/640)];
@@ -145,12 +145,12 @@
         
         CALayer *topBorder=[[CALayer alloc]init];
         topBorder.frame=CGRectMake(0, 0, self.selectView.frame.size.width, 0.5);
-        topBorder.backgroundColor=lineColorGray.CGColor;
+        topBorder.backgroundColor=lineColorLightgray.CGColor;
         [self.selectView.layer addSublayer:topBorder ];
         
         CALayer *bottomBorder=[[CALayer alloc]init];
         bottomBorder.frame=CGRectMake(0, self.selectView.frame.size.height-0.5, self.selectView.frame.size.width, 0.5);
-        bottomBorder.backgroundColor=lineColorGray.CGColor;
+        bottomBorder.backgroundColor=lineColorLightgray.CGColor;
         [self.selectView.layer addSublayer:bottomBorder ];
         
         
@@ -162,7 +162,7 @@
         
         self.selectTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.selectImageView.frame.origin.x+self.selectImageView.frame.size.width+10, 0, 200, self.selectView.frame.size.height)];
         self.selectTitleLabel.font = [UIFont systemFontOfSize:14];
-        self.selectTitleLabel.textColor = fontColorGray;
+        self.selectTitleLabel.textColor = fontColorBlack;
         self.selectTitleLabel.text = @"最近订单";
         [self.selectView addSubview:self.selectTitleLabel];
         

@@ -84,7 +84,7 @@
     
     CALayer *infoBottomBorder=[[CALayer alloc]init];
     infoBottomBorder.frame=CGRectMake(0, self.infoView.frame.size.height-0.5, self.infoView.frame.size.width, 0.5);
-    infoBottomBorder.backgroundColor=lineColorGray.CGColor;
+    infoBottomBorder.backgroundColor=lineColorLightgray.CGColor;
     [self.infoView.layer addSublayer:infoBottomBorder ];
     
     self.priceView = [[UIButton alloc]initWithFrame:CGRectMake(0, self.infoView.frame.origin.y+self.infoView.frame.size.height, ScreenWidth, 44)];
@@ -95,7 +95,7 @@
     
     CALayer *priceBottomBorder=[[CALayer alloc]init];
     priceBottomBorder.frame=CGRectMake(0, self.priceView.frame.size.height-0.5, self.priceView.frame.size.width, 0.5);
-    priceBottomBorder.backgroundColor=lineColorGray.CGColor;
+    priceBottomBorder.backgroundColor=lineColorLightgray.CGColor;
     [self.priceView.layer addSublayer:priceBottomBorder ];
     
     self.twoDimensionalImageView = [[UIImageView alloc]initWithFrame:CGRectMake((ScreenWidth-200)/2, self.infoView.frame.origin.y+self.infoView.frame.size.height+15, 200, 200)];
@@ -119,27 +119,27 @@
     self.infoDetailView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth*0.5, self.infoView.frame.size.height)];
     [self.infoView addSubview:self.infoDetailView];
     
-    self.infoLocationFlag = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 15, 11, 15)];
+    self.infoLocationFlag = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 20, 11, 15)];
     self.infoLocationFlag.image = [UIImage imageNamed:@"ico_home_cell_location"];
     self.infoLocationFlag.contentMode = UIViewContentModeScaleAspectFit;
     [self.infoView addSubview:self.infoLocationFlag];
     
-    self.infoName = [[UILabel alloc]initWithFrame:CGRectMake(self.infoLocationFlag.frame.origin.x+self.infoLocationFlag.frame.size.width+5, 15, 100, 15)];
+    self.infoName = [[UILabel alloc]initWithFrame:CGRectMake(self.infoLocationFlag.frame.origin.x+self.infoLocationFlag.frame.size.width+5, 20, 100, 15)];
     self.infoName.text = @"您的车位";
     self.infoName.textColor = fontColorBlack;
-    self.infoName.font = [UIFont systemFontOfSize:14];
+    self.infoName.font = [UIFont systemFontOfSize:15];
     [self.infoView addSubview:self.infoName];
     
-    self.infoAddress = [[UILabel alloc]initWithFrame:CGRectMake(self.infoName.frame.origin.x, self.infoName.frame.origin.y+self.infoName.frame.size.height+5, 100, 30)];
+    self.infoAddress = [[UILabel alloc]initWithFrame:CGRectMake(self.infoName.frame.origin.x, self.infoName.frame.origin.y+self.infoName.frame.size.height, 100, 30)];
     self.infoAddress.text = @"未知";
     self.infoAddress.textColor = fontColorGray;
-    self.infoAddress.font = [UIFont systemFontOfSize:14];
+    self.infoAddress.font = [UIFont systemFontOfSize:12];
     [self.infoView addSubview:self.infoAddress];
     
     self.infoAddressDetail = [[UILabel alloc]initWithFrame:CGRectMake(self.infoName.frame.origin.x, self.infoAddress.frame.origin.y+self.infoAddress.frame.size.height+5, 100, 30)];
     self.infoAddressDetail.text = @"未知";
     self.infoAddressDetail.textColor = fontColorBlack;
-    self.infoAddressDetail.font = [UIFont boldSystemFontOfSize:14];
+    self.infoAddressDetail.font = [UIFont boldSystemFontOfSize:15];
     [self.infoView addSubview:self.infoAddressDetail];
     
     
@@ -230,7 +230,7 @@
     [self.infoTimeView addSubview:self.infoTimeRemain];
     
      self.infoLine = [[UIView alloc]initWithFrame:CGRectMake(self.infoView.frame.size.width*0.5, marginSize, 0.5, self.infoTimeView.frame.size.height-marginSize*2)];
-    self.infoLine.backgroundColor = lineColorGray;
+    self.infoLine.backgroundColor = lineColorLightgray;
     [self.infoView addSubview:self.infoLine];
     
     

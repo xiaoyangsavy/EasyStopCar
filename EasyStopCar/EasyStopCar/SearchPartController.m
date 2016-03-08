@@ -54,7 +54,18 @@
     self.categoryViewArray = [[NSMutableArray alloc]init];
     self.categoryBackageArray = [[NSMutableArray alloc]init];
     
-    [super addRightButton:@"ico_navigation_map" lightedImage:@"ico_navigation_map" selector:@selector(goSearchMap)];
+    rightButton = [UIButton  buttonWithType:UIButtonTypeCustom];
+    [rightButton setTintColor:[UIColor whiteColor]];
+    rightButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+    [rightButton setImage:[UIImage imageNamed:@"ico_navigation_map"] forState:UIControlStateNormal];
+    [rightButton setImage:[UIImage imageNamed:@"ico_navigation_map"] forState:UIControlStateHighlighted];
+    [rightButton addTarget:self action:@selector(goSearchMap) forControlEvents:UIControlEventTouchUpInside];
+    rightButton.frame = CGRectMake(0.0f, 0.0f, 60,44);
+    rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 10, 0, -10);
+    rightButton.tag = 10009;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+    
+    
     
     //搜索框
     UIView *searchView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 40)];
@@ -72,9 +83,12 @@
     
     UITextField *serachTextField = [[UITextField alloc]initWithFrame:CGRectMake(serachIcoView.frame.origin.x+serachIcoView.frame.size.width+2, 0, searchView.frame.size.width-10, 40)];
     //    [serachTextField setPlaceholder:@"请搜索商品"];
-    serachTextField.font = [UIFont systemFontOfSize:13];
+    serachTextField.font = [UIFont systemFontOfSize:14];
+    serachTextField.textColor = [UIColor whiteColor];
     serachTextField.delegate = self;
-    serachTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"搜索停车场" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:1 green:1 blue:1 alpha:0.7]}];
+    serachTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"搜索停车场" attributes:@{
+    NSForegroundColorAttributeName: [UIColor colorWithRed:1 green:1 blue:1 alpha:0.8],
+    NSFontAttributeName : [UIFont systemFontOfSize:13]}];
     serachTextField.textColor = [UIColor whiteColor];
     [searchView addSubview:serachTextField];
 
@@ -84,6 +98,7 @@
     self.serachTableView.delegate = self;
     self.serachTableView.dataSource = self;
     self.serachTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.serachTableView.separatorColor = lineColorLightgray;
     self.serachTableView.backgroundColor = [UIColor whiteColor];
     [self.serachTableView setTableFooterView:[[UIView alloc]init]];
     [self.view addSubview:self.serachTableView];
@@ -91,8 +106,13 @@
     //设置表头部个人信息
     self.serachTableView.tableHeaderView = ({
         
-        UIView *myTableHeadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBounds.size.width, 40.0f)];
-        myTableHeadView.backgroundColor = [UIColor whiteColor];
+        UIView *myTableHeadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenBounds.size.width, 40.0+10.0)];
+        myTableHeadView.backgroundColor = backageColorLightgray;
+        
+        CALayer *headBottomBorder=[[CALayer alloc]init];
+        headBottomBorder.frame=CGRectMake(0, myTableHeadView.frame.size.height-0.5, myTableHeadView.frame.size.width, 0.5);
+        headBottomBorder.backgroundColor=lineColorLightgray.CGColor;
+        [myTableHeadView.layer addSublayer:headBottomBorder ];
         
         
         //列表区域
@@ -111,7 +131,7 @@
         self.categoryOneLabel = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth/categoryCount*0, 0, ScreenWidth/categoryCount, self.categoryView.frame.size.height)];
         self.categoryOneLabel.tag = 198820;
         [self.categoryOneLabel setTitle:@"全部车位" forState:UIControlStateNormal];
-        self.categoryOneLabel.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+        self.categoryOneLabel.titleLabel.font = [UIFont systemFontOfSize:12];
         [self.categoryOneLabel setTitleColor:fontColorBlack forState:UIControlStateNormal];
         [self.categoryOneLabel addTarget:self action:@selector(clickWithCategory:) forControlEvents:UIControlEventTouchUpInside];
         [self.categoryView addSubview:self.categoryOneLabel];
@@ -270,7 +290,7 @@
             //            NSLog(@"修改为选中%ld",myButton.tag);
             myBackage.hidden = NO;
             UIButton *myLabel = self.categoryViewArray[i];
-            myLabel.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+            myLabel.titleLabel.font = [UIFont systemFontOfSize:12];
              [myLabel setTitleColor:fontColorBlack forState:UIControlStateNormal];
         }else{
             //             NSLog(@"修改为未选中%ld",myButton.tag);

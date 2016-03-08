@@ -27,7 +27,7 @@
 @property(nonatomic, strong) UILabel *homeLocationTitle;
 @property(nonatomic, strong) UILabel *homeLocationContent;
 @property(nonatomic, strong) UIImageView *homeLocationFlag;
-@property(nonatomic, strong) UIImageView *homeButton;
+@property(nonatomic, strong) UIButton *homeButton;
 
 @property(nonatomic, strong) NSMutableDictionary *myDictionary;  //商品数据
 

@@ -9,7 +9,7 @@
 #import "SearchPartMapController.h"
 #import "CommonTools.h"
 #import "SearchAppointController.h"
-
+#import "OrderDetailController.h"
 
 @interface RouteAnnotation : BMKPointAnnotation
 {
@@ -115,9 +115,12 @@
     
     UITextField *serachTextField = [[UITextField alloc]initWithFrame:CGRectMake(serachIcoView.frame.origin.x+serachIcoView.frame.size.width+2, 0, searchView.frame.size.width-10, 40)];
     //    [serachTextField setPlaceholder:@"请搜索商品"];
-    serachTextField.font = [UIFont systemFontOfSize:13];
+    serachTextField.font = [UIFont systemFontOfSize:14];
+    serachTextField.textColor = [UIColor whiteColor];
     serachTextField.delegate = self;
-    serachTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"搜索停车场" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:1 green:1 blue:1 alpha:0.7]}];
+    serachTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"搜索停车场" attributes:@{
+                                                                                                             NSForegroundColorAttributeName: [UIColor colorWithRed:1 green:1 blue:1 alpha:0.8],
+                                                                                                             NSFontAttributeName : [UIFont systemFontOfSize:13]}];
     serachTextField.textColor = [UIColor whiteColor];
     [searchView addSubview:serachTextField];
     
@@ -162,7 +165,7 @@
     
     CALayer *infoBottomBorder=[[CALayer alloc]init];
     infoBottomBorder.frame=CGRectMake(0, self.infoView.frame.size.height-0.5, self.infoView.frame.size.width, 0.5);
-    infoBottomBorder.backgroundColor=lineColorGray.CGColor;
+    infoBottomBorder.backgroundColor=lineColorLightgray.CGColor;
     [self.infoView.layer addSublayer:infoBottomBorder];
     
     
@@ -171,7 +174,7 @@
     
     CALayer *electricityBottomBorder=[[CALayer alloc]init];
     electricityBottomBorder.frame=CGRectMake(0, self.electricityView.frame.size.height-0.5, self.electricityView.frame.size.width, 0.5);
-    electricityBottomBorder.backgroundColor=lineColorGray.CGColor;
+    electricityBottomBorder.backgroundColor=lineColorLightgray.CGColor;
     [self.electricityView.layer addSublayer:electricityBottomBorder];
     
     self.priceView = [[UIView alloc]initWithFrame:CGRectMake(0, self.electricityView.frame.origin.y+self.electricityView.frame.size.height, ScreenWidth, 40)];
@@ -179,7 +182,7 @@
     
     CALayer *priceBottomBorder=[[CALayer alloc]init];
     priceBottomBorder.frame=CGRectMake(0, self.priceView.frame.size.height-0.5, self.priceView.frame.size.width, 0.5);
-    priceBottomBorder.backgroundColor=lineColorGray.CGColor;
+    priceBottomBorder.backgroundColor=lineColorLightgray.CGColor;
     [self.priceView.layer addSublayer:priceBottomBorder];
     
     
@@ -187,13 +190,13 @@
     
     
     //信息视图
-    self.headImageView = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 15, 75, 75)];
+    self.headImageView = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 13, 75, 75)];
     self.headImageView.layer.cornerRadius = 37.5;
     self.headImageView.layer.masksToBounds = YES;
     self.headImageView.image = [UIImage imageNamed:@"test_picture.jpg"];
     [self.infoView addSubview:self.headImageView];
     
-    self.positionFlag = [[UIImageView alloc]initWithFrame:CGRectMake(self.headImageView.frame.origin.x+self.headImageView.frame.size.width, 20, 11.5, 15)];
+    self.positionFlag = [[UIImageView alloc]initWithFrame:CGRectMake(self.headImageView.frame.origin.x+self.headImageView.frame.size.width+10, 20, 11.5, 15)];
     self.positionFlag.image = [UIImage imageNamed:@"ico_home_cell_location"];
     [self.infoView addSubview:self.positionFlag];
     
@@ -207,13 +210,13 @@
     self.distanceLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth-marginSize-70, self.positionFlag.frame.origin.y, 70, 15)];
     self.distanceLabel.font = [UIFont systemFontOfSize:14];
     self.distanceLabel.textColor = fontColorLightgray;
-    self.distanceLabel.text = @"0m";
+    self.distanceLabel.text = @"0km";
     self.distanceLabel.textAlignment = NSTextAlignmentRight;
     [self.infoView addSubview:self.distanceLabel];
     
     self.infoLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.nameLabel.frame.origin.x, self.nameLabel.frame.origin.y+self.nameLabel.frame.size.height+5, 200, 15)];
     self.infoLabel.font = [UIFont systemFontOfSize:12];
-    self.infoLabel.textColor = fontColorGray;
+    self.infoLabel.textColor = fontColorLightgray;
     self.infoLabel.text = @"停车0次，部分车位限小型车";
     [self.infoView addSubview:self.infoLabel];
     
@@ -229,19 +232,19 @@
     self.electricityFlag.image = [UIImage imageNamed:@"ico_home_cell_flag"];
     [self.electricityView addSubview:self.electricityFlag];
     
-    self.electricityPriceLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.electricityFlag.frame.origin.x+self.electricityFlag.frame.size.width+5, 0, 70, self.electricityView.frame.size.height)];
+    self.electricityPriceLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.electricityFlag.frame.origin.x+self.electricityFlag.frame.size.width+5, 0, 65, self.electricityView.frame.size.height)];
     self.electricityPriceLabel.font = [UIFont systemFontOfSize:14];
     self.electricityPriceLabel.textColor = backageColorGreen;
     self.electricityPriceLabel.text = @"￥0/小时";
     [self.electricityView addSubview:self.electricityPriceLabel];
     
-    self.electricityInfoLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.electricityPriceLabel.frame.origin.x+self.electricityPriceLabel.frame.size.width, 0, 150, self.electricityView.frame.size.height)];
+    self.electricityInfoLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.electricityPriceLabel.frame.origin.x+self.electricityPriceLabel.frame.size.width-5, 1, 150, self.electricityView.frame.size.height)];
     self.electricityInfoLabel.font = [UIFont systemFontOfSize:9];
     self.electricityInfoLabel.textColor = fontColorGray;
     self.electricityInfoLabel.text = @"（电费￥0/度+服务费￥0/度）";
     [self.electricityView addSubview:self.electricityInfoLabel];
     
-    self.electricitySwitch = [[ UISwitch alloc]initWithFrame:CGRectMake(ScreenWidth-60,5,0,0)];
+    self.electricitySwitch = [[ UISwitch alloc]initWithFrame:CGRectMake(ScreenWidth-60,4,0,0)];
     [self.electricityView addSubview:self.electricitySwitch];
     [self.electricitySwitch setOn:YES animated:YES];
     
@@ -257,7 +260,7 @@
     self.priceDayPriceLabel.text = @"￥0/小时";
     [self.priceView addSubview:self.priceDayPriceLabel];
     
-    self.priceDayBusinessHoursLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.priceDayPriceLabel.frame.origin.x+self.priceDayPriceLabel.frame.size.width, 5, 70, self.priceView.frame.size.height-self.priceDayBusinessHoursLabel.frame.origin.y)];
+    self.priceDayBusinessHoursLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.priceDayPriceLabel.frame.origin.x+self.priceDayPriceLabel.frame.size.width, 4, 70, self.priceView.frame.size.height-self.priceDayBusinessHoursLabel.frame.origin.y)];
     self.priceDayBusinessHoursLabel.font = [UIFont systemFontOfSize:9];
     self.priceDayBusinessHoursLabel.textColor = fontColorGray;
     self.priceDayBusinessHoursLabel.text = @"0:00-24:00";
@@ -266,7 +269,7 @@
     
     
     self.priceCutLine = [[UIView alloc]initWithFrame:CGRectMake(ScreenWidth*0.5, 5, 0.5, self.priceView.frame.size.height-10)];
-    self.priceCutLine.backgroundColor = lineColorGray;
+    self.priceCutLine.backgroundColor = lineColorLightgray;
     [self.priceView addSubview:self.priceCutLine];
     
     
@@ -280,7 +283,7 @@
     self.priceNightPriceLabel.text = @"￥0/小时";
     [self.priceView addSubview:self.priceNightPriceLabel];
     
-    self.priceNightBusinessHoursLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.priceNightPriceLabel.frame.origin.x+self.priceNightPriceLabel.frame.size.width, 5, 70, self.priceView.frame.size.height-self.priceDayBusinessHoursLabel.frame.origin.y)];
+    self.priceNightBusinessHoursLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.priceNightPriceLabel.frame.origin.x+self.priceNightPriceLabel.frame.size.width, 4, 70, self.priceView.frame.size.height-self.priceDayBusinessHoursLabel.frame.origin.y)];
     self.priceNightBusinessHoursLabel.font = [UIFont systemFontOfSize:9];
     self.priceNightBusinessHoursLabel.textColor = fontColorGray;
     self.priceNightBusinessHoursLabel.text = @"0:00-24:00";
@@ -379,7 +382,7 @@
     
     CALayer *bottomBorder=[[CALayer alloc]init];
     bottomBorder.frame=CGRectMake(0, self.appointConditionView.frame.size.height-0.5, self.appointConditionView.frame.size.width, 0.5);
-    bottomBorder.backgroundColor=lineColorGray.CGColor;
+    bottomBorder.backgroundColor=lineColorLightgray.CGColor;
     [self.appointConditionView.layer addSublayer:bottomBorder ];
     
     
@@ -492,6 +495,9 @@
         [super hideAlertBackage];
     }else  if (myButton.tag ==198852 ){//确认
         [super hideAlertBackage];
+        OrderDetailController *myController = [[OrderDetailController alloc]init];
+        myController.orderType = 1;//预约订单
+        [self.navigationController pushViewController:myController animated:YES];
     }
     
 }
@@ -554,7 +560,7 @@
     if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
         NSLog(@"重写大头针样式");
         
-        UIView *viewForImage=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 50, 100)];
+        UIView *viewForImage=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 50*1.2, 100*1.2)];
         UIImageView *imageview=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, viewForImage.frame.size.width, viewForImage.frame.size.height)];
         [imageview setImage:[UIImage imageNamed:@"button_map_loacation_default"]];
         [viewForImage addSubview:imageview];
@@ -563,7 +569,7 @@
         label.text=annotation.subtitle;
         label.backgroundColor=[UIColor clearColor];
         label.textAlignment = NSTextAlignmentCenter;
-        label.font = [UIFont boldSystemFontOfSize:15];
+        label.font = [UIFont boldSystemFontOfSize:30];
         label.textColor = fontColorBlack;
         [viewForImage addSubview:label];
 
