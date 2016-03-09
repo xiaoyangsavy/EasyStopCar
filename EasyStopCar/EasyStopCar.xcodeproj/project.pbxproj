@@ -22,9 +22,7 @@
 		4D9AC3CB1C83E20E00E923CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3CA1C83E20E00E923CC /* main.m */; };
 		4D9AC3CE1C83E20E00E923CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3CD1C83E20E00E923CC /* AppDelegate.m */; };
 		4D9AC3D11C83E20E00E923CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3D01C83E20E00E923CC /* ViewController.m */; };
-		4D9AC3D41C83E20E00E923CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D9AC3D21C83E20E00E923CC /* Main.storyboard */; };
 		4D9AC3D61C83E20E00E923CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D9AC3D51C83E20E00E923CC /* Assets.xcassets */; };
-		4D9AC3D91C83E20E00E923CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D9AC3D71C83E20E00E923CC /* LaunchScreen.storyboard */; };
 		4D9AC3E41C83E20E00E923CC /* EasyStopCarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3E31C83E20E00E923CC /* EasyStopCarTests.m */; };
 		4D9AC3EF1C83E20E00E923CC /* EasyStopCarUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3EE1C83E20E00E923CC /* EasyStopCarUITests.m */; };
 		4D9AC4261C841F5600E923CC /* BaiduMapAPI_Location.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AC4211C841F5600E923CC /* BaiduMapAPI_Location.framework */; };
@@ -91,6 +89,7 @@
 		4DC6BCF01C905DE100279A90 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC6BCEF1C905DE100279A90 /* libz.dylib */; };
 		4DC6BCF21C905EA300279A90 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC6BCF11C905EA300279A90 /* libsqlite3.0.dylib */; };
 		4DC6BCF41C905EBC00279A90 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC6BCF31C905EBC00279A90 /* libstdc++.6.0.9.dylib */; };
+		4DC6BCFA1C9062AE00279A90 /* MyStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC6BCF91C9062AE00279A90 /* MyStoryboard.storyboard */; };
 		4DCCA5111C8440CC00965C21 /* YHR_PageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCCA5101C8440CC00965C21 /* YHR_PageControl.m */; };
 		4DCCA5141C84426200965C21 /* test_picture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DCCA5131C84426200965C21 /* test_picture.jpg */; };
 		4DCCA5181C8455B600965C21 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCCA5171C8455B600965C21 /* HomeCell.m */; };
@@ -148,9 +147,7 @@
 		4D9AC3CD1C83E20E00E923CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4D9AC3CF1C83E20E00E923CC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		4D9AC3D01C83E20E00E923CC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		4D9AC3D31C83E20E00E923CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D9AC3D51C83E20E00E923CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4D9AC3D81C83E20E00E923CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D9AC3DA1C83E20E00E923CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D9AC3DF1C83E20E00E923CC /* EasyStopCarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyStopCarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9AC3E31C83E20E00E923CC /* EasyStopCarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EasyStopCarTests.m; sourceTree = "<group>"; };
@@ -351,6 +348,7 @@
 		4DC6BCF31C905EBC00279A90 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		4DC6BCF51C905EE300279A90 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
 		4DC6BCF61C905EE300279A90 /* libSVProgressHUD.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSVProgressHUD.a; path = "Pods/../build/Debug-iphoneos/libSVProgressHUD.a"; sourceTree = "<group>"; };
+		4DC6BCF91C9062AE00279A90 /* MyStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyStoryboard.storyboard; sourceTree = "<group>"; };
 		4DCCA50F1C8440CC00965C21 /* YHR_PageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHR_PageControl.h; sourceTree = "<group>"; };
 		4DCCA5101C8440CC00965C21 /* YHR_PageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHR_PageControl.m; sourceTree = "<group>"; };
 		4DCCA5131C84426200965C21 /* test_picture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_picture.jpg; sourceTree = "<group>"; };
@@ -482,12 +480,11 @@
 				4D9AC4401C8423DA00E923CC /* UITempletViewController.m */,
 				4D9AC3CF1C83E20E00E923CC /* ViewController.h */,
 				4D9AC3D01C83E20E00E923CC /* ViewController.m */,
-				4D9AC3D21C83E20E00E923CC /* Main.storyboard */,
 				4D9AC3D51C83E20E00E923CC /* Assets.xcassets */,
-				4D9AC3D71C83E20E00E923CC /* LaunchScreen.storyboard */,
 				4D9AC3DA1C83E20E00E923CC /* Info.plist */,
 				4DCCA5121C84421E00965C21 /* Resource */,
 				4D9AC3C91C83E20E00E923CC /* Supporting Files */,
+				4DC6BCF91C9062AE00279A90 /* MyStoryboard.storyboard */,
 			);
 			path = EasyStopCar;
 			sourceTree = "<group>";
@@ -952,11 +949,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D9AC3D91C83E20E00E923CC /* LaunchScreen.storyboard in Resources */,
 				4D9AC43E1C8421D700E923CC /* mapapi.bundle in Resources */,
+				4DC6BCFA1C9062AE00279A90 /* MyStoryboard.storyboard in Resources */,
 				4DC6BCE01C905C5700279A90 /* AlipaySDK.bundle in Resources */,
 				4D9AC3D61C83E20E00E923CC /* Assets.xcassets in Resources */,
-				4D9AC3D41C83E20E00E923CC /* Main.storyboard in Resources */,
 				4DCCA5141C84426200965C21 /* test_picture.jpg in Resources */,
 				4DCF9F711C8D6C9900FBBA24 /* test_banner.png in Resources */,
 			);
@@ -1123,25 +1119,6 @@
 			targetProxy = 4D9AC3EB1C83E20E00E923CC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		4D9AC3D21C83E20E00E923CC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4D9AC3D31C83E20E00E923CC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4D9AC3D71C83E20E00E923CC /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4D9AC3D81C83E20E00E923CC /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4D9AC3F11C83E20E00E923CC /* Debug */ = {
