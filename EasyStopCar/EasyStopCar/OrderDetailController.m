@@ -103,8 +103,7 @@
     self.twoDimensionalImageView.userInteractionEnabled = YES;
     [self.view addSubview:self.twoDimensionalImageView];
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(twoDimensionalClick:)];
-    [self.twoDimensionalImageView addGestureRecognizer:tapGesture];
+   
     
     
     self.twoDimensionalLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.twoDimensionalImageView.frame.origin.y+self.twoDimensionalImageView.frame.size.height+15, ScreenWidth, 15)];
@@ -263,7 +262,11 @@
 //根据类型，初始化控制器
 -(void)initControllerByType{
     
-    if(self.orderType==2){//已停
+    if(self.orderType == 1){
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(twoDimensionalClick:)];
+        [self.twoDimensionalImageView addGestureRecognizer:tapGesture];
+    
+    }else  if(self.orderType == 2){//已停
     
         self.infoTimeName.text = @"车位使用中";
         self.infoTimeName.textColor = backageColorGreen;
@@ -277,7 +280,7 @@
         
         self.twoDimensionalLabel.frame = CGRectMake(0, self.twoDimensionalImageView.frame.origin.y+self.twoDimensionalImageView.frame.size.height+10, ScreenWidth, 15);
         
-    }else if(self.orderType==3){//预约
+    }else if(self.orderType == 3){//预约
          [self.myTimer invalidate];
         self.circularProgressView.hidden = YES;
          self.appointTimeView.hidden = NO;

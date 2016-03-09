@@ -21,12 +21,12 @@
 
 @property(nonatomic, strong) UIView *myContentView;
 @property(nonatomic, strong) UILabel *homeDataLabel;
-@property(nonatomic, strong) UILabel *homeTitle;
+@property(nonatomic, strong) UILabel *homeValueLeabel;
 @property(nonatomic, strong) UIView *homeLine;
 @property(nonatomic, strong) UIImageView *homeLocationIco;
 @property(nonatomic, strong) UILabel *homeLocationTitle;
 @property(nonatomic, strong) UILabel *homeLocationContent;
-@property(nonatomic, strong) UIImageView *homeLocationFlag;
+@property(nonatomic, strong) UIImageView *homeElectrocotyFlag;
 @property(nonatomic, strong) UIButton *homeButton;
 
 @property(nonatomic, strong) NSMutableDictionary *myDictionary;  //商品数据

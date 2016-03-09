@@ -424,7 +424,7 @@
     
     self.payWayCancelButton = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth-23-marginSize*2, 0, 23+marginSize*2, self.payWayTitleView.frame.size.height)];
 //    self.payWayCancelButton.backgroundColor = TEST_COLOR;
-    [self.payWayCancelButton setImage:[UIImage imageNamed:@"test_picture.jpg"] forState:UIControlStateNormal];
+    [self.payWayCancelButton setImage:[UIImage imageNamed:@"ico_common_delete"] forState:UIControlStateNormal];
       self.payWayCancelButton.imageEdgeInsets = UIEdgeInsetsMake((50-23)/2, marginSize,(50-23)/2, marginSize);
     self.payWayCancelButton.tag = 198850;
     [self.payWayCancelButton addTarget:self action:@selector(submitAlert:) forControlEvents:UIControlEventTouchUpInside];

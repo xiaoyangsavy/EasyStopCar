@@ -10,6 +10,7 @@
 
 @interface MemberAccountCell : UITableViewCell
 
+@property(nonatomic, strong) UIImageView *memberIco;//图标
 @property(nonatomic, strong) UILabel *nameLabel;
 @property(nonatomic, strong) UILabel *contentLabel;
 @property(nonatomic, strong) UILabel *numberLabel;

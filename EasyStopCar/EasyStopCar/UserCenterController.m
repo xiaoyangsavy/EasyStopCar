@@ -11,6 +11,8 @@
 #import "UserInfoController.h"
 #import "MemberAccountViewController.h"
 #import "OrderListController.h"
+#import "CouponController.h"
+#import "SettingController.h"
 
 @interface UserCenterController ()
 
@@ -178,8 +180,7 @@
         }else{
          cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
-       
-        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         //        cell.backgroundColor = COLOR(255, 255, 255);
         cell.backgroundColor = [UIColor clearColor];
     }
@@ -197,7 +198,15 @@
     }else if (indexPath.row == 1) {
         OrderListController *myController =  [[OrderListController alloc]init];
         [self.navigationController pushViewController:myController animated:YES];
+    }else if (indexPath.row == 2) {
+        CouponController *myController =  [[CouponController alloc]init];
+        [self.navigationController pushViewController:myController animated:YES];
+    }else if (indexPath.row == 3) {
+        SettingController *myController =  [[SettingController alloc]init];
+        [self.navigationController pushViewController:myController animated:YES];
     }
+    
+ 
 }
 
 

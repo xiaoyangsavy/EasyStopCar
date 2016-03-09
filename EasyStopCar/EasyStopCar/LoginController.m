@@ -30,7 +30,7 @@
     [super viewDidLoad];
    
     [super initNavBarItems:@"手机快捷登陆"];
-     self.navigationItem.leftBarButtonItem=nil;
+     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc]init]];//隐藏左侧返回按钮
     
     self.view.backgroundColor = [UIColor whiteColor];
     

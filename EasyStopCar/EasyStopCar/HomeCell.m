@@ -44,11 +44,11 @@
         self.homeDataLabel.textColor = fontColorLightgray;
         [self.contentView addSubview:self.homeDataLabel];
         
-        self.homeTitle = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth-150, 30, 150-marginSize, 15)];
-        self.homeTitle.font = [UIFont boldSystemFontOfSize:14];
-        self.homeTitle.textAlignment = NSTextAlignmentRight;
-        self.homeTitle.textColor = backageColorRed;
-        [self.contentView addSubview:self.homeTitle];
+        self.homeValueLeabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth-150, 30, 150-marginSize, 15)];
+        self.homeValueLeabel.font = [UIFont boldSystemFontOfSize:14];
+        self.homeValueLeabel.textAlignment = NSTextAlignmentRight;
+        self.homeValueLeabel.textColor = backageColorRed;
+        [self.contentView addSubview:self.homeValueLeabel];
         
         //分割线
         self.homeLine = [[UIView alloc] initWithFrame:CGRectMake(marginSize, self.homeDataLabel.frame.origin.y+self.homeDataLabel.frame.size.height+10, ScreenWidth-marginSize, 0.5)];
@@ -71,10 +71,10 @@
         self.homeLocationContent.textColor = fontColorGray;
         [self.contentView addSubview:self.homeLocationContent];
         
-        self.homeLocationFlag = [[UIImageView alloc] initWithFrame:CGRectMake(150, self.homeLocationContent.frame.origin.y, 15, 15)];
-        self.homeLocationFlag.contentMode = UIViewContentModeScaleAspectFit;
-        [self.homeLocationFlag setImage:[UIImage imageNamed:@"ico_home_cell_flag"]];
-        [self.contentView addSubview:self.homeLocationFlag];
+        self.homeElectrocotyFlag = [[UIImageView alloc] initWithFrame:CGRectMake(150, self.homeLocationContent.frame.origin.y, 15, 15)];
+        self.homeElectrocotyFlag.contentMode = UIViewContentModeScaleAspectFit;
+        [self.homeElectrocotyFlag setImage:[UIImage imageNamed:@"ico_home_cell_flag"]];
+        [self.contentView addSubview:self.homeElectrocotyFlag];
 
         
         self.homeButton = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth-70-marginSize,  self.homeLine.frame.origin.y+(118.5-self.homeLine.frame.origin.y-25)/2, 70, 25)];
@@ -94,40 +94,49 @@
 {
     
     NSLog(@"cell数据为%@!!!!!!!",myDictionary);
-    
+ 
 
-    self.homeDataLabel.text = [NSString stringWithFormat:@"预约时间：%@",myDictionary[@"testText"]];
-     self.homeTitle.text = myDictionary[@"testText"];
-     self.homeLocationTitle.text = myDictionary[@"testText"];
-     self.homeLocationContent.text = myDictionary[@"testText"];
+    self.homeDataLabel.text = [NSString stringWithFormat:@"预约时间：%@",myDictionary[@"time"]];
     
+     self.homeLocationTitle.text = myDictionary[@"location"];
+     self.homeLocationContent.text = myDictionary[@"locationDetail"];
+    
+      if ([myDictionary[@"isElectricity"] isEqualToString:@"1"]) {
+          self.homeElectrocotyFlag.hidden = NO;
+      }else{
+       self.homeElectrocotyFlag.hidden = YES;
+      }
    
     
-    if ([myDictionary[@"testFlag"] isEqualToString:@"0"]) {
-//        self.homeButton.image = [UIImage imageNamed:@"button_home_state_appoint"];
-//        [self.homeButton  setImage:[UIImage imageNamed:@"button_home_state_appoint"] forState:UIControlStateNormal];
+    NSString *homeValueString = nil;
+    if ([myDictionary[@"orderType"] isEqualToString:@"0"]) {
         self.homeButton.backgroundColor = backageColorBlue;
         [self.homeButton setTitle:@"已预约" forState:UIControlStateNormal];
+        homeValueString = [NSString stringWithFormat:@"剩余 %@",myDictionary[@"value"]];
         
-    }else if ([myDictionary[@"testFlag"] isEqualToString:@"1"]) {
+    }else if ([myDictionary[@"orderType"] isEqualToString:@"1"]) {
         self.homeButton.backgroundColor = backageColorGreen;
         [self.homeButton setTitle:@"停车" forState:UIControlStateNormal];
+          homeValueString = [NSString stringWithFormat:@"待停中"];
     
-    }else if ([myDictionary[@"testFlag"] isEqualToString:@"2"]) {
+    }else if ([myDictionary[@"orderType"] isEqualToString:@"2"]) {
         self.homeButton.backgroundColor = backageColorYellow;
         [self.homeButton setTitle:@"取车" forState:UIControlStateNormal];
+          homeValueString = [NSString stringWithFormat:@"需支付 ￥%@",myDictionary[@"value"]];
         
-    }else if ([myDictionary[@"testFlag"] isEqualToString:@"3"]) {
+    }else if ([myDictionary[@"orderType"] isEqualToString:@"3"]) {
         self.homeButton.backgroundColor = backageColorRed;
         [self.homeButton setTitle:@"去付款" forState:UIControlStateNormal];
+         homeValueString = [NSString stringWithFormat:@"需支付 ￥%@",myDictionary[@"value"]];
         
-    }else if ([myDictionary[@"testFlag"] isEqualToString:@"4"]) {
+    }else if ([myDictionary[@"orderType"] isEqualToString:@"4"]) {
         self.homeButton.backgroundColor = backageColorLightgray;
         [self.homeButton setTitle:@"已完成" forState:UIControlStateNormal];
+         homeValueString = [NSString stringWithFormat:@"共消费 ￥%@",myDictionary[@"value"]];
         
     }
     
-    
+     self.homeValueLeabel.text = homeValueString;
     
     
 }
