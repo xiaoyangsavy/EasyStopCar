@@ -11,6 +11,8 @@
 #import "WXApiManager.h"
 #import "ViewController.h"
 #import "LoginController.h"
+#import <AlipaySDK/AlipaySDK.h>
+#import "OrderUnit.h"
 
 @interface AppDelegate ()
 
@@ -50,11 +52,56 @@ BMKMapManager* _mapManager;
 }
 
 
+
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     return  [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    //跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给SDK
+    if ([url.host isEqualToString:@"safepay"]) {
+        [[AlipaySDK defaultService]
+         processOrderWithPaymentResult:url
+         standbyCallback:^(NSDictionary *resultDic) {
+             NSLog(@"result = %@", resultDic);
+             int rStauts = [resultDic[@"resultStatus"] intValue];
+             NSString *s = resultDic[@"memo"];
+             switch (rStauts) {
+                 case 9000: {
+                     s = @"支付成功";
+                     
+                     [OrderUnit depositPaySucessCallBack:resultDic];
+//                     [[NSNotificationCenter defaultCenter]
+//                      postNotificationName:@"payAlipaySuccessBack"
+//                      object:nil];
+                     
+                     break;
+                 }
+                 case 8000: {
+                     break;
+                 }
+                 case 4000: {
+                     break;
+                 }
+                 case 6001: {
+                     NSLog(@"取消支付！！！！！！");
+                     [[NSNotificationCenter defaultCenter]
+                      postNotificationName:@"resultByAlipay"
+                      object:nil];
+                     break;
+                 }
+                 case 6002: {
+                     break;
+                 }
+                 default:
+                     break;
+             }
+         }];
+        return YES;
+    }
+    else
+   
     return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
 }
 

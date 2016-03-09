@@ -19,6 +19,10 @@
 		4D198CA01C90031300442C67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D198C9F1C90031300442C67 /* Foundation.framework */; };
 		4D198CA21C90032300442C67 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D198CA11C90032300442C67 /* CFNetwork.framework */; };
 		4D198CA41C90033000442C67 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D198CA31C90033000442C67 /* CoreMotion.framework */; };
+		4D198CAA1C9005E700442C67 /* MemberWayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D198CA91C9005E700442C67 /* MemberWayCell.m */; };
+		4D198CAD1C90066000442C67 /* OrderUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D198CAC1C90066000442C67 /* OrderUnit.m */; };
+		4D198CB01C9006CF00442C67 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D198CAF1C9006CF00442C67 /* Order.m */; };
+		4D198CB31C90070E00442C67 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D198CB21C90070E00442C67 /* NSString+MD5Addition.m */; };
 		4D9AC3CB1C83E20E00E923CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3CA1C83E20E00E923CC /* main.m */; };
 		4D9AC3CE1C83E20E00E923CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3CD1C83E20E00E923CC /* AppDelegate.m */; };
 		4D9AC3D11C83E20E00E923CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3D01C83E20E00E923CC /* ViewController.m */; };
@@ -124,6 +128,14 @@
 		4D198C9F1C90031300442C67 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4D198CA11C90032300442C67 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		4D198CA31C90033000442C67 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		4D198CA81C9005E700442C67 /* MemberWayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberWayCell.h; sourceTree = "<group>"; };
+		4D198CA91C9005E700442C67 /* MemberWayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberWayCell.m; sourceTree = "<group>"; };
+		4D198CAB1C90066000442C67 /* OrderUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderUnit.h; sourceTree = "<group>"; };
+		4D198CAC1C90066000442C67 /* OrderUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderUnit.m; sourceTree = "<group>"; };
+		4D198CAE1C9006CF00442C67 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		4D198CAF1C9006CF00442C67 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
+		4D198CB11C90070E00442C67 /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
+		4D198CB21C90070E00442C67 /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		4D9AC3C61C83E20E00E923CC /* EasyStopCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyStopCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9AC3CA1C83E20E00E923CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4D9AC3CC1C83E20E00E923CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -416,9 +428,15 @@
 			isa = PBXGroup;
 			children = (
 				4D198C941C90024A00442C67 /* Alipay */,
+				4D198CAB1C90066000442C67 /* OrderUnit.h */,
+				4D198CAC1C90066000442C67 /* OrderUnit.m */,
+				4D198CAE1C9006CF00442C67 /* Order.h */,
+				4D198CAF1C9006CF00442C67 /* Order.m */,
 				4DB94A261C87D2A10003AC08 /* WeChat */,
 				4DB95F971C86917B006B92F9 /* MRProgress */,
 				4D9AC4471C84266A00E923CC /* Define.h */,
+				4D198CB11C90070E00442C67 /* NSString+MD5Addition.h */,
+				4D198CB21C90070E00442C67 /* NSString+MD5Addition.m */,
 				4D9C5E6F1C89590D00543681 /* Connetion.h */,
 				4D9C5E6E1C89590D00543681 /* Connetion.m */,
 				4DCCA50F1C8440CC00965C21 /* YHR_PageControl.h */,
@@ -557,6 +575,8 @@
 				4DC3F3361C8EEEB4002A268C /* MemberAccountCell.m */,
 				4D198C8E1C8FB36A00442C67 /* CouponCell.h */,
 				4D198C8F1C8FB36A00442C67 /* CouponCell.m */,
+				4D198CA81C9005E700442C67 /* MemberWayCell.h */,
+				4D198CA91C9005E700442C67 /* MemberWayCell.m */,
 			);
 			name = CustomCell;
 			sourceTree = "<group>";
@@ -793,16 +813,19 @@
 				4DB95FC71C86E757006B92F9 /* OrderPayCompleteController.m in Sources */,
 				4DB94A2D1C87D5FC0003AC08 /* WXApiManager.m in Sources */,
 				4D198C901C8FB36A00442C67 /* CouponCell.m in Sources */,
+				4D198CAD1C90066000442C67 /* OrderUnit.m in Sources */,
 				4DB94A371C8820110003AC08 /* LoginController.m in Sources */,
 				4DC3F3371C8EEEB4002A268C /* MemberAccountCell.m in Sources */,
 				4DB94A461C8836850003AC08 /* UserInfoController.m in Sources */,
 				4D198C931C8FC67000442C67 /* SettingController.m in Sources */,
 				4DB95FBD1C86917B006B92F9 /* MRProgressView.m in Sources */,
 				4D9AC4451C84242E00E923CC /* SearchPartMapController.mm in Sources */,
+				4D198CAA1C9005E700442C67 /* MemberWayCell.m in Sources */,
 				4D9AC4411C8423DA00E923CC /* UITempletViewController.m in Sources */,
 				4DB94A401C882EB30003AC08 /* ProfileCell.m in Sources */,
 				4DB95FC01C86917B006B92F9 /* MRMethodCopier.m in Sources */,
 				4D198C8D1C8FB1C300442C67 /* CouponController.m in Sources */,
+				4D198CB01C9006CF00442C67 /* Order.m in Sources */,
 				4DB94A4F1C8852BD0003AC08 /* EditSelectCell.m in Sources */,
 				4DB94A3A1C8822200003AC08 /* InputItemModel.m in Sources */,
 				4D9C5E771C89643500543681 /* SearchAppointSelectController.m in Sources */,
@@ -829,6 +852,7 @@
 				4DC3F3341C8EEE3D002A268C /* MemberAccountViewController.m in Sources */,
 				4DCCA5111C8440CC00965C21 /* YHR_PageControl.m in Sources */,
 				4DB94A431C8836370003AC08 /* UserInfoCell.m in Sources */,
+				4D198CB31C90070E00442C67 /* NSString+MD5Addition.m in Sources */,
 				4D9AC3D11C83E20E00E923CC /* ViewController.m in Sources */,
 				4D9AC3CE1C83E20E00E923CC /* AppDelegate.m in Sources */,
 				4DB95FB71C86917B006B92F9 /* UIImage+MRImageEffects.m in Sources */,
