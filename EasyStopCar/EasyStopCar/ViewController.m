@@ -38,7 +38,7 @@
 
 @property(nonatomic,strong)UITableView *listTableView;//数据列表
 
-@property(nonatomic,strong)NSMutableArray *myArray;//列表数据
+
 
 @end
 

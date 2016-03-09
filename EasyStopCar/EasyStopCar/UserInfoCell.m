@@ -33,6 +33,12 @@
         self.valueLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.valueLabel];
         
+         self.myImageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth - 50-marginSize, 5 , 40, 40)];
+        self.myImageView.image = [UIImage imageNamed:@"image_user_head"];
+        self.myImageView.hidden = YES;
+        self.myImageView.contentMode = UIViewContentModeScaleAspectFit;
+         [self.contentView addSubview:self.myImageView];
+        
     }
     return self;
 }
@@ -46,7 +52,11 @@
     self.nameLabel.text = myDictionary[@"title"];
     self.valueLabel.text = myDictionary[@"content"];
     
-    
+    if (myDictionary[@"image"] != nil) {
+        self.myImageView.hidden = NO;
+        self.valueLabel.hidden = YES;
+        self.myImageView.image = myDictionary[@"image"];
+    }
     
     
 }

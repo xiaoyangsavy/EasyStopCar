@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D198C8A1C8FAC9700442C67 /* OrderListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D198C891C8FAC9700442C67 /* OrderListController.m */; };
 		4D9AC3CB1C83E20E00E923CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3CA1C83E20E00E923CC /* main.m */; };
 		4D9AC3CE1C83E20E00E923CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3CD1C83E20E00E923CC /* AppDelegate.m */; };
 		4D9AC3D11C83E20E00E923CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3D01C83E20E00E923CC /* ViewController.m */; };
@@ -63,6 +64,8 @@
 		4DB95FC11C86917B006B92F9 /* MRWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB95FB51C86917B006B92F9 /* MRWeakProxy.m */; };
 		4DB95FC41C86C011006B92F9 /* OrderPayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB95FC31C86C011006B92F9 /* OrderPayController.m */; };
 		4DB95FC71C86E757006B92F9 /* OrderPayCompleteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB95FC61C86E757006B92F9 /* OrderPayCompleteController.m */; };
+		4DC3F3341C8EEE3D002A268C /* MemberAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3F3331C8EEE3D002A268C /* MemberAccountViewController.m */; };
+		4DC3F3371C8EEEB4002A268C /* MemberAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3F3361C8EEEB4002A268C /* MemberAccountCell.m */; };
 		4DC690A91C8982E7006B4DDF /* OrderPayDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC690A81C8982E7006B4DDF /* OrderPayDetailController.m */; };
 		4DC690AC1C8988A3006B4DDF /* PayDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC690AB1C8988A3006B4DDF /* PayDetailCell.m */; };
 		4DCCA5111C8440CC00965C21 /* YHR_PageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCCA5101C8440CC00965C21 /* YHR_PageControl.m */; };
@@ -94,6 +97,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D198C881C8FAC9700442C67 /* OrderListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListController.h; sourceTree = "<group>"; };
+		4D198C891C8FAC9700442C67 /* OrderListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListController.m; sourceTree = "<group>"; };
 		4D9AC3C61C83E20E00E923CC /* EasyStopCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyStopCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9AC3CA1C83E20E00E923CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4D9AC3CC1C83E20E00E923CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -194,6 +199,10 @@
 		4DB95FC31C86C011006B92F9 /* OrderPayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPayController.m; sourceTree = "<group>"; };
 		4DB95FC51C86E757006B92F9 /* OrderPayCompleteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderPayCompleteController.h; sourceTree = "<group>"; };
 		4DB95FC61C86E757006B92F9 /* OrderPayCompleteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPayCompleteController.m; sourceTree = "<group>"; };
+		4DC3F3321C8EEE3D002A268C /* MemberAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberAccountViewController.h; sourceTree = "<group>"; };
+		4DC3F3331C8EEE3D002A268C /* MemberAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberAccountViewController.m; sourceTree = "<group>"; };
+		4DC3F3351C8EEEB4002A268C /* MemberAccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberAccountCell.h; sourceTree = "<group>"; };
+		4DC3F3361C8EEEB4002A268C /* MemberAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberAccountCell.m; sourceTree = "<group>"; };
 		4DC690A71C8982E7006B4DDF /* OrderPayDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderPayDetailController.h; sourceTree = "<group>"; };
 		4DC690A81C8982E7006B4DDF /* OrderPayDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPayDetailController.m; sourceTree = "<group>"; };
 		4DC690AA1C8988A3006B4DDF /* PayDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayDetailCell.h; sourceTree = "<group>"; };
@@ -405,6 +414,10 @@
 				4DB94A481C884D0D0003AC08 /* EditTextController.m */,
 				4DB94A4A1C8851DF0003AC08 /* EditSeleceController.h */,
 				4DB94A4B1C8851DF0003AC08 /* EditSeleceController.m */,
+				4DC3F3321C8EEE3D002A268C /* MemberAccountViewController.h */,
+				4DC3F3331C8EEE3D002A268C /* MemberAccountViewController.m */,
+				4D198C881C8FAC9700442C67 /* OrderListController.h */,
+				4D198C891C8FAC9700442C67 /* OrderListController.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -494,6 +507,8 @@
 				4DB94A4E1C8852BD0003AC08 /* EditSelectCell.m */,
 				4DC690AA1C8988A3006B4DDF /* PayDetailCell.h */,
 				4DC690AB1C8988A3006B4DDF /* PayDetailCell.m */,
+				4DC3F3351C8EEEB4002A268C /* MemberAccountCell.h */,
+				4DC3F3361C8EEEB4002A268C /* MemberAccountCell.m */,
 			);
 			name = CustomCell;
 			sourceTree = "<group>";
@@ -723,6 +738,7 @@
 				4DB95FC71C86E757006B92F9 /* OrderPayCompleteController.m in Sources */,
 				4DB94A2D1C87D5FC0003AC08 /* WXApiManager.m in Sources */,
 				4DB94A371C8820110003AC08 /* LoginController.m in Sources */,
+				4DC3F3371C8EEEB4002A268C /* MemberAccountCell.m in Sources */,
 				4DB94A461C8836850003AC08 /* UserInfoController.m in Sources */,
 				4DB95FBD1C86917B006B92F9 /* MRProgressView.m in Sources */,
 				4D9AC4451C84242E00E923CC /* SearchPartMapController.mm in Sources */,
@@ -744,6 +760,7 @@
 				4DB95FBE1C86917B006B92F9 /* MRStopButton.m in Sources */,
 				4DB95FB61C86917B006B92F9 /* MRBlurView.m in Sources */,
 				4DE57E991C8539170087D79F /* CommonTools.m in Sources */,
+				4D198C8A1C8FAC9700442C67 /* OrderListController.m in Sources */,
 				4DB94A301C8813880003AC08 /* SearchAppointController.m in Sources */,
 				4DB94A3D1C882CA80003AC08 /* UserCenterController.m in Sources */,
 				4DB95FBB1C86917B006B92F9 /* MRNavigationBarProgressView.m in Sources */,
@@ -751,6 +768,7 @@
 				4DB95FBA1C86917B006B92F9 /* MRIconView.m in Sources */,
 				4DB95FC11C86917B006B92F9 /* MRWeakProxy.m in Sources */,
 				4DC690A91C8982E7006B4DDF /* OrderPayDetailController.m in Sources */,
+				4DC3F3341C8EEE3D002A268C /* MemberAccountViewController.m in Sources */,
 				4DCCA5111C8440CC00965C21 /* YHR_PageControl.m in Sources */,
 				4DB94A431C8836370003AC08 /* UserInfoCell.m in Sources */,
 				4D9AC3D11C83E20E00E923CC /* ViewController.m in Sources */,

@@ -9,6 +9,8 @@
 #import "UserCenterController.h"
 #import "ProfileCell.h"
 #import "UserInfoController.h"
+#import "MemberAccountViewController.h"
+#import "OrderListController.h"
 
 @interface UserCenterController ()
 
@@ -189,8 +191,13 @@
 {
     //    NSLog(@"点击了一个cell");
     
-//    UserInfoController *myController = [[UserInfoController alloc]init];
-//    [self.navigationController pushViewController:myController animated:YES];
+    if (indexPath.row == 0) {
+        MemberAccountViewController *myController =  [[MemberAccountViewController alloc]init];
+        [self.navigationController pushViewController:myController animated:YES];
+    }else if (indexPath.row == 1) {
+        OrderListController *myController =  [[OrderListController alloc]init];
+        [self.navigationController pushViewController:myController animated:YES];
+    }
 }
 
 

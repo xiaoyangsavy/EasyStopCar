@@ -43,6 +43,7 @@
         self.userPayButton.backgroundColor = backageColorYellow;
         self.userPayButton.layer.cornerRadius = 5;
         self.userPayButton.layer.masksToBounds = YES;
+        self.userPayButton.userInteractionEnabled = NO;
         self.userPayButton.hidden = YES;
         [self addSubview:self.userPayButton];
         

@@ -7,7 +7,10 @@
 //
 
 #import "UITempletViewController.h"
+#import <QuartzCore/QuartzCore.h>
+#import <QuartzCore/CoreAnimation.h>
+#import <MobileCoreServices/UTCoreTypes.h>
 
-@interface UserInfoController : UITempletViewController<UITableViewDataSource,UITableViewDelegate>
+@interface UserInfoController : UITempletViewController<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @end

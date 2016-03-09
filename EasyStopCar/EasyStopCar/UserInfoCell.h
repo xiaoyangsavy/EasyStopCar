@@ -12,7 +12,7 @@
 
 @property (nonatomic, retain) UILabel *nameLabel;
 @property (nonatomic, retain) UILabel *valueLabel;
-
+@property (nonatomic, retain) UIImageView *myImageView;//头像
 
 - (void)setCellInfo:(NSDictionary *)dic;//设置接口数据
 
