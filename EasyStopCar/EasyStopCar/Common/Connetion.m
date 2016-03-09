@@ -8,8 +8,8 @@
 
 #import "Connetion.h"
 #import "DEFINE.h"
-#import "AFNetworking.h"
-#import "SVProgressHUD.h"
+//#import "AFNetworking.h"
+//#import "SVProgressHUD.h"
 
 
 @implementation Connetion
@@ -48,70 +48,70 @@ static Connetion* connetion;
 }
 
 - (void)GET:(NSString*)URLString finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock; {
-    AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-    //    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    
-    
-    if ( ! self.noLog) {
-        NSLog(@"%@", URLString);
-    }
-
-
-    
-    connetion.isShowHUD = NO;
-    
-    if (self.isShowHUD) {
-        [SVProgressHUD showWithStatus:@"正在加载..." maskType:SVProgressHUDMaskTypeGradient];
-    }
-
-    
-    [manager GET:URLString parameters:nil
-         success:^(AFHTTPRequestOperation* operation, id responseObject) {
-              [SVProgressHUD dismiss];
-                finishBlock(responseObject, nil);
-             
-             ;}
-         failure:^(AFHTTPRequestOperation* operation, NSError* error) {
-             if (self.isShowHUD) {
-                 [SVProgressHUD  showErrorWithStatus:@"发生错误" ];
-             }
-             
-             finishBlock(nil, error);
-         }];
+//    AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+//    //    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+//    
+//    
+//    if ( ! self.noLog) {
+//        NSLog(@"%@", URLString);
+//    }
+//
+//
+//    
+//    connetion.isShowHUD = NO;
+//    
+//    if (self.isShowHUD) {
+//        [SVProgressHUD showWithStatus:@"正在加载..." maskType:SVProgressHUDMaskTypeGradient];
+//    }
+//
+//    
+//    [manager GET:URLString parameters:nil
+//         success:^(AFHTTPRequestOperation* operation, id responseObject) {
+//              [SVProgressHUD dismiss];
+//                finishBlock(responseObject, nil);
+//             
+//             ;}
+//         failure:^(AFHTTPRequestOperation* operation, NSError* error) {
+//             if (self.isShowHUD) {
+//                 [SVProgressHUD  showErrorWithStatus:@"发生错误" ];
+//             }
+//             
+//             finishBlock(nil, error);
+//         }];
 }
 
 - (void)POST:(NSString*)URLString parameters:(id)parameters finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock; {
-    AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes =
-    [NSSet setWithObject:@"application/json"];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    //    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    //    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    
-    
-    
-    if ( ! self.noLog) {
-        NSLog(@"%@", URLString);
-    }
-    if (self.isShowHUD) {
-        [SVProgressHUD showWithStatus:@"正在加载..." maskType:SVProgressHUDMaskTypeGradient];
-    }
-    
-    
-    [manager POST:URLString parameters:parameters success:^(AFHTTPRequestOperation* operation, id responseObject) {
-        [SVProgressHUD dismiss];
-        finishBlock(responseObject, nil);
-    }
-          failure:^(AFHTTPRequestOperation* operation, NSError* error) {
-              
-              if (self.isShowHUD) {
-                  [SVProgressHUD  showErrorWithStatus:@"发生错误" ];
-              }
-              
-              finishBlock(nil, error);
-          }];
+//    AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
+//    manager.responseSerializer.acceptableContentTypes =
+//    [NSSet setWithObject:@"application/json"];
+//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+//    //    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    //    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+//    
+//    
+//    
+//    if ( ! self.noLog) {
+//        NSLog(@"%@", URLString);
+//    }
+//    if (self.isShowHUD) {
+//        [SVProgressHUD showWithStatus:@"正在加载..." maskType:SVProgressHUDMaskTypeGradient];
+//    }
+//    
+//    
+//    [manager POST:URLString parameters:parameters success:^(AFHTTPRequestOperation* operation, id responseObject) {
+//        [SVProgressHUD dismiss];
+//        finishBlock(responseObject, nil);
+//    }
+//          failure:^(AFHTTPRequestOperation* operation, NSError* error) {
+//              
+//              if (self.isShowHUD) {
+//                  [SVProgressHUD  showErrorWithStatus:@"发生错误" ];
+//              }
+//              
+//              finishBlock(nil, error);
+//          }];
 }
 
 

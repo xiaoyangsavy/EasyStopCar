@@ -1,0 +1,15 @@
+//
+//  PrefixHeader.pch
+//  EasyStopCar
+//
+//  Created by savvy on 16/3/9.
+//  Copyright (c) 2016年 Savvy. All rights reserved.
+//
+
+#ifndef EasyStopCar_PrefixHeader_pch
+#define EasyStopCar_PrefixHeader_pch
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#endif
