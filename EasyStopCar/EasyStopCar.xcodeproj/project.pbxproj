@@ -90,6 +90,10 @@
 		4DC6BCF21C905EA300279A90 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC6BCF11C905EA300279A90 /* libsqlite3.0.dylib */; };
 		4DC6BCF41C905EBC00279A90 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC6BCF31C905EBC00279A90 /* libstdc++.6.0.9.dylib */; };
 		4DC6BCFA1C9062AE00279A90 /* MyStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC6BCF91C9062AE00279A90 /* MyStoryboard.storyboard */; };
+		4DC6BCFD1C90646400279A90 /* MemberPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC6BCFC1C90646400279A90 /* MemberPayViewController.m */; };
+		4DC6BD001C90647500279A90 /* PayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC6BCFF1C90647500279A90 /* PayModel.m */; };
+		4DC6BD031C9064D300279A90 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC6BD011C9064D300279A90 /* libAFNetworking.a */; };
+		4DC6BD041C9064D300279A90 /* libSVProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC6BD021C9064D300279A90 /* libSVProgressHUD.a */; };
 		4DCCA5111C8440CC00965C21 /* YHR_PageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCCA5101C8440CC00965C21 /* YHR_PageControl.m */; };
 		4DCCA5141C84426200965C21 /* test_picture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DCCA5131C84426200965C21 /* test_picture.jpg */; };
 		4DCCA5181C8455B600965C21 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCCA5171C8455B600965C21 /* HomeCell.m */; };
@@ -349,6 +353,12 @@
 		4DC6BCF51C905EE300279A90 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
 		4DC6BCF61C905EE300279A90 /* libSVProgressHUD.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSVProgressHUD.a; path = "Pods/../build/Debug-iphoneos/libSVProgressHUD.a"; sourceTree = "<group>"; };
 		4DC6BCF91C9062AE00279A90 /* MyStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyStoryboard.storyboard; sourceTree = "<group>"; };
+		4DC6BCFB1C90646400279A90 /* MemberPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberPayViewController.h; sourceTree = "<group>"; };
+		4DC6BCFC1C90646400279A90 /* MemberPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberPayViewController.m; sourceTree = "<group>"; };
+		4DC6BCFE1C90647500279A90 /* PayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayModel.h; sourceTree = "<group>"; };
+		4DC6BCFF1C90647500279A90 /* PayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayModel.m; sourceTree = "<group>"; };
+		4DC6BD011C9064D300279A90 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
+		4DC6BD021C9064D300279A90 /* libSVProgressHUD.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSVProgressHUD.a; path = "Pods/../build/Debug-iphoneos/libSVProgressHUD.a"; sourceTree = "<group>"; };
 		4DCCA50F1C8440CC00965C21 /* YHR_PageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHR_PageControl.h; sourceTree = "<group>"; };
 		4DCCA5101C8440CC00965C21 /* YHR_PageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHR_PageControl.m; sourceTree = "<group>"; };
 		4DCCA5131C84426200965C21 /* test_picture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_picture.jpg; sourceTree = "<group>"; };
@@ -373,6 +383,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DC6BD031C9064D300279A90 /* libAFNetworking.a in Frameworks */,
+				4DC6BD041C9064D300279A90 /* libSVProgressHUD.a in Frameworks */,
 				4DC6BCF41C905EBC00279A90 /* libstdc++.6.0.9.dylib in Frameworks */,
 				4DC6BCF21C905EA300279A90 /* libsqlite3.0.dylib in Frameworks */,
 				4DC6BCF01C905DE100279A90 /* libz.dylib in Frameworks */,
@@ -552,6 +564,8 @@
 				4DE57E981C8539170087D79F /* CommonTools.m */,
 				4DB94A381C8822200003AC08 /* InputItemModel.h */,
 				4DB94A391C8822200003AC08 /* InputItemModel.m */,
+				4DC6BCFE1C90647500279A90 /* PayModel.h */,
+				4DC6BCFF1C90647500279A90 /* PayModel.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -589,6 +603,8 @@
 				4D198C8C1C8FB1C300442C67 /* CouponController.m */,
 				4D198C911C8FC67000442C67 /* SettingController.h */,
 				4D198C921C8FC67000442C67 /* SettingController.m */,
+				4DC6BCFB1C90646400279A90 /* MemberPayViewController.h */,
+				4DC6BCFC1C90646400279A90 /* MemberPayViewController.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -814,6 +830,8 @@
 		D5F428B09E27D5D3BE28DB26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4DC6BD011C9064D300279A90 /* libAFNetworking.a */,
+				4DC6BD021C9064D300279A90 /* libSVProgressHUD.a */,
 				4DC6BCF51C905EE300279A90 /* libAFNetworking.a */,
 				4DC6BCF61C905EE300279A90 /* libSVProgressHUD.a */,
 				4DC6BCF31C905EBC00279A90 /* libstdc++.6.0.9.dylib */,
@@ -1028,6 +1046,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DB95FBF1C86917B006B92F9 /* MRMessageInterceptor.m in Sources */,
+				4DC6BCFD1C90646400279A90 /* MemberPayViewController.m in Sources */,
 				4DB94A331C88182D0003AC08 /* SearchAppointCell.m in Sources */,
 				4DC6BCE91C905C5700279A90 /* openssl_wrapper.m in Sources */,
 				4DB95FB81C86917B006B92F9 /* MRActivityIndicatorView.m in Sources */,
@@ -1082,6 +1101,7 @@
 				4DB94A431C8836370003AC08 /* UserInfoCell.m in Sources */,
 				4D198CB31C90070E00442C67 /* NSString+MD5Addition.m in Sources */,
 				4D9AC3D11C83E20E00E923CC /* ViewController.m in Sources */,
+				4DC6BD001C90647500279A90 /* PayModel.m in Sources */,
 				4D9AC3CE1C83E20E00E923CC /* AppDelegate.m in Sources */,
 				4DB95FB71C86917B006B92F9 /* UIImage+MRImageEffects.m in Sources */,
 				4DCCA5181C8455B600965C21 /* HomeCell.m in Sources */,

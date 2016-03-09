@@ -1,4 +1,4 @@
-                         //
+//
 //  Connetion.m
 //  CooLaDingNOTwo
 //
@@ -8,8 +8,8 @@
 
 #import "Connetion.h"
 #import "DEFINE.h"
-//#import "AFNetworking.h"
-//#import "SVProgressHUD.h"
+#import "AFNetworking.h"
+#import "SVProgressHUD.h"
 
 
 @implementation Connetion
@@ -19,14 +19,15 @@ static Connetion* connetion;
 + (Connetion *)shared {
     if (!connetion) {
         connetion = [[Connetion alloc] init];
-
+        
     }
     connetion.noLog = NO;
     connetion.isShowHUD = NO;
     return connetion;
 }
 
- 
+
+
 
 #pragma mark - 用户相关的相关网络API
 
@@ -47,71 +48,71 @@ static Connetion* connetion;
     return [NSString stringWithString:postString];
 }
 
-- (void)GET:(NSString*)URLString finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock; {
-//    AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
-//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-//    //    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-//    
-//    
-//    if ( ! self.noLog) {
-//        NSLog(@"%@", URLString);
-//    }
-//
-//
-//    
-//    connetion.isShowHUD = NO;
-//    
-//    if (self.isShowHUD) {
-//        [SVProgressHUD showWithStatus:@"正在加载..." maskType:SVProgressHUDMaskTypeGradient];
-//    }
-//
-//    
-//    [manager GET:URLString parameters:nil
-//         success:^(AFHTTPRequestOperation* operation, id responseObject) {
-//              [SVProgressHUD dismiss];
-//                finishBlock(responseObject, nil);
-//             
-//             ;}
-//         failure:^(AFHTTPRequestOperation* operation, NSError* error) {
-//             if (self.isShowHUD) {
-//                 [SVProgressHUD  showErrorWithStatus:@"发生错误" ];
-//             }
-//             
-//             finishBlock(nil, error);
-//         }];
+- (void)GET:(NSString*)URLString finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock{
+    AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+    //    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    
+    if ( ! self.noLog) {
+        NSLog(@"%@", URLString);
+    }
+    
+    
+    
+    connetion.isShowHUD = NO;
+    
+    if (self.isShowHUD) {
+        [SVProgressHUD showWithStatus:@"正在加载..." maskType:SVProgressHUDMaskTypeGradient];
+    }
+    
+    
+    [manager GET:URLString parameters:nil
+         success:^(AFHTTPRequestOperation* operation, id responseObject) {
+             [SVProgressHUD dismiss];
+             finishBlock(responseObject, nil);
+             
+             ;}
+         failure:^(AFHTTPRequestOperation* operation, NSError* error) {
+             if (self.isShowHUD) {
+                 [SVProgressHUD  showErrorWithStatus:@"发生错误" ];
+             }
+             
+             finishBlock(nil, error);
+         }];
 }
 
-- (void)POST:(NSString*)URLString parameters:(id)parameters finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock; {
-//    AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
-//    manager.responseSerializer.acceptableContentTypes =
-//    [NSSet setWithObject:@"application/json"];
-//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-//    //    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-//    //    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-//    
-//    
-//    
-//    if ( ! self.noLog) {
-//        NSLog(@"%@", URLString);
-//    }
-//    if (self.isShowHUD) {
-//        [SVProgressHUD showWithStatus:@"正在加载..." maskType:SVProgressHUDMaskTypeGradient];
-//    }
-//    
-//    
-//    [manager POST:URLString parameters:parameters success:^(AFHTTPRequestOperation* operation, id responseObject) {
-//        [SVProgressHUD dismiss];
-//        finishBlock(responseObject, nil);
-//    }
-//          failure:^(AFHTTPRequestOperation* operation, NSError* error) {
-//              
-//              if (self.isShowHUD) {
-//                  [SVProgressHUD  showErrorWithStatus:@"发生错误" ];
-//              }
-//              
-//              finishBlock(nil, error);
-//          }];
+- (void)POST:(NSString*)URLString parameters:(id)parameters finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock{
+    AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes =
+    [NSSet setWithObject:@"application/json"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    //    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    //    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    
+    
+    
+    if ( ! self.noLog) {
+        NSLog(@"%@", URLString);
+    }
+    if (self.isShowHUD) {
+        [SVProgressHUD showWithStatus:@"正在加载..." maskType:SVProgressHUDMaskTypeGradient];
+    }
+    
+    
+    [manager POST:URLString parameters:parameters success:^(AFHTTPRequestOperation* operation, id responseObject) {
+        [SVProgressHUD dismiss];
+        finishBlock(responseObject, nil);
+    }
+          failure:^(AFHTTPRequestOperation* operation, NSError* error) {
+              
+              if (self.isShowHUD) {
+                  [SVProgressHUD  showErrorWithStatus:@"发生错误" ];
+              }
+              
+              finishBlock(nil, error);
+          }];
 }
 
 
@@ -138,8 +139,34 @@ static Connetion* connetion;
         finishBlock(resultData,error);
     }];
     
+}
+
+//提交订单
+- (void)submitNewOrder:(NSString *)userName phone:(NSString *)phone payWay:(NSString *)payWay finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock{
+    
+    NSString* urlString  = [NSString stringWithFormat:@"%@/mobile/order_new/user_member_pay?real_name=%@&rephone=%@&payment_cod=%@", prefix_url,userName,phone,payWay];
+    
+    NSLog(@"调用网络%@!!!!!",urlString);
+    
+    [self GET:urlString finish:^(NSDictionary *resultData, NSError *error) {
+        
+        finishBlock(resultData,error);
+    }];
     
 }
+
+
+//获取微信支付预处理文件
+- (void)getOrderPreWithWeChat:(NSMutableDictionary *)dict  finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock{
+    
+    NSString* urlString  = [NSString stringWithFormat:@"%@/weixinsdk/getparid.php", prefix_url];
+    
+    [self POST:urlString parameters:dict finish:^(NSDictionary *resultData, NSError *error) {
+        
+        finishBlock(resultData,error);
+    }];
+}
+
 
 
 @end

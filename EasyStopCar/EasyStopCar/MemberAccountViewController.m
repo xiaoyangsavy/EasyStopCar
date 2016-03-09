@@ -8,6 +8,7 @@
 
 #import "MemberAccountViewController.h"
 #import "MemberAccountCell.h"
+#import "MemberPayViewController.h"
 
 @interface MemberAccountViewController ()
 
@@ -107,7 +108,8 @@
 //开通会员
 -(void)rechargeMember{
     NSLog(@"充值会员！！！！");
-   
+    MemberPayViewController *myController = [[MemberPayViewController alloc]init];
+    [self.navigationController pushViewController:myController animated:YES];
 }
 
  

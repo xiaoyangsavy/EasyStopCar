@@ -25,13 +25,16 @@
 + (Connetion *)shared;
 
 
+- (void)GET:(NSString*)URLString finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock;
 
-
-
+- (void)POST:(NSString*)URLString parameters:(id)parameters finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock;
 
 
 - (void)customReservationQueue:(NSString *)tokenId finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock;
 
- 
+//提交新订单
+- (void)submitNewOrder:(NSString *)userName phone:(NSString *)phone payWay:(NSString *)payWay finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock;
 
+//获取微信支付预处理文件
+- (void)getOrderPreWithWeChat:(NSMutableDictionary *)dict  finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock;
 @end
