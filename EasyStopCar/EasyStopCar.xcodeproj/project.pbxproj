@@ -19,6 +19,12 @@
 		4D198CAD1C90066000442C67 /* OrderUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D198CAC1C90066000442C67 /* OrderUnit.m */; };
 		4D198CB01C9006CF00442C67 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D198CAF1C9006CF00442C67 /* Order.m */; };
 		4D198CB31C90070E00442C67 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D198CB21C90070E00442C67 /* NSString+MD5Addition.m */; };
+		4D3D98961C9146C600C12755 /* AMapNaviKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3D98951C9146C600C12755 /* AMapNaviKit.framework */; };
+		4D3D98981C91476000C12755 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3D98971C91476000C12755 /* AudioToolbox.framework */; };
+		4D3D989A1C91477E00C12755 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3D98991C91477E00C12755 /* AVFoundation.framework */; };
+		4D3D989C1C91479700C12755 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3D989B1C91479700C12755 /* AddressBook.framework */; };
+		4D3D989F1C91480600C12755 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D3D989D1C91480600C12755 /* AMap.bundle */; };
+		4D3D98A01C91480600C12755 /* AMapNavi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D3D989E1C91480600C12755 /* AMapNavi.bundle */; };
 		4D9AC3CB1C83E20E00E923CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3CA1C83E20E00E923CC /* main.m */; };
 		4D9AC3CE1C83E20E00E923CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3CD1C83E20E00E923CC /* AppDelegate.m */; };
 		4D9AC3D11C83E20E00E923CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3D01C83E20E00E923CC /* ViewController.m */; };
@@ -145,6 +151,12 @@
 		4D198CAF1C9006CF00442C67 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		4D198CB11C90070E00442C67 /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
 		4D198CB21C90070E00442C67 /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
+		4D3D98951C9146C600C12755 /* AMapNaviKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapNaviKit.framework; sourceTree = "<group>"; };
+		4D3D98971C91476000C12755 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		4D3D98991C91477E00C12755 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4D3D989B1C91479700C12755 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		4D3D989D1C91480600C12755 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = AMapNaviKit.framework/Versions/1.5.0.3533b29/Resources/AMap.bundle; sourceTree = "<group>"; };
+		4D3D989E1C91480600C12755 /* AMapNavi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMapNavi.bundle; path = AMapNaviKit.framework/Versions/1.5.0.3533b29/Resources/AMapNavi.bundle; sourceTree = "<group>"; };
 		4D9AC3C61C83E20E00E923CC /* EasyStopCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyStopCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9AC3CA1C83E20E00E923CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4D9AC3CC1C83E20E00E923CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -383,12 +395,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D3D989C1C91479700C12755 /* AddressBook.framework in Frameworks */,
+				4D3D989A1C91477E00C12755 /* AVFoundation.framework in Frameworks */,
+				4D3D98981C91476000C12755 /* AudioToolbox.framework in Frameworks */,
 				4DC6BD031C9064D300279A90 /* libAFNetworking.a in Frameworks */,
 				4DC6BD041C9064D300279A90 /* libSVProgressHUD.a in Frameworks */,
 				4DC6BCF41C905EBC00279A90 /* libstdc++.6.0.9.dylib in Frameworks */,
 				4DC6BCF21C905EA300279A90 /* libsqlite3.0.dylib in Frameworks */,
 				4DC6BCF01C905DE100279A90 /* libz.dylib in Frameworks */,
 				4DC6BCEE1C905DD800279A90 /* libc++.dylib in Frameworks */,
+				4D3D98961C9146C600C12755 /* AMapNaviKit.framework in Frameworks */,
 				4D198CA41C90033000442C67 /* CoreMotion.framework in Frameworks */,
 				4D198CA21C90032300442C67 /* CFNetwork.framework in Frameworks */,
 				4DC6BCE31C905C5700279A90 /* libssl.a in Frameworks */,
@@ -446,8 +462,11 @@
 		4D9AC3BD1C83E20D00E923CC = {
 			isa = PBXGroup;
 			children = (
+				4D3D989D1C91480600C12755 /* AMap.bundle */,
+				4D3D989E1C91480600C12755 /* AMapNavi.bundle */,
 				4D9AC3C81C83E20E00E923CC /* EasyStopCar */,
 				4D9AC43D1C8421D700E923CC /* mapapi.bundle */,
+				4D3D98951C9146C600C12755 /* AMapNaviKit.framework */,
 				4D9AC4391C84218D00E923CC /* CoreTelephony.framework */,
 				4D9AC4351C84216000E923CC /* Security.framework */,
 				4D9AC4331C84215A00E923CC /* CoreGraphics.framework */,
@@ -830,6 +849,9 @@
 		D5F428B09E27D5D3BE28DB26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D3D989B1C91479700C12755 /* AddressBook.framework */,
+				4D3D98991C91477E00C12755 /* AVFoundation.framework */,
+				4D3D98971C91476000C12755 /* AudioToolbox.framework */,
 				4DC6BD011C9064D300279A90 /* libAFNetworking.a */,
 				4DC6BD021C9064D300279A90 /* libSVProgressHUD.a */,
 				4DC6BCF51C905EE300279A90 /* libAFNetworking.a */,
@@ -967,6 +989,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D3D989F1C91480600C12755 /* AMap.bundle in Resources */,
+				4D3D98A01C91480600C12755 /* AMapNavi.bundle in Resources */,
 				4D9AC43E1C8421D700E923CC /* mapapi.bundle in Resources */,
 				4DC6BCFA1C9062AE00279A90 /* MyStoryboard.storyboard in Resources */,
 				4DC6BCE01C905C5700279A90 /* AlipaySDK.bundle in Resources */,
@@ -1234,6 +1258,7 @@
 					"$(PROJECT_DIR)/EasyStopCar/framework/BaiduMap_IOSSDK_v2.10.0_Lib",
 					"$(PROJECT_DIR)/EasyStopCar/Common/Alipay",
 					"$(PROJECT_DIR)/EasyStopCar/framework/alipay",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = EasyStopCar/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
@@ -1274,6 +1299,7 @@
 					"$(PROJECT_DIR)/EasyStopCar/framework/BaiduMap_IOSSDK_v2.10.0_Lib",
 					"$(PROJECT_DIR)/EasyStopCar/Common/Alipay",
 					"$(PROJECT_DIR)/EasyStopCar/framework/alipay",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = EasyStopCar/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (

@@ -13,6 +13,8 @@
 #import "LoginController.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import "OrderUnit.h"
+#import <AMapNaviKit/AMapNaviKit.h>
+#import <AMapNaviKit/MAMapKit.h>
 
 @interface AppDelegate ()
 
@@ -36,7 +38,7 @@ BMKMapManager* _mapManager;
     //向微信注册
     [WXApi registerApp:@"wx4eef83935fefb026" withDescription:@"demo 2.0"];
     
-    
+    [MAMapServices sharedServices].apiKey = @"3f9ef377038d3a99796f02aa58371350";//高德地图
     
     UIViewController *myViewController = nil;
     UINavigationController *myNavigationController =nil;

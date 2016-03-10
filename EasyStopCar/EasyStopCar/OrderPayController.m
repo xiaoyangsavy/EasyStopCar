@@ -451,6 +451,7 @@
     self.payWayAlipayButton.layer.cornerRadius = 5;
     self.payWayAlipayButton.layer.masksToBounds = YES;
     self.payWayAlipayButton.tag = 198851;
+    self.payWayAlipayButton.titleLabel.font = [UIFont systemFontOfSize:18];
     [self.payWayAlipayButton addTarget:self action:@selector(submitAlert:) forControlEvents:UIControlEventTouchUpInside];
     [self.payWayContentView addSubview:self.payWayAlipayButton];
     
@@ -461,6 +462,7 @@
     self.payWayWechatButton.layer.cornerRadius = 5;
     self.payWayWechatButton.layer.masksToBounds = YES;
     self.payWayWechatButton.tag = 198852;
+     self.payWayWechatButton.titleLabel.font = [UIFont systemFontOfSize:18];
     [self.payWayWechatButton addTarget:self action:@selector(submitAlert:) forControlEvents:UIControlEventTouchUpInside];
     [self.payWayContentView addSubview:self.payWayWechatButton];
     

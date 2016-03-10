@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EasyStopCar/OrderPayController.m"
-            timestampString = "478662422.443582"
+            timestampString = "479286423.102646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "475"
-            endingLineNumber = "475"
+            startingLineNumber = "477"
+            endingLineNumber = "477"
             landmarkName = "@implementation OrderPayController"
             landmarkType = "3">
          </BreakpointContent>

@@ -12,6 +12,10 @@
 #import "MRCircularProgressView.h"
 #import "OrderPayDetailController.h"
 
+#import <AMapNaviKit/AMapNaviKit.h>
+#import <AMapNaviKit/MAMapKit.h>
+
+
 @interface OrderDetailController ()
 
 @property(nonatomic,strong)UIButton *submitButoon;      //提交按钮
@@ -51,6 +55,23 @@
 @property(nonatomic,strong)UILabel *priceSumLabel;
 @property(nonatomic,strong)UILabel *priceDetailLabel;
 @property(nonatomic,strong)UIImageView *priceFlag;
+
+
+
+
+
+//选择付款方式
+@property(nonatomic,strong)UIView *payWayView;
+@property(nonatomic,strong)UIView *payWayTitleView;
+@property(nonatomic,strong)UIView *payWayContentView;
+
+@property(nonatomic,strong)UILabel *payWayTitleLabel;
+@property(nonatomic,strong)UIButton *payWayCancelButton;
+
+@property(nonatomic,strong)UILabel *payWayMoneyLabel;
+@property(nonatomic,strong)UIButton *payWayAlipayButton;
+@property(nonatomic,strong)UIButton *payWayWechatButton;
+
 
 @property(nonatomic,strong)NSTimer *myTimer;
 
@@ -203,7 +224,8 @@
     [self.infoTimeView addSubview:self.appointTimeView];
     
     self.appointDateLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.appointTimeView.frame.size.width, 30)];
-    self.appointDateLabel.font = [UIFont systemFontOfSize:18];
+//    self.appointDateLabel.font = [UIFont systemFontOfSize:18];
+     self.appointDateLabel.font = [UIFont fontWithName:@"MyriadSetPro-Thin" size:18];
     self.appointDateLabel.backgroundColor = backageColorBlue;
     self.appointDateLabel.textColor = [UIColor whiteColor];
     self.appointDateLabel.text = @"0月0日";
@@ -212,7 +234,8 @@
     
     
     self.appointTimeLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.appointDateLabel.frame.size.height, self.appointTimeView.frame.size.width, self.appointTimeView.frame.size.height-self.appointDateLabel.frame.size.height)];
-    self.appointTimeLabel.font = [UIFont systemFontOfSize:22];
+//    self.appointTimeLabel.font = [UIFont systemFontOfSize:22];
+     self.appointTimeLabel.font = [UIFont fontWithName:@"MyriadSetPro-Thin" size:22];
     self.appointTimeLabel.textColor = backageColorBlue;
     self.appointTimeLabel.text = @"0:00";
     self.appointTimeLabel.textAlignment = NSTextAlignmentCenter;
@@ -251,6 +274,72 @@
     self.priceDetailLabel.text = @"费用明细";
     self.priceDetailLabel.textAlignment = NSTextAlignmentRight;
     [self.priceView addSubview:self.priceDetailLabel];
+    
+    
+    
+    
+    //弹出框----------------------------------------------------------
+    
+    //支付视图
+    self.payWayView = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight-180-64, ScreenWidth, 180)];
+    self.payWayView.backgroundColor = [UIColor whiteColor];
+    self.payWayView.hidden = YES;
+    [self.view addSubview:self.payWayView];
+    
+    //支付视图标题
+    self.payWayTitleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
+    self.payWayTitleView.backgroundColor = backageColorLightgray;
+    [self.payWayView addSubview:self.payWayTitleView];
+    
+    CALayer *bottomBorder=[[CALayer alloc]init];
+    bottomBorder.frame=CGRectMake(0, self.payWayTitleView.frame.size.height-0.5, self.payWayTitleView.frame.size.width, 0.5);
+    bottomBorder.backgroundColor=lineColorGray.CGColor;
+    [self.payWayTitleView.layer addSublayer:bottomBorder];
+    
+    
+    self.payWayTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, self.payWayTitleView.frame.size.height)];
+    self.payWayTitleLabel.text = @"请选择导航方式";
+    self.payWayTitleLabel.font = [UIFont systemFontOfSize:18];
+    self.payWayTitleLabel.textColor = fontColorBlack;
+    self.payWayTitleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.payWayTitleView addSubview:self.payWayTitleLabel];
+    
+    self.payWayCancelButton = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth-23-marginSize*2, 0, 23+marginSize*2, self.payWayTitleView.frame.size.height)];
+    //    self.payWayCancelButton.backgroundColor = TEST_COLOR;
+    [self.payWayCancelButton setImage:[UIImage imageNamed:@"ico_common_delete"] forState:UIControlStateNormal];
+    self.payWayCancelButton.imageEdgeInsets = UIEdgeInsetsMake((50-23)/2, marginSize,(50-23)/2, marginSize);
+    self.payWayCancelButton.tag = 198850;
+    [self.payWayCancelButton addTarget:self action:@selector(submitAlert:) forControlEvents:UIControlEventTouchUpInside];
+    [self.payWayView addSubview:self.payWayCancelButton];
+    
+    
+    //支付视图方式选择
+    self.payWayContentView = [[UIView alloc]initWithFrame:CGRectMake(0, 50, ScreenWidth, 130)];
+    self.payWayContentView.backgroundColor = [UIColor whiteColor];
+    [self.payWayView addSubview:self.payWayContentView];
+    
+   
+    
+    self.payWayAlipayButton = [[UIButton alloc]initWithFrame:CGRectMake(marginSize, 20, ScreenWidth-marginSize*2, 40)];
+    self.payWayAlipayButton.backgroundColor = backageColorBlue;
+    [self.payWayAlipayButton setTitle:@"百度地图" forState:UIControlStateNormal];
+    self.payWayAlipayButton.layer.cornerRadius = 5;
+    self.payWayAlipayButton.layer.masksToBounds = YES;
+    self.payWayAlipayButton.tag = 198851;
+    self.payWayAlipayButton.titleLabel.font = [UIFont systemFontOfSize:18];
+    [self.payWayAlipayButton addTarget:self action:@selector(submitAlert:) forControlEvents:UIControlEventTouchUpInside];
+    [self.payWayContentView addSubview:self.payWayAlipayButton];
+    
+    
+    self.payWayWechatButton = [[UIButton alloc]initWithFrame:CGRectMake(marginSize, self.payWayAlipayButton.frame.origin.y+self.payWayAlipayButton.frame.size.height+15, ScreenWidth-marginSize*2, 40)];
+    self.payWayWechatButton.backgroundColor = backageColorGreen;
+    [self.payWayWechatButton setTitle:@"高德地图" forState:UIControlStateNormal];
+    self.payWayWechatButton.layer.cornerRadius = 5;
+    self.payWayWechatButton.layer.masksToBounds = YES;
+    self.payWayWechatButton.tag = 198852;
+    self.payWayWechatButton.titleLabel.font = [UIFont systemFontOfSize:18];
+    [self.payWayWechatButton addTarget:self action:@selector(submitAlert:) forControlEvents:UIControlEventTouchUpInside];
+    [self.payWayContentView addSubview:self.payWayWechatButton];
     
     
     self.myTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerAdvanced:) userInfo:nil repeats:YES];
@@ -341,48 +430,107 @@
 
 
 
-//调转到百度地图客户端导航
-- (void)submitInfo:(UIButton *)myButton {
+/**
+ *  弹出框提交事件
+ *
+ *  @param myButton 确认和取消按钮
+ */
+- (void)submitAlert:(UIButton *)myButton{
+    [super hideAlertBackage];
     
-    if (myButton.tag == 198801) {
- 
-    //初始化调启导航时的参数管理类
-    BMKNaviPara* para = [[BMKNaviPara alloc]init];
-    //初始化起点节点
-    BMKPlanNode* start = [[BMKPlanNode alloc]init];
-    //指定起点经纬度
-    CLLocationCoordinate2D coor1;
-    coor1.latitude = 39.90868;
-    coor1.longitude = 116.204;
-    start.pt = coor1;
-    //指定起点名称
-    start.name = @"我的位置";
-    //指定起点
-    para.startPoint = start;
-    
-    //初始化终点节点
-    BMKPlanNode* end = [[BMKPlanNode alloc]init];
     //指定终点经纬度
     CLLocationCoordinate2D coor2;
     coor2.latitude = 39.90868;
     coor2.longitude = 116.3956;
-    end.pt = coor2;
-    //指定终点名称
-    end.name = @"天安门";
-    //指定终点
-    para.endPoint = end;
     
-    //指定返回自定义scheme
-    para.appScheme = @"baidumapsdk://mapsdk.baidu.com";
-    
-    //调启百度地图客户端导航
-    [BMKNavigation openBaiduMapNavigation:para];
+    if (myButton.tag == 198851) {//百度地图
+        
+            //初始化调启导航时的参数管理类
+            BMKNaviPara* para = [[BMKNaviPara alloc]init];
+            //初始化起点节点
+            BMKPlanNode* start = [[BMKPlanNode alloc]init];
+            //指定起点经纬度
+            CLLocationCoordinate2D coor1;
+            coor1.latitude = 39.90868;
+            coor1.longitude = 116.204;
+            start.pt = coor1;
+            //指定起点名称
+            start.name = @"我的位置";
+            //指定起点
+            para.startPoint = start;
+        
+            //初始化终点节点
+            BMKPlanNode* end = [[BMKPlanNode alloc]init];
+        
+            end.pt = coor2;
+            //指定终点名称
+            end.name = @"天安门";
+            //指定终点
+            para.endPoint = end;
+        
+            //指定返回自定义scheme
+            para.appScheme = @"baidumapsdk://mapsdk.baidu.com";
+        
+            //调启百度地图客户端导航
+            [BMKNavigation openBaiduMapNavigation:para];
+    }else if(myButton.tag == 198852){//高德地图
+        //配置导航参数
+        MANaviConfig * config = [[MANaviConfig alloc] init];
+        config.destination = coor2;//终点坐标，Annotation的坐标
+        config.appScheme = [self getApplicationScheme];//返回的Scheme，需手动设置
+        config.appName = [self getApplicationName];//应用名称，需手动设置
+        config.strategy = MADrivingStrategyShortest;
+        //若未调起高德地图App,引导用户获取最新版本的
+        if(![MAMapURLSearch openAMapNavigation:config])
+        {
+            [MAMapURLSearch getLatestAMapApp];
+        }
+        
         
     }else{
-        [self toReturn];
-    
+//        [self toReturn];
+        
     }
+
 }
+
+
+
+
+//调转到百度地图客户端导航
+- (void)submitInfo:(UIButton *)myButton {
+    
+  [super showAlertBackage:self.payWayView];
+}
+
+
+
+- (NSString *)getApplicationName
+{
+    NSDictionary *bundleInfo = [[NSBundle mainBundle] infoDictionary];
+    return [bundleInfo valueForKey:@"CFBundleDisplayName"];
+}
+
+- (NSString *)getApplicationScheme
+{
+    NSDictionary *bundleInfo    = [[NSBundle mainBundle] infoDictionary];
+    NSString *bundleIdentifier  = [[NSBundle mainBundle] bundleIdentifier];
+    NSArray *URLTypes           = [bundleInfo valueForKey:@"CFBundleURLTypes"];
+    
+    NSString *scheme;
+    for (NSDictionary *dic in URLTypes)
+    {
+        NSString *URLName = [dic valueForKey:@"CFBundleURLName"];
+        if ([URLName isEqualToString:bundleIdentifier])
+        {
+            scheme = [[dic valueForKey:@"CFBundleURLSchemes"] objectAtIndex:0];
+            break;
+        }
+    }
+    
+    return scheme;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

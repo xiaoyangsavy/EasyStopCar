@@ -385,19 +385,21 @@
     [self.submitInfoContentView addSubview:self.submitInfoContentAppointView];
     
     self.submitInfoContentAppointDateLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.submitInfoContentAppointView.frame.size.width, 30)];
-    self.submitInfoContentAppointDateLabel.font = [UIFont systemFontOfSize:18];
+//    self.submitInfoContentAppointDateLabel.font = [UIFont systemFontOfSize:18];
     self.submitInfoContentAppointDateLabel.backgroundColor = backageColorBlue;
     self.submitInfoContentAppointDateLabel.textColor = [UIColor whiteColor];
     self.submitInfoContentAppointDateLabel.text = @"0月0日";
     self.submitInfoContentAppointDateLabel.textAlignment = NSTextAlignmentCenter;
+    self.submitInfoContentAppointDateLabel.font = [UIFont fontWithName:@"MyriadSetPro-Thin" size:18];
     [self.submitInfoContentAppointView addSubview:self.submitInfoContentAppointDateLabel];
     
     
     self.submitInfoContentAppointTimeLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.submitInfoContentAppointDateLabel.frame.size.height, self.submitInfoContentAppointView.frame.size.width, self.submitInfoContentAppointView.frame.size.height-self.submitInfoContentAppointDateLabel.frame.size.height)];
-    self.submitInfoContentAppointTimeLabel.font = [UIFont systemFontOfSize:22];
+//    self.submitInfoContentAppointTimeLabel.font = [UIFont systemFontOfSize:22];
     self.submitInfoContentAppointTimeLabel.textColor = backageColorBlue;
     self.submitInfoContentAppointTimeLabel.text = @"0:00";
     self.submitInfoContentAppointTimeLabel.textAlignment = NSTextAlignmentCenter;
+     self.submitInfoContentAppointTimeLabel .font = [UIFont fontWithName:@"MyriadSetPro-Thin" size:22];
     [self.submitInfoContentAppointView addSubview:self.submitInfoContentAppointTimeLabel];
     
     
