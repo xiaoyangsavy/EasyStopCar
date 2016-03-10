@@ -81,9 +81,15 @@
 @property(nonatomic,strong)UIView *submitButtonView;
 @property(nonatomic,strong)UILabel *submitInfoTitle;
 @property(nonatomic,strong)UILabel *submitInfoContent;
-@property(nonatomic,strong)UIImageView *submitInfoImageView;
+
 @property(nonatomic,strong)UIButton *submitButtonConcel;
 @property(nonatomic,strong)UIButton *submitButtonAffirm;
+
+@property(nonatomic,strong)UIView *submitInfoContentView;
+@property(nonatomic,strong)UIImageView *submitInfoImageView;
+@property(nonatomic,strong)UIView *submitInfoContentAppointView;
+@property(nonatomic,strong)UILabel *submitInfoContentAppointDateLabel;
+@property(nonatomic,strong)UILabel *submitInfoContentAppointTimeLabel;
 
 @property (nonatomic, assign) CLLocationCoordinate2D userLocationCoordinate2D;
 @property (nonatomic, assign) BOOL isFirest;
@@ -319,10 +325,8 @@
     self.submitInfoTitle.font = [UIFont systemFontOfSize:18];
     [self.submitInfoView addSubview:self.submitInfoTitle];
     
-    
-    self.submitInfoImageView = [[UIImageView alloc]initWithFrame:CGRectMake((ScreenWidth-80)/2, (self.submitInfoView.frame.size.height-80)/2-10, 80, 80)];
-    self.submitInfoImageView.image = [UIImage imageNamed:@"image_order_part_time"];
-    [self.submitInfoView addSubview:self.submitInfoImageView];
+    self.submitInfoContentView = [[UIView alloc] initWithFrame:CGRectMake(0, (self.submitInfoView.frame.size.height-80)/2-10, ScreenWidth, 80)];
+    [self.submitAlertView addSubview:self.submitInfoContentView];
     
     //提交信息内容显示
     self.submitInfoContent = [[UILabel alloc] initWithFrame:CGRectMake(0, self.submitInfoView.frame.size.height-40-20, ScreenWidth, 40)];
@@ -361,6 +365,46 @@
     
     [self.submitButtonView addSubview:self.submitButtonAffirm];
     
+ 
+
+    //停车时间
+    self.submitInfoImageView = [[UIImageView alloc]initWithFrame:CGRectMake((ScreenWidth-80)/2, 0, 80, 80)];
+    self.submitInfoImageView.image = [UIImage imageNamed:@"image_order_part_time"];
+    [self.submitInfoContentView addSubview:self.submitInfoImageView];
+    
+    
+    //预约时间
+    self.submitInfoContentAppointView = [[UIView alloc]initWithFrame:CGRectMake((ScreenWidth-80)/2, 0, 80, 80)];
+    self.submitInfoContentAppointView.hidden = YES;
+    //设置圆角边框
+    self.submitInfoContentAppointView.layer.cornerRadius = 8;
+    self.submitInfoContentAppointView.layer.masksToBounds = YES;
+    //设置边框及边框颜色
+    self.submitInfoContentAppointView.layer.borderWidth = 1.0;
+    self.submitInfoContentAppointView.layer.borderColor =[ backageColorBlue CGColor];
+    [self.submitInfoContentView addSubview:self.submitInfoContentAppointView];
+    
+    self.submitInfoContentAppointDateLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.submitInfoContentAppointView.frame.size.width, 30)];
+    self.submitInfoContentAppointDateLabel.font = [UIFont systemFontOfSize:18];
+    self.submitInfoContentAppointDateLabel.backgroundColor = backageColorBlue;
+    self.submitInfoContentAppointDateLabel.textColor = [UIColor whiteColor];
+    self.submitInfoContentAppointDateLabel.text = @"0月0日";
+    self.submitInfoContentAppointDateLabel.textAlignment = NSTextAlignmentCenter;
+    [self.submitInfoContentAppointView addSubview:self.submitInfoContentAppointDateLabel];
+    
+    
+    self.submitInfoContentAppointTimeLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.submitInfoContentAppointDateLabel.frame.size.height, self.submitInfoContentAppointView.frame.size.width, self.submitInfoContentAppointView.frame.size.height-self.submitInfoContentAppointDateLabel.frame.size.height)];
+    self.submitInfoContentAppointTimeLabel.font = [UIFont systemFontOfSize:22];
+    self.submitInfoContentAppointTimeLabel.textColor = backageColorBlue;
+    self.submitInfoContentAppointTimeLabel.text = @"0:00";
+    self.submitInfoContentAppointTimeLabel.textAlignment = NSTextAlignmentCenter;
+    [self.submitInfoContentAppointView addSubview:self.submitInfoContentAppointTimeLabel];
+    
+    
+    
+    
+    
+    
     
     if (self.styleType == 1) {
         [self initAppointStyle];
@@ -370,8 +414,10 @@
 
 //初始化预约样式
 -(void)initAppointStyle{
+    self.submitInfoImageView.hidden = YES;
+     self.submitInfoContentAppointView.hidden = NO;
+  self.submitInfoContent.text = @"下单后车位会为您保留\n请尽快到达";
     
-  
     _mapView.frame = CGRectMake(0, 40, ScreenWidth, ScreenHeight-64-40);
     
     
@@ -496,7 +542,11 @@
     }else  if (myButton.tag ==198852 ){//确认
         [super hideAlertBackage];
         OrderDetailController *myController = [[OrderDetailController alloc]init];
+         if (self.styleType == 1) {
+              myController.orderType = 3;//预约订单
+         }else{
         myController.orderType = 1;//预约订单
+         }
         [self.navigationController pushViewController:myController animated:YES];
     }
     

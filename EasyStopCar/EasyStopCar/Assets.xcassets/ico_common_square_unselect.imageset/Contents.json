@@ -7,12 +7,11 @@
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "backage_coupon_line@2X.png"
+      "filename" : "ico_common_square_unselect@2X.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "backage_coupon_line@3X.png"
+      "scale" : "3x"
     }
   ],
   "info" : {

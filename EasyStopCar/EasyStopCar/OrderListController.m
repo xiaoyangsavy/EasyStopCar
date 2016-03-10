@@ -14,6 +14,7 @@
 
 @interface OrderListController ()
 
+@property(nonatomic,strong)UIImageView *emptyImageView;//提示图片
 @property(nonatomic,strong)UITableView *myTableView;//数据列表
 
 @end
@@ -24,11 +25,20 @@
     [super viewDidLoad];
     [super initNavBarItems:@"我的订单"];
     
+    self.emptyImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 180, ScreenWidth, 115)];
+    self.emptyImageView.image = [UIImage imageNamed:@"test_picture.jpg"];
+    self.emptyImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:self.emptyImageView];
+
+    
     self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 10, ScreenWidth, ScreenHeight-64) style:UITableViewStylePlain];
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
     self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.myTableView];
+    
+    
+    
     
 }
 //测试数据

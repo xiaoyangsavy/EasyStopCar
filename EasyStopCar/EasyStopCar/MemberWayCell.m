@@ -50,11 +50,11 @@
     
     if ([dic[@"payWayState"] integerValue]==0) {
         self.wayState.frame = CGRectMake(ScreenWidth-35, (60-15)/2, 15, 15);
-        self.wayState.image = [UIImage imageNamed:@"icon_right_arrow"];
+        self.wayState.image = [UIImage imageNamed:@"ico_home_select_arrow"];
     }else if ([dic[@"payWayState"] integerValue]==1) {
-        self.wayState.image = [UIImage imageNamed:@"icon_order_unselected"];
+        self.wayState.image = [UIImage imageNamed:@"ico_edit_unselect"];
     }else{
-        self.wayState.image = [UIImage imageNamed:@"icon_order_selected"];
+        self.wayState.image = [UIImage imageNamed:@"ico_edit_select"];
     }
     
 }

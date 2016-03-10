@@ -36,12 +36,11 @@
   
     
     self.infoView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 200)];
-    self.infoView.backgroundColor = backageColorRed;
+//    self.infoView.backgroundColor = backageColorRed;
+    self.infoView.image = [UIImage imageNamed:@"backage_member_top"];
     [self.view addSubview:self.infoView];
     
-    
-    
-    
+ 
     self.memberTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, ScreenWidth, 15)];
     self.memberTitleLabel.text = @"我的零钱（元）";
     self.memberTitleLabel.textColor = [UIColor whiteColor];
@@ -49,11 +48,11 @@
     self.memberTitleLabel.textAlignment = NSTextAlignmentCenter;
     [self.infoView addSubview:self.memberTitleLabel];
     
-    self.memberPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.memberTitleLabel.frame.origin.y+self.memberTitleLabel.frame.size.height+10, ScreenWidth, 70)];
+    self.memberPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.memberTitleLabel.frame.origin.y+self.memberTitleLabel.frame.size.height+10, ScreenWidth, 80)];
     self.memberPriceLabel.text = @"0";
     self.memberPriceLabel.textColor = [UIColor whiteColor];
     self.memberPriceLabel.textAlignment = NSTextAlignmentCenter;
-    self.memberPriceLabel.font = [UIFont systemFontOfSize:80];
+    self.memberPriceLabel.font = [UIFont systemFontOfSize:100];
     [self.infoView addSubview:self.memberPriceLabel];
     
     self.financeTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 230, ScreenWidth, ScreenHeight-190)];
@@ -99,9 +98,7 @@
     [myDictionary setValue:@"+" forKey:@"type"];
     [myDictionary setValue:@"18.5" forKey:@"sums"];
     [self.myArray addObject:myDictionary];
-
-    
-    
+   
 }
 
 
@@ -126,7 +123,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 70;
+    return 63;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -143,7 +140,7 @@
     if (!cell)
     {
         cell = [[MemberAccountCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reusableIdentifier];
-        //        cell.selectionStyle = UITableViewCellSelectionStyleNone;//取消全部样式
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;//取消全部样式
     }
      cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     

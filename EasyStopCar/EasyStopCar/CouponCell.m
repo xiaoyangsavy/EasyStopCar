@@ -28,27 +28,27 @@
         self.backageView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:self.backageView];
         
-        self.couponPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 80)];
+        self.couponPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 100, 82)];
         self.couponPriceLabel.font = [UIFont systemFontOfSize:60];
         self.couponPriceLabel.text = @"￥0";
         self.couponPriceLabel.textColor = backageColorYellow;
         [self.backageView addSubview:self.couponPriceLabel];
         
-        self.couponNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 10, self.backageView.frame.size.width-self.couponPriceLabel.frame.size.width-15, 30)];
+        self.couponNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 10, self.backageView.frame.size.width-140-15, 30)];
         self.couponNameLabel.font = [UIFont systemFontOfSize:12];
         self.couponNameLabel.text = @"暂无名称";
         self.couponNameLabel.textColor = fontColorGray;
         self.couponNameLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        self.couponNameLabel.numberOfLines = 0;//上面两行设置多行显示
+        self.couponNameLabel.numberOfLines = 2;//上面两行设置多行显示
         [self.backageView addSubview:self.couponNameLabel];
         
         self.couponContentLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.couponNameLabel.frame.origin.x, self.couponNameLabel.frame.size.height+20, 100, 20)];
-        self.couponContentLabel.font = [UIFont systemFontOfSize:14];
+        self.couponContentLabel.font = [UIFont systemFontOfSize:16];
         self.couponContentLabel.text = @"首单使用";
         self.couponContentLabel.textColor = fontColorGray;
         [self.backageView addSubview:self.couponContentLabel];
         
-        self.couponDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.backageView.frame.size.height-30, self.backageView.frame.size.width-15, 30)];
+        self.couponDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.backageView.frame.size.height-28, self.backageView.frame.size.width-15, 28)];
         self.couponDateLabel.font = [UIFont systemFontOfSize:12];
         self.couponDateLabel.text = @"使用期限";
         self.couponDateLabel.textColor = fontColorGray;
@@ -56,7 +56,7 @@
         [self.backageView addSubview:self.couponDateLabel];
         
         self.couponFlagImageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth-80, 0, 80, 80)];
-        self.couponFlagImageView.image = [UIImage imageNamed:@"test_picture.jpg"];
+        self.couponFlagImageView.image = [UIImage imageNamed:@"image_coupon_flag_invalid"];
         self.couponFlagImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview:self.couponFlagImageView];
         
@@ -84,7 +84,7 @@
     [orderStateAttributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(moneyString.length, 1)];
     self.couponPriceLabel.attributedText = orderStateAttributedString;
     
-    if ([myDictionary[@"type"] integerValue]==1) {
+    if ([myDictionary[@"type"] integerValue]==0) {
         self.couponPriceLabel.textColor = backageColorYellow;
         self.couponNameLabel.textColor = fontColorBlack;
         self.couponContentLabel.textColor = fontColorBlack;
@@ -98,14 +98,20 @@
         self.couponContentLabel.textColor = fontColorLightgray;
         self.couponDateLabel.textColor = fontColorLightgray;
         self.couponFlagImageView.hidden = NO;
-        //    self.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backage_coupon_disable"]];
-//        self.backageView.image = [UIImage imageNamed:@"backage_coupon_disable"];
+        
+        if ([myDictionary[@"type"] integerValue]==1) {
+            self.couponFlagImageView.image = [UIImage imageNamed:@"image_coupon_flag_invalid"];
+        }else if ([myDictionary[@"type"] integerValue]==2) {
+            self.couponFlagImageView.image = [UIImage imageNamed:@"image_coupon_flag_use"];
+        }
+
     }
     
     
     
+    
     self.couponNameLabel.text = [NSString stringWithFormat:@"%@\n",myDictionary[@"name"]];
-    self.couponDateLabel.text = myDictionary[@"userTime"];
+    self.couponDateLabel.text = [NSString stringWithFormat:@"使用期限 %@",myDictionary[@"userTime"]];
     self.couponContentLabel = myDictionary[@"condition"];
     
 }

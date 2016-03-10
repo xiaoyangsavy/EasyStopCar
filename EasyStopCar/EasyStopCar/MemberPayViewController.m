@@ -162,7 +162,7 @@
     self.payWayLable.textColor = fontColorLightgray;
     [self.pageScroll addSubview:self.payWayLable];
     
-    self.payWayTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.payWayLable.frame.origin.y+self.payWayLable.frame.size.height+10, ScreenWidth, 180)];
+    self.payWayTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.payWayLable.frame.origin.y+self.payWayLable.frame.size.height+10, ScreenWidth, 2*60)];
     self.payWayTableView.delegate = self;
     self.payWayTableView.dataSource = self;
     self.payWayTableView.allowsMultipleSelectionDuringEditing = YES;
@@ -240,7 +240,7 @@
     
     //同意条款
     self.agreeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 0, 15, self.agreeView.frame.size.height)];
-    self.agreeImageView.image = [UIImage imageNamed:@"ico_member_unselect"];
+    self.agreeImageView.image = [UIImage imageNamed:@"ico_common_square_unselect"];
     self.agreeImageView.contentMode = UIViewContentModeScaleAspectFit;
     //     self.agreeImageView.userInteractionEnabled = YES;
     [self.agreeView addSubview:self.agreeImageView];
@@ -289,7 +289,7 @@
     
     
     payWayDictionary = [[NSMutableDictionary alloc] init];
-    [payWayDictionary setValue:@"icon_order_wechat" forKey:@"payWayIcon"];
+    [payWayDictionary setValue:@"icon_common_wechat" forKey:@"payWayIcon"];
     [payWayDictionary setValue:@"微信支付" forKey:@"payWayTitle"];
     //    [payWayDictionary setValue:@"推荐安装微信版本5.0以上版本使用" forKey:@"payWayContent"];
     [payWayDictionary setValue:@"2" forKey:@"payWayState"];
@@ -297,22 +297,14 @@
     [self.payWayArray addObject:payWayDictionary];
     
     payWayDictionary = [[NSMutableDictionary alloc] init];
-    [payWayDictionary setValue:@"icon_order_alipay" forKey:@"payWayIcon"];
+    [payWayDictionary setValue:@"icon_common_alipay" forKey:@"payWayIcon"];
     [payWayDictionary setValue:@"支付宝" forKey:@"payWayTitle"];
     //    [payWayDictionary setValue:@"配送人员上门现金支付" forKey:@"payWayContent"];
     [payWayDictionary setValue:@"1" forKey:@"payWayState"];
     [payWayDictionary setValue:@"Alipay" forKey:@"payID"];
     [self.payWayArray addObject:payWayDictionary];
     
-    
-    payWayDictionary = [[NSMutableDictionary alloc] init];
-    [payWayDictionary setValue:@"icon_order_unionpay" forKey:@"payWayIcon"];
-    [payWayDictionary setValue:@"银联支付" forKey:@"payWayTitle"];
-    //    [payWayDictionary setValue:@"立即开通，专享优惠" forKey:@"payWayContent"];
-    [payWayDictionary setValue:@"1" forKey:@"payWayState"];
-    [payWayDictionary setValue:@"unionpay" forKey:@"payID"];
-    [self.payWayArray addObject:payWayDictionary];
-    
+
     [self.payWayTableView reloadData];
     [self.payWayTableView selectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionBottom];//默认选中第一行
     
@@ -325,10 +317,10 @@
     
     if (myButton.tag==198801) {
         myButton.tag=198802;
-        self.agreeImageView.image = [UIImage imageNamed:@"ico_member_select"];
+        self.agreeImageView.image = [UIImage imageNamed:@"ico_common_square_select"];
     }else{
         myButton.tag=198801;
-        self.agreeImageView.image = [UIImage imageNamed:@"ico_member_unselect"];
+        self.agreeImageView.image = [UIImage imageNamed:@"ico_common_square_unselect"];
     }
     
 }
@@ -358,7 +350,7 @@
     if (!cell)
     {
         cell = [[MemberWayCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reusableIdentifier];
-        //        cell.selectionStyle = UITableViewCellSelectionStyleNone;//取消全部样式
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;//取消全部样式
     }
     
     

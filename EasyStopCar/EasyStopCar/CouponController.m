@@ -11,6 +11,7 @@
 
 @interface CouponController ()
 
+@property(nonatomic,strong)UIImageView *emptyImageView;//提示图片
 @property(nonatomic,strong)UITableView *myTableView;//数据列表
 
 @end
@@ -22,7 +23,12 @@
    
     [super initNavBarItems:@"我的优惠券"];
     
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64) style:UITableViewStylePlain];
+    self.emptyImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 180, ScreenWidth, 115)];
+    self.emptyImageView.image = [UIImage imageNamed:@"test_picture.jpg"];
+    self.emptyImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:self.emptyImageView];
+    
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 5, ScreenWidth, ScreenHeight-64) style:UITableViewStylePlain];
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
     self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -48,7 +54,7 @@
     [self.myArray addObject:myDictionary];
     
     myDictionary = [[NSMutableDictionary alloc] init];
-    [myDictionary setValue:@"仅限北京停车场使用" forKey:@"name"];
+    [myDictionary setValue:@"仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用仅限北京停车场使用" forKey:@"name"];
     [myDictionary setValue:@"2016-04-28——2016-05-01" forKey:@"userTime"];
     [myDictionary setValue:@"满50使用" forKey:@"condition"];
     [myDictionary setValue:@"20" forKey:@"money"];
@@ -60,7 +66,7 @@
     [myDictionary setValue:@"2016-04-28——2016-05-01" forKey:@"userTime"];
     [myDictionary setValue:@"满50使用" forKey:@"condition"];
     [myDictionary setValue:@"20" forKey:@"money"];
-    [myDictionary setValue:@"0" forKey:@"type"];
+    [myDictionary setValue:@"2" forKey:@"type"];
     [self.myArray addObject:myDictionary];
     
     

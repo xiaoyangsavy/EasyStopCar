@@ -284,7 +284,8 @@
          [self.myTimer invalidate];
         self.circularProgressView.hidden = YES;
          self.appointTimeView.hidden = NO;
-        
+         self.infoTimeName.text = @"已预约";
+        self.infoTimeRemain.text = @"请在此时间内到达";
     [self.submitButoon setTitle:@"取消预约" forState:UIControlStateNormal];
         self.submitButoon.backgroundColor = backageColorRed;
         self.submitButoon.tag = 198802;
