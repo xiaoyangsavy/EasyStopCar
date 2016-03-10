@@ -84,6 +84,9 @@
 @property(nonatomic,strong)UIButton *payWayAlipayButton;
 @property(nonatomic,strong)UIButton *payWayWechatButton;
 
+
+@property(nonatomic,strong)SelectAlertView *selectAlertView;//优惠劵选择弹出框
+
 @end
 
 @implementation OrderPayController
@@ -369,6 +372,8 @@
     self.infoCouponView = [[UIView alloc]initWithFrame:CGRectMake(0, 275, self.infoView.frame.size.width, 50)];
     self.infoCouponView.backgroundColor = backageColorYellow;
     [self.infoView addSubview:self.infoCouponView];
+    UITapGestureRecognizer* singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(useCuponClick:)];
+    [self.infoCouponView addGestureRecognizer:singleTap];
  
     self.couponIco = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 0, 38, self.infoCouponView.frame.size.height)];
     self.couponIco.image = [UIImage imageNamed:@"ico_order_coupon"];
@@ -466,7 +471,88 @@
     [self.payWayWechatButton addTarget:self action:@selector(submitAlert:) forControlEvents:UIControlEventTouchUpInside];
     [self.payWayContentView addSubview:self.payWayWechatButton];
     
+    
+    
+    self.selectAlertView = [[SelectAlertView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+    [self.selectAlertView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.selectAlertView.delegate = self;
+    [self.view addSubview:self.selectAlertView];
+    
+    
+    [self.view addConstraint:[NSLayoutConstraint
+                              constraintWithItem:self.selectAlertView
+                              attribute:NSLayoutAttributeTop
+                              relatedBy:NSLayoutRelationEqual
+                              toItem:self.view
+                              attribute:NSLayoutAttributeTop
+                              multiplier:1
+                              constant:0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint
+                              constraintWithItem:self.selectAlertView
+                              attribute:NSLayoutAttributeLeft
+                              relatedBy:NSLayoutRelationEqual
+                              toItem:self.view
+                              attribute:NSLayoutAttributeLeft
+                              multiplier:1
+                              constant:0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint
+                              constraintWithItem:self.selectAlertView
+                              attribute:NSLayoutAttributeWidth
+                              relatedBy:NSLayoutRelationEqual
+                              toItem:self.view
+                              attribute:NSLayoutAttributeWidth
+                              multiplier:1.0
+                              constant:0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint
+                              constraintWithItem:self.selectAlertView
+                              attribute:NSLayoutAttributeHeight
+                              relatedBy:NSLayoutRelationEqual
+                              toItem:self.view
+                              attribute:NSLayoutAttributeHeight
+                              multiplier:1
+                              constant:0]];
+
+    
+    
+    [self initInfoArray];
 }
+
+//测试数据
+-(void) initInfoArray{
+    //测试数据
+    self.myArray = [[NSMutableArray alloc] init];
+    
+    NSMutableDictionary *myDictionary = nil;
+    
+    myDictionary = [[NSMutableDictionary alloc] init];
+    [myDictionary setValue:@"满50使用" forKey:@"name"];
+    [myDictionary setValue:@"10" forKey:@"discount"];
+    [myDictionary setValue:@"0" forKey:@"selectState"];
+    [self.myArray addObject:myDictionary];
+    
+    myDictionary = [[NSMutableDictionary alloc] init];
+    [myDictionary setValue:@"仅限北京停车场使用" forKey:@"name"];
+    [myDictionary setValue:@"20" forKey:@"discount"];
+    [myDictionary setValue:@"0" forKey:@"selectState"];
+    [self.myArray addObject:myDictionary];
+    
+    myDictionary = [[NSMutableDictionary alloc] init];
+    [myDictionary setValue:@"满50使用" forKey:@"name"];
+    [myDictionary setValue:@"30" forKey:@"discount"];
+    [myDictionary setValue:@"0" forKey:@"selectState"];
+    [self.myArray addObject:myDictionary];
+    
+     [self.selectAlertView uploadData:self.myArray];
+}
+
+//优惠劵点击事件
+-(void)useCuponClick:(UITapGestureRecognizer *)sender{
+    [self.selectAlertView showAlert];
+}
+
 
 
 //提交按钮点击事件
@@ -496,6 +582,23 @@
 
     }
   }
+
+
+
+#pragma marks 优惠劵选择列表代理
+- (void)getSelectItem:(NSDictionary *)myDictionary{
+    
+    NSLog(@"优惠劵已选择%@！！！！！！",myDictionary);
+    [self.selectAlertView closeAlert];
+//    [self useCoupon:[NSString stringWithFormat:@"%@",myDictionary[@"code"]]];
+ 
+    self.couponCount.text = [NSString stringWithFormat:@"- %@",myDictionary[@"discount"]];
+    self.couponCount.textColor = backageColorRed;
+    
+ 
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

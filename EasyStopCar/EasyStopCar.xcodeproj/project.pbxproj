@@ -25,6 +25,8 @@
 		4D3D989C1C91479700C12755 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3D989B1C91479700C12755 /* AddressBook.framework */; };
 		4D3D989F1C91480600C12755 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D3D989D1C91480600C12755 /* AMap.bundle */; };
 		4D3D98A01C91480600C12755 /* AMapNavi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D3D989E1C91480600C12755 /* AMapNavi.bundle */; };
+		4D3D98A31C91584900C12755 /* SelectAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D98A21C91584900C12755 /* SelectAlertView.m */; };
+		4D3D98A61C915AF100C12755 /* CouponSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D98A51C915AF100C12755 /* CouponSelectCell.m */; };
 		4D9AC3CB1C83E20E00E923CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3CA1C83E20E00E923CC /* main.m */; };
 		4D9AC3CE1C83E20E00E923CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3CD1C83E20E00E923CC /* AppDelegate.m */; };
 		4D9AC3D11C83E20E00E923CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC3D01C83E20E00E923CC /* ViewController.m */; };
@@ -157,6 +159,10 @@
 		4D3D989B1C91479700C12755 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		4D3D989D1C91480600C12755 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = AMapNaviKit.framework/Versions/1.5.0.3533b29/Resources/AMap.bundle; sourceTree = "<group>"; };
 		4D3D989E1C91480600C12755 /* AMapNavi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMapNavi.bundle; path = AMapNaviKit.framework/Versions/1.5.0.3533b29/Resources/AMapNavi.bundle; sourceTree = "<group>"; };
+		4D3D98A11C91584900C12755 /* SelectAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAlertView.h; sourceTree = "<group>"; };
+		4D3D98A21C91584900C12755 /* SelectAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAlertView.m; sourceTree = "<group>"; };
+		4D3D98A41C915AF100C12755 /* CouponSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponSelectCell.h; sourceTree = "<group>"; };
+		4D3D98A51C915AF100C12755 /* CouponSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponSelectCell.m; sourceTree = "<group>"; };
 		4D9AC3C61C83E20E00E923CC /* EasyStopCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyStopCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9AC3CA1C83E20E00E923CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4D9AC3CC1C83E20E00E923CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -583,6 +589,8 @@
 				4DE57E981C8539170087D79F /* CommonTools.m */,
 				4DB94A381C8822200003AC08 /* InputItemModel.h */,
 				4DB94A391C8822200003AC08 /* InputItemModel.m */,
+				4D3D98A11C91584900C12755 /* SelectAlertView.h */,
+				4D3D98A21C91584900C12755 /* SelectAlertView.m */,
 				4DC6BCFE1C90647500279A90 /* PayModel.h */,
 				4DC6BCFF1C90647500279A90 /* PayModel.m */,
 			);
@@ -827,6 +835,8 @@
 				4D198C8F1C8FB36A00442C67 /* CouponCell.m */,
 				4D198CA81C9005E700442C67 /* MemberWayCell.h */,
 				4D198CA91C9005E700442C67 /* MemberWayCell.m */,
+				4D3D98A41C915AF100C12755 /* CouponSelectCell.h */,
+				4D3D98A51C915AF100C12755 /* CouponSelectCell.m */,
 			);
 			name = CustomCell;
 			sourceTree = "<group>";
@@ -1084,6 +1094,7 @@
 				4DB94A461C8836850003AC08 /* UserInfoController.m in Sources */,
 				4D198C931C8FC67000442C67 /* SettingController.m in Sources */,
 				4DB95FBD1C86917B006B92F9 /* MRProgressView.m in Sources */,
+				4D3D98A61C915AF100C12755 /* CouponSelectCell.m in Sources */,
 				4D9AC4451C84242E00E923CC /* SearchPartMapController.mm in Sources */,
 				4D198CAA1C9005E700442C67 /* MemberWayCell.m in Sources */,
 				4DC6BCE51C905C5700279A90 /* DataSigner.m in Sources */,
@@ -1100,6 +1111,7 @@
 				4DC6BCE71C905C5700279A90 /* MD5DataSigner.m in Sources */,
 				4DC690AC1C8988A3006B4DDF /* PayDetailCell.m in Sources */,
 				4D9C5E701C89590D00543681 /* Connetion.m in Sources */,
+				4D3D98A31C91584900C12755 /* SelectAlertView.m in Sources */,
 				4DE57E961C852C3A0087D79F /* SearchPartCell.m in Sources */,
 				4DB94A4C1C8851DF0003AC08 /* EditSeleceController.m in Sources */,
 				4DB95FC41C86C011006B92F9 /* OrderPayController.m in Sources */,

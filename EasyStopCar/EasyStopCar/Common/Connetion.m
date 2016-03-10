@@ -7,9 +7,7 @@
 //
 
 #import "Connetion.h"
-#import "DEFINE.h"
-#import "AFNetworking.h"
-#import "SVProgressHUD.h"
+
 
 
 @implementation Connetion

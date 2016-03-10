@@ -204,7 +204,7 @@
     [self.myArray addObject:myDictionary];
     
     myDictionary = [[NSMutableDictionary alloc] init];
-    [myDictionary setValue:@"停车时间" forKey:@"title"];
+    [myDictionary setValue:@"选择停车时间" forKey:@"title"];
     [myDictionary setValue:[UIImage imageNamed:@"ico_time"] forKey:@"image"];
     [self.myArray addObject:myDictionary];
     
@@ -288,13 +288,22 @@
 //提交按钮点击事件
 -(void)submitClick{
     
+    if([self.myArray[0][@"title"] isEqualToString:@""]||[self.myArray[0][@"title"] isEqualToString:@"选择目的地"]){
+    
+        [SVProgressHUD showErrorWithStatus:@"请选择目的地"];
+        
+    }else if([self.myArray[1][@"title"] isEqualToString:@""]||[self.myArray[1][@"title"] isEqualToString:@"选择停车时间"]){
+        
+        [SVProgressHUD showErrorWithStatus:@"请选择停车时间"];
+    }else{
+ 
     SearchPartController *myController = [[SearchPartController alloc]init];
     myController.searchedLocation = self.myArray[0][@"title"];
     myController.searchedData = self.myArray[1][@"title"];
     myController.isElectricity = self.searchSwitch.on;
     myController.styleType = 1;
     [self.navigationController pushViewController:myController animated:YES];
-    
+    }
 }
 
 //预订说明

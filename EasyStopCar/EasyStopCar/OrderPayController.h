@@ -7,7 +7,8 @@
 //
 
 #import "UITempletViewController.h"
+#import "SelectAlertView.h"
 
-@interface OrderPayController : UITempletViewController
+@interface OrderPayController : UITempletViewController<SelectAlertViewDelegate>
 
 @end
