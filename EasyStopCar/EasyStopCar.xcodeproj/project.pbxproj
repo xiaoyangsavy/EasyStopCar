@@ -19,7 +19,7 @@
 		4D198CAD1C90066000442C67 /* OrderUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D198CAC1C90066000442C67 /* OrderUnit.m */; };
 		4D198CB01C9006CF00442C67 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D198CAF1C9006CF00442C67 /* Order.m */; };
 		4D198CB31C90070E00442C67 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D198CB21C90070E00442C67 /* NSString+MD5Addition.m */; };
-		4D24057D1C92A92B00A5FB8C /* PulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D24057B1C92A92B00A5FB8C /* PulsingHaloLayer.m */; };
+		4D38F3971C92C17E0096480B /* PulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D38F3961C92C17E0096480B /* PulsingHaloLayer.m */; };
 		4D3D98961C9146C600C12755 /* AMapNaviKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3D98951C9146C600C12755 /* AMapNaviKit.framework */; };
 		4D3D98981C91476000C12755 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3D98971C91476000C12755 /* AudioToolbox.framework */; };
 		4D3D989A1C91477E00C12755 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3D98991C91477E00C12755 /* AVFoundation.framework */; };
@@ -154,8 +154,8 @@
 		4D198CAF1C9006CF00442C67 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		4D198CB11C90070E00442C67 /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
 		4D198CB21C90070E00442C67 /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
-		4D24057B1C92A92B00A5FB8C /* PulsingHaloLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PulsingHaloLayer.m; sourceTree = "<group>"; };
-		4D24057C1C92A92B00A5FB8C /* PulsingHaloLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulsingHaloLayer.h; sourceTree = "<group>"; };
+		4D38F3951C92C17E0096480B /* PulsingHaloLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulsingHaloLayer.h; sourceTree = "<group>"; };
+		4D38F3961C92C17E0096480B /* PulsingHaloLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PulsingHaloLayer.m; sourceTree = "<group>"; };
 		4D3D98951C9146C600C12755 /* AMapNaviKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapNaviKit.framework; sourceTree = "<group>"; };
 		4D3D98971C91476000C12755 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4D3D98991C91477E00C12755 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -594,8 +594,8 @@
 				4DB94A391C8822200003AC08 /* InputItemModel.m */,
 				4D3D98A11C91584900C12755 /* SelectAlertView.h */,
 				4D3D98A21C91584900C12755 /* SelectAlertView.m */,
-				4D24057C1C92A92B00A5FB8C /* PulsingHaloLayer.h */,
-				4D24057B1C92A92B00A5FB8C /* PulsingHaloLayer.m */,
+				4D38F3951C92C17E0096480B /* PulsingHaloLayer.h */,
+				4D38F3961C92C17E0096480B /* PulsingHaloLayer.m */,
 				4DC6BCFE1C90647500279A90 /* PayModel.h */,
 				4DC6BCFF1C90647500279A90 /* PayModel.m */,
 			);
@@ -1100,7 +1100,7 @@
 				4D198C931C8FC67000442C67 /* SettingController.m in Sources */,
 				4DB95FBD1C86917B006B92F9 /* MRProgressView.m in Sources */,
 				4D3D98A61C915AF100C12755 /* CouponSelectCell.m in Sources */,
-				4D24057D1C92A92B00A5FB8C /* PulsingHaloLayer.m in Sources */,
+				4D38F3971C92C17E0096480B /* PulsingHaloLayer.m in Sources */,
 				4D9AC4451C84242E00E923CC /* SearchPartMapController.mm in Sources */,
 				4D198CAA1C9005E700442C67 /* MemberWayCell.m in Sources */,
 				4DC6BCE51C905C5700279A90 /* DataSigner.m in Sources */,

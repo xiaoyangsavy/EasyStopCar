@@ -14,6 +14,7 @@
 #import "OrderPayController.h"
 #import "SearchAppointController.h"
 #import "UserCenterController.h"
+#import "PulsingHaloLayer.h"
 
 @interface ViewController ()
 
@@ -38,11 +39,18 @@
 
 @property(nonatomic,strong)UITableView *listTableView;//数据列表
 
-
+@property (nonatomic, weak) PulsingHaloLayer *halo;//脉冲动画
 
 @end
 
 @implementation ViewController
+
+//- (void)viewDidLayoutSubviews
+//{
+//    [super viewDidLayoutSubviews];
+//    
+//    self.halo.position = self.aroundImageView.center;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -100,8 +108,8 @@
         [self.aroundView addTarget:self action:@selector(enterClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.enterView addSubview:self.aroundView];
         
-        self.aroundImageView = [[UIImageView alloc]init];
-        [self.aroundImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.aroundImageView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 0, 90, 90)];
+//        [self.aroundImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self.aroundImageView setImage:[UIImage imageNamed:@"image_home_around"]];
         self.aroundImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.aroundView addSubview:self.aroundImageView];
@@ -113,6 +121,19 @@
          self.aroundLabel.text = @"查找附近车位";
          self.aroundLabel.textAlignment = NSTextAlignmentCenter;
         [self.aroundView addSubview:self.aroundLabel];
+        
+ 
+        //脉冲动画
+        PulsingHaloLayer *layer = [PulsingHaloLayer layer];
+        self.halo = layer;
+        [self.aroundImageView.superview.layer insertSublayer:self.halo below:self.aroundImageView.layer];
+        self.halo.position = self.aroundImageView.center;
+          self.halo.radius = 80;
+//         self.halo.haloLayerNumber = 1;
+        self.halo.animationDuration = 1;
+         [self.halo setBackgroundColor:backageColorRed.CGColor];
+        [self.halo start];
+        
         
         
         self.appointView = [[UIButton alloc]init];
