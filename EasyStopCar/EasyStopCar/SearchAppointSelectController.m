@@ -70,7 +70,7 @@
         
         self.locationTextField = [[UITextField alloc]initWithFrame:CGRectMake(self.cityFlag.frame.origin.x+self.cityFlag.frame.size.width+10, 0, 150, self.searchView.frame.size.height)];
         self.locationTextField.placeholder = @"请输入地址";
-        self.locationTextField.font = [UIFont systemFontOfSize:12];
+        self.locationTextField.font = [UIFont systemFontOfSize:14];
         [self.searchView addSubview:self.locationTextField];
         
         

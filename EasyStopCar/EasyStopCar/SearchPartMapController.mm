@@ -436,17 +436,17 @@
     
     self.appointLocationLabel = [[UILabel alloc]initWithFrame:CGRectMake(marginSize, 0, 100, self.appointConditionView.frame.size.height)];
     self.appointLocationLabel.text = self.searchedLocation;
-    self.appointLocationLabel.font = [UIFont systemFontOfSize:14];
+    self.appointLocationLabel.font = [UIFont systemFontOfSize:12];
     self.appointLocationLabel.textColor = fontColorGray;
     [self.appointConditionView addSubview:self.appointLocationLabel];
     
-    self.appointElectricityFlag = [[UIImageView alloc]initWithFrame:CGRectMake(self.appointLocationLabel.frame.origin.x+self.appointLocationLabel.frame.size.width, 0, 20, self.appointConditionView.frame.size.height)];
+    self.appointElectricityFlag = [[UIImageView alloc]initWithFrame:CGRectMake(self.appointLocationLabel.frame.origin.x+self.appointLocationLabel.frame.size.width, 0, 15, self.appointConditionView.frame.size.height)];
     self.appointElectricityFlag.image = [UIImage imageNamed:@"ico_home_cell_flag"];self.appointElectricityFlag.contentMode = UIViewContentModeScaleAspectFit;
     [self.appointConditionView addSubview:self.appointElectricityFlag];
     
     self.appointDataLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.appointElectricityFlag.frame.origin.x+self.appointElectricityFlag.frame.size.width+5, 0, 100, self.appointConditionView.frame.size.height)];
     self.appointDataLabel.text = self.searchedData;
-    self.appointDataLabel.font = [UIFont systemFontOfSize:14];
+    self.appointDataLabel.font = [UIFont systemFontOfSize:12];
     self.appointDataLabel.textColor = fontColorGray;
     [self.appointConditionView addSubview:self.appointDataLabel];
     
@@ -477,6 +477,7 @@
 -(void)hideRouteStyle:(BOOL)flag{
     self.submitButoon.hidden = flag;
     self.infoBackageView.hidden = flag;
+    
     if (!flag) {//显示弹出框
     self.mapView.frame = CGRectMake(0, self.infoBackageView.frame.origin.y+self.infoBackageView.frame.size.height, ScreenWidth, ScreenHeight-self.infoBackageView.frame.origin.y-self.infoBackageView.frame.size.height-self.submitButoon.frame.size.height);
     }else{//隐藏弹出框

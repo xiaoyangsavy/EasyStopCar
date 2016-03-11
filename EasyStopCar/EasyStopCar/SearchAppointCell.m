@@ -23,13 +23,13 @@
         self.contentView.backgroundColor = [UIColor whiteColor];
        
         
-        self.searchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(marginSize, 0, 12, 50)];
+        self.searchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(marginSize, 0, 15, 50)];
         self.searchImageView.image = [UIImage imageNamed:@"test_picture.jpg"];
         self.searchImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview:self.searchImageView];
         
         
-        self.searchName = [[UILabel alloc] initWithFrame:CGRectMake(self.searchImageView.frame.origin.x+self.searchImageView.frame.size.width+15, 0, 200, 50)];
+        self.searchName = [[UILabel alloc] initWithFrame:CGRectMake(self.searchImageView.frame.origin.x+self.searchImageView.frame.size.width+10, 0, 200, 50)];
         self.searchName.font = [UIFont systemFontOfSize:15];
         self.searchName.textColor = fontColorBlack;
         [self.contentView addSubview:self.searchName];

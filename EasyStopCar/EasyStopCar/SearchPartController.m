@@ -207,23 +207,23 @@
         
         CALayer *bottomBorder=[[CALayer alloc]init];
         bottomBorder.frame=CGRectMake(0, self.appointConditionView.frame.size.height-0.5, self.appointConditionView.frame.size.width, 0.5);
-        bottomBorder.backgroundColor=lineColorGray.CGColor;
+        bottomBorder.backgroundColor=lineColorLightgray.CGColor;
         [self.appointConditionView.layer addSublayer:bottomBorder ];
         
     
         self.appointLocationLabel = [[UILabel alloc]initWithFrame:CGRectMake(marginSize, 0, 100, self.appointConditionView.frame.size.height)];
         self.appointLocationLabel.text = self.searchedLocation;
-        self.appointLocationLabel.font = [UIFont systemFontOfSize:14];
+        self.appointLocationLabel.font = [UIFont systemFontOfSize:12];
         self.appointLocationLabel.textColor = fontColorGray;
         [self.appointConditionView addSubview:self.appointLocationLabel];
         
-        self.appointElectricityFlag = [[UIImageView alloc]initWithFrame:CGRectMake(self.appointLocationLabel.frame.origin.x+self.appointLocationLabel.frame.size.width, 0, 20, self.appointConditionView.frame.size.height)];
+        self.appointElectricityFlag = [[UIImageView alloc]initWithFrame:CGRectMake(self.appointLocationLabel.frame.origin.x+self.appointLocationLabel.frame.size.width, 0, 15, self.appointConditionView.frame.size.height)];
         self.appointElectricityFlag.image = [UIImage imageNamed:@"ico_home_cell_flag"];self.appointElectricityFlag.contentMode = UIViewContentModeScaleAspectFit;
         [self.appointConditionView addSubview:self.appointElectricityFlag];
         
         self.appointDataLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.appointElectricityFlag.frame.origin.x+self.appointElectricityFlag.frame.size.width+5, 0, 100, self.appointConditionView.frame.size.height)];
         self.appointDataLabel.text = self.searchedData;
-        self.appointDataLabel.font = [UIFont systemFontOfSize:14];
+        self.appointDataLabel.font = [UIFont systemFontOfSize:12];
         self.appointDataLabel.textColor = fontColorGray;
         [self.appointConditionView addSubview:self.appointDataLabel];
         
@@ -311,6 +311,7 @@
     searchPartMapController.styleType = self.styleType;
     searchPartMapController.searchedLocation = self.searchedLocation;
     searchPartMapController.searchedData = self.searchedData;
+     searchPartMapController.isElectricity = self.isElectricity;
     [self.navigationController pushViewController:searchPartMapController animated:YES];
 
 }

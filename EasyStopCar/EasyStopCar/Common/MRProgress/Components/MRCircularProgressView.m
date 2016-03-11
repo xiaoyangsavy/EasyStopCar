@@ -78,6 +78,7 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
     UILabel *valueLabel = [UILabel new];
     self.valueLabel = valueLabel;
     valueLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+//    valueLabel.font =[UIFont fontWithName:@"MyriadSetPro-Thin Thin" size:60];
     valueLabel.textColor = UIColor.blackColor;
     valueLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:valueLabel];

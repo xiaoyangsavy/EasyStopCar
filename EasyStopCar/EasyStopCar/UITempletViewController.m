@@ -115,7 +115,7 @@
 - (void)addRightTitle:(NSString *)title   selector:(SEL)pushPastView{
     rightButton = [UIButton  buttonWithType:UIButtonTypeCustom];
     [rightButton setTintColor:[UIColor whiteColor]];
-    rightButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+    rightButton.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
     [rightButton setTitle:title forState:UIControlStateNormal];
     [rightButton addTarget:self action:pushPastView forControlEvents:UIControlEventTouchUpInside];
     rightButton.frame = CGRectMake(20.0f, 0.0f, 60,44);

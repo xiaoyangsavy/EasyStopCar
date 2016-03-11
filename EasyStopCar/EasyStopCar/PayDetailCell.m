@@ -22,7 +22,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        self.payDetailIco = [[UIImageView alloc] initWithFrame:CGRectMake(marginSize, 10, 15, 20)];
+        self.payDetailIco = [[UIImageView alloc] initWithFrame:CGRectMake(marginSize, 12, 15, 15)];
         self.payDetailIco.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview:self.payDetailIco];
         
@@ -32,7 +32,7 @@
         self.payDetailTitle.textColor = fontColorBlack;
         [self.contentView addSubview:self.payDetailTitle];
         
-        self.payDetailTime = [[UILabel alloc] initWithFrame:CGRectMake(self.payDetailTitle.frame.origin.x+self.payDetailTitle.frame.size.width+10, self.payDetailIco.frame.origin.y,100, 15)];
+        self.payDetailTime = [[UILabel alloc] initWithFrame:CGRectMake(self.payDetailTitle.frame.origin.x+self.payDetailTitle.frame.size.width, self.payDetailIco.frame.origin.y,100, 15)];
         self.payDetailTime.font = [UIFont systemFontOfSize:12];
         self.payDetailTime.textColor = fontColorLightgray;
         [self.contentView addSubview:self.payDetailTime];
@@ -66,6 +66,12 @@
     self.payDetailTime.text = myDictionary[@"time"];
      self.payDetailValue.text = myDictionary[@"value"];
      self.payDetailContent.text = myDictionary[@"content"];
+    
+    if ([myDictionary[@"type"] isEqualToString:@"1"]) {
+        self.payDetailValue.textColor = backageColorBlue;
+    }else{
+        self.payDetailValue.textColor = backageColorRed;
+    }
  
     
     

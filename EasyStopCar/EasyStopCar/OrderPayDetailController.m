@@ -35,7 +35,7 @@
     self.orderNumberLabel.text = @"订单号 000000000000000";
     self.orderNumberLabel.font = [UIFont systemFontOfSize:12];
     self.orderNumberLabel.textAlignment = NSTextAlignmentCenter;
-    self.orderNumberLabel.textColor = fontColorGray;
+    self.orderNumberLabel.textColor = fontColorLightgray;
     [self.view addSubview:self.orderNumberLabel];
     
     self.parkNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.orderNumberLabel.frame.origin.y+self.orderNumberLabel.frame.size.height+10, ScreenWidth, 15)];
@@ -59,7 +59,7 @@
     self.orderDetailView = [[UIView alloc]initWithFrame:CGRectMake(25, 74+9, ScreenWidth-25*2, 10+70+60*4+60)];
     self.orderDetailView.backgroundColor = [UIColor whiteColor];
     self.orderDetailView.layer.borderWidth = 0.5;
-    self.orderDetailView.layer.borderColor =[[UIColor grayColor] CGColor];
+    self.orderDetailView.layer.borderColor =[lineColorGray CGColor];
     [self.view addSubview:self.orderDetailView];
  
     
@@ -88,10 +88,10 @@
     [orderStateAttributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:17] range:NSMakeRange(0, 6)];
     self.paySumLabel.attributedText = orderStateAttributedString;
     
-    CALayer *bottomBorder=[[CALayer alloc]init];
-    bottomBorder.frame=CGRectMake(0, 0, self.orderDetailView.frame.size.width, 0.5);
-    bottomBorder.backgroundColor=lineColorGray.CGColor;
-    [self.paySumLabel.layer addSublayer:bottomBorder ];
+//    CALayer *bottomBorder=[[CALayer alloc]init];
+//    bottomBorder.frame=CGRectMake(0, 0, self.orderDetailView.frame.size.width, 0.5);
+//    bottomBorder.backgroundColor=lineColorLightgray.CGColor;
+//    [self.paySumLabel.layer addSublayer:bottomBorder ];
 }
 
 
@@ -106,7 +106,7 @@
     [myDictionary setValue:@"使用时间" forKey:@"title"];
     [myDictionary setValue:@"" forKey:@"time"];
     [myDictionary setValue:@"0时0分" forKey:@"value"];
-    [myDictionary setValue:@"停车入库时间  2016-00-00 00：00\n取车入库时间  2016-00-00 00：00" forKey:@"content"];
+    [myDictionary setValue:@"停车入库时间  2016-00-00 00:00\n取车入库时间  2016-00-00 00:00" forKey:@"content"];
     [myDictionary setValue:@"1" forKey:@"type"];
     [self.myArray addObject:myDictionary];
     

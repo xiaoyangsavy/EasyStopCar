@@ -97,11 +97,13 @@
     
      [super initNavBarItems:@"停车订单详情"];
     
+     [self addRightButton:@"ico_navigation_phone" lightedImage:@"ico_navigation_phone" selector:@selector(callPhone)];
+    
     self.submitButoon = [[UIButton alloc]initWithFrame:CGRectMake(0, ScreenHeight-50-64, ScreenWidth, 50)];
     [self.submitButoon setTitle:@"立即支付" forState:UIControlStateNormal];
     [self.submitButoon addTarget:self action:@selector(payOrder) forControlEvents:UIControlEventTouchUpInside];
     self.submitButoon.backgroundColor = backageColorRed;
-    self.submitButoon.titleLabel.font = [UIFont systemFontOfSize:18];
+    self.submitButoon.titleLabel.font = [UIFont boldSystemFontOfSize:18];
     [self.view addSubview:self.submitButoon];
     
  
@@ -120,8 +122,12 @@
     
     //分割线
     self.lineImageView = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, self.infoView.frame.origin.y+275, self.infoView.frame.size.width, 10)];
-    self.lineImageView.image = [UIImage imageNamed:@"image_order_line"];
-        self.lineImageView.contentMode = UIViewContentModeScaleToFill;
+    if (ScreenWidth == 375*2) {
+        self.lineImageView.image = [UIImage imageNamed:@"image_order_line_iphone6"];
+    }else{
+        self.lineImageView.image = [UIImage imageNamed:@"image_order_line"];
+    }
+    self.lineImageView.contentMode = UIViewContentModeScaleToFill;
     [self.view addSubview:self.lineImageView];
  
     
@@ -139,7 +145,7 @@
     [self.titleView addSubview:self.titleLabel];
     
     self.orderNumberLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.titleLabel.frame.origin.y+self.titleLabel.frame.size.height+5, ScreenWidth, 15)];
-    self.orderNumberLabel.text = @"订单韩  0000000000000000";
+    self.orderNumberLabel.text = @"订单号  0000000000000000";
     self.orderNumberLabel.font = [UIFont systemFontOfSize:9];
     self.orderNumberLabel.textColor = fontColorLightgray;
      self.orderNumberLabel.textAlignment = NSTextAlignmentCenter;
@@ -151,28 +157,28 @@
     self.infoDetailView.backgroundColor = [UIColor whiteColor];
     [self.infoView addSubview:self.infoDetailView];
     
-    self.inTimeTitle = [[UILabel alloc]initWithFrame:CGRectMake(marginSize, 20, 100, 15)];
+    self.inTimeTitle = [[UILabel alloc]initWithFrame:CGRectMake(marginSize, 12, 100, 14)];
     self.inTimeTitle.text = @"停车入库时间";
     self.inTimeTitle.font = [UIFont systemFontOfSize:12];
     self.inTimeTitle.textColor = backageColorBlue;
     self.inTimeTitle.textAlignment = NSTextAlignmentLeft;
     [self.infoDetailView addSubview:self.inTimeTitle];
     
-    self.inTimeLabel = [[UILabel alloc]initWithFrame:CGRectMake(marginSize, self.inTimeTitle.frame.origin.y+self.inTimeTitle.frame.size.height, 100, 15)];
+    self.inTimeLabel = [[UILabel alloc]initWithFrame:CGRectMake(marginSize, self.inTimeTitle.frame.origin.y+self.inTimeTitle.frame.size.height, 100, 14)];
     self.inTimeLabel.text = @"0000-00-00 00:00";
     self.inTimeLabel.font = [UIFont systemFontOfSize:9];
     self.inTimeLabel.textColor = backageColorBlue;
     self.inTimeLabel.textAlignment = NSTextAlignmentLeft;
     [self.infoDetailView addSubview:self.inTimeLabel];
 
-    self.outTimeTitle = [[UILabel alloc]initWithFrame:CGRectMake(self.infoDetailView.frame.size.width-marginSize-100, 20, 100, 15)];
+    self.outTimeTitle = [[UILabel alloc]initWithFrame:CGRectMake(self.infoDetailView.frame.size.width-marginSize-100, 12, 100, 14)];
     self.outTimeTitle.text = @"取车出库时间";
     self.outTimeTitle.font = [UIFont systemFontOfSize:12];
     self.outTimeTitle.textColor = backageColorBlue;
     self.outTimeTitle.textAlignment = NSTextAlignmentRight;
     [self.infoDetailView addSubview:self.outTimeTitle];
     
-    self.outTimeLabel = [[UILabel alloc]initWithFrame:CGRectMake( self.outTimeTitle.frame.origin.x, self.outTimeTitle.frame.origin.y+self.outTimeTitle.frame.size.height, 100, 15)];
+    self.outTimeLabel = [[UILabel alloc]initWithFrame:CGRectMake( self.outTimeTitle.frame.origin.x, self.outTimeTitle.frame.origin.y+self.outTimeTitle.frame.size.height, 100, 14)];
     self.outTimeLabel.text = @"0000-00-00 00:00";
     self.outTimeLabel.font = [UIFont systemFontOfSize:9];
     self.outTimeLabel.textColor = backageColorBlue;
@@ -180,12 +186,12 @@
     [self.infoDetailView addSubview:self.outTimeLabel];
  
 
-    self.useTimeImageView = [[UIImageView alloc]initWithFrame:CGRectMake((self.infoDetailView.frame.size.width-70)/2, 25, 70, 5)];
+    self.useTimeImageView = [[UIImageView alloc]initWithFrame:CGRectMake((self.infoDetailView.frame.size.width-70)/2, 20, 70, 5)];
     self.useTimeImageView.image = [UIImage  imageNamed:@"image_order_time_flag"];
     self.useTimeImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.infoDetailView addSubview:self.useTimeImageView];
     
-    self.useTimeTitle = [[UILabel alloc]initWithFrame:CGRectMake(self.useTimeImageView.frame.origin.x, self.useTimeImageView.frame.origin.y-15, 70, 15)];
+    self.useTimeTitle = [[UILabel alloc]initWithFrame:CGRectMake(self.useTimeImageView.frame.origin.x, self.useTimeImageView.frame.origin.y-12, 70, 15)];
     self.useTimeTitle.text = @"使用时间";
     self.useTimeTitle.font = [UIFont systemFontOfSize:10];
     self.useTimeTitle.textColor = fontColorGray;
@@ -206,7 +212,7 @@
  
     
     self.infoLine = [[UIView alloc]initWithFrame:CGRectMake(marginSize, 52, self.infoView.frame.size.width-marginSize*2, 0.5)];
-    self.infoLine.backgroundColor = lineColorGray;
+    self.infoLine.backgroundColor = lineColorLightgray;
     [self.infoDetailView addSubview:self.infoLine];
     
     
@@ -218,7 +224,7 @@
     self.parkTitle.textAlignment = NSTextAlignmentLeft;
     [self.infoDetailView addSubview:self.parkTitle];
     
-    self.parkImage = [[UIImageView alloc]initWithFrame:CGRectMake(self.infoDetailView.frame.size.width-marginSize-10, self.parkTitle.frame.origin.y, 10, 15)];
+    self.parkImage = [[UIImageView alloc]initWithFrame:CGRectMake(self.infoDetailView.frame.size.width-marginSize-10, self.parkTitle.frame.origin.y, 7, 15)];
     self.parkImage.image = [UIImage imageNamed:@"ico_home_select_arrow"];
     self.parkImage.contentMode = UIViewContentModeScaleAspectFit;
     [self.infoDetailView addSubview:self.parkImage];
@@ -349,7 +355,7 @@
     
  
     //总计
-    self.sumPriceTitle = [[UILabel alloc]initWithFrame:CGRectMake(marginSize, self.couponParkTitle.frame.origin.y+self.couponParkTitle.frame.size.height+25, 100, 15)];
+    self.sumPriceTitle = [[UILabel alloc]initWithFrame:CGRectMake(marginSize, self.couponParkTitle.frame.origin.y+self.couponParkTitle.frame.size.height+25, 110, 15)];
     self.sumPriceTitle.text = @"需支付总额";
     self.sumPriceTitle.font = [UIFont boldSystemFontOfSize:17];
     self.sumPriceTitle.textColor = fontColorBlack;
@@ -375,24 +381,24 @@
     UITapGestureRecognizer* singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(useCuponClick:)];
     [self.infoCouponView addGestureRecognizer:singleTap];
  
-    self.couponIco = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 0, 38, self.infoCouponView.frame.size.height)];
+    self.couponIco = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 3, 19, self.infoCouponView.frame.size.height)];
     self.couponIco.image = [UIImage imageNamed:@"ico_order_coupon"];
     self.couponIco.contentMode = UIViewContentModeScaleAspectFit;
     [self.infoCouponView addSubview:self.couponIco];
     
-    self.couponName = [[UILabel alloc]initWithFrame:CGRectMake(self.couponIco.frame.origin.x+self.couponIco.frame.size.width+10, 0, 100, self.infoCouponView.frame.size.height)];
+    self.couponName = [[UILabel alloc]initWithFrame:CGRectMake(self.couponIco.frame.origin.x+self.couponIco.frame.size.width+10, 3, 100, self.infoCouponView.frame.size.height)];
     self.couponName.text = @"停车场";
     self.couponName.font = [UIFont systemFontOfSize:14];
     self.couponName.textColor = [UIColor whiteColor];
     self.couponName.textAlignment = NSTextAlignmentLeft;
     [self.infoCouponView addSubview:self.couponName];
     
-    self.couponFlag = [[UIImageView alloc]initWithFrame:CGRectMake(self.infoCouponView.frame.size.width-marginSize-10, 0, 10, self.infoCouponView.frame.size.height)];
+    self.couponFlag = [[UIImageView alloc]initWithFrame:CGRectMake(self.infoCouponView.frame.size.width-marginSize-10, 3, 7, self.infoCouponView.frame.size.height)];
     self.couponFlag.image = [UIImage imageNamed:@"ico_arrow_white"];
     self.couponFlag.contentMode = UIViewContentModeScaleAspectFit;
     [self.infoCouponView addSubview:self.couponFlag];
     
-    self.couponCount = [[UILabel alloc]initWithFrame:CGRectMake(self.couponFlag.frame.origin.x-150, 0, 140, self.infoCouponView.frame.size.height)];
+    self.couponCount = [[UILabel alloc]initWithFrame:CGRectMake(self.couponFlag.frame.origin.x-150, 3, 140, self.infoCouponView.frame.size.height)];
     self.couponCount.text = @"0张可用";
     self.couponCount.font = [UIFont systemFontOfSize:12];
     self.couponCount.textColor = [UIColor whiteColor];
@@ -427,7 +433,7 @@
     self.payWayTitleLabel.textAlignment = NSTextAlignmentCenter;
     [self.payWayTitleView addSubview:self.payWayTitleLabel];
     
-    self.payWayCancelButton = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth-23-marginSize*2, 0, 23+marginSize*2, self.payWayTitleView.frame.size.height)];
+    self.payWayCancelButton = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth-23-marginSize-10, 0, 23+marginSize*2, self.payWayTitleView.frame.size.height)];
 //    self.payWayCancelButton.backgroundColor = TEST_COLOR;
     [self.payWayCancelButton setImage:[UIImage imageNamed:@"ico_common_delete"] forState:UIControlStateNormal];
       self.payWayCancelButton.imageEdgeInsets = UIEdgeInsetsMake((50-23)/2, marginSize,(50-23)/2, marginSize);
@@ -573,11 +579,13 @@
         
     }else if (myButton.tag ==198851 ) {//支付宝
         OrderPayCompleteController *myController = [[OrderPayCompleteController alloc]init];
+        myController.payWay = @"支付宝";
         [self.navigationController pushViewController:myController animated:YES];
 
     }else  if (myButton.tag ==198852 ){//微信
        
         OrderPayCompleteController *myController = [[OrderPayCompleteController alloc]init];
+        myController.payWay = @"微信";
         [self.navigationController pushViewController:myController animated:YES];
 
     }

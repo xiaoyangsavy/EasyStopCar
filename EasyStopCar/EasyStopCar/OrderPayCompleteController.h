@@ -11,4 +11,6 @@
 
 @interface OrderPayCompleteController : UITempletViewController<WXApiManagerDelegate>
 
+@property(nonatomic,strong)NSString *payWay;//支付方式
+
 @end

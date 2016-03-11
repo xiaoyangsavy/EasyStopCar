@@ -52,7 +52,7 @@
     [self.submitButoon setTitle:@"确定" forState:UIControlStateNormal];
     [self.submitButoon addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
     self.submitButoon.backgroundColor = backageColorRed;
-    self.submitButoon.titleLabel.font = [UIFont systemFontOfSize:18];
+    self.submitButoon.titleLabel.font = [UIFont boldSystemFontOfSize:18];
     [self.view addSubview:self.submitButoon];
     
     self.topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
@@ -65,7 +65,7 @@
     [self.topView.layer addSublayer:topViewBottomBorder ];
     
     //顶部视图
-    self.topImageView = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 20, 65, 50)];
+    self.topImageView = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 22, 65, 50)];
     self.topImageView.image = [UIImage imageNamed:@"ico_appoint_complete"];
     self.topImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.topView addSubview:self.topImageView];
@@ -118,7 +118,7 @@
     [self.searchSwitchView addSubview:self.searchImageView];
     
     
-    self.searchName = [[UILabel alloc] initWithFrame:CGRectMake(self.searchImageView.frame.origin.x+self.searchImageView.frame.size.width+15, 0, 200, 50)];
+    self.searchName = [[UILabel alloc] initWithFrame:CGRectMake(self.searchImageView.frame.origin.x+self.searchImageView.frame.size.width+10, 0, 200, 50)];
     self.searchName.font = [UIFont systemFontOfSize:15];
     self.searchName.textColor = fontColorBlack;
     self.searchName.text = @"是否可以充电";
