@@ -73,7 +73,11 @@
     [self.alertTitle setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.alertTitleView addSubview:self.self.alertTitle];
     
-  
+    self.titleLine = [[UIView alloc]init];
+    [self.titleLine setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.titleLine.backgroundColor = lineColorLightgray;
+    [self.alertTitleView addSubview:self.self.titleLine];
+    
     
     //内容区域
     self.alertContentView = [[UIView alloc] init];
@@ -91,10 +95,7 @@
 //    self.selectTableView.separatorStyle = UITableViewCellStyleSubtitle;
     self.selectTableView.tableFooterView = [[UIView alloc]init];
     [self.alertContentView addSubview:self.self.selectTableView];
-    CALayer *lineBorder = [[CALayer alloc] init];
-    lineBorder.frame = CGRectMake(0, 0, ScreenWidth, 00.5);
-    lineBorder.backgroundColor = [[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0] CGColor];
-    [self.selectTableView.layer addSublayer:lineBorder];
+    
 
  
  
@@ -122,7 +123,7 @@
     [self.alertButtonView addSubview:self.self.alertCancel];
     
     self.alertSubmit = [[UIButton alloc] init];
-    self.alertSubmit.backgroundColor = [UIColor redColor];
+    self.alertSubmit.backgroundColor = backageColorYellow;
     [self.alertSubmit setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.alertSubmit setTitle:@"确认" forState:UIControlStateNormal];
     [self.alertSubmit setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -183,7 +184,7 @@
  
     //控件
     NSDictionary *viewMap = @{
-                                  @"alertView":self.alertView,@"alertTitleView":self.alertTitleView,@"alertContentView":self.alertContentView,@"alertTitle":self.alertTitle,@"selectTableView":self.selectTableView,@"alertCancel":self.alertCancel,@"alertSubmit":self.alertSubmit,@"alertButtonView":self.alertButtonView
+                                  @"alertView":self.alertView,@"alertTitleView":self.alertTitleView,@"alertContentView":self.alertContentView,@"alertTitle":self.alertTitle,@"titleLine":self.titleLine,@"selectTableView":self.selectTableView,@"alertCancel":self.alertCancel,@"alertSubmit":self.alertSubmit,@"alertButtonView":self.alertButtonView
                                   };
     
     
@@ -223,10 +224,19 @@
                                     views:viewMap]];
     [self.alertTitleView addConstraints:[NSLayoutConstraint
                                          constraintsWithVisualFormat:
-                                         @"V:|-0-[alertTitle]-0-|"
+                                         @"V:|-0-[alertTitle]-0-[titleLine(==0.5)]-0-|"
                                          options:0
                                          metrics:nil
                                          views:viewMap]];
+    
+    [self.alertTitleView addConstraints:[NSLayoutConstraint
+                                         constraintsWithVisualFormat:
+                                         @"H:|-0-[titleLine]-0-|"
+                                         options:0
+                                         metrics:nil
+                                         views:viewMap]];
+   
+    
     
     [self.alertContentView addConstraints:[NSLayoutConstraint
                                          constraintsWithVisualFormat:

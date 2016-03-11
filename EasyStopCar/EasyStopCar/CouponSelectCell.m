@@ -16,7 +16,7 @@
     {
         self.backgroundColor = [UIColor whiteColor];
         
-        self.wayTitle = [[UILabel alloc] initWithFrame:CGRectMake(15, 5, 100, 15)];
+        self.wayTitle = [[UILabel alloc] initWithFrame:CGRectMake(15, 5, 200, 15)];
         self.wayTitle.font = [UIFont systemFontOfSize:14];
         self.wayTitle.textColor = fontColorGray;
         [self.contentView addSubview:self.wayTitle];

@@ -26,6 +26,8 @@
 
 @property(nonatomic, strong) UIView* alertTitleView; //标题视图
 @property(nonatomic, strong) UILabel* alertTitle;  //标题内容
+@property(nonatomic, strong) UIView* titleLine;  //标题分割线
+
 @property(nonatomic, strong) UIView* alertContentView;   //主体视图
 
 @property(nonatomic, strong) UITableView* selectTableView;  //选择列表

@@ -375,9 +375,10 @@
          self.appointTimeView.hidden = NO;
          self.infoTimeName.text = @"已预约";
         self.infoTimeRemain.text = @"请在此时间内到达";
+        self.submitButoon.tag = 198803;
     [self.submitButoon setTitle:@"取消预约" forState:UIControlStateNormal];
         self.submitButoon.backgroundColor = backageColorRed;
-        self.submitButoon.tag = 198802;
+       
     }
     
 
@@ -497,10 +498,14 @@
 
 
 
-//调转到百度地图客户端导航
+//提交按钮点击监听
 - (void)submitInfo:(UIButton *)myButton {
     
+    if (myButton.tag == 198801) {   //导航
   [super showAlertBackage:self.payWayView];
+    }else if (myButton.tag == 198803){  //取消预约
+        [self toReturn];
+    }
 }
 
 

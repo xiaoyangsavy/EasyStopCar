@@ -47,7 +47,12 @@
     
     
     self.orderDetailBakcage = [[UIImageView alloc]initWithFrame:CGRectMake(marginSize, 74, ScreenWidth-marginSize*2, 18)];
+    
+    if (ScreenWidth == 375*2) {
+          self.orderDetailBakcage.image = [UIImage imageNamed:@"backage_order_top_iphone6"];
+    }else{
     self.orderDetailBakcage.image = [UIImage imageNamed:@"backage_order_top"];
+    }
 //    self.orderDetailBakcage.contentMode = UIViewContentModeScaleAspectFit;
      [self.view addSubview:self.orderDetailBakcage];
     
