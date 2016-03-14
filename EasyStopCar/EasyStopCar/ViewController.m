@@ -123,16 +123,16 @@
         [self.aroundView addSubview:self.aroundLabel];
         
  
-        //脉冲动画
-        PulsingHaloLayer *layer = [PulsingHaloLayer layer];
-        self.halo = layer;
-        [self.aroundImageView.superview.layer insertSublayer:self.halo below:self.aroundImageView.layer];
-        self.halo.position = self.aroundImageView.center;
-          self.halo.radius = 80;
-//         self.halo.haloLayerNumber = 1;
-        self.halo.animationDuration = 1;
-         [self.halo setBackgroundColor:backageColorRed.CGColor];
-        [self.halo start];
+//        //脉冲动画
+//        PulsingHaloLayer *layer = [PulsingHaloLayer layer];
+//        self.halo = layer;
+//        [self.aroundImageView.superview.layer insertSublayer:self.halo below:self.aroundImageView.layer];
+//        self.halo.position = self.aroundImageView.center;
+//          self.halo.radius = 80;
+////         self.halo.haloLayerNumber = 1;
+//        self.halo.animationDuration = 1;
+//         [self.halo setBackgroundColor:backageColorRed.CGColor];
+////        [self.halo start];
         
         
         
@@ -406,6 +406,10 @@
 
  
     [self initBannerData];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil]; //监听是否重新进入程序程序.
 }
 
 
@@ -529,6 +533,27 @@
     [self.navigationController pushViewController:myController animated:YES];
 }
 
+
+//程序从桌面重新载入
+- (void) applicationDidBecomeActive:(NSNotification*) notification
+{
+    NSLog(@"程序从桌面重新载入");
+//    id obj = [notification object];//获取到传递的对象
+    //脉冲动画
+    PulsingHaloLayer *layer = [PulsingHaloLayer layer];
+    self.halo = layer;
+    [self.aroundImageView.superview.layer insertSublayer:self.halo below:self.aroundImageView.layer];
+    self.halo.position = self.aroundImageView.center;
+    self.halo.radius = 80;
+    //         self.halo.haloLayerNumber = 1;
+    self.halo.animationDuration = 1;
+    [self.halo setBackgroundColor:backageColorRed.CGColor];
+    [self.halo start];
+}
+
+
+
+
 #pragma mark - TableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -622,6 +647,28 @@
     NSLog(@"cell的点击代理回调%@！！！！！",myDictionary);
     
     
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+      [super viewWillAppear:animated];
+ 
+}
+
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    //脉冲动画
+    PulsingHaloLayer *layer = [PulsingHaloLayer layer];
+    self.halo = layer;
+    [self.aroundImageView.superview.layer insertSublayer:self.halo below:self.aroundImageView.layer];
+    self.halo.position = self.aroundImageView.center;
+    self.halo.radius = 80;
+    //         self.halo.haloLayerNumber = 1;
+    self.halo.animationDuration = 1;
+    [self.halo setBackgroundColor:backageColorRed.CGColor];
+    [self.halo start];
 }
 
 

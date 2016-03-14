@@ -80,6 +80,7 @@
 @property(nonatomic,strong)UIView *submitInfoView;
 @property(nonatomic,strong)UIView *submitButtonView;
 @property(nonatomic,strong)UILabel *submitInfoTitle;
+@property(nonatomic,strong)UILabel *submitInfoLocation;//停车地点
 @property(nonatomic,strong)UILabel *submitInfoContent;
 
 @property(nonatomic,strong)UIButton *submitButtonConcel;
@@ -175,21 +176,23 @@
     [self.infoView.layer addSublayer:infoBottomBorder];
     
     
-    self.electricityView = [[UIView alloc]initWithFrame:CGRectMake(0, self.infoView.frame.origin.y+self.infoView.frame.size.height, ScreenWidth, 40)];
-    [self.infoBackageView addSubview:self.electricityView];
-    
-    CALayer *electricityBottomBorder=[[CALayer alloc]init];
-    electricityBottomBorder.frame=CGRectMake(0, self.electricityView.frame.size.height-0.5, self.electricityView.frame.size.width, 0.5);
-    electricityBottomBorder.backgroundColor=lineColorLightgray.CGColor;
-    [self.electricityView.layer addSublayer:electricityBottomBorder];
-    
-    self.priceView = [[UIView alloc]initWithFrame:CGRectMake(0, self.electricityView.frame.origin.y+self.electricityView.frame.size.height, ScreenWidth, 40)];
+    self.priceView = [[UIView alloc]initWithFrame:CGRectMake(0, self.infoView.frame.origin.y+self.infoView.frame.size.height, ScreenWidth, 40)];
     [self.infoBackageView addSubview:self.priceView];
     
     CALayer *priceBottomBorder=[[CALayer alloc]init];
     priceBottomBorder.frame=CGRectMake(0, self.priceView.frame.size.height-0.5, self.priceView.frame.size.width, 0.5);
     priceBottomBorder.backgroundColor=lineColorLightgray.CGColor;
     [self.priceView.layer addSublayer:priceBottomBorder];
+    
+ 
+    self.electricityView = [[UIView alloc]initWithFrame:CGRectMake(0, self.priceView.frame.origin.y+self.priceView.frame.size.height, ScreenWidth, 40)];
+    [self.infoBackageView addSubview:self.electricityView];
+ 
+    CALayer *electricityBottomBorder=[[CALayer alloc]init];
+    electricityBottomBorder.frame=CGRectMake(0, self.electricityView.frame.size.height-0.5, self.electricityView.frame.size.width, 0.5);
+    electricityBottomBorder.backgroundColor=lineColorLightgray.CGColor;
+    [self.electricityView.layer addSublayer:electricityBottomBorder];
+  
     
     
     
@@ -298,7 +301,7 @@
     
     
     //弹出框***********************************************************************
-    self.submitAlertView = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight-64-206-50, ScreenWidth, 206+50)];
+    self.submitAlertView = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight-64-215-50, ScreenWidth, 215+50)];
     self.submitAlertView.hidden = YES;
     [self.view addSubview:self.submitAlertView];
     
@@ -309,11 +312,11 @@
     self.submitAlertView.layer.mask = maskLayer;
     
     
-    self.submitInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 206)];
+    self.submitInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 215)];
     self.submitInfoView.backgroundColor = [UIColor whiteColor];
     [self.submitAlertView addSubview:self.submitInfoView];
     
-    self.submitButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 206, ScreenWidth, 50)];
+    self.submitButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 215, ScreenWidth, 50)];
     self.submitButtonView.backgroundColor = backageColorRed;
     [self.submitAlertView addSubview:self.submitButtonView];
     
@@ -325,7 +328,15 @@
     self.submitInfoTitle.font = [UIFont systemFontOfSize:18];
     [self.submitInfoView addSubview:self.submitInfoTitle];
     
-    self.submitInfoContentView = [[UIView alloc] initWithFrame:CGRectMake(0, (self.submitInfoView.frame.size.height-80)/2-10, ScreenWidth, 80)];
+    //提交信息停车地点
+    self.submitInfoLocation = [[UILabel alloc] initWithFrame:CGRectMake(0, self.submitInfoTitle.frame.origin.y+self.submitInfoTitle.frame.size.height+10, ScreenWidth, 15)];
+    self.submitInfoLocation.text = @"世纪金源购物中心";
+    [self.submitInfoLocation setTextColor:backageColorBlue];
+    self.submitInfoLocation.textAlignment = NSTextAlignmentCenter;
+    self.submitInfoLocation.font = [UIFont boldSystemFontOfSize:15];
+    [self.submitInfoView addSubview:self.submitInfoLocation];
+    
+    self.submitInfoContentView = [[UIView alloc] initWithFrame:CGRectMake(0, (self.submitInfoView.frame.size.height-80)/2, ScreenWidth, 80)];
     [self.submitAlertView addSubview:self.submitInfoContentView];
     
     //提交信息内容显示
@@ -403,12 +414,8 @@
     [self.submitInfoContentAppointView addSubview:self.submitInfoContentAppointTimeLabel];
     
     
-    
-    
-    
-    
-    
-    if (self.styleType == 1) {
+   
+    if (self.styleType == 1) {  //显示预约信息
         [self initAppointStyle];
     }
    
@@ -456,6 +463,9 @@
     [self.appointConditionView addSubview:self.appointEditButton];
     
      self.appointElectricityFlag.hidden = !self.isElectricity;//有电符号是否显示
+     self.electricityView.hidden = !self.isElectricity;//电价栏是否显示
+     self.electricitySwitch.hidden = YES;//开关在预约时隐藏
+    
     
     
      [super initNavBarItems:@"停车场"];
@@ -479,7 +489,20 @@
     self.infoBackageView.hidden = flag;
     
     if (!flag) {//显示弹出框
-    self.mapView.frame = CGRectMake(0, self.infoBackageView.frame.origin.y+self.infoBackageView.frame.size.height, ScreenWidth, ScreenHeight-self.infoBackageView.frame.origin.y-self.infoBackageView.frame.size.height-self.submitButoon.frame.size.height);
+        if (self.styleType == 1) {  //显示预约信息
+            if(self.isElectricity){
+              self.infoBackageView.frame = CGRectMake(0, 40, ScreenWidth, 100+40+40);
+            }else{
+              self.infoBackageView.frame = CGRectMake(0, 40, ScreenWidth, 100+40);
+            }
+             self.infoView.frame = CGRectMake(0, 0, ScreenWidth, 100);
+            self.priceView.frame = CGRectMake(0, self.infoView.frame.origin.y+self.infoView.frame.size.height, ScreenWidth, 40);
+             self.electricityView.frame = CGRectMake(0, self.priceView.frame.origin.y+self.priceView.frame.size.height, ScreenWidth, 40);
+             self.mapView.frame = CGRectMake(0, self.infoBackageView.frame.origin.y+self.infoBackageView.frame.size.height, ScreenWidth, ScreenHeight-self.infoBackageView.frame.origin.y-self.infoBackageView.frame.size.height-self.submitButoon.frame.size.height-40);
+        }else{
+         self.mapView.frame = CGRectMake(0, self.infoBackageView.frame.origin.y+self.infoBackageView.frame.size.height, ScreenWidth, ScreenHeight-self.infoBackageView.frame.origin.y-self.infoBackageView.frame.size.height-self.submitButoon.frame.size.height);
+        }
+   
     }else{//隐藏弹出框
         _mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64)];
         _mapView.showsUserLocation = NO;//先关闭显示的定位图层
@@ -863,7 +886,7 @@
     
      [self initTestData];//初始化测试数据
     
-    if (self.isDetail) {
+    if (self.isDetail) {//变为详情页面样式
         [self hideRouteStyle:NO];
         [self onClickDriveSearch];//开启路线规划
     }

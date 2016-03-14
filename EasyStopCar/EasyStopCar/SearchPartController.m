@@ -97,7 +97,7 @@
     self.serachTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64)];
     self.serachTableView.delegate = self;
     self.serachTableView.dataSource = self;
-    self.serachTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.serachTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.serachTableView.separatorColor = lineColorLightgray;
     self.serachTableView.backgroundColor = [UIColor whiteColor];
     [self.serachTableView setTableFooterView:[[UIView alloc]init]];
