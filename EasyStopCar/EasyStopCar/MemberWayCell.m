@@ -17,23 +17,23 @@
     {
         self.backgroundColor = [UIColor whiteColor];
         
-        self.wayIco = [[UIImageView alloc] initWithFrame:CGRectMake(15, (60-30)/2, 30, 30)];
+        self.wayIco = [[UIImageView alloc] initWithFrame:CGRectMake(15, (45-22)/2, 22, 22)];
         self.wayIco.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview:self.wayIco];
         
-        self.wayTitle = [[UILabel alloc] initWithFrame:CGRectMake(58, self.wayIco.frame.origin.y, 100, 30)];
+        self.wayTitle = [[UILabel alloc] initWithFrame:CGRectMake(53, self.wayIco.frame.origin.y, 100, 22)];
         self.wayTitle.font = [UIFont systemFontOfSize:14];
-        self.wayTitle.textColor = fontColorGray;
+        self.wayTitle.textColor = fontColorBlack;
         [self.contentView addSubview:self.wayTitle];
         
         
-        self.wayState = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth-60, (60-30)/2, 50, 30)];
+        self.wayState = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth-30, (45-20)/2, 20, 20)];
         self.wayState.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview:self.wayState];
         
         
-        self.lineView = [[UIView alloc] initWithFrame:CGRectMake(15, 60-0.5, ScreenWidth-15, 0.5)];
-        self.lineView.backgroundColor = lineColorGray;
+        self.lineView = [[UIView alloc] initWithFrame:CGRectMake(15, 45-0.5, ScreenWidth-15, 0.5)];
+        self.lineView.backgroundColor = lineColorLightgray;
         [self.contentView addSubview:self.lineView];
         
     }

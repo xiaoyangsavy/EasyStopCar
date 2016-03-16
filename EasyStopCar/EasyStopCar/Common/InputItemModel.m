@@ -23,7 +23,7 @@
         self.layer.cornerRadius = 5;
         self.layer.masksToBounds = YES;
         //设置边框及边框颜色
-        self.layer.borderWidth = 1;
+        self.layer.borderWidth = 0.5;
         self.layer.borderColor =[[UIColor colorWithRed:181.0/255.0 green:181.0/255.0 blue:181.0/255.0 alpha:1.0] CGColor];
         
         UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(14,(self.frame.size.height-20)/2, 20, 20)];
@@ -34,7 +34,7 @@
         
         UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(icon.frame.origin.x+icon.frame.size.width+10, 0, 211, self.frame.size.height)];
         textField.font = [UIFont systemFontOfSize:14];
-        textField.textColor = [UIColor colorWithRed:102.0/255.0 green:102.0/255.0 blue:102.0/255.0 alpha:1.0];
+        textField.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
         textField.delegate = self;
         textField.placeholder = placeholder;
         textField.text = text;

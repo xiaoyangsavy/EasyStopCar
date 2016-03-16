@@ -19,8 +19,13 @@
 @property(nonatomic, strong) InputItemModel *userView;
 @property(nonatomic, strong) InputItemModel *passwordView;
 @property(nonatomic, strong) UIButton *gainCodeButton;
+@property(nonatomic, strong) UILabel *infoLabel;
 
 @property(nonatomic,strong)UIButton *submitButoon;      //提交按钮
+
+@property(nonatomic,strong) NSTimer *myNSTimer;     //倒计时
+@property(nonatomic,assign) NSInteger numberIndex;
+
 
 @end
 
@@ -51,6 +56,7 @@
     [self.gainCodeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
     self.gainCodeButton.titleLabel.font = [UIFont systemFontOfSize:14];
     self.gainCodeButton.backgroundColor = backageColorYellow;
+    [self.gainCodeButton addTarget:self action:@selector(gainCode) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.gainCodeButton];
     
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.gainCodeButton.bounds byRoundingCorners:UIRectCornerBottomRight | UIRectCornerTopRight cornerRadii:CGSizeMake(5, 5)];
@@ -65,11 +71,19 @@
     [self.submitButoon setTitle:@"验证并登陆" forState:UIControlStateNormal];
     [self.submitButoon addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
     self.submitButoon.backgroundColor = backageColorYellow;
-    self.submitButoon.titleLabel.font = [UIFont systemFontOfSize:14];
+    self.submitButoon.titleLabel.font = [UIFont boldSystemFontOfSize:18];
     self.submitButoon.layer.cornerRadius = 5;
     self.submitButoon.layer.masksToBounds = YES;
     [self.view addSubview:self.submitButoon];
     
+    
+    self.infoLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, ScreenHeight-80-64, ScreenWidth-30, 60)];
+    self.infoLabel.text = @"温馨提示：未注册易停车账号的手机号，登录时将自动注册易停车，且已代表您已同意《用户协议》和《停车协议》";
+    self.infoLabel.font = [UIFont systemFontOfSize:14];
+    self.infoLabel.textColor = fontColorGray;
+    self.infoLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.infoLabel.numberOfLines = 0;//上面两行设置多行显示
+    [self.view addSubview:self.infoLabel];
     
     
 //    [[Connetion shared]customReservationQueue:nil   finish:^(NSDictionary *resultData, NSError *error)
@@ -84,6 +98,36 @@
 //         
 //     }];
 
+}
+
+
+//获取验证码
+-(void)gainCode{
+    self.numberIndex=60;//Countdown
+    if (self.myNSTimer) {
+        [self.myNSTimer invalidate];
+         self.myNSTimer = nil;
+    }
+    
+    self.myNSTimer =  [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                       target:self
+                                                     selector:@selector(timerFireMethod:)
+                                                     userInfo:nil
+                                                      repeats:YES];
+   
+    self.gainCodeButton.enabled=NO;
+
+}
+
+- (void)timerFireMethod:(NSTimer *)timer {
+        if(self.numberIndex==0){
+            self.gainCodeButton.enabled=YES;
+            [self.gainCodeButton setTitle:@"重新发送" forState:UIControlStateNormal];
+        }else{
+            self.numberIndex--;
+             [self.gainCodeButton setTitle:[NSString stringWithFormat:@"%ld",(long)self.numberIndex] forState:UIControlStateNormal];
+           
+        }
 }
 
 - (void)didReceiveMemoryWarning {

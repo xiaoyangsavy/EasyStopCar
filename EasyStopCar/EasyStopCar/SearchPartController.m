@@ -9,7 +9,7 @@
 #import "SearchPartController.h"
 #import "SearchPartMapController.h"
 #import "SearchPartCell.h"
-
+#import "SearchAppointSelectController.h"
 
 @interface SearchPartController ()
 {
@@ -68,7 +68,8 @@
     
     
     //搜索框
-    UIView *searchView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 40)];
+    UIButton *searchView = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 40)];
+    [searchView addTarget:self action:@selector(selectLocation) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationItem setTitleView:searchView];
     
 //    UIImageView *serachBackageView = [[UIImageView alloc]initWithFrame:CGRectMake(-20, searchView.frame.size.height-15, searchView.frame.size.width+40, 5)];
@@ -81,15 +82,21 @@
     serachIcoView.contentMode = UIViewContentModeScaleAspectFit;
     [searchView addSubview:serachIcoView];
     
-    UITextField *serachTextField = [[UITextField alloc]initWithFrame:CGRectMake(serachIcoView.frame.origin.x+serachIcoView.frame.size.width+2, 0, searchView.frame.size.width-10, 40)];
-    //    [serachTextField setPlaceholder:@"请搜索商品"];
-    serachTextField.font = [UIFont systemFontOfSize:14];
-    serachTextField.textColor = [UIColor whiteColor];
-    serachTextField.delegate = self;
-    serachTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"搜索停车场" attributes:@{
-    NSForegroundColorAttributeName: [UIColor colorWithRed:1 green:1 blue:1 alpha:0.8],
-    NSFontAttributeName : [UIFont systemFontOfSize:13]}];
-    serachTextField.textColor = [UIColor whiteColor];
+//    UITextField *serachTextField = [[UITextField alloc]initWithFrame:CGRectMake(serachIcoView.frame.origin.x+serachIcoView.frame.size.width+2, 0, searchView.frame.size.width-10, 40)];
+//    //    [serachTextField setPlaceholder:@"请搜索商品"];
+//    serachTextField.font = [UIFont systemFontOfSize:14];
+//    serachTextField.textColor = [UIColor whiteColor];
+//    serachTextField.delegate = self;
+//    serachTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"搜索停车场" attributes:@{
+//    NSForegroundColorAttributeName: [UIColor colorWithRed:1 green:1 blue:1 alpha:0.8],
+//    NSFontAttributeName : [UIFont systemFontOfSize:13]}];
+//    serachTextField.textColor = [UIColor whiteColor];
+//    [searchView addSubview:serachTextField];
+    
+    UILabel *serachTextField = [[UILabel alloc]initWithFrame:CGRectMake(serachIcoView.frame.origin.x+serachIcoView.frame.size.width+2, 0, searchView.frame.size.width-10, 40)];
+    serachTextField.font = [UIFont systemFontOfSize:13];
+    serachTextField.text = @"搜索停车场";
+    serachTextField.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.8];
     [searchView addSubview:serachTextField];
 
     
@@ -316,6 +323,11 @@
 
 }
 
+//选择地点
+-(void)selectLocation{
+    SearchAppointSelectController *myController = [[SearchAppointSelectController alloc]init];
+    [self.navigationController pushViewController:myController animated:YES];
+}
 
 
 #pragma mark - TableViewDataSource

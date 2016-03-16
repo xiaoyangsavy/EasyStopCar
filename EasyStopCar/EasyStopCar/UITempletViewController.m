@@ -119,7 +119,8 @@
     [rightButton setTitle:title forState:UIControlStateNormal];
     [rightButton addTarget:self action:pushPastView forControlEvents:UIControlEventTouchUpInside];
     rightButton.frame = CGRectMake(20.0f, 0.0f, 60,44);
-    rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 10, 0, -10);
+    rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+//    rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 20, 0, -20);
     rightButton.tag = 10009;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
 }

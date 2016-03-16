@@ -20,20 +20,20 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, 50)];
-        self.nameLabel.font = [UIFont systemFontOfSize:14];
-        self.nameLabel.textColor = [UIColor colorWithRed:100 / 255.0 green:100 / 255.0 blue:100 / 255.0 alpha:1];
+        self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, 45)];
+        self.nameLabel.font = [UIFont systemFontOfSize:15];
+        self.nameLabel.textColor = fontColorBlack;
         self.nameLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.nameLabel];
         
-        self.valueLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 0, ScreenWidth - 150, 50)];
-        self.valueLabel.font = [UIFont systemFontOfSize:14];
-        self.valueLabel.textColor = [UIColor colorWithRed:160 / 255.0 green:160 / 255.0 blue:160 / 255.0 alpha:1];
+        self.valueLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 0, ScreenWidth - 135, 45)];
+        self.valueLabel.font = [UIFont systemFontOfSize:15];
+        self.valueLabel.textColor = fontColorLightgray;
         self.valueLabel.textAlignment = NSTextAlignmentRight;
         self.valueLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.valueLabel];
         
-         self.myImageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth - 50-marginSize, 5 , 40, 40)];
+         self.myImageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth - 50-marginSize, 5 , 35, 35)];
         self.myImageView.image = [UIImage imageNamed:@"image_user_head"];
         self.myImageView.hidden = YES;
         self.myImageView.contentMode = UIViewContentModeScaleAspectFit;

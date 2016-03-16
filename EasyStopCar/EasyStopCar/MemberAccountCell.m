@@ -30,20 +30,20 @@
         self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.memberIco.frame.origin.x+self.memberIco.frame.size.width+5, 15, 300, 15)];
         self.nameLabel.textColor = fontColorGray;
         self.nameLabel.text = @"暂无";
-        self.nameLabel.font = [UIFont boldSystemFontOfSize:16];
+        self.nameLabel.font = [UIFont boldSystemFontOfSize:14];
         [self.contentView addSubview:self.nameLabel];
         
         self.contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.nameLabel.frame.origin.x, 63-15-15, ScreenWidth-40, 15)];
-        self.contentLabel.font = [UIFont systemFontOfSize:14];
+        self.contentLabel.font = [UIFont systemFontOfSize:12];
         self.contentLabel.text = @"0000/00/00";
-        self.contentLabel.textColor = fontColorGray;
+        self.contentLabel.textColor = fontColorLightgray;
         [self.contentView addSubview:self.contentLabel];
         
         self.numberLabel = [[UILabel alloc] initWithFrame: CGRectMake(ScreenWidth-150-30, 0, 150, 63)];
-        self.numberLabel.font = [UIFont systemFontOfSize:14];
+        self.numberLabel.font = [UIFont systemFontOfSize:15];
         self.numberLabel.text = @"0.00";
         self.numberLabel.textAlignment = NSTextAlignmentRight;
-        self.numberLabel.textColor = fontColorGray;
+        self.numberLabel.textColor = fontColorBlack;
         [self.numberLabel setUserInteractionEnabled:NO];
         [self.contentView addSubview:self.numberLabel];
         

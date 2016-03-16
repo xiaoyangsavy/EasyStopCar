@@ -44,7 +44,7 @@
     self.memberTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, ScreenWidth, 15)];
     self.memberTitleLabel.text = @"我的零钱（元）";
     self.memberTitleLabel.textColor = [UIColor whiteColor];
-    self.memberTitleLabel.font = [UIFont systemFontOfSize:14];
+    self.memberTitleLabel.font = [UIFont systemFontOfSize:15];
     self.memberTitleLabel.textAlignment = NSTextAlignmentCenter;
     [self.infoView addSubview:self.memberTitleLabel];
     

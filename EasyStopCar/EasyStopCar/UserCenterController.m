@@ -51,7 +51,7 @@
     self.serviceLabel.textColor = fontColorGray;
     [self.view addSubview:self.serviceLabel];
     
-    self.userTableView = [[UITableView alloc] initWithFrame:CGRectMake(kScreenBounds.origin.x, 0, kScreenBounds.size.width, 50*4+113) style:UITableViewStylePlain];
+    self.userTableView = [[UITableView alloc] initWithFrame:CGRectMake(kScreenBounds.origin.x, 0, kScreenBounds.size.width, 45*4+113) style:UITableViewStylePlain];
     self.userTableView.delegate = self;
     self.userTableView.dataSource = self;
     self.userTableView.backgroundColor = [UIColor whiteColor];
@@ -88,7 +88,7 @@
         //昵称
         self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.headImageView.frame.origin.x+self.headImageView.frame.size.width+20, self.headImageView.frame.origin.y+10, 170.0f, 22.0f)];
         self.nameLabel.backgroundColor = [UIColor clearColor];
-        self.nameLabel.font = [UIFont systemFontOfSize:18];
+        self.nameLabel.font = [UIFont systemFontOfSize:17];
         [self.nameLabel setText:@"未知"];
         [self.nameLabel adjustsFontSizeToFitWidth];
         self.nameLabel.textColor = fontColorBlack;
@@ -162,7 +162,7 @@
     return 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50.0f;
+    return 45.0f;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex{

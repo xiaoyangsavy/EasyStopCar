@@ -246,7 +246,20 @@
             nextDay = 1;
         }
         
-        myString = [NSString stringWithFormat:@"%ld月%ld日",(long)nextMonth,(long)nextDay];
+        switch (i) {
+            case 1:
+                myString = @"今天";
+                break;
+            case 2:
+                myString = @"明天";
+                break;
+            case 3:
+                myString = @"后天";
+                break;
+            default:
+                 myString = [NSString stringWithFormat:@"%ld月%ld日",(long)nextMonth,(long)nextDay];
+                break;
+        }
         [self.dataArray addObject:myString];
     }
     
@@ -259,7 +272,7 @@
     }
     
     self.minuteArray = [[NSMutableArray alloc]init];
-    for (int i=0; i<60; i++) {
+    for (int i=0; i<60; i=i+5) {
         myString = [NSString stringWithFormat:@"%02d",i];
         [self.minuteArray addObject:myString];
     }

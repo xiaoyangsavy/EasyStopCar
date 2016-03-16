@@ -59,7 +59,7 @@
 @property(nonatomic, strong) UILabel *remainderLabe;
 @property(nonatomic, strong) UILabel *remainderContentLabel;
 @property(nonatomic, strong) UILabel *moneyLabe;
-@property(nonatomic, strong) UILabel *moneyText;        //充值金额
+@property(nonatomic, strong) UITextField *moneyText;        //充值金额
 
 @property(nonatomic, strong) UIImageView *agreeImageView;
 @property(nonatomic, strong) UIButton *agreeButton;
@@ -82,7 +82,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [super initNavBarItems:@"会员卡"];
+    [super initNavBarItems:@"充值"];
     
     self.view.backgroundColor = backageColorLightgray;
     
@@ -110,50 +110,62 @@
     //    self.memberInfoLable.translatesAutoresizingMaskIntoConstraints = NO;
     self.memberInfoLable.text = @"会员卡信息";
     self.memberInfoLable.font = [UIFont systemFontOfSize:12];
-    self.memberInfoLable.textColor = fontColorGray;
+    self.memberInfoLable.textColor = fontColorLightgray;
     [self.pageScroll addSubview:self.memberInfoLable];
     
     
-    self.memberInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, self.memberInfoLable.frame.origin.y+self.memberInfoLable.frame.size.height+10, ScreenWidth, 160)];
+    self.memberInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, self.memberInfoLable.frame.origin.y+self.memberInfoLable.frame.size.height+10, ScreenWidth, 45*4)];
     //    self.memberInfoLable.translatesAutoresizingMaskIntoConstraints = NO;
     self.memberInfoView.backgroundColor = [UIColor whiteColor];
     [self.pageScroll addSubview:self.memberInfoView];
     
+   
     
-    self.nameView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
+    
+    self.nameView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 45)];
     //    self.nameView.translatesAutoresizingMaskIntoConstraints = NO;
     self.nameView.backgroundColor = [UIColor whiteColor];
     [self.memberInfoView addSubview:self.nameView];
     
+    CALayer *bottomBorder=[[CALayer alloc]init];
+    bottomBorder.frame=CGRectMake(0, 0, self.nameView.frame.size.width, 0.5);
+    bottomBorder.backgroundColor=lineColorLightgray.CGColor;
+    [self.nameView.layer addSublayer:bottomBorder ];
+    
     self.lineView01 = [[UIView alloc] initWithFrame:CGRectMake(15, self.nameView.frame.origin.y+self.nameView.frame.size.height+0, ScreenWidth, 0.5)];
     //    self.lineView01.translatesAutoresizingMaskIntoConstraints = NO;
-    self.lineView01.backgroundColor = lineColorGray;
+    self.lineView01.backgroundColor = lineColorLightgray;
     [self.memberInfoView addSubview:self.lineView01];
     
-    self.phoneView = [[UIView alloc] initWithFrame:CGRectMake(0, self.lineView01.frame.origin.y+self.lineView01.frame.size.height+0, ScreenWidth, 40)];
+    self.phoneView = [[UIView alloc] initWithFrame:CGRectMake(0, self.lineView01.frame.origin.y+self.lineView01.frame.size.height+0, ScreenWidth, 45)];
     //    self.phoneView.translatesAutoresizingMaskIntoConstraints = NO;
     self.phoneView.backgroundColor =  [UIColor whiteColor];
     [self.memberInfoView addSubview:self.phoneView];
     
     self.lineView02 = [[UIView alloc] initWithFrame:CGRectMake(15, self.phoneView.frame.origin.y+self.phoneView.frame.size.height+0, ScreenWidth, 0.5)];
     self.lineView02.translatesAutoresizingMaskIntoConstraints = NO;
-    self.lineView02.backgroundColor = lineColorGray;
+    self.lineView02.backgroundColor = lineColorLightgray;
     [self.memberInfoView addSubview:self.lineView02];
     
-    self.remainderView = [[UIView alloc] initWithFrame:CGRectMake(0, self.lineView02.frame.origin.y+self.lineView02.frame.size.height+0, ScreenWidth, 40)];
+    self.remainderView = [[UIView alloc] initWithFrame:CGRectMake(0, self.lineView02.frame.origin.y+self.lineView02.frame.size.height+0, ScreenWidth, 45)];
     //    self.remainderView.translatesAutoresizingMaskIntoConstraints = NO;
     self.remainderView.backgroundColor =  [UIColor whiteColor];
     [self.memberInfoView addSubview:self.remainderView];
     
     self.lineView03 = [[UIView alloc] initWithFrame:CGRectMake(15, self.remainderView.frame.origin.y+self.remainderView.frame.size.height+0, ScreenWidth, 0.5)];
     //    self.lineView03.translatesAutoresizingMaskIntoConstraints = NO;
-    self.lineView03.backgroundColor = lineColorGray;
+    self.lineView03.backgroundColor = lineColorLightgray;
     [self.memberInfoView addSubview:self.lineView03];
     
-    self.moneyView = [[UIView alloc] initWithFrame:CGRectMake(0, self.lineView03.frame.origin.y+self.lineView03.frame.size.height+0, ScreenWidth, 40)];
+    self.moneyView = [[UIView alloc] initWithFrame:CGRectMake(0, self.lineView03.frame.origin.y+self.lineView03.frame.size.height+0, ScreenWidth, 45)];
     //    self.moneyView.translatesAutoresizingMaskIntoConstraints = NO;
     self.moneyView.backgroundColor =  [UIColor whiteColor];
     [self.memberInfoView addSubview:self.moneyView];
+    
+    CALayer *moneybottomBorder=[[CALayer alloc]init];
+    moneybottomBorder.frame=CGRectMake(0, self.moneyView.frame.size.height-0.5, self.moneyView.frame.size.width, 0.5);
+    moneybottomBorder.backgroundColor=lineColorLightgray.CGColor;
+    [self.moneyView.layer addSublayer:moneybottomBorder ];
     
     self.payWayLable = [[UILabel alloc] initWithFrame:CGRectMake(15, self.memberInfoView.frame.origin.y+self.memberInfoView.frame.size.height+20, ScreenWidth, 15)];
     //    self.payWayLable.translatesAutoresizingMaskIntoConstraints = NO;
@@ -161,8 +173,12 @@
     self.payWayLable.font = [UIFont systemFontOfSize:12];
     self.payWayLable.textColor = fontColorLightgray;
     [self.pageScroll addSubview:self.payWayLable];
+   
+    UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(0, self.payWayLable.frame.origin.y+self.payWayLable.frame.size.height+9.5, ScreenWidth, 0.5)];
+    myView.backgroundColor = lineColorLightgray;
+    [self.pageScroll addSubview:myView];
     
-    self.payWayTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.payWayLable.frame.origin.y+self.payWayLable.frame.size.height+10, ScreenWidth, 2*60)];
+    self.payWayTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.payWayLable.frame.origin.y+self.payWayLable.frame.size.height+10, ScreenWidth, 2*45)];
     self.payWayTableView.delegate = self;
     self.payWayTableView.dataSource = self;
     self.payWayTableView.allowsMultipleSelectionDuringEditing = YES;
@@ -170,7 +186,12 @@
     self.payWayTableView.backgroundColor = backageColorLightgray;
     [self.pageScroll addSubview:self.payWayTableView];
     
-    self.agreeView = [[UIView alloc] initWithFrame:CGRectMake(0, self.payWayTableView.frame.origin.y+self.payWayTableView.frame.size.height+10, ScreenWidth, 30)];
+    UIView *payWayBottomView = [[UIView alloc]initWithFrame:CGRectMake(0, self.payWayTableView.frame.origin.y+self.payWayTableView.frame.size.height-0.5, ScreenWidth, 0.5)];
+    payWayBottomView.backgroundColor = lineColorLightgray;
+    [self.pageScroll addSubview:payWayBottomView];
+
+    
+    self.agreeView = [[UIView alloc] initWithFrame:CGRectMake(0, self.payWayTableView.frame.origin.y+self.payWayTableView.frame.size.height+6, ScreenWidth, 30)];
     //    self.agreeView.translatesAutoresizingMaskIntoConstraints = NO;
     //    self.agreeView.backgroundColor =  [UIColor whiteColor];
     [self.pageScroll addSubview:self.agreeView];
@@ -180,66 +201,75 @@
     self.nameLabe = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 70, self.nameView.frame.size.height)];
     self.nameLabe.text = @"真实姓名";
     self.nameLabe.font = [UIFont systemFontOfSize:14];
-    self.nameLabe.textColor = fontColorGray;
+    self.nameLabe.textColor = fontColorBlack;
     [self.nameView addSubview:self.nameLabe];
     
     self.nameText = [[UITextField alloc] initWithFrame:CGRectMake(90, 0, ScreenWidth-150, self.nameView.frame.size.height)];
     self.nameText.delegate = self;
     self.nameText.placeholder = @"持卡人真实姓名";
     self.nameText.font = [UIFont systemFontOfSize:14];
-    self.nameText.textColor = fontColorGray;
+    self.nameText.textColor = fontColorBlack;
     self.nameText.returnKeyType=UIReturnKeyNext;
+    self.nameText.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"持卡人真实姓名" attributes:@{
+                                                                                                             NSForegroundColorAttributeName: fontColorLightgray,
+                                                                                                             NSFontAttributeName : [UIFont systemFontOfSize:14]}];
     [self.nameView addSubview:self.nameText];
     
     //手机号
     self.phoneLabe = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 70, self.phoneView.frame.size.height)];
     self.phoneLabe.text = @"手机号";
     self.phoneLabe.font = [UIFont systemFontOfSize:14];
-    self.phoneLabe.textColor = fontColorGray;
+    self.phoneLabe.textColor = fontColorBlack;
     [self.phoneView addSubview:self.phoneLabe];
     
     self.phoneText = [[UITextField alloc] initWithFrame:CGRectMake(90, 0, ScreenWidth-150, self.phoneView.frame.size.height)];
     self.phoneText.delegate = self;
-    self.phoneText.placeholder = @"请输入手机号";
+//    self.phoneText.placeholder = @"请输入手机号";
     self.phoneText.font = [UIFont systemFontOfSize:14];
-    self.phoneText.textColor = fontColorGray;
+    self.phoneText.textColor = fontColorBlack;
     self.phoneText.keyboardType = UIKeyboardTypeNumberPad;
     self.phoneText.returnKeyType=UIReturnKeyNext;
+    self.phoneText.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入手机号" attributes:@{
+                                                                                                            NSForegroundColorAttributeName: fontColorLightgray,
+                                                                                                            NSFontAttributeName : [UIFont systemFontOfSize:14]}];
     [self.phoneView addSubview:self.phoneText];
     
     //会员余额
-    self.remainderLabe = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 70, self.remainderView.frame.size.height)];
-    self.remainderLabe.text = @"会员余额";
+    self.remainderLabe = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 90, self.remainderView.frame.size.height)];
+    self.remainderLabe.text = @"会员余额(元)";
     self.remainderLabe.font = [UIFont systemFontOfSize:14];
-    self.remainderLabe.textColor = fontColorGray;
+    self.remainderLabe.textColor = fontColorBlack;
     [self.remainderView addSubview:self.remainderLabe];
     
-    self.remainderContentLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 0, ScreenWidth-150, self.remainderView.frame.size.height)];
+    self.remainderContentLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 0, ScreenWidth-150, self.remainderView.frame.size.height)];
     
     self.remainderContentLabel.text = @"0";
     
-    self.remainderContentLabel.font = [UIFont systemFontOfSize:14];
+    self.remainderContentLabel.font = [UIFont boldSystemFontOfSize:14];
     self.remainderContentLabel.textColor = fontColorGray;
     [self.remainderView addSubview:self.remainderContentLabel];
     
     //充值金额
-    self.moneyLabe = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 70, self.moneyView.frame.size.height)];
-    self.moneyLabe.text = @"充值金额";
+    self.moneyLabe = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 90, self.moneyView.frame.size.height)];
+    self.moneyLabe.text = @"充值金额(元)";
     self.moneyLabe.font = [UIFont systemFontOfSize:14];
-    self.moneyLabe.textColor = fontColorGray;
+    self.moneyLabe.textColor = fontColorBlack;
     [self.moneyView addSubview:self.moneyLabe];
     
-    self.moneyText = [[UILabel alloc] initWithFrame:CGRectMake(90, 0, ScreenWidth-150, self.moneyView.frame.size.height)];
-    //     self.moneyText.delegate = self;
-    //    self.moneyText.placeholder = @"请输入金额";
+    self.moneyText = [[UITextField alloc] initWithFrame:CGRectMake(100, 0, ScreenWidth-150, self.moneyView.frame.size.height)];
+         self.moneyText.delegate = self;
+//        self.moneyText.placeholder = @"请输入金额";
     self.moneyText.font = [UIFont systemFontOfSize:14];
-    self.moneyText.textColor = fontColorGray;
-    //    self.moneyText.keyboardType = UIKeyboardTypeNumberPad;
-    //    self.moneyText.returnKeyType=UIReturnKeyDone;
+    self.moneyText.textColor = fontColorBlack;
+        self.moneyText.keyboardType = UIKeyboardTypeNumberPad;
+        self.moneyText.returnKeyType=UIReturnKeyDone;
+    self.moneyText.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入金额" attributes:@{
+                                                                                                                 NSForegroundColorAttributeName: fontColorLightgray,
+                                                                                                                 NSFontAttributeName : [UIFont systemFontOfSize:14]}];
     [self.moneyView addSubview:self.moneyText];
     
     //同意条款
-    self.agreeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 0, 15, self.agreeView.frame.size.height)];
+    self.agreeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 0, 12, self.agreeView.frame.size.height)];
     self.agreeImageView.image = [UIImage imageNamed:@"ico_common_square_unselect"];
     self.agreeImageView.contentMode = UIViewContentModeScaleAspectFit;
     //     self.agreeImageView.userInteractionEnabled = YES;
@@ -256,11 +286,12 @@
     self.agreeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.agreeImageView.frame.origin.x+self.agreeImageView.frame.size.width+5, 0, 60, self.agreeView.frame.size.height)];
     self.agreeLabel.text = @"阅读并同意";
     self.agreeLabel.font = [UIFont systemFontOfSize:12];
+    self.agreeLabel.textColor = fontColorLightgray;
     [self.agreeView addSubview:self.agreeLabel];
     
-    self.clauseButton = [[UIButton alloc] initWithFrame:CGRectMake(self.agreeLabel.frame.origin.x+self.agreeLabel.frame.size.width+5, 0, 120, self.agreeView.frame.size.height)];
-    [self.clauseButton setTitle:@"《世纪生活会员协议》" forState:UIControlStateNormal];
-    [self.clauseButton setTitleColor:backageColorRed forState:UIControlStateNormal];
+    self.clauseButton = [[UIButton alloc] initWithFrame:CGRectMake(self.agreeLabel.frame.origin.x+self.agreeLabel.frame.size.width, 0, 120, self.agreeView.frame.size.height)];
+    [self.clauseButton setTitle:@"《易停车会员协议》" forState:UIControlStateNormal];
+    [self.clauseButton setTitleColor:backageColorYellow forState:UIControlStateNormal];
     self.clauseButton.titleLabel.font = [UIFont systemFontOfSize:12];
     //    self.agreeButton.backgroundColor = TEST_COLOR;
     [self.agreeView addSubview:self.clauseButton];
@@ -333,7 +364,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    return 45;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

@@ -10,6 +10,7 @@
 #import "CommonTools.h"
 #import "SearchAppointController.h"
 #import "OrderDetailController.h"
+#import "SearchAppointSelectController.h"
 
 @interface RouteAnnotation : BMKPointAnnotation
 {
@@ -107,7 +108,8 @@
     
     
     //搜索框
-    UIView *searchView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 40)];
+    UIButton *searchView = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 40)];
+    [searchView addTarget:self action:@selector(selectLocation) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationItem setTitleView:searchView];
     
     //    UIImageView *serachBackageView = [[UIImageView alloc]initWithFrame:CGRectMake(-20, searchView.frame.size.height-15, searchView.frame.size.width+40, 5)];
@@ -120,15 +122,10 @@
     serachIcoView.contentMode = UIViewContentModeScaleAspectFit;
     [searchView addSubview:serachIcoView];
     
-    UITextField *serachTextField = [[UITextField alloc]initWithFrame:CGRectMake(serachIcoView.frame.origin.x+serachIcoView.frame.size.width+2, 0, searchView.frame.size.width-10, 40)];
-    //    [serachTextField setPlaceholder:@"请搜索商品"];
-    serachTextField.font = [UIFont systemFontOfSize:14];
-    serachTextField.textColor = [UIColor whiteColor];
-    serachTextField.delegate = self;
-    serachTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"搜索停车场" attributes:@{
-                                                                                                             NSForegroundColorAttributeName: [UIColor colorWithRed:1 green:1 blue:1 alpha:0.8],
-                                                                                                             NSFontAttributeName : [UIFont systemFontOfSize:13]}];
-    serachTextField.textColor = [UIColor whiteColor];
+    UILabel *serachTextField = [[UILabel alloc]initWithFrame:CGRectMake(serachIcoView.frame.origin.x+serachIcoView.frame.size.width+2, 0, searchView.frame.size.width-10, 40)];
+    serachTextField.font = [UIFont systemFontOfSize:13];
+    serachTextField.text = @"搜索停车场";
+    serachTextField.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.8];
     [searchView addSubview:serachTextField];
     
     //定位服务
@@ -340,11 +337,11 @@
     [self.submitAlertView addSubview:self.submitInfoContentView];
     
     //提交信息内容显示
-    self.submitInfoContent = [[UILabel alloc] initWithFrame:CGRectMake(0, self.submitInfoView.frame.size.height-40-20, ScreenWidth, 40)];
-    self.submitInfoContent.text = @"下单后会为您冻结车位30分钟\n请尽快到达";
+    self.submitInfoContent = [[UILabel alloc] initWithFrame:CGRectMake(0, self.submitInfoView.frame.size.height-15-20, ScreenWidth, 15)];
+    self.submitInfoContent.text = @"下单后会为您冻结车位30分钟，请尽快到达";
     [self.submitInfoContent setTextColor:backageColorBlue];
-    self.submitInfoContent.lineBreakMode = NSLineBreakByWordWrapping;
-    self.submitInfoContent.numberOfLines = 0;//上面两行设置多行显示
+//    self.submitInfoContent.lineBreakMode = NSLineBreakByWordWrapping;
+//    self.submitInfoContent.numberOfLines = 0;//上面两行设置多行显示
     self.submitInfoContent.font = [UIFont systemFontOfSize:15];
     self.submitInfoContent.textAlignment = NSTextAlignmentCenter;
     [self.submitInfoView addSubview:self.submitInfoContent];
@@ -425,7 +422,7 @@
 -(void)initAppointStyle{
     self.submitInfoImageView.hidden = YES;
      self.submitInfoContentAppointView.hidden = NO;
-  self.submitInfoContent.text = @"下单后车位会为您保留\n请尽快到达";
+  self.submitInfoContent.text = @"下单后车位会为您保留，请尽快到达";
     
     _mapView.frame = CGRectMake(0, 40, ScreenWidth, ScreenHeight-64-40);
     
@@ -516,6 +513,25 @@
 }
 
 
+//预约失败
+-(void)showAppointFail{
+    
+    self.submitInfoTitle.text = @"预约失败";
+    self.submitInfoTitle.textColor = backageColorRed;
+    self.submitInfoLocation.text = @"由于预约人较多，现已无车位";
+      self.submitInfoLocation.textColor = fontColorBlack;
+    self.submitInfoContent.text = @"请查看附近其他停车场";
+      self.submitInfoContent.textColor = fontColorGray;
+//    self.submitInfoContentView.backgroundColor = backageColorRed;
+    self.submitButtonConcel.hidden = YES;
+    self.submitButtonAffirm.frame = CGRectMake(0, 0, ScreenWidth, self.submitButtonView.frame.size.height);
+    self.submitButtonAffirm.tag = 198853;
+    [self.submitButtonAffirm setTitle:@"继续预约" forState:UIControlStateNormal];
+   [super showAlertBackage:self.submitAlertView];
+    
+
+}
+
 
 //初始化测试数据
 -(void)initTestData{
@@ -555,7 +571,11 @@
     [super showAlertBackage:self.submitAlertView];
 }
 
-
+//选择地点
+-(void)selectLocation{
+    SearchAppointSelectController *myController = [[SearchAppointSelectController alloc]init];
+    [self.navigationController pushViewController:myController animated:YES];
+}
 
 /**
  *  弹出框提交事件
@@ -567,14 +587,24 @@
         [super hideAlertBackage];
     }else  if (myButton.tag ==198852 ){//确认
         [super hideAlertBackage];
-        OrderDetailController *myController = [[OrderDetailController alloc]init];
-         if (self.styleType == 1) {
-              myController.orderType = 3;//预约订单
-         }else{
-        myController.orderType = 1;//预约订单
-         }
-        [self.navigationController pushViewController:myController animated:YES];
+        
+        int x = arc4random() % 2;//[0,2)
+        if (x==1) {
+            OrderDetailController *myController = [[OrderDetailController alloc]init];
+            if (self.styleType == 1) {
+                myController.orderType = 3;//预约订单
+            }else{
+                myController.orderType = 1;//预约订单
+            }
+            [self.navigationController pushViewController:myController animated:YES];
+        }else{
+            [self showAppointFail];//预约失败
+        }
+    }else  if (myButton.tag ==198853 ){//预约失败后，继续预约
+         [super hideAlertBackage];
+        [self toReturn];
     }
+
     
 }
 
