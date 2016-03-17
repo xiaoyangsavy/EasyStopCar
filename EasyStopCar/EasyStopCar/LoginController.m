@@ -103,6 +103,9 @@
 
 //获取验证码
 -(void)gainCode{
+    
+    [SVProgressHUD showSuccessWithStatus:@"验证码已发送" maskType:SVProgressHUDMaskTypeGradient];
+    
     self.numberIndex=60;//Countdown
     if (self.myNSTimer) {
         [self.myNSTimer invalidate];

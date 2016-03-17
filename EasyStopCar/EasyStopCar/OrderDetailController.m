@@ -7,6 +7,7 @@
 //
 
 #import "OrderDetailController.h"
+ #import "ResultInfoController.h"
 
 #import "MRProgress.h"
 #import "MRCircularProgressView.h"
@@ -518,7 +519,17 @@
     if (myButton.tag == 198801) {   //导航
   [super showAlertBackage:self.payWayView];
     }else if (myButton.tag == 198803){  //取消预约
-        [self toReturn];
+//        [self toReturn];
+        
+       
+        
+        ResultInfoController *myController =  [[ResultInfoController alloc]init];
+        myController.type = 1;
+        [self.navigationController pushViewController:myController animated:YES];
+        
+        NSMutableArray *navigationArray = [[NSMutableArray alloc] initWithArray: self.navigationController.viewControllers];
+        [navigationArray removeObjectAtIndex: navigationArray.count-2];  // You can pass your index here
+        self.navigationController.viewControllers = navigationArray;
     }
 }
 

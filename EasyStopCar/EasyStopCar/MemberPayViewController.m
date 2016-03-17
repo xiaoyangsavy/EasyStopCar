@@ -7,6 +7,8 @@
 //
 
 #import "MemberPayViewController.h"
+#import "ResultInfoController.h"
+
 #import "CouponCell.h"
 #import "MemberWayCell.h"
 #import "SVProgressHUD.h"
@@ -435,8 +437,8 @@
     //    if (self.payWayID) {
     
     //测试
-        self.nameText.text = @"测试";
-        self.phoneText.text = @"15888888888";
+//        self.nameText.text = @"测试";
+//        self.phoneText.text = @"15888888888";
  
     if(self.agreeButton.tag == 198802){
         
@@ -444,58 +446,68 @@
             if(self.phoneText.text!=nil&&![self.phoneText.text isEqualToString:@""]){
                 
                 
-                self.rechargeMoney = [self.moneyText.text floatValue];
+//                self.rechargeMoney = [self.moneyText.text floatValue];
+//                
+//                
+//                NSInteger payWayID =  self.payWayTableView.indexPathForSelectedRow.row;
+//                NSString *payWay =  self.payWayArray[payWayID][@"payID"];
+//                
+//                NSLog(@"支付方式为dic%@！！！！！！",payWay);
+// 
+//                
+//                    [[Connetion shared]submitNewOrder:self.nameText.text phone:self.phoneText.text payWay:payWay  finish:^(NSDictionary *resultData, NSError *error)
+//                     {
+//                
+//                         if (!error)
+//                         {
+//                             NSLog(@"接口返回数据为%@",resultData);
+//  
+//                             NSString *code = [resultData objectForKey:@"code"];
+//                             //    NSString *msg = nil;
+//                             if ([code integerValue]==200) {
+//                                 
+//                                 NSInteger payWayID =  self.payWayTableView.indexPathForSelectedRow.row;
+//                                 NSString *payWay =  self.payWayArray[payWayID][@"payID"];
+//                                 
+//                                 
+//                                 NSDictionary *dataDictionary = resultData[@"result"][@"data"];
+//                                 NSArray *orderArray = dataDictionary[@"orders"];
+//                                 NSDictionary *orderDictionary = (NSDictionary *)orderArray[0];
+//                                 NSLog(@"支付方式为dic%@！！！！！！",payWay);
+//                                 
+//                                  if ([payWay isEqual:@"wxpay"]) {
+//                                     [self payOrderByWX:resultData];
+//                                 }else  if ([payWay isEqual:@"Alipay"]) {
+//                                     [self payOrderByAlipay:resultData];
+//                                 }
+//                             }
+//                             
+//                         }else{
+//                         NSLog(@"接口返回错误为%@",error);
+//                         }
+//                         
+//                     }];
                 
                 
-                NSInteger payWayID =  self.payWayTableView.indexPathForSelectedRow.row;
-                NSString *payWay =  self.payWayArray[payWayID][@"payID"];
+                //支付完成
+                ResultInfoController *myController =  [[ResultInfoController alloc]init];
+                myController.type = 2;
+                [self.navigationController pushViewController:myController animated:YES];
                 
-                NSLog(@"支付方式为dic%@！！！！！！",payWay);
- 
-                
-                    [[Connetion shared]submitNewOrder:self.nameText.text phone:self.phoneText.text payWay:payWay  finish:^(NSDictionary *resultData, NSError *error)
-                     {
-                
-                         if (!error)
-                         {
-                             NSLog(@"接口返回数据为%@",resultData);
-  
-                             NSString *code = [resultData objectForKey:@"code"];
-                             //    NSString *msg = nil;
-                             if ([code integerValue]==200) {
-                                 
-                                 NSInteger payWayID =  self.payWayTableView.indexPathForSelectedRow.row;
-                                 NSString *payWay =  self.payWayArray[payWayID][@"payID"];
-                                 
-                                 
-                                 NSDictionary *dataDictionary = resultData[@"result"][@"data"];
-                                 NSArray *orderArray = dataDictionary[@"orders"];
-                                 NSDictionary *orderDictionary = (NSDictionary *)orderArray[0];
-                                 NSLog(@"支付方式为dic%@！！！！！！",payWay);
-                                 
-                                  if ([payWay isEqual:@"wxpay"]) {
-                                     [self payOrderByWX:resultData];
-                                 }else  if ([payWay isEqual:@"Alipay"]) {
-                                     [self payOrderByAlipay:resultData];
-                                 }
-                             }
-                             
-                         }else{
-                         NSLog(@"接口返回错误为%@",error);
-                         }
-                         
-                     }];
+                NSMutableArray *navigationArray = [[NSMutableArray alloc] initWithArray: self.navigationController.viewControllers];
+                [navigationArray removeObjectAtIndex: navigationArray.count-2];  // You can pass your index here
+                self.navigationController.viewControllers = navigationArray;
                 
                 }else{
-                 [SVProgressHUD showErrorWithStatus:@"请填写手机号"];
+                 [SVProgressHUD showErrorWithStatus:@"请填写手机号" maskType:SVProgressHUDMaskTypeGradient];
                 
             }
         }else{
-             [SVProgressHUD showErrorWithStatus:@"请填写姓名"];
+             [SVProgressHUD showErrorWithStatus:@"请填写姓名" maskType:SVProgressHUDMaskTypeGradient];
            
         }
     }else{
-         [SVProgressHUD showErrorWithStatus:@"请同意协议后支付"];
+         [SVProgressHUD showErrorWithStatus:@"请同意协议后支付" maskType:SVProgressHUDMaskTypeGradient];
         
     }
     

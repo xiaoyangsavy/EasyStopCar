@@ -51,6 +51,7 @@
 		4D9AC4451C84242E00E923CC /* SearchPartMapController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AC4441C84242E00E923CC /* SearchPartMapController.mm */; };
 		4D9C5E701C89590D00543681 /* Connetion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9C5E6E1C89590D00543681 /* Connetion.m */; };
 		4D9C5E771C89643500543681 /* SearchAppointSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9C5E761C89643500543681 /* SearchAppointSelectController.m */; };
+		4DAA75471C9A996100E97F1F /* ResultInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAA75461C9A996100E97F1F /* ResultInfoController.m */; };
 		4DB94A2A1C87D2AD0003AC08 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB94A271C87D2AD0003AC08 /* libWeChatSDK.a */; };
 		4DB94A2D1C87D5FC0003AC08 /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A2C1C87D5FC0003AC08 /* WXApiManager.m */; };
 		4DB94A301C8813880003AC08 /* SearchAppointController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB94A2F1C8813880003AC08 /* SearchAppointController.m */; };
@@ -204,6 +205,8 @@
 		4D9C5E721C895BF800543681 /* libSVProgressHUD.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSVProgressHUD.a; path = "Pods/../build/Debug-iphoneos/libSVProgressHUD.a"; sourceTree = "<group>"; };
 		4D9C5E751C89643500543681 /* SearchAppointSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchAppointSelectController.h; sourceTree = "<group>"; };
 		4D9C5E761C89643500543681 /* SearchAppointSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchAppointSelectController.m; sourceTree = "<group>"; };
+		4DAA75451C9A996100E97F1F /* ResultInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultInfoController.h; sourceTree = "<group>"; };
+		4DAA75461C9A996100E97F1F /* ResultInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultInfoController.m; sourceTree = "<group>"; };
 		4DB94A271C87D2AD0003AC08 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = Common/WeChat/libWeChatSDK.a; sourceTree = "<group>"; };
 		4DB94A281C87D2AD0003AC08 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = Common/WeChat/WXApi.h; sourceTree = "<group>"; };
 		4DB94A291C87D2AD0003AC08 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = Common/WeChat/WXApiObject.h; sourceTree = "<group>"; };
@@ -514,6 +517,7 @@
 				4DCCA5151C84558C00965C21 /* CustomCell */,
 				4DE57EA01C85A3D20087D79F /* Order */,
 				4D9AC4421C8423FA00E923CC /* Search */,
+				4DAA75441C9A992300E97F1F /* Other */,
 				4D9AC3CC1C83E20E00E923CC /* AppDelegate.h */,
 				4D9AC3CD1C83E20E00E923CC /* AppDelegate.m */,
 				4D9AC43F1C8423DA00E923CC /* UITempletViewController.h */,
@@ -600,6 +604,15 @@
 				4DC6BCFF1C90647500279A90 /* PayModel.m */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		4DAA75441C9A992300E97F1F /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				4DAA75451C9A996100E97F1F /* ResultInfoController.h */,
+				4DAA75461C9A996100E97F1F /* ResultInfoController.m */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 		4DB94A261C87D2A10003AC08 /* WeChat */ = {
@@ -1116,6 +1129,7 @@
 				4DB94A491C884D0D0003AC08 /* EditTextController.m in Sources */,
 				4DC6BCE71C905C5700279A90 /* MD5DataSigner.m in Sources */,
 				4DC690AC1C8988A3006B4DDF /* PayDetailCell.m in Sources */,
+				4DAA75471C9A996100E97F1F /* ResultInfoController.m in Sources */,
 				4D9C5E701C89590D00543681 /* Connetion.m in Sources */,
 				4D3D98A31C91584900C12755 /* SelectAlertView.m in Sources */,
 				4DE57E961C852C3A0087D79F /* SearchPartCell.m in Sources */,
