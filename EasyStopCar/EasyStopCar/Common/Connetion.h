@@ -31,12 +31,35 @@
 
 - (void)POST:(NSString*)URLString parameters:(id)parameters finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock;
 
-
-- (void)customReservationQueue:(NSString *)tokenId finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock;
+ 
 
 //提交新订单
 - (void)submitNewOrder:(NSString *)userName phone:(NSString *)phone payWay:(NSString *)payWay finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock;
 
 //获取微信支付预处理文件
 - (void)getOrderPreWithWeChat:(NSMutableDictionary *)dict  finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock;
+
+//发送验证码
+- (void)sendCode:(NSString *)phone  finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock;
+
+//登陆并注册
+- (void)loginAndRegister:(NSString *)phone code:(NSString *)code finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock;
+
+//获取用户详细信息
+- (void)getUserDetailInfo:(NSString *)myString  finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock;
+
+//首页订单
+- (void)getOrderListWithMain:(NSString *)myString  finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock;
+
+//订单详情
+- (void)getOrderDetailByOrderID:(NSString *)orderID  finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock;
+
+//车厂列表
+- (void)getParkList:(float)longitude latitude:(float)latitude electricity:(NSString *)electricity distance:(NSString *)distance finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock;
+
+//车厂详情
+- (void)getParkList:(NSString *)parkID  finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock;
+
+
+
 @end

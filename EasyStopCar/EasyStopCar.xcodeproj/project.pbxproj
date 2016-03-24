@@ -1313,7 +1313,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sjsh8.easystopcart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8998fcca-b803-42e0-960d-3d18eadaf87c";
+				PROVISIONING_PROFILE = "d8f6abee-be17-474a-86c8-e520f97e4f1a";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -1353,7 +1353,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sjsh8.easystopcart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8998fcca-b803-42e0-960d-3d18eadaf87c";
+				PROVISIONING_PROFILE = "d8f6abee-be17-474a-86c8-e520f97e4f1a";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;

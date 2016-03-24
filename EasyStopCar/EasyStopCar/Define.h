@@ -47,7 +47,7 @@ alpha:0.8])
 
 
 //网址前缀
-#define prefix_url     @"http://www.sjsh8.cn"    //世纪生活
+#define prefix_url     @"http://web.epark.weplays.cn"    //易停车
 
 
 

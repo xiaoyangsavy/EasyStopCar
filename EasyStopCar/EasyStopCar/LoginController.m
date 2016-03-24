@@ -41,6 +41,7 @@
     
     
     self.userView = [[InputItemModel alloc] initWithFrame:CGRectMake(marginSize,20, ScreenWidth-marginSize*2, 45) iconImage:@"ico_login_user" text:@"" placeHolderText:@"手机号"];
+    self.userView.textField.keyboardType = UIKeyboardTypePhonePad;
     self.userView.delegate = self;
     [self.view addSubview:self.userView];
     
@@ -104,21 +105,65 @@
 //获取验证码
 -(void)gainCode{
     
-    [SVProgressHUD showSuccessWithStatus:@"验证码已发送" maskType:SVProgressHUDMaskTypeGradient];
+    NSString *phone = self.userView.textField.text;
+//    NSString *password = self.passwordView.textField.text;
     
-    self.numberIndex=60;//Countdown
-    if (self.myNSTimer) {
-        [self.myNSTimer invalidate];
-         self.myNSTimer = nil;
+//     NSLog(@"参数为%@和%@！！！！",phone,password);
+    
+    if (phone&&![phone isEqualToString:@""]) {//已输入用户名和密码
+        
+        //调用接口
+        [SVProgressHUD show];
+        [[Connetion shared]sendCode:phone finish:^(NSDictionary *dict, NSError *error)
+         {
+             [SVProgressHUD dismiss];
+             if (!error)
+             {
+                 NSLog(@"接口返回数据为%@",dict);
+                 
+                 NSInteger code = [dict[@"code"] integerValue];
+                 if (code == 200) {//返回成功
+                     
+                     
+                     [SVProgressHUD showSuccessWithStatus:@"验证码已发送" maskType:SVProgressHUDMaskTypeGradient];
+                     
+                     //重新发送按钮倒计时
+                     self.numberIndex=60;//Countdown
+                     if (self.myNSTimer) {
+                         [self.myNSTimer invalidate];
+                         self.myNSTimer = nil;
+                     }
+                     
+                     self.myNSTimer =  [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                                        target:self
+                                                                      selector:@selector(timerFireMethod:)
+                                                                      userInfo:nil
+                                                                       repeats:YES];
+                     
+                     self.gainCodeButton.enabled=NO;
+                 }else{
+                 [SVProgressHUD showErrorWithStatus:dict[@"msg"] maskType:SVProgressHUDMaskTypeGradient];
+                 }
+                 
+             }else{
+                [SVProgressHUD showErrorWithStatus:@"服务器错误" maskType:SVProgressHUDMaskTypeGradient];
+                 NSLog(@"接口调用错误%@!!!!!!",error);
+             }
+             
+         }];
+        
+    }else{
+       [SVProgressHUD showErrorWithStatus:@"手机号不能为空" maskType:SVProgressHUDMaskTypeGradient];
+    
     }
     
-    self.myNSTimer =  [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                       target:self
-                                                     selector:@selector(timerFireMethod:)
-                                                     userInfo:nil
-                                                      repeats:YES];
+    
    
-    self.gainCodeButton.enabled=NO;
+    
+    
+    
+    
+    
 
 }
 
@@ -140,8 +185,47 @@
 
 //提交按钮点击事件
 -(void)submitClick{
-    ViewController *myController = [[ViewController alloc]init];
-            [self.navigationController pushViewController:myController animated:YES];
+    
+    NSString *phone = self.userView.textField.text;
+    NSString *password = self.passwordView.textField.text;
+    
+    NSLog(@"参数为%@和%@！！！！",phone,password);
+    
+    if (phone&&password&&![phone isEqualToString:@""]&&![password isEqualToString:@""]) {//已输入用户
+    
+        
+        //调用接口
+         [SVProgressHUD show];
+        [[Connetion shared]loginAndRegister:phone code:(NSString *)password finish:^(NSDictionary *dict, NSError *error)
+         {
+             [SVProgressHUD dismiss];
+             if (!error)
+             {
+                 NSLog(@"接口返回数据为%@",dict);
+                 
+                 NSInteger code = [dict[@"code"] integerValue];
+                 if (code == 200||code == 1000) {//返回成功
+                     
+                     ViewController *myController = [[ViewController alloc]init];
+                     [self.navigationController pushViewController:myController animated:YES];
+                     
+                 }else{
+                     [SVProgressHUD showErrorWithStatus:@"失败，请重试" maskType:SVProgressHUDMaskTypeGradient];
+                 }
+                 
+             }else{
+                 [SVProgressHUD showErrorWithStatus:@"服务器错误" maskType:SVProgressHUDMaskTypeGradient];
+                 NSLog(@"接口调用错误%@!!!!!!",error);
+             }
+             
+         }];
+        
+    }else{
+        [SVProgressHUD showErrorWithStatus:@"手机号和密码不能为空" maskType:SVProgressHUDMaskTypeGradient];
+        
+    }
+    
+   
 }
 
 

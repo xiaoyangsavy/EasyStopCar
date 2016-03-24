@@ -114,31 +114,6 @@ static Connetion* connetion;
 }
 
 
-
-
-- (void)customReservationInfo:(NSMutableDictionary *)dict  finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock{
-    
-    
-    
-    NSString* urlString  = [NSString stringWithFormat:@"%@/demand/customReservationInfo", prefix_url];
-    
-    
-    [self POST:urlString parameters:dict finish:^(NSDictionary *resultData, NSError *error) {
-        
-        finishBlock(resultData,error);
-    }];
-}
-
-- (void)customReservationQueue:(NSString *)tokenId finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock{
-    NSString* urlString  = [NSString stringWithFormat:@"%@/index.php?route=mobile/home_new/home_icon", prefix_url];
-    
-    [self GET:urlString finish:^(NSDictionary *resultData, NSError *error) {
-        
-        finishBlock(resultData,error);
-    }];
-    
-}
-
 //提交订单
 - (void)submitNewOrder:(NSString *)userName phone:(NSString *)phone payWay:(NSString *)payWay finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock{
     
@@ -165,6 +140,96 @@ static Connetion* connetion;
     }];
 }
 
+//发送验证码
+- (void)sendCode:(NSString *)phone  finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock{
+    
+    NSString* urlString  = [NSString stringWithFormat:@"%@/index.php?route=mobile/user/checkphone&phone=%@", prefix_url,phone];
+    
+    NSLog(@"调用网络%@!!!!!",urlString);
+    
+    [self GET:urlString finish:^(NSDictionary *resultData, NSError *error) {
+        
+        finishBlock(resultData,error);
+    }];
+}
 
+//登陆并注册
+- (void)loginAndRegister:(NSString *)phone code:(NSString *)code finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock{
+    
+    NSString* urlString  = [NSString stringWithFormat:@"%@/index.php?route=mobile/user/login&telephone=%@&vecode=%@", prefix_url,phone,code];
+    
+    NSLog(@"调用网络%@!!!!!",urlString);
+    
+    [self GET:urlString finish:^(NSDictionary *resultData, NSError *error) {
+        
+        finishBlock(resultData,error);
+    }];
+}
+
+//获取用户详细信息
+- (void)getUserDetailInfo:(NSString *)myString  finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock{
+    
+    NSString* urlString  = [NSString stringWithFormat:@"%@/index.php?route=mobile/user/userinfo", prefix_url];
+    
+    NSLog(@"调用网络%@!!!!!",urlString);
+    
+    [self GET:urlString finish:^(NSDictionary *resultData, NSError *error) {
+        
+        finishBlock(resultData,error);
+    }];
+}
+
+//首页订单
+- (void)getOrderListWithMain:(NSString *)myString  finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock{
+    
+    NSString* urlString  = [NSString stringWithFormat:@"%@/index.php?route=mobile/order/orderforindex", prefix_url];
+    
+    NSLog(@"调用网络%@!!!!!",urlString);
+    
+    [self GET:urlString finish:^(NSDictionary *resultData, NSError *error) {
+        
+        finishBlock(resultData,error);
+    }];
+}
+
+//订单详情
+- (void)getOrderDetailByOrderID:(NSString *)orderID  finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock{
+    
+    NSString* urlString  = [NSString stringWithFormat:@"%@/index.php?route=mobile/order/getorderinfo&id=%@", prefix_url,orderID];
+    
+    NSLog(@"调用网络%@!!!!!",urlString);
+    
+    [self GET:urlString finish:^(NSDictionary *resultData, NSError *error) {
+        
+        finishBlock(resultData,error);
+    }];
+}
+
+
+//车厂列表
+- (void)getParkList:(float)longitude latitude:(float)latitude electricity:(NSString *)electricity distance:(NSString *)distance finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock{
+    
+    NSString* urlString  = [NSString stringWithFormat:@"%@/index.php?route=mobile/bays/getbaysbyxl&xl=%f&yl=%f&type=%@&dpk=%@", prefix_url,latitude,latitude,electricity,distance];
+    
+    NSLog(@"调用网络%@!!!!!",urlString);
+    
+    [self GET:urlString finish:^(NSDictionary *resultData, NSError *error) {
+        
+        finishBlock(resultData,error);
+    }];
+}
+
+//车厂详情
+- (void)getParkList:(NSString *)parkID  finish:(void (^)(NSDictionary *resultData,  NSError *error))finishBlock{
+    
+    NSString* urlString  = [NSString stringWithFormat:@"%@/index.php?route=mobile/bays/getcarmainfo&id=%@", prefix_url,parkID];
+    
+    NSLog(@"调用网络%@!!!!!",urlString);
+    
+    [self GET:urlString finish:^(NSDictionary *resultData, NSError *error) {
+        
+        finishBlock(resultData,error);
+    }];
+}
 
 @end
