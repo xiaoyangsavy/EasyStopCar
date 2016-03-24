@@ -118,6 +118,7 @@
     
     
     [self initTableViewData];//设置列表数据
+    [self getInterfaceData];//获取用户数据
     
 }
 
@@ -148,6 +149,51 @@
     
     [self.userTableView reloadData];
 }
+
+//获取接口数据
+-(void)getInterfaceData{
+    //调用接口
+    [SVProgressHUD show];
+    [[Connetion shared]getUserDetailInfo:nil finish:^(NSDictionary *dict, NSError *error)
+     {
+         [SVProgressHUD dismiss];
+         if (!error)
+         {
+             NSLog(@"接口返回数据为%@",dict);
+             
+             NSInteger code = [dict[@"code"] integerValue];
+             NSDictionary *result = dict[@"result"];
+             if ( code == 200) {//返回成功
+                 
+//                 @property(nonatomic, strong) UIImageView *headImageView;//头像
+//                 @property(nonatomic, strong) UILabel *nameLabel;//姓名
+//                 @property(nonatomic, strong) UILabel *phoneLabel;//手机号
+//                 @property(nonatomic, strong) UIImageView *headFlag;//标记
+//                 
+//                 @property(nonatomic, strong) NSMutableArray *userDataArray;//列表数据
+//                 @property(nonatomic, strong) NSString *memberRemainder;//会员余额
+//                 
+//                 @property(nonatomic, strong) UIImageView *backageBottom;//底部背景
+//                 @property(nonatomic, strong) UILabel *serviceLabel;//客服电话
+                 
+                 self.memberRemainder = result[@"money"];
+                 self.nameLabel.text = result[@"real_name"];
+                  self.phoneLabel.text = result[@"phone"];
+                 [self initTableViewData];//设置列表数据
+                 
+             }else{
+                 [SVProgressHUD showErrorWithStatus:@"失败，请重试" maskType:SVProgressHUDMaskTypeGradient];
+             }
+             
+         }else{
+             [SVProgressHUD showErrorWithStatus:@"服务器错误" maskType:SVProgressHUDMaskTypeGradient];
+             NSLog(@"接口调用错误%@!!!!!!",error);
+         }
+         
+     }];
+
+}
+
 
 - (void)headClick:(UITapGestureRecognizer *)gesture
 {

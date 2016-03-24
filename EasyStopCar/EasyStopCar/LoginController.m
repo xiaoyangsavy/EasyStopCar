@@ -116,7 +116,7 @@
         [SVProgressHUD show];
         [[Connetion shared]sendCode:phone finish:^(NSDictionary *dict, NSError *error)
          {
-             [SVProgressHUD dismiss];
+//             [SVProgressHUD dismiss];
              if (!error)
              {
                  NSLog(@"接口返回数据为%@",dict);
@@ -198,13 +198,16 @@
          [SVProgressHUD show];
         [[Connetion shared]loginAndRegister:phone code:(NSString *)password finish:^(NSDictionary *dict, NSError *error)
          {
-             [SVProgressHUD dismiss];
              if (!error)
              {
                  NSLog(@"接口返回数据为%@",dict);
                  
                  NSInteger code = [dict[@"code"] integerValue];
                  if (code == 200||code == 1000) {//返回成功
+                      [SVProgressHUD dismiss];
+                     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                     [userDefaults setObject:@"1" forKey:@"isLogin"];
+                     [userDefaults synchronize];
                      
                      ViewController *myController = [[ViewController alloc]init];
                      [self.navigationController pushViewController:myController animated:YES];

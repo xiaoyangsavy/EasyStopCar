@@ -406,6 +406,7 @@
 
  
     [self initBannerData];
+    [self getOrderList];//获取订单列表数据
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:)
@@ -459,6 +460,32 @@
  
 }
 
+//获取首页订单列表
+-(void)getOrderList{
+    //调用接口
+    [SVProgressHUD show];
+    [[Connetion shared]getOrderListWithMain:nil finish:^(NSDictionary *dict, NSError *error)
+     {
+         if (!error)
+         {
+             NSLog(@"接口返回数据为%@",dict);
+             
+             NSInteger code = [dict[@"code"] integerValue];
+             if ( code == 200) {//返回成功
+                   [SVProgressHUD dismiss];
+                 
+             }else{
+                 [SVProgressHUD showErrorWithStatus:@"失败，请重试" maskType:SVProgressHUDMaskTypeGradient];
+             }
+             
+         }else{
+             [SVProgressHUD showErrorWithStatus:@"服务器错误" maskType:SVProgressHUDMaskTypeGradient];
+             NSLog(@"接口调用错误%@!!!!!!",error);
+         }
+         
+     }];
+
+}
 
 //初始化首页图片
 -(void)initBannerData{

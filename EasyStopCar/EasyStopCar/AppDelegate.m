@@ -43,8 +43,16 @@ BMKMapManager* _mapManager;
     UIViewController *myViewController = nil;
     UINavigationController *myNavigationController =nil;
 
-//    myViewController = [[ViewController alloc] init];
+    
+//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//    NSString *isLogin = [userDefaults objectForKey:@"isLogin"];
+//    
+//    if ([isLogin isEqualToString:@"1"]) {//已登录
+//         myViewController = [[ViewController alloc] init];
+//    }else{  //未登录
     myViewController = [[LoginController alloc] init];
+//    }
+    
     myNavigationController = [[UINavigationController alloc] initWithRootViewController:myViewController];
     self.window.rootViewController = myNavigationController;
     [self.window makeKeyAndVisible];
